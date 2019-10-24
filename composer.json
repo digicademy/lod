@@ -1,0 +1,32 @@
+{
+    "name": "digicademy/lod",
+    "type": "typo3-cms-extension",
+    "description": "LOD for TYPO3",
+    "homepage": "http://www.digitale-akademie.de",
+    "authors": [
+        {
+          "name": "Torsten Schrade",
+          "email": "Torsten.Schrade@adwmainz.de",
+          "role": "Developer",
+          "homepage": "http://www.adwmainz.de"
+        }
+    ],
+    "license": ["GPL-2.0+"],
+    "keywords": ["TYPO3", "History", "Digital Humanities", "RDF"],
+    "support": {
+        "issues": "https://github.com/digicademy/lod/issues"
+    },
+    "version": "0.0.0",
+    "require": {
+        "typo3/cms-core": ">=7.6.0 || <=9.5.99"
+    },
+    "replace": {
+        "lod": "self.version",
+        "typo3-ter/lod": "self.version"
+    },
+    "autoload": {
+        "psr-4": {
+          "Digicademy\\Lod\\": "Classes/"
+        }
+    }
+}
