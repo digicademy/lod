@@ -1,0 +1,11 @@
+# set the view directories
+plugin.tx_lod {
+    view {
+        layoutRootPaths.10 = EXT:lod/Resources/Private/HTML/Layouts/
+        partialRootPaths.10 = EXT:lod/Resources/Private/HTML/Partials/
+        templateRootPaths.10 = EXT:lod/Resources/Private/HTML/Templates/
+    }
+}
+
+# [globalVar = GP : type = 1991]
+# [global]

@@ -1,0 +1,142 @@
+## NEXT #########################################
+
+- Fix Classes
+-- table mapping => tx_lod_domain_model_namespace => IriNamespace
+-- s,p,o mapping in class Statement
+
+- should API controller only care about IRI type class?
+
+- about plugin
+-- add basic templates (nt, json-ld, rdf, ttl, xmp, xml)
+
+- add needed ViewHelpers
+
+- test with 76.t3xdev
+
+---
+
+id=123 => rewritten by realurl to 'id' or whatever (= pagePath)
+&tx_lod_api%5Bsubject%5D=1995 => rewritten by realurl to /id/value (= fixedPostVars)
+&type=2004 => rewritten by realUrl to about.xyz (= fileName)
+
+&tx_lod_about%5Baction%5D=about => skipped (by initializeAction and fixedPostVars)
+&tx_lod_about%5Bcontroller%5D=Api skipped (by initializeAction and fixedPostVars)
+&tx_lod_about%5Bformat%5D=rdfxml => ignored/suppressed (by initialize Action; switch is by pageType)
+
+&cHash => skipped (by realUrl config)
+
+/id/I385
+
+/id/I385/about.html
+
+/id.html
+
+/id/about.rdf?tx_lod_api[offset]=1&tx_lod_api[limit]=100
+
+- api plugin
+-- think about cacheable actions => configurable cHash calculation during redirection => check performance
+-- think about content negotiation service and move logic from controller
+-- remaining todos in controller
+
+- resolver
+-- call different typolink handlers according to $representation->getAuthority();
+-- implement language negotiation
+
+---
+
+scheme = handler type => t3 triggers internal resolving
+authority = handler keyword
+path = typolink parameter
+query = additionalParams
+fragment = section
+
+---
+
+## TYPO3 8.7
+
+# standard record link configuration from T3 V8 and higher
+
+TCEMAIN.linkHandler.image {
+	handler = TYPO3\CMS\Recordlist\LinkHandler\RecordLinkHandler
+	label = LLL:EXT:cvma/Resources/Private/Language/locallang.xlf:link.customTab
+	configuration {
+		table = sys_file_metadata
+	}
+	scanBefore = page
+}
+
+config.recordLinks.image {
+
+	forceLink = 0
+
+	typolink {
+		parameter = 13
+		additionalParams.data = field:uid
+		additionalParams.wrap = &tx_cvma_archive[image]=|&tx_cvma_archive[action]=show&tx_cvma_archive[controller]=Gallery
+		section.data = field:fragment
+		useCacheHash = 1
+	}
+}
+
+plugin.tx_lod_about {
+	settings {
+
+		resolver {
+
+			# each scheme can have its own custom resolver
+#			scheme {
+#				# each resolver should implement one standard resolving mechanism for all authorities in this scheme
+#				# it should also respect special configurations specified authorities that should be treated different
+#				authority {
+#					# typolink configuration ($cObj->data is current representation record)
+#				}
+#			}
+
+			t3 {
+				# the t3 scheme implements the TYPO3 linkhandler (from 8.7 onwards but with backwards comp. for 7.6)
+				# each authority equals / can have it's own linkhandler (=linkhander keyword)
+				# the record authority implements the generic record linkhandler
+				record < config.recordLinks.image
+			}
+
+			http {
+				my\.domain\.com {
+					# typolink configuration ($cObj->data is current representation record)
+				}
+			}
+
+			https < .http
+		}
+	}
+}
+
+---
+
+- Add new type Resource Representation for object?
+-- use for 303 redirect to html?
+
+- transfer stuff from CVMA to vocabulary ext
+
+- switch wizard_add to 'script' and test editing
+
+- vocabulary
+-- is the tablename field really needed since prepend_tname doesn't have any effect?
+-- first test with statements for any record
+--- check how hard it is to integrate a makeLodifiable => quite hard, integrated later (@see CategoryRegistry)
+
+- default templates for
+-- showSelectedTerms
+-- showSelectedVocabulary
+
+- create new wizards at predicate + subject selects in statement table
+- create new wizard at possibly all select fields
+
+- RDF serializer => condense statements in RDF/XML + TTL output
+
+- write some helpful repository methods to retrieve values from s/p/o's
+-- maybe from a view helper?
+
+- FLUID
+-- generate namespaces in template dynamically from all used
+
+- IDEA: create extension with full schema.org vocab (static info)

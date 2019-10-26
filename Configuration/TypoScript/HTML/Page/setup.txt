@@ -1,0 +1,9 @@
+html < .page
+html {
+    typeNum = 1991
+    config {
+        additionalHeaders {
+            10.header = Content-type:text/html
+        }
+    }
+}

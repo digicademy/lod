@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2016-09-16T09:28:36Z" product-name="lod">
+        <header/>
+        <body>
+
+            <trans-unit id="about.list.header">
+                <source>Linked Data Resources</source>
+            </trans-unit>
+            <trans-unit id="about.list.showAsSerialization">
+                <source>Show as</source>
+            </trans-unit>
+            <trans-unit id="about.list.page">
+                <source>Page</source>
+            </trans-unit>
+            <trans-unit id="about.list.of">
+                <source>of</source>
+            </trans-unit>
+            <trans-unit id="about.list.resourcesPerPage">
+                <source>Resources per page</source>
+            </trans-unit>
+            <trans-unit id="about.list.resource">
+                <source>Resource</source>
+            </trans-unit>
+            <trans-unit id="about.list.representation">
+                <source>Representation</source>
+            </trans-unit>
+            <trans-unit id="about.list.type">
+                <source>Type</source>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

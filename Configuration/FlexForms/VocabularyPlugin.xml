@@ -1,0 +1,28 @@
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:plugin.sheet.general</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+
+                    <settings.general.selectedVocabulary>
+                        <TCEforms>
+                            <label>LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:plugin.vocab.selectedVocabulary</label>
+                            <config>
+                                <type>select</type>
+                                <foreign_table>tx_lod_domain_model_vocabulary</foreign_table>
+                                <size>1</size>
+                                <maxitems>1</maxitems>
+                                <minitems>1</minitems>
+                            </config>
+                        </TCEforms>
+                    </settings.general.selectedVocabulary>
+
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

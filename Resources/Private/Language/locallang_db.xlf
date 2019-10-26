@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2016-09-16T09:28:36Z" product-name="lod">
+        <header/>
+        <body>
+
+            <trans-unit id="plugin.sheet.general">
+                <source>General Settings</source>
+            </trans-unit>
+            <trans-unit id="plugin.term.selectedTerms">
+                <source>Selected Terms</source>
+            </trans-unit>
+            <trans-unit id="plugin.vocab.selectedVocabulary">
+                <source>Selected Vocabulary</source>
+            </trans-unit>
+
+            <trans-unit id="wizard_edit">
+                <source>Edit statement</source>
+            </trans-unit>
+
+            <trans-unit id="tx_lod_domain_model_namespace">
+                <source>Namespace</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_namespace.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_namespace.description">
+                <source>Description</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_namespace.prefix">
+                <source>Prefix</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_namespace.uri">
+                <source>Uri</source>
+            </trans-unit>
+
+            <trans-unit id="tx_lod_domain_model_iri">
+                <source>IRI</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_iri.type">
+                <source>Type</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_iri.type.I.1">
+                <source>Class</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_iri.type.I.2">
+                <source>Property</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_iri.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_iri.description">
+                <source>Description</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_iri.namespace">
+                <source>Namespace</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_iri.value">
+                <source>Value</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_iri.record">
+                <source>Record</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_iri.tablename">
+                <source>Tablename</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_iri.representations">
+                <source>Representations</source>
+            </trans-unit>
+
+            <trans-unit id="tx_lod_domain_model_representation">
+                <source>Representation</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_representation.scheme">
+                <source>Scheme (without ://)</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_representation.authority">
+                <source>Authority</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_representation.path">
+                <source>Path (start with /)</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_representation.query">
+                <source>Query parameters (start with '&amp;')</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_representation.fragment">
+                <source>Fragment (without '#')</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_representation.content_type">
+                <source>Content Type</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_representation.content_language">
+                <source>Content Language</source>
+            </trans-unit>
+
+            <trans-unit id="tx_lod_domain_model_bnode">
+                <source>Blank Node</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_bnode.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_bnode.description">
+                <source>Description</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_bnode.value">
+                <source>Value</source>
+            </trans-unit>
+
+            <trans-unit id="tx_lod_domain_model_literal">
+                <source>Literal</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_literal.value">
+                <source>Value</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_literal.language">
+                <source>Language</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_literal.datatype">
+                <source>Datatype</source>
+            </trans-unit>
+
+            <trans-unit id="tx_lod_domain_model_statement">
+                <source>Statement</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_statement.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_statement.description">
+                <source>Description</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_statement.subject">
+                <source>Subject</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_statement.predicate">
+                <source>Predicate</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_statement.object">
+                <source>Object</source>
+            </trans-unit>
+
+            <trans-unit id="tx_lod_domain_model_term">
+                <source>Term</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_term.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_term.description">
+                <source>Description</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_term.statements">
+                <source>Statements</source>
+            </trans-unit>
+
+            <trans-unit id="tx_lod_domain_model_vocabulary">
+                <source>Vocabulary</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_vocabulary.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_vocabulary.description">
+                <source>Description</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_vocabulary.terms">
+                <source>Terms</source>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

@@ -6,7 +6,7 @@ if (!defined('TYPO3_MODE')) {
 // TYPOSCRIPT
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
-    'lod', 'Configuration/TypoScript', 'LOD'
+    'lod', 'Configuration/TypoScript', 'Linked Open Data for TYPO3'
 );
 
 // TSCONFIG
@@ -19,29 +19,29 @@ if (!defined('TYPO3_MODE')) {
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     'Digicademy.lod',
-    'Terms',
+    'Term',
     'LOD: Selected Terms'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     'Digicademy.lod',
-    'Vocab',
+    'Vocabulary',
     'LOD: Selected Vocabulary'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     'Digicademy.lod',
-    'About',
-    'LOD: About API'
+    'Api',
+    'LOD: Restful API'
 );
 
 // FLEXFORMS
 
 $TCA['tt_content']['types']['list']['subtypes_addlist']['lod_term'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('lod_term', 'FILE:EXT:lod/Configuration/FlexForms/TermsPlugin.xml');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('lod_term', 'FILE:EXT:lod/Configuration/FlexForms/TermPlugin.xml');
 
-$TCA['tt_content']['types']['list']['subtypes_addlist']['lod_vocab'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('lod_vocab', 'FILE:EXT:lod/Configuration/FlexForms/VocabPlugin.xml');
+$TCA['tt_content']['types']['list']['subtypes_addlist']['lod_vocabulary'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('lod_vocabulary', 'FILE:EXT:lod/Configuration/FlexForms/VocabularyPlugin.xml');
 
 // TABLES
 

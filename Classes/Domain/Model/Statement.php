@@ -1,0 +1,213 @@
+<?php
+namespace Digicademy\Lod\Domain\Model;
+
+/***************************************************************
+ *
+ *  Copyright notice
+ *
+ *  (c) Torsten Schrade <Torsten.Schrade@adwmainz.de>, Academy of Sciences and Literature | Mainz
+ *
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
+
+use Digicademy\Lod\Service\ItemMappingService;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
+class Statement extends AbstractEntity
+{
+
+    /**
+     * title
+     *
+     * @var string
+     */
+    protected $title = '';
+
+    /**
+     * description
+     *
+     * @var string
+     */
+    protected $description = '';
+
+    /**
+     * subject
+     *
+     * @var object
+     */
+    protected $subject;
+
+    /**
+     * predicate
+     *
+     * @var object
+     */
+    protected $predicate;
+
+    /**
+     * object
+     *
+     * @var object
+     */
+    protected $object;
+
+    /**
+     * term
+     *
+     * @var \Digicademy\Lod\Domain\Model\Term
+     */
+    protected $term;
+
+    /**
+     * Returns the title
+     *
+     * @return string $title
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Sets the title
+     *
+     * @param string $title
+     *
+     * @return void
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * Returns the description
+     *
+     * @return string $description
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Sets the description
+     *
+     * @param string $description
+     *
+     * @return void
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * Returns the subject
+     *
+     * @return object
+     */
+    public function getSubject()
+    {
+// @TODO: ItemMappingService
+        return $this->subject;
+    }
+
+    /**
+     * Sets the subject
+     *
+     * @param $subject
+     *
+     * @return void
+     */
+    public function setSubject($subject)
+    {
+        $this->subject = $subject;
+    }
+
+    /**
+     * Returns the predicate
+     *
+     * @return object
+     */
+    public function getPredicate()
+    {
+// @TODO: ItemMappingService
+        return $this->predicate;
+    }
+
+    /**
+     * Sets the predicate
+     *
+     * @param $predicate
+     *
+     * @return void
+     */
+    public function setPredicate($predicate)
+    {
+        $this->predicate = $predicate;
+    }
+
+    /**
+     * Returns the object
+     *
+     * @return object
+     */
+    public function getObject()
+    {
+// @TODO: ItemMappingService
+        return $this->object;
+    }
+
+    /**
+     * Sets the object
+     *
+     * @param $object
+     *
+     * @return void
+     */
+    public function setObject($object)
+    {
+        $this->object = $object;
+    }
+
+    /**
+     * Returns the term
+     *
+     * @return \Digicademy\Lod\Domain\Model\Term $term
+     */
+    public function getTerm()
+    {
+        return $this->term;
+    }
+
+    /**
+     * Sets the term
+     *
+     * @param \Digicademy\Lod\Domain\Model\Term $term
+     *
+     * @return void
+     */
+    public function setTerm(\Digicademy\Lod\Domain\Model\Term $term)
+    {
+        $this->term = $term;
+    }
+
+}

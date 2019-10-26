@@ -1,0 +1,9 @@
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:lod/Configuration/TypoScript/HTML/setup.txt">
+
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:lod/Configuration/TypoScript/NT/setup.txt">
+
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:lod/Configuration/TypoScript/JSONLD/setup.txt">
+
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:lod/Configuration/TypoScript/RDFXML/setup.txt">
+
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:lod/Configuration/TypoScript/TTL/setup.txt">

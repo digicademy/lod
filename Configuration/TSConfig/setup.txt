@@ -1,0 +1,25 @@
+/*
+TCEFORM {
+	pages {
+		statements.PAGE_TSCONFIG_ID =
+	}
+	tt_content {
+		statements.PAGE_TSCONFIG_ID =
+	}
+	tx_lod_domain_model_statements {
+		subject.suggest.default.pidList =
+		subject.PAGE_TSCONFIG_ID =
+		predicate.suggest.default.pidList =
+		predicate.PAGE_TSCONFIG_ID =
+		object.suggest.default.pidList =
+		object.PAGE_TSCONFIG_ID =
+	}
+	tx_lod_domain_model_iri {
+		namespace.PAGE_TSCONFIG_IDLIST =
+		namespace.PAGE_TSCONFIG_ID =
+	}
+	tx_lod_domain_model_vocabulary {
+		terms.PAGE_TSCONFIG_IDLIST =
+	}
+}
+*/

@@ -1,0 +1,14 @@
+[globalVar = GP : type = 2011]
+
+# set the view directories
+plugin.tx_lod.view {
+    layoutRootPaths.10 = EXT:lod/Resources/Private/TTL/Layouts/
+    partialRootPaths.10 = EXT:lod/Resources/Private/TTL/Partials/
+    templateRootPaths.10 = EXT:lod/Resources/Private/TTL/Templates/
+}
+
+# disable outer wraps for tt_content
+tt_content.stdWrap >
+lib.stdheader >
+
+[global]

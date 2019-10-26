@@ -1,38 +1,40 @@
 <?php
-if (!defined ('TYPO3_MODE'))     die ('Access denied.');
+if (!defined('TYPO3_MODE')) {
+    die('Access denied.');
+}
 
 // PLUGINS
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'Digicademy.lod',
-    'Terms',
+    'Term',
     array(
-        'Terms' => 'listSelectedTerms',
+        'Term' => 'listSelectedTerms',
     ),
     array(
-        'Terms' => '',
+        'Term' => '',
     )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'Digicademy.lod',
-    'Vocab',
+    'Vocabulary',
     array(
-        'Vocabularies' => 'showSelectedVocabulary',
+        'Vocabulary' => 'showSelectedVocabulary',
     ),
     array(
-        'Vocabularies' => '',
+        'Vocabulary' => '',
     )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'Digicademy.lod',
-    'About',
+    'Api',
     array(
-        'Subjects' => 'about',
+        'Api' => 'about',
     ),
     array(
-        'Subjects' => 'about',
+        'Api' => 'about',
     )
 );
 

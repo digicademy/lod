@@ -1,0 +1,2 @@
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:lod/Configuration/TypoScript/NT/Page/setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:lod/Configuration/TypoScript/NT/Plugins/setup.txt">
