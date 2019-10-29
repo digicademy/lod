@@ -33,7 +33,7 @@ use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * Service to load and map records from generic TCA group entries
+ * Service to load and map records from generic TCA group fields
  */
 class ItemMappingService
 {
@@ -58,6 +58,7 @@ class ItemMappingService
         $configurationManager = GeneralUtility::makeInstance(ConfigurationManager::class);
         $className = '';
         $frameworkConfiguration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
+
         foreach ($frameworkConfiguration['persistence']['classes'] as $key => $value) {
             if ($value['mapping']['tableName'] == $tablename) {
                 $className = $key;
@@ -66,7 +67,7 @@ class ItemMappingService
 
         // if class and tablename exist perform MM query for items, map them and add them to the object storage
         if ($tablename && $className) {
-// @TODO: Doctrine switch
+// @TODO: Doctrine switch for 8.7 and 9.5
             $resource = $this->getDatabaseConnection()->exec_SELECTgetRows(
                 '*',
                 $tablename,
@@ -93,6 +94,26 @@ class ItemMappingService
     protected function getDatabaseConnection()
     {
         return $GLOBALS['TYPO3_DB'];
+    }
+
+    /**
+     * Signal/Slot method that maps tablename_uid strings from TCA group fields to objects
+     *
+     * @return void
+     */
+    public function mapGenericProperty(&$domainObject)
+    {
+        // map record property of IRI object (if not empty)
+        if (get_class($domainObject) == 'Digicademy\Lod\Domain\Model\Iri') {
+            if ($domainObject->getRecord() !== '') $domainObject->setRecord($this->loadItem($domainObject->getRecord()));
+        }
+
+        // map subject, predicate and object in statements
+        if (get_class($domainObject) == 'Digicademy\Lod\Domain\Model\Statement') {
+            if ($domainObject->getSubject() !== '') $domainObject->setSubject($this->loadItem($domainObject->getSubject()));
+            if ($domainObject->getPredicate() !== '') $domainObject->setPredicate($this->loadItem($domainObject->getPredicate()));
+            if ($domainObject->getObject() !== '') $domainObject->setObject($this->loadItem($domainObject->getObject()));
+        }
     }
 
 }

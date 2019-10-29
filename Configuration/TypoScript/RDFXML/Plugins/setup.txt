@@ -1,13 +1,14 @@
 [globalVar = GP : type = 2004]
 
-# set the view directories
-plugin.tx_lod.view {
-    layoutRootPaths.10 = EXT:lod/Resources/Private/RDFXML/Layouts/
-    partialRootPaths.10 = EXT:lod/Resources/Private/RDFXML/Partials/
-    templateRootPaths.10 = EXT:lod/Resources/Private/RDFXML/Templates/
+plugin.tx_lod {
+    format = rdfxml
+    view {
+        layoutRootPaths.10 = EXT:lod/Resources/Private/RDFXML/Layouts/
+        partialRootPaths.10 = EXT:lod/Resources/Private/RDFXML/Partials/
+        templateRootPaths.10 = EXT:lod/Resources/Private/RDFXML/Templates/
+    }
 }
 
-# disable outer wraps for tt_content
 tt_content.stdWrap >
 lib.stdheader >
 

@@ -1,17 +1,18 @@
 ## NEXT #########################################
 
-- Fix Classes
--- table mapping => tx_lod_domain_model_namespace => IriNamespace
--- s,p,o mapping in class Statement
+- API controller: templating
+-- integrate show templates (nt, json-ld, rdf, ttl, xmp, xml)
+-- integrate list templates (nt, json-ld, rdf, ttl, xmp, xml)
 
-- should API controller only care about IRI type class?
+- API controller: refactor to content negotiation service
 
-- about plugin
--- add basic templates (nt, json-ld, rdf, ttl, xmp, xml)
+- add ViewHelpers
 
-- add needed ViewHelpers
+- term plugin
 
-- test with 76.t3xdev
+- vocabulary plugin
+
+- think about statements in records => BE interface etc.
 
 ---
 

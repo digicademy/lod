@@ -71,3 +71,11 @@ if (TYPO3_MODE === 'BE') {
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][] = 'Digicademy\Lod\Hooks\Backend\DataHandler';
 
 }
+
+$signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class);
+$signalSlotDispatcher->connect(
+  TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper::class,
+  'afterMappingSingleRow',
+  Digicademy\Lod\Service\ItemMappingService::class,
+  'mapGenericProperty'
+);

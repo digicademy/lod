@@ -33,12 +33,11 @@ return array(
             description, 
             namespace,
             value, 
-            tablename, 
             record,
             representations',
     ),
     'types' => array(
-        '1' => array('showitem' => 'hidden, type, title, description, namespace, tablename, record, value, representations, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'hidden, type, title, description, namespace, record, value, representations, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
     ),
     'columns' => array(
         'hidden' => array(
@@ -162,6 +161,7 @@ return array(
                 'eval' => 'required,trim'
             ),
         ),
+/*
         'tablename' => array(
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.tablename',
@@ -174,6 +174,7 @@ return array(
                 'special' => 'tables'
             ),
         ),
+*/
         'record' => array(
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.record',
@@ -181,7 +182,8 @@ return array(
                 'type' => 'group',
                 'allowed' => '*',
                 'internal_type' => 'db',
-                'prepend_tname' => false,
+                'prepend_tname' => true,
+//                'prepend_tname' => false,
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,

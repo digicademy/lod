@@ -27,10 +27,11 @@ namespace Digicademy\Lod\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use Digicademy\Lod\Service\ContentNegotiationService;
 use Digicademy\Lod\Domain\Model\Iri;
 use Digicademy\Lod\Domain\Repository\IriRepository;
-use Digicademy\Lod\Domain\Repository\StatementRepository;
 use Digicademy\Lod\Service\ResolverService;
+use Digicademy\Lod\Domain\Repository\StatementRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
@@ -38,7 +39,6 @@ use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
 
 class ApiController extends ActionController
 {
-
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper
      */
@@ -55,29 +55,14 @@ class ApiController extends ActionController
     protected $statementRepository = null;
 
     /**
+     * @var \Digicademy\Lod\Service\ContentNegotiationService
+     */
+    protected $contentNegotiationService;
+
+    /**
      * @var \Digicademy\Lod\Service\ResolverService
      */
     protected $resolverService;
-
-    /**
-     * @var array
-     */
-    protected $acceptedMimeTypes = [];
-
-    /**
-     * @var array
-     */
-    protected $availableMimeTypes = [];
-
-    /**
-     * @var string
-     */
-    protected $contentType = 'text/html';
-
-    /**
-     * @var string
-     */
-    protected $format = 'html';
 
     /**
      * Initializes the controller and dependencies
@@ -86,6 +71,7 @@ class ApiController extends ActionController
      * @param \TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper      $dataMapper
      * @param \Digicademy\Lod\Domain\Repository\IriRepository               $iriRepository
      * @param \Digicademy\Lod\Domain\Repository\StatementRepository         $statementRepository
+     * @param \Digicademy\Lod\Service\ContentNegotiationService             $contentNegotiationService
      * @param \Digicademy\Lod\Service\ResolverService                       $resolverService
      */
     public function __construct(
@@ -93,12 +79,14 @@ class ApiController extends ActionController
         DataMapper $dataMapper,
         IriRepository $iriRepository,
         StatementRepository $statementRepository,
+        ContentNegotiationService $contentNegotiationService,
         ResolverService $resolverService
     ) {
         parent::__construct($objectManager);
         $this->dataMapper = $dataMapper;
         $this->iriRepository = $iriRepository;
         $this->statementRepository = $statementRepository;
+        $this->contentNegotiationService = $contentNegotiationService;
         $this->resolverService = $resolverService;
     }
 
@@ -116,14 +104,12 @@ class ApiController extends ActionController
     {
         $pageType = GeneralUtility::_GP('type');
 
-        $this->determineFormatAndContentType($pageType);
-
-        // if page type is given set format and content type directly
+        // if page type is given set extbase response format directly
         if ($pageType > 0) {
 
-            $this->request->setFormat($this->format);
+            $this->request->setFormat($this->contentNegotiationService->getFormat());
 
-            // otherwise redirect to URL including correct page type
+        // otherwise redirect to URL including negotiated page type
         } else {
 
             // make sure request url does not end in a slash
@@ -131,25 +117,63 @@ class ApiController extends ActionController
 
             // generate url to redirect depending if realurl is installed or not
             if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl'])) {
-                $uri =  $requestUrl . '/about.' . $this->format;
+                $uri =  $requestUrl . '/about.' . $this->contentNegotiationService->getFormat();
             } else {
-                $targetPageType = array_search($this->contentType, $this->availableMimeTypes);
-                $uri = $requestUrl . '?type=' . $targetPageType;
+                $targetPageType = array_search(
+                    $this->contentNegotiationService->getContentType(),
+                    $this->contentNegotiationService->getAvailableMimeTypes()
+                );
+                if (preg_match('/\?/', $requestUrl)) {
+                    $typeParameterKeyword = '&type=';
+                } else {
+                    $typeParameterKeyword = '?type=';
+                }
+                $uri = $requestUrl . $typeParameterKeyword . $targetPageType;
             }
-
-// @TODO: think about configurable redirection including cHash (=> cacheable content?)
 
             $this->redirectToUri($uri);
         }
 
         // look up subject by identifier, otherwise forward to list
-        if ($this->request->hasArgument('value')) {
+        if ($this->request->hasArgument('iri')) {
 
+            $iri = $this->request->getArgument('iri');
+
+            // possibility to include namespace prefix in query (prefix:value)
+            if (substr_count($iri, ':') == 1 && substr_count($iri, '://') == 0) {
+                $iriParts = GeneralUtility::trimExplode(':', $iri);
+
+// @TODO: check if this is still there in 9.5
+                $namespace = $GLOBALS['TSFE']->sys_page->getRecordsByField(
+                    'tx_lod_domain_model_namespace',
+                    'prefix',
+                    $iriParts[0],
+                    '',
+                    '',
+                    '',
+                    '1'
+                );
+
+                if (is_array($namespace)) {
+                    $whereClause = 'AND tx_lod_domain_model_iri.namespace = ' . (int)$namespace[0]['uid'];
+                } else {
+                    $whereClause = 'AND tx_lod_domain_model_iri.namespace = -1';
+                }
+
+                $value = $iriParts[1];
+
+            // otherwise just query the value (could potentially be ambiguous)
+            } else {
+                $value = $iri;
+                $whereClause = '';
+            }
+
+// @TODO: check if this is still there in 9.5
             $result = $GLOBALS['TSFE']->sys_page->getRecordsByField(
                 'tx_lod_domain_model_iri',
                 'value',
-                $this->request->getArgument('value'),
-                $whereClause = '',
+                $value,
+                $whereClause,
                 $groupBy = '',
                 $orderBy = '',
                 '1'
@@ -177,9 +201,6 @@ class ApiController extends ActionController
      */
     private function listAction()
     {
-
-// @TODO: subjectsRepository: recursive storage pids
-
         $arguments = $this->request->getArguments();
 
         ($arguments['limit']) ? $limit = (int)$arguments['limit'] : $limit = 100;
@@ -197,11 +218,16 @@ class ApiController extends ActionController
 
         $offset = ($page - 1) * $limit;
 
+// @TODO: check / implement recursive storage pids
         $resources = $this->iriRepository->findAll()
             ->getQuery()
             ->setOffset($offset)
             ->setLimit($limit)
             ->execute();
+
+// @TODO: continue with list templates
+\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($resources, NULL, 5, FALSE, TRUE, FALSE, array(), array());
+die();
 
         // pagination
         $pagination = ['first' => 1];
@@ -222,7 +248,10 @@ class ApiController extends ActionController
         $this->view->assign('settings', $this->settings);
 
         // provide environment vars
-        $environment = ['TYPO3_REQUEST_HOST' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_HOST')];
+        $environment = [
+            'TYPO3_REQUEST_HOST' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_HOST'),
+            'TYPO3_REQUEST_URL' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_URL')
+        ];
         $this->view->assign('environment', $environment);
     }
 
@@ -239,13 +268,13 @@ class ApiController extends ActionController
         Iri $resource
     ) {
 
-        foreach ($this->acceptedMimeTypes as $mimeType) {
+        foreach ($this->contentNegotiationService->getAcceptedMimeTypes() as $mimeType) {
             // if resource representations are available go through each representation and
             // check if current media type is among representation content types; if yes call resolver
             if ($resource->getRepresentations()) {
                 foreach ($resource->getRepresentations() as $key => $representation) {
-                    $contentType = $this->resolverService->processContentType($representation->getContentType());
-                    if ($contentType['mime'] == $mimeType && $contentType['mime'] == $this->contentType) {
+                    $representationContentType = $this->contentNegotiationService->processContentType($representation->getContentType());
+                    if ($representationContentType['mime'] == $mimeType && $representationContentType['mime'] == $this->contentNegotiationService->getContentType()) {
                         // call representation resolver service
                         $url = $this->resolverService->resolve($representation, $this->settings['resolver']);
                         if (GeneralUtility::isValidUrl($url)) {
@@ -256,7 +285,7 @@ class ApiController extends ActionController
             }
 
             // if $mimeType equals $contentType deliver a "generated representation"
-            if ($mimeType == $this->contentType) {
+            if ($mimeType == $this->contentNegotiationService->getContentType()) {
                 break;
             }
         }
@@ -267,8 +296,18 @@ class ApiController extends ActionController
         // assign the resource
         $this->view->assign('resource', $resource);
 
-        // assign statements about the resource
-        $statements = $this->statementRepository->findBySubject($resource);
+// @TODO: check / implement recursive storage pids
+        // assign statements containing the resource
+        switch ($resource->getType()) {
+            // in case resource is an entity: find statements with IRI in subject / object position
+            case 1:
+                $statements = $this->statementRepository->findBySubjectAndObject($resource);
+                break;
+            // in case resource is a property: find statements with IRI in predicate position
+            case 2:
+                $statements = $this->statementRepository->findByPredicate($resource);
+                break;
+        }
         $this->view->assign('statements', $statements);
 
         // assign current arguments
@@ -278,94 +317,11 @@ class ApiController extends ActionController
         $this->view->assign('settings', $this->settings);
 
         // provide environment vars
-        $environment = ['TYPO3_REQUEST_HOST' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_HOST')];
+        $environment = [
+            'TYPO3_REQUEST_HOST' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_HOST'),
+            'TYPO3_REQUEST_URL' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_URL')
+        ];
         $this->view->assign('environment', $environment);
-    }
-
-// @TODO: think about content negotiation service and move following logic
-
-    /**
-     * Compiles an array of accepted mime types from client
-     *
-     * @return void
-     */
-    private function getAcceptedMimeTypes()
-    {
-        // if accept header is set get a weighted list of accepted formats
-        $httpAcceptHeader = getenv('HTTP_ACCEPT');
-        if ($httpAcceptHeader) {
-            $this->acceptedMimeTypes = $this->resolverService->processAcceptHeader($httpAcceptHeader);
-        } else {
-            $this->acceptedMimeTypes[] = 'text/html';
-        }
-    }
-
-    /**
-     * Compiles available content types by page type from TypoScript configuration
-     * (header: Content-type:XY must be set in TypoScript)
-     *
-     * @return void
-     */
-    private function getAvailableMimeTypes()
-    {
-        foreach ($GLOBALS['TSFE']->tmpl->setup['types.'] as $key => $type) {
-            if ($type == 'page') {
-                continue;
-            }
-            $type = $type . '.';
-            if (
-                $GLOBALS['TSFE']->tmpl->setup[$type]['typeNum'] == $key
-                && $GLOBALS['TSFE']->tmpl->setup[$type]['config.']['additionalHeaders.']
-            ) {
-                $additionalHeaders = $GLOBALS['TSFE']->tmpl->setup[$type]['config.']['additionalHeaders.'];
-                foreach ($additionalHeaders as $additionalHeader) {
-                    if (preg_match('/Content-type:/', $additionalHeader['header'])) {
-                        $this->availableMimeTypes[$key] = str_replace('Content-type:', '', $additionalHeader['header']);
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-     * Content negotiation: Determines the best mime type for the response by negotiating
-     * between mime types accepted by the client and mime types available from TypoScript.
-     * Available mime types are defined by page types. Additionally, each resource (subject)
-     * can forward directly to different document representations (configured in each record).
-     *
-     * @param integer $pageType
-     *
-     * @return void
-     */
-    private function determineFormatAndContentType($pageType)
-    {
-        $this->getAcceptedMimeTypes();
-        $this->getAvailableMimeTypes();
-
-        // if a page type is already set, format and content type can be set directly
-        if ($pageType > 0) {
-
-            $this->contentType = $this->availableMimeTypes[$pageType];
-            $this->format = $GLOBALS['TSFE']->tmpl->setup['types.'][$pageType];
-
-        // if no page type is set compare accepted mime types with available mime types and set best format
-        // reminder: $this->acceptedMimeTypes is in order from best to least format
-        } else {
-
-            foreach ($this->acceptedMimeTypes as $mimeType) {
-                if (in_array($mimeType, $this->availableMimeTypes)) {
-                    $type = array_search($mimeType, $this->availableMimeTypes);
-                    if ($type == 0) {
-                        continue;
-                    } else {
-                        $this->format = $GLOBALS['TSFE']->tmpl->setup['types.'][$type];
-                    }
-                    $this->contentType = $this->availableMimeTypes[$type];
-                    break;
-                }
-            }
-        }
-
     }
 
 }

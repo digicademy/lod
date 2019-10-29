@@ -26,8 +26,6 @@ namespace Digicademy\Lod\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use Digicademy\Lod\Service\ItemMappingService;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 class Iri extends AbstractEntity
@@ -70,25 +68,11 @@ class Iri extends AbstractEntity
     protected $value;
 
     /**
-     * tablename
-     *
-     * @var string
-     */
-    protected $tablename;
-
-    /**
      * record
      *
      * @var string
      */
     protected $record;
-
-    /**
-     * item retrieved from record
-     *
-     * @var object
-     */
-    protected $item = null;
 
     /**
      * Document representations for the subject
@@ -209,28 +193,6 @@ class Iri extends AbstractEntity
     }
 
     /**
-     * Returns the tablename
-     *
-     * @return string $tablename
-     */
-    public function getTablename()
-    {
-        return $this->tablename;
-    }
-
-    /**
-     * Sets the tablename
-     *
-     * @param string $tablename
-     *
-     * @return void
-     */
-    public function setTablename($tablename)
-    {
-        $this->tablename = $tablename;
-    }
-
-    /**
      * Returns the record
      *
      * @return string $record
@@ -250,31 +212,6 @@ class Iri extends AbstractEntity
     public function setRecord($record)
     {
         $this->record = $record;
-    }
-
-    /**
-     * Loads the item
-     *
-     * @return object
-     */
-    public function getItem()
-    {
-        $itemMappingService = GeneralUtility::makeInstance(ItemMappingService::class);
-        $item = $itemMappingService->loadItem($this->getRecord());
-        $this->setItem($item);
-        return $item;
-    }
-
-    /**
-     * Sets the item
-     *
-     * @param $item
-     *
-     * @return void
-     */
-    public function setItem($item)
-    {
-        $this->item = $item;
     }
 
     /**

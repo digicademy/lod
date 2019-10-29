@@ -13,28 +13,8 @@ ttl {
         disablePrefixComment = 1
         debug = 0
     }
-
-    10 = TEXT
-    10 {
-        value (
-<note>
-    @TODO: URL to call this type
-</note>
-)
-    }
 }
 
 [globalVar = GP : pluginUid > 0]
-ttl.10 >
-ttl {
-    10 = RECORDS
-    10 {
-        source.data = GP:pluginUid
-        source.intval = 1
-        tables = tt_content
-        dontCheckPid = 1
-        conf.tt_content =< tt_content
-        stdWrap.if.isTrue.data = GP:pluginUid
-    }
-}
+ttl.10 < lib.tx_lod.apiPlugin
 [global]

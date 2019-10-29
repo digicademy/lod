@@ -1,4 +1,6 @@
-html < .page
+# html < .page
+# @TODO: think about order of inclusion
+html = PAGE
 html {
     typeNum = 1991
     config {
@@ -7,3 +9,7 @@ html {
         }
     }
 }
+
+[globalVar = GP : type = 1991]
+html.10 < lib.tx_lod.apiPlugin
+[global]

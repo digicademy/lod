@@ -39,6 +39,11 @@ class ResolverService
 {
 
     /**
+     * @var array
+     */
+    protected $availableResolvers = [];
+
+    /**
      * @var \TYPO3\CMS\Extbase\Object\ObjectManagerInterface
      */
     protected $objectManager;
@@ -50,11 +55,6 @@ class ResolverService
         {
         $this->objectManager = $objectManager;
     }
-
-    /**
-     * @var array
-     */
-    protected $availableResolvers = [];
 
     /**
      * ResolverService constructor
@@ -85,46 +85,6 @@ class ResolverService
         }
 
         return $url;
-     }
-
-    /**
-     * @param string $httpAcceptHeader
-     * @return array
-     */
-     public function processAcceptHeader($httpAcceptHeader)
-     {
-        $acceptedMediaTypes = GeneralUtility::trimExplode(',', $httpAcceptHeader);
-        $weightedMediaTypes = [];
-        foreach ($acceptedMediaTypes as $key => $mediaType) {
-            if (strpos($mediaType, ';q')) {
-                $mediaTypeWithQFactor = GeneralUtility::trimExplode(';', $mediaType);
-                $qFactor = substr($mediaTypeWithQFactor[1], 2);
-                $weightedMediaTypes[$qFactor][] = $mediaTypeWithQFactor[0];
-            } else {
-                $weightedMediaTypes['1.0'][] = $mediaType;
-            }
-        }
-        krsort($weightedMediaTypes);
-        $sortedHttpAcceptHeaders = call_user_func_array('array_merge', $weightedMediaTypes);
-
-        return $sortedHttpAcceptHeaders;
-     }
-
-    /**
-     * @param string $httpContentType
-     * @return array
-     */
-     public function processContentType($httpContentType)
-     {
-        $splitHttpContentType = GeneralUtility::trimExplode(';', $httpContentType);
-        if (count($splitHttpContentType) == 2 ) {
-            $contentType['mime'] = $splitHttpContentType[0];
-            $contentType['charset'] = trim(str_replace('charset=', '', $splitHttpContentType[1]));
-        } else {
-            $contentType['mime'] = $splitHttpContentType[0];
-        }
-
-        return $contentType;
      }
 
 }

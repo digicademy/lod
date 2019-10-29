@@ -26,9 +26,7 @@ namespace Digicademy\Lod\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use Digicademy\Lod\Service\ItemMappingService;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class Statement extends AbstractEntity
 {
@@ -50,21 +48,21 @@ class Statement extends AbstractEntity
     /**
      * subject
      *
-     * @var object
+     * @var string
      */
     protected $subject;
 
     /**
      * predicate
      *
-     * @var object
+     * @var string
      */
     protected $predicate;
 
     /**
      * object
      *
-     * @var object
+     * @var string
      */
     protected $object;
 
@@ -122,11 +120,10 @@ class Statement extends AbstractEntity
     /**
      * Returns the subject
      *
-     * @return object
+     * @return mixed
      */
     public function getSubject()
     {
-// @TODO: ItemMappingService
         return $this->subject;
     }
 
@@ -145,11 +142,10 @@ class Statement extends AbstractEntity
     /**
      * Returns the predicate
      *
-     * @return object
+     * @return mixed
      */
     public function getPredicate()
     {
-// @TODO: ItemMappingService
         return $this->predicate;
     }
 
@@ -168,11 +164,10 @@ class Statement extends AbstractEntity
     /**
      * Returns the object
      *
-     * @return object
+     * @return mixed
      */
     public function getObject()
     {
-// @TODO: ItemMappingService
         return $this->object;
     }
 

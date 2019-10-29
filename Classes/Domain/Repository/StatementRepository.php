@@ -36,4 +36,51 @@ class StatementRepository extends Repository
         'subject' => QueryInterface::ORDER_ASCENDING
     );
 
+    /**
+     * @param \Digicademy\Lod\Domain\Model\Iri $iri
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function findBySubjectAndObject($iri)
+    {
+        // initialize query object
+        $query = $this->createQuery();
+
+        // table_uid constraint in subject OR object position
+        $query->matching(
+            $query->logicalOr(
+                $query->equals('subject', 'tx_lod_domain_model_iri_' . $iri->getUid()),
+                $query->equals('object', 'tx_lod_domain_model_iri_' . $iri->getUid())
+            )
+        );
+
+        // execute the query
+        $result = $query->execute();
+
+        // return result
+        return $result;
+    }
+
+    /**
+     * @param \Digicademy\Lod\Domain\Model\Iri $iri
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function findByPredicate($iri)
+    {
+        // initialize query object
+        $query = $this->createQuery();
+
+        // table_uid constraint in predicate position
+        $query->matching(
+            $query->equals('predicate', 'tx_lod_domain_model_iri_' . $iri->getUid())
+        );
+
+        // execute the query
+        $result = $query->execute();
+
+        // return result
+        return $result;
+    }
+
 }
