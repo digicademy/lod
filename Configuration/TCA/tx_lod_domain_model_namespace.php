@@ -2,10 +2,10 @@
 return array(
     'ctrl' => array(
         'title' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_namespace',
-        'label' => 'title',
-        'label_alt' => 'uri',
+        'label' => 'prefix',
+        'label_alt' => 'iri',
         'label_alt_force' => 1,
-        'default_sortby' => 'title',
+        'default_sortby' => 'prefix',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -16,14 +16,14 @@ return array(
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ),
-        'searchFields' => 'prefix,uri,description,',
+        'searchFields' => 'prefix,iri,comment',
         'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_namespace.svg'
     ),
     'interface' => array(
-        'showRecordFieldList' => 'hidden, title, description, prefix, uri,',
+        'showRecordFieldList' => 'hidden, prefix, iri',
     ),
     'types' => array(
-        '1' => array('showitem' => 'hidden, title, description, prefix, uri, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'hidden, prefix, iri, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
     ),
     'columns' => array(
         'hidden' => array(
@@ -65,24 +65,6 @@ return array(
                 ),
             ),
         ),
-        'title' => array(
-            'exclude' => 1,
-            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_namespace.title',
-            'config' => array(
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ),
-        ),
-        'description' => array(
-            'exclude' => 1,
-            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_namespace.description',
-            'config' => array(
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ),
-        ),
         'prefix' => array(
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_namespace.prefix',
@@ -92,9 +74,9 @@ return array(
                 'eval' => 'required,trim'
             ),
         ),
-        'uri' => array(
+        'iri' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_namespace.uri',
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_namespace.iri',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,

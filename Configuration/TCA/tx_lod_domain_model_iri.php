@@ -2,9 +2,9 @@
 return array(
     'ctrl' => array(
         'title' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri',
-        'label' => 'title',
+        'label' => 'label',
         'label_alt' => 'value',
-        'default_sortby' => 'title,value',
+        'default_sortby' => 'label,value',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -22,22 +22,22 @@ return array(
             '1' => 'ext-lod-type-class',
             '2' => 'ext-ld-type-property',
         ],
-        'searchFields' => 'title,description,value,',
+        'searchFields' => 'label,comment,value',
         'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_iri.svg'
     ),
     'interface' => array(
         'showRecordFieldList' => '
             hidden, 
             type, 
-            title, 
-            description, 
+            label, 
+            comment, 
             namespace,
             value, 
             record,
             representations',
     ),
     'types' => array(
-        '1' => array('showitem' => 'hidden, type, title, description, namespace, record, value, representations, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'hidden, type, label, comment, namespace, record, value, representations, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
     ),
     'columns' => array(
         'hidden' => array(
@@ -79,18 +79,18 @@ return array(
                 ),
             ),
         ),
-        'title' => array(
+        'label' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.title',
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.label',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim'
             ),
         ),
-        'description' => array(
+        'comment' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.description',
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.comment',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
@@ -118,7 +118,7 @@ return array(
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'foreign_table' => 'tx_lod_domain_model_namespace',
-                'foreign_table_where' => 'AND tx_lod_domain_model_namespace.pid IN (###PAGE_TSCONFIG_IDLIST###) ORDER BY tx_lod_domain_model_namespace.title',
+                'foreign_table_where' => 'AND tx_lod_domain_model_namespace.pid IN (###PAGE_TSCONFIG_IDLIST###) ORDER BY tx_lod_domain_model_namespace.prefix',
                 'items' => array(
                     array('', 0),
                 ),

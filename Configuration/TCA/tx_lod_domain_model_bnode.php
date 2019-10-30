@@ -2,7 +2,7 @@
 return array(
     'ctrl' => array(
         'title' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_bnode',
-        'label' => 'title',
+        'label' => 'label',
         'label_alt' => 'value',
         'sortby' => 'sorting',
         'tstamp' => 'tstamp',
@@ -15,14 +15,14 @@ return array(
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ),
-        'searchFields' => 'title,description,value,',
+        'searchFields' => 'label,comment,value',
         'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_bnode.svg'
     ),
     'interface' => array(
-        'showRecordFieldList' => 'hidden, title, description, value',
+        'showRecordFieldList' => 'hidden, label, comment, value',
     ),
     'types' => array(
-        '1' => array('showitem' => 'hidden, title, description, value, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'hidden, label, comment, value, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
     ),
     'columns' => array(
         'hidden' => array(
@@ -64,18 +64,18 @@ return array(
                 ),
             ),
         ),
-        'title' => array(
+        'label' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_bnode.title',
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_bnode.label',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim'
             ),
         ),
-        'description' => array(
+        'comment' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_bnode.description',
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_bnode.comment',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,

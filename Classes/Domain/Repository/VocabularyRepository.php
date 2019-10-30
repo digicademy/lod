@@ -35,6 +35,6 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 class VocabularyRepository extends Repository
 {
     protected $defaultOrderings = array(
-        'title' => QueryInterface::ORDER_ASCENDING
+        'label' => QueryInterface::ORDER_ASCENDING
     );
 }

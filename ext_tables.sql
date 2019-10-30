@@ -3,10 +3,8 @@ CREATE TABLE tx_lod_domain_model_namespace (
     uid int(11) NOT NULL auto_increment,
     pid int(11) DEFAULT '0' NOT NULL,
 
-    title varchar(255) DEFAULT '' NOT NULL,
-    description varchar(255) DEFAULT '' NOT NULL,
     prefix varchar(20) DEFAULT '' NOT NULL,
-    uri varchar(255) DEFAULT '' NOT NULL,
+    iri varchar(255) DEFAULT '' NOT NULL,
 
     tstamp int(11) unsigned DEFAULT '0' NOT NULL,
     crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -19,9 +17,8 @@ CREATE TABLE tx_lod_domain_model_namespace (
     PRIMARY KEY (uid),
     KEY pid (pid),
 
-    KEY title (title),
     KEY prefix (prefix),
-    KEY uri (uri),
+    KEY iri (iri),
 
 ) ENGINE=InnoDB;
 
@@ -31,8 +28,8 @@ CREATE TABLE tx_lod_domain_model_iri (
     pid int(11) DEFAULT '0' NOT NULL,
 
     type int(11) DEFAULT '0' NOT NULL,
-    title varchar(255) DEFAULT '' NOT NULL,
-    description varchar(255) DEFAULT '' NOT NULL,
+    label varchar(255) DEFAULT '' NOT NULL,
+    comment varchar(255) DEFAULT '' NOT NULL,
     value varchar(255) DEFAULT '' NOT NULL,
 
     namespace int(11) DEFAULT '0' NOT NULL,
@@ -53,7 +50,7 @@ CREATE TABLE tx_lod_domain_model_iri (
     KEY pid (pid),
 
     KEY type (type),
-    KEY title (title),
+    KEY label (label),
     KEY value (value),
     KEY namespace (namespace),
     KEY representations (representations),
@@ -65,8 +62,8 @@ CREATE TABLE tx_lod_domain_model_bnode (
     uid int(11) NOT NULL auto_increment,
     pid int(11) DEFAULT '0' NOT NULL,
 
-    title varchar(255) DEFAULT '' NOT NULL,
-    description varchar(255) DEFAULT '' NOT NULL,
+    label varchar(255) DEFAULT '' NOT NULL,
+    comment varchar(255) DEFAULT '' NOT NULL,
     value varchar(255) DEFAULT '' NOT NULL,
 
     tstamp int(11) unsigned DEFAULT '0' NOT NULL,
@@ -81,7 +78,7 @@ CREATE TABLE tx_lod_domain_model_bnode (
     PRIMARY KEY (uid),
     KEY pid (pid),
 
-    KEY title (title),
+    KEY label (label),
     KEY value (value),
 
 ) ENGINE=InnoDB;
@@ -150,13 +147,11 @@ CREATE TABLE tx_lod_domain_model_statement (
     uid int(11) NOT NULL auto_increment,
     pid int(11) DEFAULT '0' NOT NULL,
 
-    title varchar(255) DEFAULT '' NOT NULL,
-    description varchar(255) DEFAULT '' NOT NULL,
-
     subject varchar(255) DEFAULT '' NOT NULL,
     predicate varchar(255) DEFAULT '' NOT NULL,
     object varchar(255) DEFAULT '' NOT NULL,
 
+    name int(11) DEFAULT '0' NOT NULL,
     term int(11) unsigned DEFAULT '0' NOT NULL,
     records int(11) unsigned DEFAULT '0' NOT NULL,
 
@@ -185,8 +180,8 @@ CREATE TABLE tx_lod_domain_model_term (
     uid int(11) NOT NULL auto_increment,
     pid int(11) DEFAULT '0' NOT NULL,
 
-    title varchar(255) DEFAULT '' NOT NULL,
-    description varchar(255) DEFAULT '' NOT NULL,
+    label varchar(255) DEFAULT '' NOT NULL,
+    comment varchar(255) DEFAULT '' NOT NULL,
 
     statements int(11) unsigned DEFAULT '0' NOT NULL,
 
@@ -201,7 +196,7 @@ CREATE TABLE tx_lod_domain_model_term (
     PRIMARY KEY (uid),
     KEY pid (pid),
 
-    KEY title (title),
+    KEY label (label),
     KEY statements (statements),
 
 ) ENGINE=InnoDB;
@@ -211,8 +206,8 @@ CREATE TABLE tx_lod_domain_model_vocabulary (
     uid int(11) NOT NULL auto_increment,
     pid int(11) DEFAULT '0' NOT NULL,
 
-    title varchar(255) DEFAULT '' NOT NULL,
-    description varchar(255) DEFAULT '' NOT NULL,
+    label varchar(255) DEFAULT '' NOT NULL,
+    comment varchar(255) DEFAULT '' NOT NULL,
 
     terms int(11) unsigned DEFAULT '0' NOT NULL,
 
@@ -227,7 +222,7 @@ CREATE TABLE tx_lod_domain_model_vocabulary (
     PRIMARY KEY (uid),
     KEY pid (pid),
 
-    KEY title (title),
+    KEY label (label),
     KEY terms (terms),
 
 ) ENGINE=InnoDB;

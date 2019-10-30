@@ -2,8 +2,8 @@
 return array(
     'ctrl' => array(
         'title' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_term',
-        'label' => 'title',
-        'default_sortby' => 'title',
+        'label' => 'label',
+        'default_sortby' => 'label',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -14,14 +14,14 @@ return array(
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ),
-        'searchFields' => 'title,description',
+        'searchFields' => 'label,comment',
         'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_term.svg'
     ),
     'interface' => array(
-        'showRecordFieldList' => 'hidden, title, description, statements',
+        'showRecordFieldList' => 'hidden, label, comment, statements',
     ),
     'types' => array(
-        '1' => array('showitem' => 'hidden, title, description, statements, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'hidden, label, comment, statements, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
     ),
     'columns' => array(
         'hidden' => array(
@@ -63,18 +63,18 @@ return array(
                 ),
             ),
         ),
-        'title' => array(
+        'label' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_term.title',
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_term.label',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'required,trim'
             ),
         ),
-        'description' => array(
+        'comment' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_term.description',
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_term.comment',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,

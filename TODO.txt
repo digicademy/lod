@@ -4,15 +4,15 @@
 -- integrate show templates (nt, json-ld, rdf, ttl, xmp, xml)
 -- integrate list templates (nt, json-ld, rdf, ttl, xmp, xml)
 
-- API controller: refactor to content negotiation service
-
-- add ViewHelpers
+- think about term & vocabulary data model: namespace/iri for term? vocab?
 
 - term plugin
 
 - vocabulary plugin
 
 - think about statements in records => BE interface etc.
+
+- add ViewHelpers
 
 ---
 

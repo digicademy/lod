@@ -5,7 +5,7 @@ return array(
         'label' => 'subject',
         'label_alt' => 'predicate,object',
         'label_alt_force' => 1,
-        'default_sortby' => 'title',
+        'default_sortby' => 'name',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -16,14 +16,14 @@ return array(
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ),
-        'searchFields' => 'title,description,subject,predicate,object,',
+        'searchFields' => 'subject,predicate,object,name',
         'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_statement.svg'
     ),
     'interface' => array(
-        'showRecordFieldList' => 'hidden, title, description, subject, predicate, object',
+        'showRecordFieldList' => 'hidden, subject, predicate, object, name',
     ),
     'types' => array(
-        '1' => array('showitem' => 'hidden, title, description, subject, predicate, object, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'hidden, subject, predicate, object, name, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
     ),
     'columns' => array(
         'hidden' => array(
@@ -65,22 +65,52 @@ return array(
                 ),
             ),
         ),
-        'title' => array(
+        'name' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_statement.title',
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_statement.name',
             'config' => array(
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ),
-        ),
-        'description' => array(
-            'exclude' => 1,
-            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_statement.description',
-            'config' => array(
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
+                'type' => 'group',
+                'internal_type' => 'db',
+                'allowed' => 'tx_lod_domain_model_namespace',
+                'prepend_tname' => false,
+                // prevent http://wiki.typo3.org/Exception/CMS/1353170925
+                'foreign_table' => 'tx_lod_domain_model_namespace',
+                'size' => 1,
+                'minitems' => 0,
+                'maxitems' => 1,
+                'wizards' => array(
+                    'suggest' => Array(
+                        'type' => 'suggest',
+                        'title' => 'Find records',
+                        'default' => [
+                            'additionalSearchFields' => 'prefix,iri',
+                        ],
+                    ),
+                    'edit' => array(
+                        'type' => 'popup',
+                        'title' => 'Edit',
+                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_edit.gif',
+                        'popup_onlyOpenIfSelected' => 1,
+                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
+                        'module' => array(
+                            'name' => 'wizard_edit',
+                        ),
+                    ),
+                    'add' => Array(
+                        'type' => 'popup',
+                        'title' => 'Create new namespace',
+                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_add.gif',
+                        'params' => array(
+                            'table' => 'tx_lod_domain_model_namespace',
+                            'pid' => '###PAGE_TSCONFIG_ID###',
+                            'setValue' => 'set'
+                        ),
+                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
+                        'module' => array(
+                            'name' => 'wizard_add',
+                        ),
+                    ),
+                ),
             ),
         ),
         'subject' => array(
@@ -109,7 +139,7 @@ return array(
                         'type' => 'suggest',
                         'title' => 'Find records',
                         'default' => [
-                            'additionalSearchFields' => 'title,description,value',
+                            'additionalSearchFields' => 'label,comment,value',
                         ],
                         'tx_lod_domain_model_iri' => [
                             'searchCondition' => 'type = 1',
@@ -182,7 +212,7 @@ return array(
                         'type' => 'suggest',
                         'title' => 'Find records',
                         'default' => [
-                            'additionalSearchFields' => 'title,description,value',
+                            'additionalSearchFields' => 'label,comment,value',
                         ],
                         'tx_lod_domain_model_iri' => [
                             'searchCondition' => 'type = 2',
@@ -241,7 +271,7 @@ return array(
                         'type' => 'suggest',
                         'title' => 'Find records',
                         'default' => [
-                            'additionalSearchFields' => 'title,description,value',
+                            'additionalSearchFields' => 'label,comment,value',
                         ],
                         'tx_lod_domain_model_literal' => [
                             'additionalSearchFields' => 'value,datatype,language',

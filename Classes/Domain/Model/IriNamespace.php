@@ -32,20 +32,6 @@ class IriNamespace extends AbstractEntity
 {
 
     /**
-     * title
-     *
-     * @var string
-     */
-    protected $title;
-
-    /**
-     * description
-     *
-     * @var string
-     */
-    protected $description;
-
-    /**
      * value
      *
      * @var string
@@ -54,56 +40,12 @@ class IriNamespace extends AbstractEntity
     protected $prefix;
 
     /**
-     * uri
+     * iri
      *
      * @var string
      * @validate NotEmpty
      */
-    protected $uri;
-
-    /**
-     * Returns the title
-     *
-     * @return string $title
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * Sets the title
-     *
-     * @param string $title
-     *
-     * @return void
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-    }
-
-    /**
-     * Returns the description
-     *
-     * @return string $description
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Sets the description
-     *
-     * @param string $description
-     *
-     * @return void
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    }
+    protected $iri;
 
     /**
      * Returns the prefix
@@ -128,25 +70,25 @@ class IriNamespace extends AbstractEntity
     }
 
     /**
-     * Returns the uri
+     * Returns the iri
      *
-     * @return string $uri
+     * @return string $iri
      */
-    public function getUri()
+    public function getIri()
     {
-        return $this->uri;
+        return $this->iri;
     }
 
     /**
-     * Sets the uri
+     * Sets the iri
      *
-     * @param string $uri
+     * @param string $iri
      *
      * @return void
      */
-    public function setUri($uri)
+    public function setIri($iri)
     {
-        $this->uri = $uri;
+        $this->iri = $iri;
     }
 
 }

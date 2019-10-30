@@ -32,18 +32,11 @@ class Statement extends AbstractEntity
 {
 
     /**
-     * title
+     * name
      *
-     * @var string
+     * @var \Digicademy\Lod\Domain\Model\IriNamespace
      */
-    protected $title = '';
-
-    /**
-     * description
-     *
-     * @var string
-     */
-    protected $description = '';
+    protected $name;
 
     /**
      * subject
@@ -67,54 +60,25 @@ class Statement extends AbstractEntity
     protected $object;
 
     /**
-     * term
+     * Returns the name
      *
-     * @var \Digicademy\Lod\Domain\Model\Term
+     * @return \Digicademy\Lod\Domain\Model\IriNamespace $name
      */
-    protected $term;
-
-    /**
-     * Returns the title
-     *
-     * @return string $title
-     */
-    public function getTitle()
+    public function getName()
     {
-        return $this->title;
+        return $this->name;
     }
 
     /**
-     * Sets the title
+     * Sets the name
      *
-     * @param string $title
+     * @param \Digicademy\Lod\Domain\Model\IriNamespace $name
      *
      * @return void
      */
-    public function setTitle($title)
+    public function setName(\Digicademy\Lod\Domain\Model\IriNamespace $name)
     {
-        $this->title = $title;
-    }
-
-    /**
-     * Returns the description
-     *
-     * @return string $description
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Sets the description
-     *
-     * @param string $description
-     *
-     * @return void
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
+        $this->name = $name;
     }
 
     /**
@@ -181,28 +145,6 @@ class Statement extends AbstractEntity
     public function setObject($object)
     {
         $this->object = $object;
-    }
-
-    /**
-     * Returns the term
-     *
-     * @return \Digicademy\Lod\Domain\Model\Term $term
-     */
-    public function getTerm()
-    {
-        return $this->term;
-    }
-
-    /**
-     * Sets the term
-     *
-     * @param \Digicademy\Lod\Domain\Model\Term $term
-     *
-     * @return void
-     */
-    public function setTerm(\Digicademy\Lod\Domain\Model\Term $term)
-    {
-        $this->term = $term;
     }
 
 }

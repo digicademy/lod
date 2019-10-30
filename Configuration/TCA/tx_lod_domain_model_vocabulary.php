@@ -2,8 +2,8 @@
 return array(
     'ctrl' => array(
         'title' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_vocabulary',
-        'label' => 'title',
-        'default_sortby' => 'title',
+        'label' => 'label',
+        'default_sortby' => 'label',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -14,14 +14,14 @@ return array(
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ),
-        'searchFields' => 'title,description',
+        'searchFields' => 'label,comment',
         'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_vocabulary.svg'
     ),
     'interface' => array(
-        'showRecordFieldList' => 'hidden, title, description, terms',
+        'showRecordFieldList' => 'hidden, label, comment, terms',
     ),
     'types' => array(
-        '1' => array('showitem' => 'hidden, title, description, terms, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'hidden, label, comment, terms, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
     ),
     'columns' => array(
         'hidden' => array(
@@ -63,18 +63,18 @@ return array(
                 ),
             ),
         ),
-        'title' => array(
+        'label' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_vocabulary.title',
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_vocabulary.label',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'required,trim'
             ),
         ),
-        'description' => array(
+        'comment' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_vocabulary.description',
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_vocabulary.comment',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
@@ -88,7 +88,7 @@ return array(
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
                 'foreign_table' => 'tx_lod_domain_model_term',
-                'foreign_table_where' => 'AND tx_lod_domain_model_term.pid IN (###PAGE_TSCONFIG_IDLIST###) ORDER BY tx_lod_domain_model_term.title',
+                'foreign_table_where' => 'AND tx_lod_domain_model_term.pid IN (###PAGE_TSCONFIG_IDLIST###) ORDER BY tx_lod_domain_model_term.label',
                 'MM' => 'tx_lod_vocabulary_term_mm',
                 'size' => 10,
                 'autoSizeMax' => 30,

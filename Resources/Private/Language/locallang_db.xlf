@@ -21,17 +21,11 @@
             <trans-unit id="tx_lod_domain_model_namespace">
                 <source>Namespace</source>
             </trans-unit>
-            <trans-unit id="tx_lod_domain_model_namespace.title">
-                <source>Title</source>
-            </trans-unit>
-            <trans-unit id="tx_lod_domain_model_namespace.description">
-                <source>Description</source>
-            </trans-unit>
             <trans-unit id="tx_lod_domain_model_namespace.prefix">
                 <source>Prefix</source>
             </trans-unit>
-            <trans-unit id="tx_lod_domain_model_namespace.uri">
-                <source>Uri</source>
+            <trans-unit id="tx_lod_domain_model_namespace.iri">
+                <source>IRI</source>
             </trans-unit>
 
             <trans-unit id="tx_lod_domain_model_iri">
@@ -46,11 +40,11 @@
             <trans-unit id="tx_lod_domain_model_iri.type.I.2">
                 <source>Property</source>
             </trans-unit>
-            <trans-unit id="tx_lod_domain_model_iri.title">
-                <source>Title</source>
+            <trans-unit id="tx_lod_domain_model_iri.label">
+                <source>Label</source>
             </trans-unit>
-            <trans-unit id="tx_lod_domain_model_iri.description">
-                <source>Description</source>
+            <trans-unit id="tx_lod_domain_model_iri.comment">
+                <source>Comment</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_iri.namespace">
                 <source>Namespace</source>
@@ -96,11 +90,11 @@
             <trans-unit id="tx_lod_domain_model_bnode">
                 <source>Blank Node</source>
             </trans-unit>
-            <trans-unit id="tx_lod_domain_model_bnode.title">
-                <source>Title</source>
+            <trans-unit id="tx_lod_domain_model_bnode.label">
+                <source>Label</source>
             </trans-unit>
-            <trans-unit id="tx_lod_domain_model_bnode.description">
-                <source>Description</source>
+            <trans-unit id="tx_lod_domain_model_bnode.comment">
+                <source>Comment</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_bnode.value">
                 <source>Value</source>
@@ -122,11 +116,8 @@
             <trans-unit id="tx_lod_domain_model_statement">
                 <source>Statement</source>
             </trans-unit>
-            <trans-unit id="tx_lod_domain_model_statement.title">
-                <source>Title</source>
-            </trans-unit>
-            <trans-unit id="tx_lod_domain_model_statement.description">
-                <source>Description</source>
+            <trans-unit id="tx_lod_domain_model_statement.name">
+                <source>Name</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_statement.subject">
                 <source>Subject</source>
@@ -141,11 +132,11 @@
             <trans-unit id="tx_lod_domain_model_term">
                 <source>Term</source>
             </trans-unit>
-            <trans-unit id="tx_lod_domain_model_term.title">
-                <source>Title</source>
+            <trans-unit id="tx_lod_domain_model_term.label">
+                <source>label</source>
             </trans-unit>
-            <trans-unit id="tx_lod_domain_model_term.description">
-                <source>Description</source>
+            <trans-unit id="tx_lod_domain_model_term.comment">
+                <source>Comment</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_term.statements">
                 <source>Statements</source>
@@ -154,11 +145,11 @@
             <trans-unit id="tx_lod_domain_model_vocabulary">
                 <source>Vocabulary</source>
             </trans-unit>
-            <trans-unit id="tx_lod_domain_model_vocabulary.title">
-                <source>Title</source>
+            <trans-unit id="tx_lod_domain_model_vocabulary.label">
+                <source>Label</source>
             </trans-unit>
-            <trans-unit id="tx_lod_domain_model_vocabulary.description">
-                <source>Description</source>
+            <trans-unit id="tx_lod_domain_model_vocabulary.comment">
+                <source>Comment</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_vocabulary.terms">
                 <source>Terms</source>

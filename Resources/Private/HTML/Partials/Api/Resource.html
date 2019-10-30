@@ -1,8 +1,26 @@
 <f:debug>{resource}</f:debug>
-<f:debug>{resource.record}</f:debug>
-<f:debug>{statements}</f:debug>
-<f:debug>
-    {environment.TYPO3_REQUEST_URL}
-</f:debug>
 
-<h2>UNDEFINED</h2>
+<h2>{resource.namespace.iri}{resource.value}</h2>
+<dl>
+        <dt>Type</dt>
+    <f:switch expression="{resource.type}">
+    <f:case value="1">
+        <dd>Class</dd>
+    </f:case>
+    <f:case value="2">
+        <dd>Property</dd>
+    </f:case>
+    </f:switch>
+    <f:if condition="{resource.label}">
+        <dt>Label</dt>
+        <dd>{resource.label}</dd>
+    </f:if>
+    <f:if condition="{resource.comment}">
+        <dt>Comment</dt>
+        <dd>{resource.comment}</dd>
+    </f:if>
+</dl>
+
+<f:debug>{statements}</f:debug>
+
+<f:debug>{resource.record}</f:debug>

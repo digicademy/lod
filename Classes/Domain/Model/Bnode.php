@@ -32,18 +32,18 @@ class Bnode extends AbstractEntity
 {
 
     /**
-     * title
+     * label
      *
      * @var string
      */
-    protected $title = '';
+    protected $label = '';
 
     /**
-     * description
+     * comment
      *
      * @var string
      */
-    protected $description = '';
+    protected $comment = '';
 
     /**
      * value
@@ -54,47 +54,47 @@ class Bnode extends AbstractEntity
     protected $value;
 
     /**
-     * Returns the title
+     * Returns the label
      *
-     * @return string $title
+     * @return string $label
      */
-    public function getTitle()
+    public function getLabel()
     {
-        return $this->title;
+        return $this->label;
     }
 
     /**
-     * Sets the title
+     * Sets the label
      *
-     * @param string $title
+     * @param string $label
      *
      * @return void
      */
-    public function setTitle($title)
+    public function setLabel($label)
     {
-        $this->title = $title;
+        $this->label = $label;
     }
 
     /**
-     * Returns the description
+     * Returns the comment
      *
-     * @return string $description
+     * @return string $comment
      */
-    public function getDescription()
+    public function getComment()
     {
-        return $this->description;
+        return $this->comment;
     }
 
     /**
-     * Sets the description
+     * Sets the comment
      *
-     * @param string $description
+     * @param string $comment
      *
      * @return void
      */
-    public function setDescription($description)
+    public function setComment($comment)
     {
-        $this->description = $description;
+        $this->comment = $comment;
     }
 
     /**
