@@ -24,7 +24,7 @@
 
 <dl class="resource-description">
     <dt>
-        <f:render partial="Api/Link" arguments="{value : 'Type', type : '1991', resource : {namespace : {prefix : 'rdf'}, value : 'type'}}" />
+        <f:render partial="Api/Link" arguments="{value : 'type', type : '1991', resource : {namespace : {prefix : 'rdf'}, value : 'type'}}" />
     </dt>
     <f:switch expression="{resource.type}">
         <f:case value="1">
@@ -40,13 +40,13 @@
     </f:switch>
     <f:if condition="{resource.label}">
         <dt>
-            <f:render partial="Api/Link" arguments="{value : 'Label', type : '1991', resource : {namespace : {prefix : 'rdfs'}, value : 'label'}}" />
+            <f:render partial="Api/Link" arguments="{value : 'label', type : '1991', resource : {namespace : {prefix : 'rdfs'}, value : 'label'}}" />
         </dt>
         <dd>{resource.label}</dd>
     </f:if>
     <f:if condition="{resource.comment}">
         <dt>
-            <f:render partial="Api/Link" arguments="{value : 'Comment', type : '1991', resource : {namespace : {prefix : 'rdfs'}, value : 'comment'}}" />
+            <f:render partial="Api/Link" arguments="{value : 'comment', type : '1991', resource : {namespace : {prefix : 'rdfs'}, value : 'comment'}}" />
         </dt>
         <dd>{resource.comment}</dd>
     </f:if>
@@ -91,10 +91,23 @@
 </f:if>
 
 <f:if condition="{resource.record}">
-    <f:debug>{resource.record}</f:debug>
-    <h3 class="resource-record-header">Values</h3>
+    <h3 class="resource-record-header">Record</h3>
     <dl class="resource-record">
-        <dt>rdf:value</dt>
-        <dd></dd>
+        <f:if condition="{resource.record.label}">
+            <dt>
+                <f:render partial="Api/Link" arguments="{value : 'label', type : '1991', resource : {namespace : {prefix : 'rdfs'}, value : 'label'}}" />
+            </dt>
+            <dd>
+                {resource.record.label}
+            </dd>
+        </f:if>
+        <f:if condition="{resource.record.comment}">
+            <dt>
+                <f:render partial="Api/Link" arguments="{value : 'comment', type : '1991', resource : {namespace : {prefix : 'rdfs'}, value : 'comment'}}" />
+            </dt>
+            <dd>
+                {resource.record.comment}
+            </dd>
+        </f:if>
     </dl>
 </f:if>
