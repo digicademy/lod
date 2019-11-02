@@ -37,43 +37,45 @@ class StatementRepository extends Repository
     );
 
     /**
-     * @param \Digicademy\Lod\Domain\Model\Iri $iri
+     * @param string $position
+     * @param object $entity
+     * @param \Digicademy\Lod\Domain\Model\IriNamespace $graphName
      *
      * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @throws
      */
-    public function findBySubjectAndObject($iri)
+    public function findEntityByPosition($position, $entity, $graphName = null)
     {
         // initialize query object
         $query = $this->createQuery();
 
-        // table_uid constraint in subject OR object position
+        // initialize constraints
+        $constraints = [];
+
+        // find IRIs or Bnodes in subject, predicate or object position
+        if ($position == 'subject' || $position == 'predicate' || $position == 'object') {
+            switch (get_class($entity)) {
+                case 'Digicademy\Lod\Domain\Model\Iri':
+                    // set position
+                    $constraints[] = $query->equals($position, 'tx_lod_domain_model_iri_' . $entity->getUid());
+                    // possibly set graph name
+                    if ($graphName) $constraints[] = $query->equals('name', $graphName);
+                    break;
+                case 'Digicademy\Lod\Domain\Model\Bnode':
+                    // set position
+                    $constraints[] = $query->equals($position, 'tx_lod_domain_model_bnode_' . $entity->getUid());
+                    break;
+                default:
+                    throw new \TYPO3\CMS\Extbase\Exception('Unknown entity class', 1572638672);
+                    break;
+            }
+        } else {
+            throw new \TYPO3\CMS\Extbase\Exception('Position string can only be subject, predicate or object', 1572638693);
+        }
+
+        // match
         $query->matching(
-            $query->logicalOr(
-                $query->equals('subject', 'tx_lod_domain_model_iri_' . $iri->getUid()),
-                $query->equals('object', 'tx_lod_domain_model_iri_' . $iri->getUid())
-            )
-        );
-
-        // execute the query
-        $result = $query->execute();
-
-        // return result
-        return $result;
-    }
-
-    /**
-     * @param \Digicademy\Lod\Domain\Model\Iri $iri
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
-     */
-    public function findByPredicate($iri)
-    {
-        // initialize query object
-        $query = $this->createQuery();
-
-        // table_uid constraint in predicate position
-        $query->matching(
-            $query->equals('predicate', 'tx_lod_domain_model_iri_' . $iri->getUid())
+            $query->logicalAnd($constraints)
         );
 
         // execute the query

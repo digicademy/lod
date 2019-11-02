@@ -26,11 +26,13 @@ namespace Digicademy\Lod\Service;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use Digicademy\Lod\Domain\Model\Record;
 use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Backend\Form\FormDataProvider\TcaRecordTitle;
 
 /**
  * Service to load and map records from generic TCA group fields
@@ -65,8 +67,10 @@ class ItemMappingService
             }
         }
 
+// @TODO: implement generic record class
+
         // if class and tablename exist perform MM query for items, map them and add them to the object storage
-        if ($tablename && $className) {
+        if ($tablename && $uid) {
 // @TODO: Doctrine switch for 8.7 and 9.5
             $resource = $this->getDatabaseConnection()->exec_SELECTgetRows(
                 '*',
@@ -76,13 +80,39 @@ class ItemMappingService
                 '',
                 '1'
             );
+
             if ($resource) {
-                $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
-                $result = $dataMapper->map($className, $resource);
+
+                // if a class name exists, map row to domain object
+                if ($className) {
+
+                    $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
+                    $mappedRecord = $dataMapper->map($className, $resource);
+                    $result = $mappedRecord[0];
+
+                // if no class name exists, map row to generic object
+                } else {
+
+                    $formDataProvider = GeneralUtility::makeInstance(TcaRecordTitle::class);
+                    $tcaProcessing = $formDataProvider->addData([
+                        'databaseRow' => $resource[0],
+                        'processedTca' => $GLOBALS['TCA'][$tablename],
+                        'tablename' => $tablename,
+                        'title' => $GLOBALS['TSFE']->sL($GLOBALS['TCA'][$tablename]['ctrl']['title'])
+                    ]);
+
+                    $result = GeneralUtility::makeInstance(Record::class);
+                    $result->setLabel($tcaProcessing['recordTitle']);
+                    $result->setTablename($tablename);
+                    $result->setType($tcaProcessing['title']);
+                    $result->setRow($tcaProcessing['databaseRow']);
+                    $result->_setProperty('uid', (int)$tcaProcessing['databaseRow']['uid']);
+                    $result->setPid($tcaProcessing['databaseRow']['pid']);
+                }
             }
         }
 
-        return $result[0];
+        return $result;
 
     }
 

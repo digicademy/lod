@@ -263,6 +263,7 @@ die();
      * @return void
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
+     * @throws \TYPO3\CMS\Extbase\Exception
      */
     private function resourceAction(
         Iri $resource
@@ -299,13 +300,13 @@ die();
 // @TODO: check / implement recursive storage pids
         // assign statements containing the resource
         switch ($resource->getType()) {
-            // in case resource is an entity: find statements with IRI in subject / object position
+            // in case resource is an entity: find statements with IRI in subject
             case 1:
-                $statements = $this->statementRepository->findBySubjectAndObject($resource);
+                $statements = $this->statementRepository->findEntityByPosition('subject', $resource);
                 break;
             // in case resource is a property: find statements with IRI in predicate position
             case 2:
-                $statements = $this->statementRepository->findByPredicate($resource);
+                $statements = $this->statementRepository->findEntityByPosition('predicate', $resource);
                 break;
         }
         $this->view->assign('statements', $statements);

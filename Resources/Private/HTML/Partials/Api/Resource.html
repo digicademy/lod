@@ -1,3 +1,5 @@
+{namespace lod = Digicademy\Lod\ViewHelpers}
+
 <f:debug>{resource}</f:debug>
 
 <h2 class="resource-iri">
@@ -51,43 +53,48 @@
 </dl>
 
 <f:if condition="{statements}">
-
-<h3>Statements</h3>
-<f:groupedFor each="{statements}" as="groupedStatements" groupBy="name" groupKey="name">
-    <f:debug>{groupedStatements}</f:debug>
-    <h4>
-    <f:if condition="{name}">
-        <f:then>
-            <f:link.page additionalParams="{
-                type : 1991,
-                tx_lod_api : {graph : '{name.iri}'}
-                }"
-                noCacheHash="1">
-                &lt;{name.iri}&gt;
-            </f:link.page>
-        </f:then>
-        <f:else>
-            <f:link.page additionalParams="{
-                type : 1991,
-                tx_lod_api : {graph : ''}
-                }"
-                noCacheHash="1">
-                &lt;Default&gt;
-            </f:link.page>
-        </f:else>
-    </f:if>
-    </h4>
-    <dl class="resource-statements">
-    <f:for each="{groupedStatements}" as="statement">
-    </f:for>
-    </dl>
-</f:groupedFor>
+    <h3 class="resource-statements-header">Statements</h3>
+    <f:groupedFor each="{statements}" as="groupedStatements" groupBy="name" groupKey="name">
+        <h4 class="resource-statements-graphname">
+        <f:if condition="{name}">
+            <f:then>
+                <f:link.page additionalParams="{
+                    type : 1991,
+                    tx_lod_api : {graph : '{name.iri}'}
+                    }"
+                    noCacheHash="1">
+                    &lt;{name.iri}&gt;
+                </f:link.page>
+            </f:then>
+            <f:else>
+                <f:link.page additionalParams="{
+                    type : 1991,
+                    tx_lod_api : {graph : ''}
+                    }"
+                    noCacheHash="1">
+                    &lt;Default graph&gt;
+                </f:link.page>
+            </f:else>
+        </f:if>
+        </h4>
+        <dl class="resource-statements">
+            <f:for each="{groupedStatements}" as="statement">
+                <dt>
+                    <f:render partial="Api/Link" arguments="{value : statement.predicate.value, type : '1991', resource : statement.predicate}" />
+                </dt>
+                <dd>
+                    <f:render partial="Api/Object" arguments="{object : statement.object}" />
+                </dd>
+            </f:for>
+        </dl>
+    </f:groupedFor>
 </f:if>
 
 <f:if condition="{resource.record}">
-<f:debug>{resource.record}</f:debug>
-<h3>Values</h3>
-<dl class="resource-value">
-
-</dl>
+    <f:debug>{resource.record}</f:debug>
+    <h3 class="resource-record-header">Values</h3>
+    <dl class="resource-record">
+        <dt>rdf:value</dt>
+        <dd></dd>
+    </dl>
 </f:if>

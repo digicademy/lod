@@ -1,11 +1,10 @@
 ## NEXT #########################################
 
 - API controller: templating
--- integrate show templates (nt, json-ld, rdf, ttl, xmp, xml)
--- integrate list templates (nt, json-ld, rdf, ttl, xmp, xml)
+-- integrate show templates (nt, json-ld, rdf/xml, ttl)
+-- integrate list templates (nt, json-ld, rdf/xml, ttl)
 
 - API list action should take graph iri for selecting named graphs (reduced list of statements)
-- integrate a generic record class to which all records can be mapped (unless user maps to more specific classes)
 
 - API links to rdf:Class, rdf:Property, rdfs:label, rdfs:comment
 
@@ -118,9 +117,6 @@ plugin.tx_lod_about {
 
 ---
 
-- Add new type Resource Representation for object?
--- use for 303 redirect to html?
-
 - transfer stuff from CVMA to vocabulary ext
 
 - switch wizard_add to 'script' and test editing
@@ -141,8 +137,5 @@ plugin.tx_lod_about {
 
 - write some helpful repository methods to retrieve values from s/p/o's
 -- maybe from a view helper?
-
-- FLUID
--- generate namespaces in template dynamically from all used
 
 - IDEA: create extension with full schema.org vocab (static info)
