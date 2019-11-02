@@ -1,5 +1,9 @@
 ## NEXT #########################################
 
+- html templates
+-- show: record
+-- list
+
 - API controller: templating
 -- integrate show templates (nt, json-ld, rdf/xml, ttl)
 -- integrate list templates (nt, json-ld, rdf/xml, ttl)

@@ -32,18 +32,18 @@ class Record extends AbstractEntity
 {
 
     /**
-     * type
-     *
-     * @var string
-     */
-    protected $type;
-
-    /**
      * label
      *
      * @var string
      */
     protected $label;
+
+    /**
+     * comment
+     *
+     * @var string
+     */
+    protected $comment;
 
     /**
      * tablename
@@ -60,26 +60,11 @@ class Record extends AbstractEntity
     protected $row;
 
     /**
-     * Returns the type
+     * domainObject
      *
-     * @return string $type
+     * @var object
      */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * Sets the type
-     *
-     * @param string $type
-     *
-     * @return void
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-    }
+    protected $domainObject = null;
 
     /**
      * Returns the label
@@ -101,6 +86,28 @@ class Record extends AbstractEntity
     public function setLabel($label)
     {
         $this->label = $label;
+    }
+
+    /**
+     * Returns the comment
+     *
+     * @return string $comment
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * Sets the comment
+     *
+     * @param string $comment
+     *
+     * @return void
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
     }
 
     /**
@@ -146,4 +153,27 @@ class Record extends AbstractEntity
     {
         $this->row = $row;
     }
+
+    /**
+     * Returns the domainObject
+     *
+     * @return object $domainObject
+     */
+    public function getDomainObject()
+    {
+        return $this->domainObject;
+    }
+
+    /**
+     * Sets the domainObject
+     *
+     * @param object $domainObject
+     *
+     * @return void
+     */
+    public function setDomainObject($domainObject)
+    {
+        $this->domainObject = $domainObject;
+    }
+
 }

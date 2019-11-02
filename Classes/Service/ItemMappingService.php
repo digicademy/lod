@@ -41,20 +41,108 @@ class ItemMappingService
 {
 
     /**
-     * Loads the item
+     * @param string $record
+     *
+     * @return object
+     */
+    public function mapItem($record)
+    {
+        $item = null;
+
+        $result = $this->load($record);
+
+        if ($result['row']) {
+            $item = $this->map($result['row'], $result['tablename']);
+        }
+
+        return $item;
+    }
+
+    /**
+     * @param string $record
+     *
+     * @return \Digicademy\Lod\Domain\Model\Record
+     */
+    public function mapGenericItem($record)
+    {
+        $item = null;
+
+        $result = $this->load($record);
+
+        if ($result['row']) {
+
+            $formDataProvider = GeneralUtility::makeInstance(TcaRecordTitle::class);
+            $tcaProcessing = $formDataProvider->addData([
+                'databaseRow' => $result['row'],
+                'processedTca' => $GLOBALS['TCA'][$result['tablename']],
+                'tablename' => $result['tablename'],
+                'title' => $GLOBALS['TSFE']->sL($GLOBALS['TCA'][$result['tablename']]['ctrl']['title'])
+            ]);
+
+            $item = GeneralUtility::makeInstance(Record::class);
+            $item->setLabel($tcaProcessing['recordTitle']);
+            $item->setComment($tcaProcessing['title']);
+            $item->setTablename($result['tablename']);
+            $item->setRow($tcaProcessing['databaseRow']);
+            $item->_setProperty('uid', (int)$tcaProcessing['databaseRow']['uid']);
+            $item->setPid($tcaProcessing['databaseRow']['pid']);
+            $item->setDomainObject($this->map($result['row'], $result['tablename']));
+        }
+
+        return $item;
+    }
+
+    /**
+     * Loads a record (syntax: tablename_uid)
      *
      * @param string $record
      *
-     * @return mixed
+     * @return array
      */
-    public function loadItem($record)
+    protected function load($record)
     {
-        $result = null;
+        $result = [];
 
         // split incoming record into tablename and uid
         $tableNameAndUid = BackendUtility::splitTable_Uid($record);
         $tablename = $tableNameAndUid[0];
         $uid = $tableNameAndUid[1];
+
+        // if class and tablename exist perform MM query for items, map them and add them to the object storage
+        if ($tablename && $uid) {
+// @TODO: Doctrine switch for 8.7 and 9.5
+            $row = $this->getDatabaseConnection()->exec_SELECTgetRows(
+                '*',
+                $tablename,
+                'uid=' . (int) $uid,
+                '',
+                '',
+                '1'
+            );
+
+            if ($row) {
+                $result = [
+                    'tablename'  => $tablename,
+                    'uid' => $uid,
+                    'row' => $row[0]
+                ];
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Maps record row to a configured domain object
+     *
+     * @param array $row
+     * @param string $tablename
+     *
+     * @return object
+     */
+    protected function map($row, $tablename)
+    {
+        $result = null;
 
         // try to find a TypoScript based class mapping for the given tablename
         $configurationManager = GeneralUtility::makeInstance(ConfigurationManager::class);
@@ -67,53 +155,14 @@ class ItemMappingService
             }
         }
 
-// @TODO: implement generic record class
-
-        // if class and tablename exist perform MM query for items, map them and add them to the object storage
-        if ($tablename && $uid) {
-// @TODO: Doctrine switch for 8.7 and 9.5
-            $resource = $this->getDatabaseConnection()->exec_SELECTgetRows(
-                '*',
-                $tablename,
-                'uid=' . (int) $uid,
-                '',
-                '',
-                '1'
-            );
-
-            if ($resource) {
-
-                // if a class name exists, map row to domain object
-                if ($className) {
-
-                    $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
-                    $mappedRecord = $dataMapper->map($className, $resource);
-                    $result = $mappedRecord[0];
-
-                // if no class name exists, map row to generic object
-                } else {
-
-                    $formDataProvider = GeneralUtility::makeInstance(TcaRecordTitle::class);
-                    $tcaProcessing = $formDataProvider->addData([
-                        'databaseRow' => $resource[0],
-                        'processedTca' => $GLOBALS['TCA'][$tablename],
-                        'tablename' => $tablename,
-                        'title' => $GLOBALS['TSFE']->sL($GLOBALS['TCA'][$tablename]['ctrl']['title'])
-                    ]);
-
-                    $result = GeneralUtility::makeInstance(Record::class);
-                    $result->setLabel($tcaProcessing['recordTitle']);
-                    $result->setTablename($tablename);
-                    $result->setType($tcaProcessing['title']);
-                    $result->setRow($tcaProcessing['databaseRow']);
-                    $result->_setProperty('uid', (int)$tcaProcessing['databaseRow']['uid']);
-                    $result->setPid($tcaProcessing['databaseRow']['pid']);
-                }
-            }
+        // if a class name exists, map row to domain object
+        if ($className) {
+            $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
+            $mappedRecord = $dataMapper->map($className, [$row]);
+            $result = $mappedRecord[0];
         }
 
         return $result;
-
     }
 
     /**
@@ -135,14 +184,14 @@ class ItemMappingService
     {
         // map record property of IRI object (if not empty)
         if (get_class($domainObject) == 'Digicademy\Lod\Domain\Model\Iri') {
-            if ($domainObject->getRecord() !== '') $domainObject->setRecord($this->loadItem($domainObject->getRecord()));
+            if ($domainObject->getRecord() !== '') $domainObject->setRecord($this->mapGenericItem($domainObject->getRecord()));
         }
 
         // map subject, predicate and object in statements
         if (get_class($domainObject) == 'Digicademy\Lod\Domain\Model\Statement') {
-            if ($domainObject->getSubject() !== '') $domainObject->setSubject($this->loadItem($domainObject->getSubject()));
-            if ($domainObject->getPredicate() !== '') $domainObject->setPredicate($this->loadItem($domainObject->getPredicate()));
-            if ($domainObject->getObject() !== '') $domainObject->setObject($this->loadItem($domainObject->getObject()));
+            if ($domainObject->getSubject() !== '') $domainObject->setSubject($this->mapItem($domainObject->getSubject()));
+            if ($domainObject->getPredicate() !== '') $domainObject->setPredicate($this->mapItem($domainObject->getPredicate()));
+            if ($domainObject->getObject() !== '') $domainObject->setObject($this->mapItem($domainObject->getObject()));
         }
     }
 
