@@ -28,6 +28,7 @@ namespace Digicademy\Lod\Controller;
  ***************************************************************/
 
 use Digicademy\Lod\Service\ContentNegotiationService;
+use Digicademy\Lod\Domain\Repository\IriNamespaceRepository;
 use Digicademy\Lod\Domain\Model\Iri;
 use Digicademy\Lod\Domain\Repository\IriRepository;
 use Digicademy\Lod\Service\ResolverService;
@@ -35,14 +36,13 @@ use Digicademy\Lod\Domain\Repository\StatementRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
-use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
 
 class ApiController extends ActionController
 {
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper
+     * @var \Digicademy\Lod\Domain\Repository\IriNamespaceRepository
      */
-    protected $dataMapper;
+    protected $iriNamespaceRepository;
 
     /**
      * @var \Digicademy\Lod\Domain\Repository\IriRepository
@@ -68,7 +68,7 @@ class ApiController extends ActionController
      * Initializes the controller and dependencies
      *
      * @param \TYPO3\CMS\Extbase\Object\ObjectManagerInterface              $objectManager
-     * @param \TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper      $dataMapper
+     * @param \Digicademy\Lod\Domain\Repository\IriNamespaceRepository      $iriNamespaceRepository
      * @param \Digicademy\Lod\Domain\Repository\IriRepository               $iriRepository
      * @param \Digicademy\Lod\Domain\Repository\StatementRepository         $statementRepository
      * @param \Digicademy\Lod\Service\ContentNegotiationService             $contentNegotiationService
@@ -76,14 +76,14 @@ class ApiController extends ActionController
      */
     public function __construct(
         ObjectManagerInterface $objectManager,
-        DataMapper $dataMapper,
+        IriNamespaceRepository $iriNamespaceRepository,
         IriRepository $iriRepository,
         StatementRepository $statementRepository,
         ContentNegotiationService $contentNegotiationService,
         ResolverService $resolverService
     ) {
         parent::__construct($objectManager);
-        $this->dataMapper = $dataMapper;
+        $this->iriNamespaceRepository = $iriNamespaceRepository;
         $this->iriRepository = $iriRepository;
         $this->statementRepository = $statementRepository;
         $this->contentNegotiationService = $contentNegotiationService;
@@ -115,9 +115,15 @@ class ApiController extends ActionController
             // make sure request url does not end in a slash
             $requestUrl = rtrim(GeneralUtility::getIndpEnv('TYPO3_REQUEST_URL'), '/');
 
-            // generate url to redirect depending if realurl is installed or not
+// @TODO: check type param rewriting in TYPO3 9.5
+
+            // generate url for redirection depending if realurl is installed or not
             if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl'])) {
-                $uri =  $requestUrl . '/about.' . $this->contentNegotiationService->getFormat();
+                $uri =
+                    $requestUrl .
+                    '/.' .
+                    $this->settings['api']['realurlTypeParam'] .
+                    $this->contentNegotiationService->getFormat();
             } else {
                 $targetPageType = array_search(
                     $this->contentNegotiationService->getContentType(),
@@ -139,62 +145,34 @@ class ApiController extends ActionController
 
             $iri = $this->request->getArgument('iri');
 
-            // possibility to include namespace prefix in query (prefix:value)
+            // possibility to include resource namespace prefix in query (prefix:value)
             if (substr_count($iri, ':') == 1 && substr_count($iri, '://') == 0) {
                 $iriParts = GeneralUtility::trimExplode(':', $iri);
-
-// @TODO: check if this is still there in 9.5
-                $namespace = $GLOBALS['TSFE']->sys_page->getRecordsByField(
-                    'tx_lod_domain_model_namespace',
-                    'prefix',
-                    $iriParts[0],
-                    '',
-                    '',
-                    '',
-                    '1'
-                );
-
-                if (is_array($namespace)) {
-                    $whereClause = 'AND tx_lod_domain_model_iri.namespace = ' . (int)$namespace[0]['uid'];
-                } else {
-                    $whereClause = 'AND tx_lod_domain_model_iri.namespace = -1';
-                }
-
+                $namespace = $this->iriNamespaceRepository->findByPrefix($iriParts[0])->getFirst();
                 $value = $iriParts[1];
-
-            // otherwise just query the value (could potentially be ambiguous)
+            // otherwise just query the resource value (could potentially be ambiguous)
             } else {
                 $value = $iri;
-                $whereClause = '';
             }
 
-// @TODO: check if this is still there in 9.5
-            $result = $GLOBALS['TSFE']->sys_page->getRecordsByField(
-                'tx_lod_domain_model_iri',
-                'value',
-                $value,
-                $whereClause,
-                $groupBy = '',
-                $orderBy = '',
-                '1'
-            );
+            // try to fetch the resource
+            $resource = $this->iriRepository->findByValue($value, $namespace)->getFirst();
 
-            // if value is found, redirect to resourceAction with uid and format as param, else send 404
-            if (is_array($result)) {
-                $mappingResult = $this->dataMapper->map(Iri::class, $result);
-                $this->resourceAction($mappingResult[0]);
+            // if the resource is found, redirect to show action, else send 404
+            if ($resource) {
+                $this->showAction($resource);
             } else {
                 $GLOBALS['TSFE']->pageNotFoundAndExit();
             }
 
-        // no value, forward to list
+        // no resource argument, forward to list
         } else {
             $this->listAction();
         }
     }
 
     /**
-     * Returns metadata about a list of resources in different content types / document representations
+     * Returns list of resources in different content types / document representations
      *
      * @return void
      * @throws
@@ -203,6 +181,7 @@ class ApiController extends ActionController
     {
         $arguments = $this->request->getArguments();
 
+        // calculate pagination
         ($arguments['limit']) ? $limit = (int)$arguments['limit'] : $limit = 100;
         if ($limit > 500) $limit = 500;
 
@@ -218,7 +197,10 @@ class ApiController extends ActionController
 
         $offset = ($page - 1) * $limit;
 
-// @TODO: check / implement recursive storage pids
+        // fetch resources
+
+// @TODO: API list action should take graph iri for selecting named graphs (reduced list of statements)
+
         $resources = $this->iriRepository->findAll()
             ->getQuery()
             ->setOffset($offset)
@@ -256,7 +238,7 @@ die();
     }
 
     /**
-     * Returns metadata about a single resource in different content types / document representations
+     * Returns a single resource in different content types / document representations
      *
      * @param \Digicademy\Lod\Domain\Model\Iri $resource
      *
@@ -265,7 +247,7 @@ die();
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
      * @throws \TYPO3\CMS\Extbase\Exception
      */
-    private function resourceAction(
+    private function showAction(
         Iri $resource
     ) {
 
@@ -292,12 +274,11 @@ die();
         }
 
         // assign current action for disambiguation in about template
-        $this->view->assign('action', 'resource');
+        $this->view->assign('action', 'show');
 
         // assign the resource
         $this->view->assign('resource', $resource);
 
-// @TODO: check / implement recursive storage pids
         // assign statements containing the resource
         switch ($resource->getType()) {
             // in case resource is an entity: find statements with IRI in subject

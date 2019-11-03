@@ -8,6 +8,8 @@
 -- integrate show templates (nt, json-ld, rdf/xml, ttl)
 -- integrate list templates (nt, json-ld, rdf/xml, ttl)
 
+- create ext_tables_static+adt.sql for rdf/rdfs
+
 - API list action should take graph iri for selecting named graphs (reduced list of statements)
 
 - API links to rdf:Class, rdf:Property, rdfs:label, rdfs:comment
@@ -21,6 +23,10 @@
 - think about statements in records => BE interface etc.
 
 - add ViewHelpers
+
+- BE: check all rdf datatypes according to 2014 W3C https://www.w3.org/TR/rdf-schema
+
+- check type param rewriting in TYPO3 9.5
 
 ---
 

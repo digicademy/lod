@@ -1,11 +1,11 @@
 <f:switch expression="{action}">
-<f:case value="list">
-<f:render partial="Api/List" arguments="{_all}" />
-</f:case>
-<f:case value="resource">
-<f:render partial="Api/Resource" arguments="{_all}" />
-</f:case>
-<f:case default="TRUE">
-404 - NOT FOUND
-</f:case>
+    <f:case value="list">
+        <f:render partial="Api/List" arguments="{_all}" />
+    </f:case>
+    <f:case value="show">
+        <f:render partial="Api/Show" arguments="{_all}" />
+    </f:case>
+    <f:case default="TRUE">
+        404 - NOT FOUND
+    </f:case>
 </f:switch>

@@ -29,44 +29,9 @@ namespace Digicademy\Lod\Domain\Repository;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
-class IriRepository extends Repository
+class IriNamespaceRepository extends Repository
 {
-
     protected $defaultOrderings = array(
-        'value' => QueryInterface::ORDER_ASCENDING
+        'prefix' => QueryInterface::ORDER_ASCENDING
     );
-
-    /**
-     * @param string $value
-     * @param object $entity
-     * @param \Digicademy\Lod\Domain\Model\IriNamespace $namespace
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
-     */
-    public function findByValue($value, $namespace = null)
-    {
-        // initialize query object
-        $query = $this->createQuery();
-
-        // initialize constraints
-        $constraints = [];
-
-        // namespace constraint if given
-        if ($namespace) $constraints[] = $query->equals('namespace', $namespace);
-
-        // value constraint
-        $constraints[] = $query->equals('value', $value);
-
-        // match
-        $query->matching(
-            $query->logicalAnd($constraints)
-        );
-
-        // execute the query
-        $result = $query->execute();
-
-        // return result
-        return $result;
-    }
-
 }
