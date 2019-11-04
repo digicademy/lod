@@ -5,10 +5,10 @@
         <body>
 
             <trans-unit id="about.list.header">
-                <source>Linked Data Resources</source>
+                <source>LOD Resources</source>
             </trans-unit>
-            <trans-unit id="about.list.showAsSerialization">
-                <source>Show as</source>
+            <trans-unit id="about.list.alternativeSerialization">
+                <source>Alternative serializations</source>
             </trans-unit>
             <trans-unit id="about.list.page">
                 <source>Page</source>
@@ -27,6 +27,18 @@
             </trans-unit>
             <trans-unit id="about.list.type">
                 <source>Type</source>
+            </trans-unit>
+            <trans-unit id="about.show.statements">
+                <source>Statements</source>
+            </trans-unit>
+            <trans-unit id="about.show.record">
+                <source>Record</source>
+            </trans-unit>
+            <trans-unit id="about.show.alternativeSerialization">
+                <source>Alternative serializations</source>
+            </trans-unit>
+            <trans-unit id="about.show.description">
+                <source>Description</source>
             </trans-unit>
 
         </body>

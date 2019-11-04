@@ -1,84 +1,84 @@
 {namespace lod = Digicademy\Lod\ViewHelpers}
 
 <h2 class="resource-iri">
-    <f:render partial="Api/Link" arguments="{value : '<{resource.namespace.iri}{resource.value}>', type : '1991', resource : resource}" />
+    <f:render partial="Api/Link" arguments="{
+        value : '<{resource.namespace.iri}{resource.value}>',
+        action : action,
+        type : '1991',
+        resource : resource
+    }"/>
 </h2>
 
-<dl class="resource-serialization">
-    <dt>Alternative serialization</dt>
-    <dd class="jsonld">
-        <f:render partial="Api/Link" arguments="{value : 'JSON-LD', type : '2014', resource : resource}" />
-    </dd>
-    <dd class="rdfxml">
-        <f:render partial="Api/Link" arguments="{value : 'RDF/XML', type : '2004', resource : resource}" />
-    </dd>
-    <dd class="turtle">
-        <f:render partial="Api/Link" arguments="{value : 'Turtle', type : '2011', resource : resource}" />
-    </dd>
-    <dd class="ntriples">
-        <f:render partial="Api/Link" arguments="{value : 'N-Triples', type : '2013', resource : resource}" />
-    </dd>
-</dl>
+<h3>
+    <f:translate key="about.show.alternativeSerialization" />
+</h3>
+<ul class="resource-serialization">
+    <li class="jsonld">
+        <f:render partial="Api/Link" arguments="{value : 'JSON-LD', action : action, type : '2014', resource : resource}" />
+    </li>
+    <li class="rdfxml">
+        <f:render partial="Api/Link" arguments="{value : 'RDF/XML', action : action, type : '2004', resource : resource}" />
+    </li>
+    <li class="turtle">
+        <f:render partial="Api/Link" arguments="{value : 'Turtle', action : action, type : '2011', resource : resource}" />
+    </li>
+    <li class="ntriples">
+        <f:render partial="Api/Link" arguments="{value : 'N-Triples', action : action, type : '2013', resource : resource}" />
+    </li>
+</ul>
 
+<h3>
+    <f:translate key="about.show.description" />
+</h3>
 <dl class="resource-description">
     <dt>
-        <f:render partial="Api/Link" arguments="{value : 'type', type : '1991', resource : {namespace : {prefix : 'rdf'}, value : 'type'}}" />
+        <f:render partial="Api/Link" arguments="{value : 'type',  action : action, type : '1991', resource : {namespace : {prefix : 'rdf'}}}" />
     </dt>
     <f:switch expression="{resource.type}">
         <f:case value="1">
             <dd>
-                <f:render partial="Api/Link" arguments="{value : 'Class', type : '1991', resource : {namespace : {prefix : 'rdf'}, value : 'Class'}}" />
+                <f:render partial="Api/Link" arguments="{value : 'Class',  action : action, type : '1991', resource : {namespace : {prefix : 'rdf'}}}" />
             </dd>
         </f:case>
         <f:case value="2">
             <dd>
-                <f:render partial="Api/Link" arguments="{value : 'Property', type : '1991', resource : {namespace : {prefix : 'rdf'}, value : 'Property'}}" />
+                <f:render partial="Api/Link" arguments="{value : 'Property',  action : action, type : '1991', resource : {namespace : {prefix : 'rdf'}}}" />
             </dd>
         </f:case>
     </f:switch>
     <f:if condition="{resource.label}">
         <dt>
-            <f:render partial="Api/Link" arguments="{value : 'label', type : '1991', resource : {namespace : {prefix : 'rdfs'}, value : 'label'}}" />
+            <f:render partial="Api/Link" arguments="{value : 'label',  action : action, type : '1991', resource : {namespace : {prefix : 'rdfs'}}}" />
         </dt>
         <dd>{resource.label}</dd>
     </f:if>
     <f:if condition="{resource.comment}">
         <dt>
-            <f:render partial="Api/Link" arguments="{value : 'comment', type : '1991', resource : {namespace : {prefix : 'rdfs'}, value : 'comment'}}" />
+            <f:render partial="Api/Link" arguments="{value : 'comment',  action : action, type : '1991', resource : {namespace : {prefix : 'rdfs'}}}" />
         </dt>
         <dd>{resource.comment}</dd>
     </f:if>
 </dl>
 
 <f:if condition="{statements}">
-    <h3 class="resource-statements-header">Statements</h3>
+    <h3 class="resource-statements-header">
+        <f:translate key="about.show.statements" />
+    </h3>
     <f:groupedFor each="{statements}" as="groupedStatements" groupBy="name" groupKey="name">
         <h4 class="resource-statements-graphname">
         <f:if condition="{name}">
             <f:then>
-                <f:link.page additionalParams="{
-                    type : 1991,
-                    tx_lod_api : {graph : '{name.iri}'}
-                    }"
-                    noCacheHash="1">
-                    &lt;{name.iri}&gt;
-                </f:link.page>
+                &lt;{name.iri}&gt;
             </f:then>
             <f:else>
-                <f:link.page additionalParams="{
-                    type : 1991,
-                    tx_lod_api : {graph : ''}
-                    }"
-                    noCacheHash="1">
-                    &lt;Default graph&gt;
-                </f:link.page>
+                &lt;Default graph&gt;
             </f:else>
         </f:if>
         </h4>
         <dl class="resource-statements">
             <f:for each="{groupedStatements}" as="statement">
                 <dt>
-                    <f:render partial="Api/Link" arguments="{value : statement.predicate.value, type : '1991', resource : statement.predicate}" />
+                    <f:render partial="Api/Link" arguments="{value : statement.predicate.value,  action : action, type : '1991', resource : statement.predicate}" />
                 </dt>
                 <dd>
                     <f:render partial="Api/Object" arguments="{object : statement.object}" />
@@ -89,11 +89,13 @@
 </f:if>
 
 <f:if condition="{resource.record}">
-    <h3 class="resource-record-header">Record</h3>
+    <h3 class="resource-record-header">
+        <f:translate key="about.show.record" />
+    </h3>
     <dl class="resource-record">
         <f:if condition="{resource.record.label}">
             <dt>
-                <f:render partial="Api/Link" arguments="{value : 'label', type : '1991', resource : {namespace : {prefix : 'rdfs'}, value : 'label'}}" />
+                <f:render partial="Api/Link" arguments="{value : 'label',  action : action, type : '1991', resource : {namespace : {prefix : 'rdfs'}}}" />
             </dt>
             <dd>
                 {resource.record.label}
@@ -101,7 +103,7 @@
         </f:if>
         <f:if condition="{resource.record.comment}">
             <dt>
-                <f:render partial="Api/Link" arguments="{value : 'comment', type : '1991', resource : {namespace : {prefix : 'rdfs'}, value : 'comment'}}" />
+                <f:render partial="Api/Link" arguments="{value : 'comment',  action : action, type : '1991', resource : {namespace : {prefix : 'rdfs'}}}" />
             </dt>
             <dd>
                 {resource.record.comment}

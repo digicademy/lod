@@ -38,13 +38,13 @@ class StatementRepository extends Repository
 
     /**
      * @param string $position
-     * @param object $entity
-     * @param \Digicademy\Lod\Domain\Model\IriNamespace $graphName
+     * @param object $resource
+     * @param \Digicademy\Lod\Domain\Model\IriNamespace $graph
      *
      * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      * @throws
      */
-    public function findEntityByPosition($position, $entity, $graphName = null)
+    public function findByPosition($position, $resource, $graph = null)
     {
         // initialize query object
         $query = $this->createQuery();
@@ -52,18 +52,18 @@ class StatementRepository extends Repository
         // initialize constraints
         $constraints = [];
 
-        // find IRIs or Bnodes in subject, predicate or object position
+        // find statements with specific IRIs or Bnodes in subject, predicate or object position
         if ($position == 'subject' || $position == 'predicate' || $position == 'object') {
-            switch (get_class($entity)) {
+            switch (get_class($resource)) {
                 case 'Digicademy\Lod\Domain\Model\Iri':
                     // set position
-                    $constraints[] = $query->equals($position, 'tx_lod_domain_model_iri_' . $entity->getUid());
+                    $constraints[] = $query->equals($position, 'tx_lod_domain_model_iri_' . $resource->getUid());
                     // possibly set graph name
-                    if ($graphName) $constraints[] = $query->equals('name', $graphName);
+                    if ($graph) $constraints[] = $query->equals('name', $graph);
                     break;
                 case 'Digicademy\Lod\Domain\Model\Bnode':
                     // set position
-                    $constraints[] = $query->equals($position, 'tx_lod_domain_model_bnode_' . $entity->getUid());
+                    $constraints[] = $query->equals($position, 'tx_lod_domain_model_bnode_' . $resource->getUid());
                     break;
                 default:
                     throw new \TYPO3\CMS\Extbase\Exception('Unknown entity class', 1572638672);
@@ -84,5 +84,12 @@ class StatementRepository extends Repository
         // return result
         return $result;
     }
+
+    /**
+     * @param \Digicademy\Lod\Domain\Model\IriNamespace $graph
+     */
+//     public function findByName($graph)
+//     {
+//     }
 
 }

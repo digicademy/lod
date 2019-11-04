@@ -1,46 +1,68 @@
-<h2><f:translate key="about.list.header" /> ({totalItems})</h2>
+{namespace lod = Digicademy\Lod\ViewHelpers}
 
-<p>
-    <strong><f:translate key="about.list.showAsSerialization" />:</strong> 
+<h2>
+    <f:translate key="about.list.header" /> ({totalItems})
+</h2>
 
-    <a href="{environment.TYPO3_REQUEST_HOST}/id/about.html?tx_vocabulary_about[page]={arguments.page}">HTML</a> |
-    <a href="{environment.TYPO3_REQUEST_HOST}/id/about.json?tx_vocabulary_about[page]={arguments.page}">JSON-LD</a> |
-    <a href="{environment.TYPO3_REQUEST_HOST}/id/about.rdf?tx_vocabulary_about[page]={arguments.page}">RDF</a> |
-    <a href="{environment.TYPO3_REQUEST_HOST}/id/about.ttl?tx_vocabulary_about[page]={arguments.page}">TTL</a>
-</p>
+<h3>
+    <f:translate key="about.list.alternativeSerialization" />
+</h3>
+<ul class="resource-serialization">
+    <li class="jsonld">
+        <f:render partial="Api/Link" arguments="{value : 'JSON-LD', action : action, type : '2014', page : arguments.page}" />
+    </li>
+    <li class="rdfxml">
+        <f:render partial="Api/Link" arguments="{value : 'RDF/XML', action : action, type : '2004', page : arguments.page}" />
+    </li>
+    <li class="turtle">
+        <f:render partial="Api/Link" arguments="{value : 'Turtle', action : action, type : '2011', page : arguments.page}" />
+    </li>
+    <li class="ntriples">
+        <f:render partial="Api/Link" arguments="{value : 'N-Triples', action : action, type : '2013', page : arguments.page}" />
+    </li>
+</ul>
 
-<f:render partial="Subjects/PaginationNavigation" arguments="{_all}" />
+<f:render partial="Api/PaginationNavigation" arguments="{_all}" />
 
-<f:render partial="Subjects/PaginationFromTo" arguments="{_all}" />
+<f:render partial="Api/PaginationFromTo" arguments="{_all}" />
 
-<f:render partial="Subjects/PaginationResourcesPerPage" arguments="{_all}" />
+<f:render partial="Api/PaginationResourcesPerPage" arguments="{_all}" />
 
 <table>
     <thead>
         <tr>
             <th><f:translate key="about.list.resource" /></th>
-            <th><f:translate key="about.list.type" /></th>
+            <th colspan="4"><f:translate key="about.list.alternativeSerialization" /></th>
         </tr>
     </thead>
     <tbody>
     <f:for each="{resources}" as="resource">
         <tr>
-            <td><a href="{resource.value -> f:format.urlencode()}">{resource.value}</a></td>
             <td>
-                <f:switch expression="{resource.table}">
-                    <f:case default="TRUE">UNDEFINED</f:case>
-                </f:switch>
-
-                (<f:translate key="about.list.representation" />: <a href="{resource.value -> f:format.urlencode()}/about.html">HTML</a> |
-                <a href="{resource.value -> f:format.urlencode()}/about.json">JSON-LD</a> |
-                <a href="{resource.value -> f:format.urlencode()}/about.rdf">RDF</a> |
-                <a href="{resource.value -> f:format.urlencode()}/about.ttl">TTL</a>)
+                <f:render partial="Api/Link" arguments="{
+                    value : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}',
+                    action : 'show',
+                    type : '1991',
+                    resource : resource
+                }"/>
+            </td>
+            <td>
+                <f:render partial="Api/Link" arguments="{value : 'JSON-LD', action : 'show', type : '2014', resource : resource}" />
+            </td>
+            <td>
+                <f:render partial="Api/Link" arguments="{value : 'RDF/XML', action : 'show', type : '2004', resource : resource}" />
+            </td>
+            <td>
+                <f:render partial="Api/Link" arguments="{value : 'Turtle', action : 'show', type : '2011', resource : resource}" />
+            </td>
+            <td>
+                <f:render partial="Api/Link" arguments="{value : 'N-Triples', action : 'show', type : '2013', resource : resource}" />
             </td>
         </tr>
     </f:for>
     </tbody>
 </table>
 
-<f:render partial="Subjects/PaginationNavigation" arguments="{_all}" />
+<f:render partial="Api/PaginationNavigation" arguments="{_all}" />
 
-<f:render partial="Subjects/PaginationFromTo" arguments="{_all}" />
+<f:render partial="Api/PaginationFromTo" arguments="{_all}" />

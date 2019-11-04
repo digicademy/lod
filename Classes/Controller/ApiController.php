@@ -195,21 +195,15 @@ class ApiController extends ActionController
             $this->request->setArgument('page', 0);
         }
 
+// @TODO: check calculation error if limit is set; check page 1 of 0 if limit is greater than total
         $offset = ($page - 1) * $limit;
 
-        // fetch resources
-
-// @TODO: API list action should take graph iri for selecting named graphs (reduced list of statements)
-
+        // fetch resources (possibly from a specific graph)
         $resources = $this->iriRepository->findAll()
             ->getQuery()
             ->setOffset($offset)
             ->setLimit($limit)
             ->execute();
-
-// @TODO: continue with list templates
-\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($resources, NULL, 5, FALSE, TRUE, FALSE, array(), array());
-die();
 
         // pagination
         $pagination = ['first' => 1];
@@ -283,11 +277,11 @@ die();
         switch ($resource->getType()) {
             // in case resource is an entity: find statements with IRI in subject
             case 1:
-                $statements = $this->statementRepository->findEntityByPosition('subject', $resource);
+                $statements = $this->statementRepository->findByPosition('subject', $resource);
                 break;
             // in case resource is a property: find statements with IRI in predicate position
             case 2:
-                $statements = $this->statementRepository->findEntityByPosition('predicate', $resource);
+                $statements = $this->statementRepository->findByPosition('predicate', $resource);
                 break;
         }
         $this->view->assign('statements', $statements);

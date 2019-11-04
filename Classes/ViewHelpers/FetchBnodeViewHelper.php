@@ -54,7 +54,7 @@ class FetchBnodeViewHelper extends AbstractViewHelper
      */
     public function render(Bnode $bnode)
     {
-        return $this->statementRepository->findEntityByPosition('subject', $bnode);
+        return $this->statementRepository->findByPosition('subject', $bnode);
     }
 
 }

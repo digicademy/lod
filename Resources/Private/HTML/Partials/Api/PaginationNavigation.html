@@ -1,22 +1,38 @@
 <ul>
     <li>
-        <f:link.external uri="{environment.TYPO3_REQUEST_HOST}/id/about.html?tx_vocabulary_about[page]={pagination.first}">
-            «
-        </f:link.external>
+        <f:render partial="Api/Link" arguments="{
+            value : '« First',
+            action : action,
+            type : '1991',
+            page : pagination.first,
+            limit : arguments.limit
+        }"/>
     </li>
     <li>
-        <f:link.external uri="{environment.TYPO3_REQUEST_HOST}/id/about.html?tx_vocabulary_about[page]={pagination.previous}">
-            ‹
-        </f:link.external>
+        <f:render partial="Api/Link" arguments="{
+            value : '‹ Previous',
+            action : action,
+            type : '1991',
+            page : pagination.previous,
+            limit : arguments.limit
+        }"/>
     </li>
     <li>
-        <f:link.external uri="{environment.TYPO3_REQUEST_HOST}/id/about.html?tx_vocabulary_about[page]={pagination.next}">
-            ›
-        </f:link.external>
+        <f:render partial="Api/Link" arguments="{
+            value : '› Next',
+            action : action,
+            type : '1991',
+            page : pagination.next,
+            limit : arguments.limit
+        }"/>
     </li>
     <li>
-        <f:link.external uri="{environment.TYPO3_REQUEST_HOST}/id/about.html?tx_vocabulary_about[page]={pagination.last}">
-            »
-        </f:link.external>
+        <f:render partial="Api/Link" arguments="{
+            value : '» Last',
+            action : action,
+            type : '1991',
+            page : pagination.last,
+            limit : arguments.limit
+        }"/>
     </li>
 </ul>

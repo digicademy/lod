@@ -1,7 +1,26 @@
-<f:link.page additionalParams="{
-    type : type,
-    tx_lod_api : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}
-    }"
-    noCacheHash="1">
-    {value}
-</f:link.page>
+<f:switch expression="{action}">
+    <f:case value="list">
+        <f:link.page additionalParams="{
+            type : type,
+            tx_lod_api : {
+                page : '{f:if(condition : \'{page}\', then : \'{page}\', else : \'1\')}',
+                limit : '{f:if(condition : \'{limit}\', then : \'{limit}\', else : \'50\')}'
+            }}"
+            noCacheHash="1">
+            {value}
+        </f:link.page>
+    </f:case>
+    <f:case value="show">
+        <f:link.page additionalParams="{
+            type : type,
+            tx_lod_api : {
+                iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'
+            }}"
+            noCacheHash="1">
+            {value}
+        </f:link.page>
+    </f:case>
+    <f:case default="TRUE">
+        {value}
+    </f:case>
+</f:switch>
