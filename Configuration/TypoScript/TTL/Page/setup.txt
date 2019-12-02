@@ -15,6 +15,6 @@ ttl {
     }
 }
 
-[globalVar = GP : pluginUid > 0]
+[globalVar = GP : type = 2011]
 ttl.10 < lib.tx_lod.apiPlugin
 [global]

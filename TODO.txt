@@ -1,16 +1,23 @@
 ## NEXT #########################################
 
--- list (html)
-
-- html templates
--- show (rdf/xml)
-
 - API controller: templating
--- integrate show templates (nt, json-ld, rdf/xml, ttl)
--- integrate list templates (nt, json-ld, rdf/xml, ttl)
+-- list
+--- json-ld
+--- nt
+--- rdfxml
+--- ttl
+-- show
+--- html (API links to rdf:Class, rdf:Property, rdfs:label, rdfs:comment)
+--- json-ld
+--- nt
+--- rdfxml
+--- ttl
+
+- add ViewHelpers
+-- RemoveEmptyLines
+-- Trim
 
 - create ext_tables_static+adt.sql for rdf/rdfs
--- API links to rdf:Class, rdf:Property, rdfs:label, rdfs:comment
 
 - BE: add all rdf datatypes according to 2014 W3C https://www.w3.org/TR/rdf-schema
 
@@ -21,8 +28,6 @@
 - vocabulary plugin
 
 - think about statements in records => BE interface etc.
-
-- add ViewHelpers
 
 - check type param rewriting in TYPO3 9.5
 
@@ -66,6 +71,12 @@ query = additionalParams
 fragment = section
 
 ---
+
+# map items to generic domainObject
+
+plugin.tx_lod_api.persistence.classes {
+  My\Class.mapping.tableName = tx_extension_domain_model_xyz
+}
 
 ## TYPO3 8.7
 

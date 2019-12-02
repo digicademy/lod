@@ -187,6 +187,7 @@ class ApiController extends ActionController
 
         $totalItems = $this->iriRepository->countAll();
         $totalPages = (int)floor($totalItems / $limit);
+        if ($totalPages < 1) $totalPages = 1;
 
         if ($arguments['page']) {
             ($arguments['page'] <= $totalPages) ? $page = (int)$arguments['page'] : $page = $totalPages;
@@ -195,7 +196,6 @@ class ApiController extends ActionController
             $this->request->setArgument('page', 0);
         }
 
-// @TODO: check calculation error if limit is set; check page 1 of 0 if limit is greater than total
         $offset = ($page - 1) * $limit;
 
         // fetch resources (possibly from a specific graph)

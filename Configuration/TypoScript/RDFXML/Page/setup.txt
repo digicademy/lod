@@ -15,6 +15,6 @@ rdfxml {
     }
 }
 
-[globalVar = GP : pluginUid > 0]
+[globalVar = GP : type = 2004]
 rdfxml.10 < lib.tx_lod.apiPlugin
 [global]

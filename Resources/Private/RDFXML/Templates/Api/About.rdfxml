@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <f:switch expression="{action}">
     <f:case value="list">
         <f:render partial="Api/List" arguments="{_all}" />
