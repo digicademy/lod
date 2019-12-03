@@ -1,19 +1,28 @@
 <rdf:RDF
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
     xmlns:hydra="http://www.w3.org/ns/hydra/core#">
-    <rdf:Description rdf:about="{environment.TYPO3_REQUEST_HOST}/id/about.rdf">
+    <rdf:Description rdf:about="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', limit : arguments.limit}) -> f:format.htmlspecialchars()}">
         <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Collection"/>
         <hydra:totalItems>{totalItems}</hydra:totalItems>
         <hydra:view>
-            <hydra:PartialCollectionView rdf:about="{environment.TYPO3_REQUEST_HOST}/id/about.rdf?tx_vocabulary_about[page]={arguments.page}">
-                <hydra:first rdf:resource="{environment.TYPO3_REQUEST_HOST}/id/about.rdf?tx_vocabulary_about[page]={pagination.first}"/>
-                <hydra:last rdf:resource="{environment.TYPO3_REQUEST_HOST}/id/about.rdf?tx_vocabulary_about[page]={pagination.last}"/>
-                <hydra:previous rdf:resource="{environment.TYPO3_REQUEST_HOST}/id/about.rdf?tx_vocabulary_about[page]={pagination.previous}"/>
-                <hydra:next rdf:resource="{environment.TYPO3_REQUEST_HOST}/id/about.rdf?tx_vocabulary_about[page]={pagination.next}"/>
+            <hydra:PartialCollectionView rdf:about="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', limit : arguments.limit}) -> f:format.htmlspecialchars()}">
+                <hydra:first rdf:resource="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', page : pagination.first, limit : arguments.limit}) -> f:format.htmlspecialchars()}"/>
+                <hydra:last rdf:resource="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', page : pagination.last, limit : arguments.limit}) -> f:format.htmlspecialchars()}"/>
+                <hydra:previous rdf:resource="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', page : pagination.previous, limit : arguments.limit}) -> f:format.htmlspecialchars()}"/>
+                <hydra:next rdf:resource="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', page : pagination.next, limit : arguments.limit}) -> f:format.htmlspecialchars()}"/>
             </hydra:PartialCollectionView>
         </hydra:view><f:for each="{resources}" as="resource">
         <hydra:member>
-            <rdf:Description rdf:about="{environment.TYPO3_REQUEST_HOST}/id/{resource.value -> f:format.urlencode()}/about.rdf">
+            <rdf:Description rdf:about="{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}, noCacheHash : 1) -> f:format.htmlspecialchars()}">
+                <rdfs:seeAlso>
+                    <rdf:Description rdf:about="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '2004', resource : resource}) -> f:format.htmlspecialchars()}">
+                     <dc:format>application/rdf+xml</dc:format>
+                    </rdf:Description>
+                </rdfs:seeAlso>
+                <f:if condition="{resource.label}"><rdfs:label>{resource.label}</rdfs:label></f:if>
+                <f:if condition="{resource.comment}"><rdfs:comment>{resource.comment}</rdfs:comment></f:if>
             </rdf:Description>
         </hydra:member></f:for>
     </rdf:Description>

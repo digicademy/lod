@@ -41,6 +41,13 @@ lib.tx_lod.apiPlugin {
             list_type.value = lod_api
         }
     }
+    renderObj = USER
+    renderObj {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        extensionName = Lod
+        pluginName = Api
+        vendorName = Digicademy
+    }
 }
 
 # general extension configuration
