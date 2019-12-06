@@ -1,0 +1,7 @@
+<f:for each="{1991 : 'text/html', 2004 : 'application/rdf+xml', 2011 : 'text/turtle', 2013 : 'application/n-triples', 2014 : 'application/ld+json'}" as="format" key="type">
+        <rdfs:seeAlso>
+            <rdf:Description rdf:about="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource}) -> f:format.htmlspecialchars()}">
+                <dc:format>{format}</dc:format>
+            </rdf:Description>
+        </rdfs:seeAlso>
+</f:for>

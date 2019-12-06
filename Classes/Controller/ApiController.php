@@ -219,6 +219,8 @@ class ApiController extends ActionController
 
         $this->view->assign('resources', $resources);
 
+        $this->view->assign('namespaces', $this->iriNamespaceRepository->findAll());
+
         $this->view->assign('arguments', $arguments);
 
         $this->view->assign('settings', $this->settings);
@@ -285,6 +287,9 @@ class ApiController extends ActionController
                 break;
         }
         $this->view->assign('statements', $statements);
+
+        // assign existing namespaces
+        $this->view->assign('namespaces', $this->iriNamespaceRepository->findAll());
 
         // assign current arguments
         $this->view->assign('arguments', $this->request->getArguments());

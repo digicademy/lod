@@ -4,13 +4,11 @@
 -- list
 --- json-ld
 --- nt
---- rdfxml
 --- ttl
 -- show
 --- html (API links to rdf:Class, rdf:Property, rdfs:label, rdfs:comment)
 --- json-ld
 --- nt
---- rdfxml
 --- ttl
 
 - add ViewHelpers
