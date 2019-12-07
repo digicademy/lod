@@ -1,0 +1,10 @@
+<f:for each="{1991 : 'text/html', 2004 : 'application/rdf+xml', 2011 : 'text/turtle', 2013 : 'application/n-triples', 2014 : 'application/ld+json'}" as="format" key="type" iteration="serializationIterator">
+<f:if condition="{mode} == 'object'">
+<f:then>
+    rdfs:seeAlso <{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource})}><f:if condition="{serializationIterator.isLast}"><f:then> .</f:then><f:else> ;</f:else></f:if>
+</f:then>
+<f:else>
+<{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource})}> dc:format "{format}" .
+</f:else>
+</f:if>
+</f:for>
