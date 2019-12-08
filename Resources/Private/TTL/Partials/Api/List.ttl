@@ -2,9 +2,10 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix hydra: <http://www.w3.org/ns/hydra/core#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix void: <http://rdfs.org/ns/void#> .
 
 <{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {type : '2011'}, noCacheHash : 1)}>
-    a hydra:Collection ;
+    a hydra:Collection, void:Dataset ;
     hydra:totalItems "{totalItems}" ;
     hydra:view <{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2011', limit : arguments.limit, page : arguments.page})}> ;<f:for each="{resources}" as="resource" iteration="iterator">
     hydra:member <{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}, noCacheHash : 1)}><f:if condition="{iterator.isLast}"><f:then> .</f:then><f:else> ;</f:else></f:if></f:for>
@@ -20,7 +21,7 @@
 <{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}, noCacheHash : 1)}>
     <f:if condition="{resource.label}">rdfs:label "{resource.label}" ;</f:if>
     <f:if condition="{resource.comment}">rdfs:comment "{resource.comment}" ;</f:if>
-    <f:render partial="Api/AlternativeSerializations" arguments="{mode : 'object', resource : resource}"/></f:for>
+    <f:render partial="Api/AlternativeSerializations" arguments="{mode : 'object', resource : resource, environment : environment}"/></f:for>
 
 <f:for each="{resources}" as="resource" iteration="iterator">
-    <f:render partial="Api/AlternativeSerializations" arguments="{mode : 'subject', resource : resource}"/></f:for>
+    <f:render partial="Api/AlternativeSerializations" arguments="{mode : 'subject', resource : resource, environment : environment}"/></f:for>

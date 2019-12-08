@@ -2,10 +2,11 @@
 
 - API controller: templating
 -- list
+--- html: as RDFa
 --- json-ld
 --- nt
 -- show
---- html (API links to rdf:Class, rdf:Property, rdfs:label, rdfs:comment)
+--- html (API links to rdf:Class, rdf:Property, rdfs:label, rdfs:comment) => as RDFa
 --- json-ld
 --- nt
 --- ttl
