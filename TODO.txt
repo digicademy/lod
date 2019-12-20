@@ -6,18 +6,30 @@
 --- json-ld
 --- nt
 -- show
---- html (API links to rdf:Class, rdf:Property, rdfs:label, rdfs:comment) => as RDFa
+--- html: as RDFa
 --- json-ld
 --- nt
---- ttl
+
+- iri => should have statements irre field => create triples for resource
+- vocabulary should consist of iri terms => skip terms table
+- think about statement collections => making it easy to add "static" sets to an IRI
 
 - add ViewHelpers
--- RemoveEmptyLines
 -- Trim
+-- .. (easyRDF?)
+
+- IriRepository: allow ordering by label
+
+- create DataBase Hook / Handler that creates IRIs when creating records
+-- tables configurable with TS
+-- setting if IRIs should be deleted if records are deleted
+-- think about hidden settings
 
 - create ext_tables_static+adt.sql for rdf/rdfs
 
 - BE: add all rdf datatypes according to 2014 W3C https://www.w3.org/TR/rdf-schema
+
+- basic string search in label/comment for API plugin (list view)
 
 - think about term & vocabulary data model: namespace/iri for term? vocab?
 
@@ -30,6 +42,8 @@
 - check type param rewriting in TYPO3 9.5
 
 - documentation
+
+- create extension with schema.org vocab
 
 ---
 

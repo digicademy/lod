@@ -32,29 +32,29 @@
 </h3>
 <dl class="resource-description">
     <dt>
-        <f:render partial="Api/Link" arguments="{value : 'type',  action : action, type : '1991', resource : {namespace : {prefix : 'rdf'}}}" />
+        <f:render partial="Api/Link" arguments="{value : 'type',  action : action, type : '1991', resource : {value: 'type', namespace : {prefix : 'rdf'}}}" />
     </dt>
     <f:switch expression="{resource.type}">
         <f:case value="1">
             <dd>
-                <f:render partial="Api/Link" arguments="{value : 'Class',  action : action, type : '1991', resource : {namespace : {prefix : 'rdf'}}}" />
+                <f:render partial="Api/Link" arguments="{value : 'Class',  action : action, type : '1991', resource : {value : 'Class', namespace : {prefix : 'rdf'}}}" />
             </dd>
         </f:case>
         <f:case value="2">
             <dd>
-                <f:render partial="Api/Link" arguments="{value : 'Property',  action : action, type : '1991', resource : {namespace : {prefix : 'rdf'}}}" />
+                <f:render partial="Api/Link" arguments="{value : 'Property',  action : action, type : '1991', resource : {value : 'Property', namespace : {prefix : 'rdf'}}}" />
             </dd>
         </f:case>
     </f:switch>
     <f:if condition="{resource.label}">
         <dt>
-            <f:render partial="Api/Link" arguments="{value : 'label',  action : action, type : '1991', resource : {namespace : {prefix : 'rdfs'}}}" />
+            <f:render partial="Api/Link" arguments="{value : 'label',  action : action, type : '1991', resource : {value : 'label', namespace : {prefix : 'rdfs'}}}" />
         </dt>
         <dd>{resource.label}</dd>
     </f:if>
     <f:if condition="{resource.comment}">
         <dt>
-            <f:render partial="Api/Link" arguments="{value : 'comment',  action : action, type : '1991', resource : {namespace : {prefix : 'rdfs'}}}" />
+            <f:render partial="Api/Link" arguments="{value : 'comment',  action : action, type : '1991', resource : {value : 'comment', namespace : {prefix : 'rdfs'}}}" />
         </dt>
         <dd>{resource.comment}</dd>
     </f:if>
