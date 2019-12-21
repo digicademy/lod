@@ -2,7 +2,7 @@
 
 <f:switch expression="{lod:DetermineEntity(entity : object)}">
     <f:case value="Digicademy\Lod\Domain\Model\Iri">
-        <f:render partial="Api/Link" arguments="{value : object.value, type : '1991', resource : object}" />
+        <f:render partial="Api/Link" arguments="{action : 'show', value : object.value, type : '1991', resource : object}" />
     </f:case>
     <f:case value="Digicademy\Lod\Domain\Model\Literal">
         {object.value}

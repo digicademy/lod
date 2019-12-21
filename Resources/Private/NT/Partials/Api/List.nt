@@ -1,0 +1,22 @@
+<{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {type : '2013'}, noCacheHash : 1)}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/hydra/core#Collection> .
+<{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {type : '2013'}, noCacheHash : 1)}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rdfs.org/ns/void#Dataset> .
+<{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {type : '2013'}, noCacheHash : 1)}> <http://www.w3.org/ns/hydra/core#totalItems> "{totalItems}" .
+<{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {type : '2013'}, noCacheHash : 1)}> <http://www.w3.org/ns/hydra/core#view> <{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2013', limit : arguments.limit, page : arguments.page})}> .
+<f:for each="{resources}" as="resource" iteration="iterator">
+<{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {type : '2013'}, noCacheHash : 1)}> <http://www.w3.org/ns/hydra/core#member> <{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}, noCacheHash : 1)}> .
+</f:for>
+<{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2013', limit : arguments.limit, page : arguments.page})}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/hydra/core#PartialCollectionView> .
+<{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2013', limit : arguments.limit, page : arguments.page})}> <http://www.w3.org/ns/hydra/core#first> <{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2013', page : pagination.first, limit : arguments.limit})}> .
+<{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2013', limit : arguments.limit, page : arguments.page})}> <http://www.w3.org/ns/hydra/core#last> <{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2013', page : pagination.last, limit : arguments.limit})}> .
+<{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2013', limit : arguments.limit, page : arguments.page})}> <http://www.w3.org/ns/hydra/core#previous> <{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2013', page : pagination.previous, limit : arguments.limit})}> .
+<{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2013', limit : arguments.limit, page : arguments.page})}> <http://www.w3.org/ns/hydra/core#next> <{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2013', page : pagination.next, limit : arguments.limit})}> .
+<f:for each="{resources}" as="resource" iteration="iterator">
+<f:alias map="{uri : '{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {iri : \'{f:if(condition : \\\'{resource.namespace}\\\', then : \\\'{resource.namespace.prefix}:\\\', else : \\\'\\\')}{resource.value}\'}, noCacheHash : 1)}'}">
+<f:if condition="{resource.label}"><{uri}> <http://www.w3.org/2000/01/rdf-schema#label> "{resource.label}" .</f:if>
+<f:if condition="{resource.comment}"><{uri}> <http://www.w3.org/2000/01/rdf-schema#comment> "{resource.comment}" .</f:if>
+<f:render partial="Api/AlternativeSerializations" arguments="{iri : uri, mode : 'object', resource : resource, environment : environment}"/>
+</f:alias>
+</f:for>
+<f:for each="{resources}" as="resource" iteration="iterator">
+<f:render partial="Api/AlternativeSerializations" arguments="{mode : 'subject', resource : resource, environment : environment}"/>
+</f:for>

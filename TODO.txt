@@ -10,6 +10,9 @@
 --- json-ld
 --- nt
 
+=> html templates => add external links and datatypes
+=> object templates => add language tags and data types
+
 - iri => should have statements irre field => create triples for resource
 - vocabulary should consist of iri terms => skip terms table
 - think about statement collections => making it easy to add "static" sets to an IRI
@@ -154,11 +157,6 @@ plugin.tx_lod_about {
 
 - switch wizard_add to 'script' and test editing
 
-- vocabulary
--- is the tablename field really needed since prepend_tname doesn't have any effect?
--- first test with statements for any record
---- check how hard it is to integrate a makeLodifiable => quite hard, integrated later (@see CategoryRegistry)
-
 - default templates for
 -- showSelectedTerms
 -- showSelectedVocabulary
@@ -170,5 +168,3 @@ plugin.tx_lod_about {
 
 - write some helpful repository methods to retrieve values from s/p/o's
 -- maybe from a view helper?
-
-- IDEA: create extension with full schema.org vocab (static info)
