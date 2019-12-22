@@ -3,15 +3,11 @@
 - API controller: templating
 -- list
 --- html: as RDFa
---- json-ld
---- nt
 -- show
 --- html: as RDFa
---- json-ld
---- nt
 
-=> html templates => add external links and datatypes
-=> object templates => add language tags and data types
+=> html templates => add external links
+=> object data templates => add language tags and data types
 
 - iri => should have statements irre field => create triples for resource
 - vocabulary should consist of iri terms => skip terms table

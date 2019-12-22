@@ -1,0 +1,52 @@
+<f:format.raw>{</f:format.raw>
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "hydra": "http://www.w3.org/ns/hydra/core#",
+    "void": "http://rdfs.org/ns/void#",
+    "dc": "http://purl.org/dc/elements/1.1/"
+  },
+  "@graph": [
+  <f:format.raw>{</f:format.raw>
+    "@id": "{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {type : '2014'}, noCacheHash : 1)}",
+    "@type": [
+      "hydra:Collection",
+      "void:Dataset"
+    ],
+    "hydra:member": [
+<f:for each="{resources}" as="resource" iteration="iterator">
+      <f:format.raw>{</f:format.raw>
+        "@id": "{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}, noCacheHash : 1)}",
+        <f:if condition="{resource.label}">"rdfs:label": "{resource.label}",</f:if>
+        <f:if condition="{resource.comment}">"rdfs:comment": "{resource.comment}",</f:if>
+        "rdfs:seeAlso" : <f:format.raw>[</f:format.raw>
+        <f:render partial="Api/AlternativeSerializations" arguments="{_all}" />
+        <f:format.raw>]</f:format.raw>
+      <f:format.raw>}</f:format.raw><f:if condition="{iterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if>
+</f:for>
+    ],
+    "hydra:totalItems": "{totalItems}",
+    "hydra:view": <f:format.raw>{</f:format.raw>
+      "@id": "{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', limit : arguments.limit, page : arguments.page})}"
+    <f:format.raw>}</f:format.raw>
+  <f:format.raw>}</f:format.raw>,
+  <f:format.raw>{</f:format.raw>
+    "@id": "{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', limit : arguments.limit, page : arguments.page})}",
+    "@type": [
+      "hydra:PartialCollectionView"
+    ],
+    "hydra:first": <f:format.raw>{</f:format.raw>
+      "@id": "{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', page : pagination.first, limit : arguments.limit})}"
+    <f:format.raw>}</f:format.raw>,
+    "hydra:last": <f:format.raw>{</f:format.raw>
+      "@id": "{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', page : pagination.last, limit : arguments.limit})}"
+    <f:format.raw>}</f:format.raw>,
+    "hydra:next": <f:format.raw>{</f:format.raw>
+      "@id": "{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', page : pagination.next, limit : arguments.limit})}"
+    <f:format.raw>}</f:format.raw>,
+    "hydra:previous": <f:format.raw>{</f:format.raw>
+      "@id": "{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', page : pagination.previous, limit : arguments.limit})}"
+    <f:format.raw>}</f:format.raw>
+  <f:format.raw>}</f:format.raw>
+  ]
+<f:format.raw>}</f:format.raw>

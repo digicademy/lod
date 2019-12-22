@@ -1,0 +1,23 @@
+{namespace lod = Digicademy\Lod\ViewHelpers}
+<f:switch expression="{lod:DetermineEntity(entity : statement.object)}">
+<f:case value="Digicademy\Lod\Domain\Model\Iri">
+  <f:if condition="{statement.predicate.namespace.prefix}{statement.predicate.value} == 'rdftype'">
+  <f:then>
+  "@type": "{statement.object.namespace.prefix}:{statement.object.value}"
+  </f:then>
+  <f:else>
+  "{statement.predicate.namespace.prefix}:{statement.predicate.value}": "{statement.object.namespace.prefix}:{statement.object.value}"
+  </f:else>
+  </f:if>
+</f:case>
+<f:case value="Digicademy\Lod\Domain\Model\Literal">
+  "{statement.predicate.namespace.prefix}:{statement.predicate.value}": "{statement.object.value}"
+</f:case>
+<f:case default="Digicademy\Lod\Domain\Model\Bnode">
+  "{statement.predicate.namespace.prefix}:{statement.predicate.value}": <f:format.raw>{</f:format.raw>
+<f:for each="{lod:FetchBnode(bnode : statement.object)}" as="bnodeStatement" iteration="bnodeIterator">
+  <f:render partial="Api/Object" arguments="{statement : bnodeStatement}" /><f:if condition="{bnodeIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if>
+</f:for>
+  <f:format.raw>}</f:format.raw>
+</f:case>
+</f:switch>

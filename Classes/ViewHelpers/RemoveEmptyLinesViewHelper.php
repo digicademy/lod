@@ -39,6 +39,7 @@ class RemoveEmptyLinesViewHelper extends AbstractViewHelper
         $content = $this->renderChildren();
         $content = preg_replace('/^\s*$/m', '', $content);
         $content = preg_replace('/(\R){2,}/', '$1', $content);
+        $content = preg_replace('/(^.*$)(\R)(^,*$)/m', '$1,', $content);
 
         return $content;
     }
