@@ -5,7 +5,7 @@ namespace Digicademy\Lod\ViewHelpers;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2019 Torsten Schrade <Torsten.Schrade@adwmainz.de>
+ *  (c) Torsten Schrade <Torsten.Schrade@adwmainz.de>
  *
  *  All rights reserved
  *
@@ -32,6 +32,8 @@ class RemoveEmptyLinesViewHelper extends AbstractViewHelper
 {
 
     /**
+     * Removes empty lines from encapsulated template content
+     *
      * @return string
      */
     public function render()

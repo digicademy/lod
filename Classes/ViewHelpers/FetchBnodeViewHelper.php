@@ -26,12 +26,26 @@ namespace Digicademy\Lod\ViewHelpers;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use Digicademy\Lod\Domain\Model\Bnode;
 use Digicademy\Lod\Domain\Repository\StatementRepository;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 class FetchBnodeViewHelper extends AbstractViewHelper
 {
+
+    /**
+     * Initialize ViewHelper arguments
+     *
+     * @return void
+     * @throws
+     */
+    public function initializeArguments() {
+        $this->registerArgument(
+            'bnode',
+            '\Digicademy\Lod\Domain\Model\Bnode',
+            'Blank node for which statements should be fetched',
+            true
+        );
+    }
 
     /**
      * @var \Digicademy\Lod\Domain\Repository\StatementRepository
@@ -47,14 +61,14 @@ class FetchBnodeViewHelper extends AbstractViewHelper
     }
 
     /**
-     * @param \Digicademy\Lod\Domain\Model\Bnode $bnode
+     * Fetches statements for a given blank node
      *
      * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      * @throws \TYPO3\CMS\Extbase\Exception
      */
-    public function render(Bnode $bnode)
+    public function render()
     {
-        return $this->statementRepository->findByPosition('subject', $bnode);
+        return $this->statementRepository->findByPosition('subject', $this->arguments['bnode']);
     }
 
 }

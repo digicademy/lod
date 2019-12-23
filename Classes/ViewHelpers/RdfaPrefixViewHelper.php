@@ -5,7 +5,7 @@ namespace Digicademy\Lod\ViewHelpers;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2019 Torsten Schrade <Torsten.Schrade@adwmainz.de>
+ *  (c) Torsten Schrade <Torsten.Schrade@adwmainz.de>
  *
  *  All rights reserved
  *
@@ -40,7 +40,7 @@ class RdfaPrefixViewHelper extends AbstractViewHelper
     public function initializeArguments() {
         $this->registerArgument(
             'namespaces',
-            'TYPO3\CMS\Extbase\Persistence\Generic\QueryResult',
+            '\TYPO3\CMS\Extbase\Persistence\QueryResultInterface',
             'Namespaces of the resource',
             true
         );

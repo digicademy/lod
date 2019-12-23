@@ -32,13 +32,28 @@ class DetermineEntityViewHelper extends AbstractViewHelper
 {
 
     /**
-     * @param object $entity
+     * Initialize ViewHelper arguments
      *
-     * @return integer
+     * @return void
+     * @throws
      */
-    public function render($entity)
+    public function initializeArguments() {
+        $this->registerArgument(
+            'entity',
+            'object',
+            'Entity for which to determine the class',
+            true
+        );
+    }
+
+    /**
+     * Determine the class for the given entity
+     *
+     * @return string
+     */
+    public function render()
     {
-        return get_class($entity);
+        return get_class($this->arguments['entity']);
     }
 
 }

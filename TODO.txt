@@ -1,10 +1,7 @@
 ## NEXT #########################################
 
 - add ViewHelpers
--- refactor ViewHelpers for 8/9
--- Trim
 -- EscapeViewHelper(format: ttl, nt, json-ld)
--- GetPropertyPathViewHelper
 
 - BE: add all rdf datatypes according to 2014 W3C https://www.w3.org/TR/rdf-schema
 -- html templates => add external links
