@@ -1,21 +1,20 @@
-<f:for each="{namespaces}" as="namespace">@prefix {namespace.prefix}: <{namespace.iri}> .
+{namespace lod = Digicademy\Lod\ViewHelpers}<f:for each="{namespaces}" as="namespace">@prefix {namespace.prefix}: <{namespace.iri}> .
 </f:for>
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix void: <http://rdfs.org/ns/void#> .
 
 <{f:if(condition : '{resource.namespace}', then : '{resource.namespace.iri}', else : '')}{resource.value}>
-    <f:if condition="{resource.label}">rdfs:label "{resource.label}" ;</f:if>
-    <f:if condition="{resource.comment}">rdfs:comment "{resource.comment}" ;</f:if>
+    <f:if condition="{resource.label}">rdfs:label {lod:EscapeLiteral(literal : resource.label, format : 'turtle')} ;</f:if>
+    <f:if condition="{resource.comment}">rdfs:comment {lod:EscapeLiteral(literal : resource.comment, format : 'turtle')} ;</f:if>
     <f:for each="{statements}" as="statement">
     <f:render partial="Api/Object" arguments="{statement : statement}" />
     </f:for>
     <f:if condition="{resource.record}">
     dc:relation [
-        <f:if condition="{resource.record.label}">rdfs:label "{resource.record.label}" ;</f:if>
-        <f:if condition="{resource.record.comment}">rdfs:comment "{resource.record.comment}"</f:if>
+        <f:if condition="{resource.record.label}">rdfs:label {lod:EscapeLiteral(literal : resource.record.label, format : 'turtle')} ;</f:if>
+        <f:if condition="{resource.record.comment}">rdfs:comment {lod:EscapeLiteral(literal : resource.record.comment, format : 'turtle')}</f:if>
     ] ;
     </f:if>
     <f:render partial="Api/AlternativeSerializations" arguments="{mode : 'object', resource : resource, environment : environment}"/>
 
 <f:render partial="Api/AlternativeSerializations" arguments="{mode : 'subject', resource : resource, environment : environment}"/>
-

@@ -1,7 +1,7 @@
 {
     "name": "digicademy/lod",
     "type": "typo3-cms-extension",
-    "description": "LOD for TYPO3",
+    "description": "Linked Open Data for TYPO3",
     "homepage": "http://www.digitale-akademie.de",
     "authors": [
         {
@@ -12,13 +12,14 @@
         }
     ],
     "license": ["GPL-2.0+"],
-    "keywords": ["TYPO3", "History", "Digital Humanities", "RDF"],
+    "keywords": ["TYPO3", "Linked Open Data", "LOD", "RDF"],
     "support": {
         "issues": "https://github.com/digicademy/lod/issues"
     },
-    "version": "0.0.0",
+    "version": "1.0.0",
     "require": {
-        "typo3/cms-core": ">=7.6.0 || <=9.5.99"
+        "typo3/cms-core": ">=7.6.0 || <=9.5.99",
+        "ext-json": "*"
     },
     "replace": {
         "lod": "self.version",
