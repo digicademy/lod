@@ -3,7 +3,7 @@
         <{statement.predicate.namespace.prefix}:{statement.predicate.value} rdf:resource="{statement.object.namespace.iri}{statement.object.value}"/>
     </f:case>
     <f:case value="Digicademy\Lod\Domain\Model\Literal">
-        <{statement.predicate.namespace.prefix}:{statement.predicate.value}>
+        <{statement.predicate.namespace.prefix}:{statement.predicate.value}{lod:LangDatatype(literal : statement.object, format : 'rdfxml')}>
             {statement.object.value}
         </{statement.predicate.namespace.prefix}:{statement.predicate.value}>
     </f:case>

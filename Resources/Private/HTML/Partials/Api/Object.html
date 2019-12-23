@@ -7,7 +7,7 @@
         </a>
     </f:case>
     <f:case value="Digicademy\Lod\Domain\Model\Literal">
-        <span about="{iri}" property="{statement.predicate.namespace.prefix}:{statement.predicate.value}">{statement.object.value}</span>
+        <span about="{iri}" property="{statement.predicate.namespace.prefix}:{statement.predicate.value}"{lod:LangDatatype(literal : statement.object, format : 'rdfa')}>{statement.object.value}</span>
     </f:case>
     <f:case default="Digicademy\Lod\Domain\Model\Bnode">
         <f:for each="{lod:FetchBnode(bnode : statement.object)}" as="bnodeStatement">

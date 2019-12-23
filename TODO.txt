@@ -1,9 +1,5 @@
 ## NEXT #########################################
 
-- BE: add all rdf datatypes according to 2014 W3C https://www.w3.org/TR/rdf-schema
--- object data templates => add language tags and data types
--- comment field => multiline / type text
-
 - iri => should have statements irre field => create triples for resource
 
 - transform term => graph (set of triples with a uri)
@@ -16,6 +12,11 @@
 -- tables configurable with TS
 -- setting if IRIs should be deleted if records are deleted
 -- think about hidden settings
+
+- BE
+-- create new wizards at predicate + subject selects in statement table
+-- create new wizard at possibly all select fields
+-- ensure new wizards are configurable by TSConfig
 
 - create ext_tables_static+adt.sql for rdf/rdfs
 
@@ -36,6 +37,9 @@
 - documentation
 
 - create extension with schema.org vocab
+
+- named graph
+-- add graph name to statements in nt template?
 
 - patterns
 -- think about "patterns" that will create sets of triples on save of graph record (maybe next version?)
@@ -148,11 +152,3 @@ plugin.tx_lod_about {
 ---
 
 - switch wizard_add to 'script' and test editing
-
-- default templates for
--- showSelectedTerms
--- showSelectedVocabulary
-
-- create new wizards at predicate + subject selects in statement table
-- create new wizard at possibly all select fields
-- ensure new wizards are configurable by TSConfig

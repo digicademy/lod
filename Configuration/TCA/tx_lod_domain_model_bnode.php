@@ -77,9 +77,9 @@ return array(
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_bnode.comment',
             'config' => array(
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
+                'type' => 'text',
+                'cols' => '30',
+                'rows' => '5',
             ),
         ),
         'value' => array(

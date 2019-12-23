@@ -3,7 +3,7 @@
 {iri} <{statement.predicate.namespace.iri}{statement.predicate.value}> <{f:if(condition : '{statement.object.namespace}', then : '{statement.object.namespace.iri}', else : '')}{statement.object.value}> .
 </f:case>
 <f:case value="Digicademy\Lod\Domain\Model\Literal">
-{iri} <{statement.predicate.namespace.iri}{statement.predicate.value}> {lod:EscapeLiteral(literal : statement.object.value, format : 'ntriples')} .
+{iri} <{statement.predicate.namespace.iri}{statement.predicate.value}> {lod:EscapeLiteral(literal : statement.object.value, format : 'ntriples')}{lod:LangDatatype(literal : statement.object, format : 'ntriples')} .
 </f:case>
 <f:case default="Digicademy\Lod\Domain\Model\Bnode">
 {iri} <{statement.predicate.namespace.iri}{statement.predicate.value}> _:{statement.object.value} .

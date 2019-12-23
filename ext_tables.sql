@@ -29,7 +29,7 @@ CREATE TABLE tx_lod_domain_model_iri (
 
     type int(11) DEFAULT '0' NOT NULL,
     label varchar(255) DEFAULT '' NOT NULL,
-    comment varchar(255) DEFAULT '' NOT NULL,
+    comment text NOT NULL,
     value varchar(255) DEFAULT '' NOT NULL,
 
     namespace int(11) DEFAULT '0' NOT NULL,
@@ -54,6 +54,8 @@ CREATE TABLE tx_lod_domain_model_iri (
     KEY value (value),
     KEY namespace (namespace),
     KEY representations (representations),
+    KEY tablename (tablename),
+    KEY record (record),
 
 ) ENGINE=InnoDB;
 
@@ -63,7 +65,7 @@ CREATE TABLE tx_lod_domain_model_bnode (
     pid int(11) DEFAULT '0' NOT NULL,
 
     label varchar(255) DEFAULT '' NOT NULL,
-    comment varchar(255) DEFAULT '' NOT NULL,
+    comment text NOT NULL,
     value varchar(255) DEFAULT '' NOT NULL,
 
     tstamp int(11) unsigned DEFAULT '0' NOT NULL,
@@ -181,7 +183,7 @@ CREATE TABLE tx_lod_domain_model_term (
     pid int(11) DEFAULT '0' NOT NULL,
 
     label varchar(255) DEFAULT '' NOT NULL,
-    comment varchar(255) DEFAULT '' NOT NULL,
+    comment text NOT NULL,
 
     statements int(11) unsigned DEFAULT '0' NOT NULL,
 
