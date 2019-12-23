@@ -6,18 +6,25 @@
 -- show
 --- html: as RDFa
 
+- BE: add all rdf datatypes according to 2014 W3C https://www.w3.org/TR/rdf-schema
+
 => html templates => add external links
 => object data templates => add language tags and data types
 
-- iri => should have statements irre field => create triples for resource
-- vocabulary should consist of iri terms => skip terms table
-- think about statement collections => making it easy to add "static" sets to an IRI
-
 - add ViewHelpers
 -- Trim
--- .. (easyRDF?)
+-- EscapeViewHelper(format: ttl, nt, json-ld)
+-- GetPropertyPathViewHelper
 
-- IriRepository: allow ordering by label
+- IriRepository: make ordering settable by TypoScript/Plugin/Parameter (label/value)
+
+- iri => should have statements irre field => create triples for resource
+
+- transform term => graph (set of triples with a uri)
+-- add IRI/Bnode field that denotes each graph record (mandatory)
+-- irre field => foreign field is the context
+-- offer named graphs over API (maybe next version)? => maybe this already works
+-- skip label and comment fields; set title to uri/bnode + label field;
 
 - create DataBase Hook / Handler that creates IRIs when creating records
 -- tables configurable with TS
@@ -26,17 +33,20 @@
 
 - create ext_tables_static+adt.sql for rdf/rdfs
 
-- BE: add all rdf datatypes according to 2014 W3C https://www.w3.org/TR/rdf-schema
+- patterns
+-- think about "patterns" that will create sets of triples on save of graph record (maybe next version?)
+-- maybe a record is a "fixed pattern"?
+-- or maybe a flexform approach?
 
 - basic string search in label/comment for API plugin (list view)
 
-- think about term & vocabulary data model: namespace/iri for term? vocab?
-
-- term plugin
+- term plugin => delete?
 
 - vocabulary plugin
+- a vocabulary consists of a selection of named graphs
 
-- think about statements in records => BE interface etc.
+- think about statements in records
+-- give example for embedding JSON-LD in pages (or any other record) output (triples retrieved by record assignment)
 
 - check type param rewriting in TYPO3 9.5
 
@@ -149,8 +159,6 @@ plugin.tx_lod_about {
 
 ---
 
-- transfer stuff from CVMA to vocabulary ext
-
 - switch wizard_add to 'script' and test editing
 
 - default templates for
@@ -159,8 +167,4 @@ plugin.tx_lod_about {
 
 - create new wizards at predicate + subject selects in statement table
 - create new wizard at possibly all select fields
-
-- RDF serializer => condense statements in RDF/XML + TTL output
-
-- write some helpful repository methods to retrieve values from s/p/o's
--- maybe from a view helper?
+- ensure new wizards are configurable by TSConfig
