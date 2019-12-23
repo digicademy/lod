@@ -1,16 +1,18 @@
 {namespace lod = Digicademy\Lod\ViewHelpers}
 
-<f:switch expression="{lod:DetermineEntity(entity : object)}">
+<f:switch expression="{lod:DetermineEntity(entity : statement.object)}">
     <f:case value="Digicademy\Lod\Domain\Model\Iri">
-        <f:render partial="Api/Link" arguments="{action : 'show', value : object.value, type : '1991', resource : object}" />
+        <a about="{iri}" property="{statement.predicate.namespace.prefix}:{statement.predicate.value}" resource="{statement.object.namespace.iri}{statement.object.value}" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '1991', resource : statement.object}) -> f:format.htmlspecialchars()}">
+            {statement.object.value}
+        </a>
     </f:case>
     <f:case value="Digicademy\Lod\Domain\Model\Literal">
-        {object.value}
+        <span about="{iri}" property="{statement.predicate.namespace.prefix}:{statement.predicate.value}">{statement.object.value}</span>
     </f:case>
     <f:case default="Digicademy\Lod\Domain\Model\Bnode">
-        <f:for each="{lod:FetchBnode(bnode : object)}" as="bnodeStatement">
-            <div>
-            <f:render partial="Api/Object" arguments="{object : bnodeStatement.object}" />
+        <f:for each="{lod:FetchBnode(bnode : statement.object)}" as="bnodeStatement">
+            <div about="{iri}" property="{statement.predicate.namespace.prefix}:{statement.predicate.value}" resource="_:{statement.object.value}">
+            <f:render partial="Api/Object" arguments="{iri : '_:{statement.object.value}', statement : bnodeStatement}" />
             </div>
         </f:for>
     </f:case>

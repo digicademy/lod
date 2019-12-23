@@ -1,113 +1,122 @@
 {namespace lod = Digicademy\Lod\ViewHelpers}
+<div prefix="void: http://rdfs.org/ns/void# dc: http://purl.org/dc/elements/1.1/ {lod:RdfaPrefix(namespaces : namespaces)}" resource="{f:if(condition : '{resource.namespace}', then : '{resource.namespace.iri}', else : '')}{resource.value}">
+    <h2 class="resource-iri">
+        <a href="{f:if(condition : '{resource.namespace}', then : '{resource.namespace.iri}', else : '')}{resource.value}">
+        &lt;<f:if condition="{resource.namespace}">{resource.namespace.iri}</f:if>{resource.value}&gt;
+        </a>
+    </h2>
 
-<h2 class="resource-iri">
-    <a href="{f:if(condition : '{resource.namespace}', then : '{resource.namespace.iri}', else : '')}{resource.value}">
-    &lt;<f:if condition="{resource.namespace}">{resource.namespace.iri}</f:if>{resource.value}&gt;
-    </a>
-</h2>
-
-<h3>
-    <f:translate key="about.show.alternativeSerialization" />
-</h3>
-<ul class="resource-serialization">
-    <li class="jsonld">
-        <f:render partial="Api/Link" arguments="{value : 'JSON-LD', action : action, type : '2014', resource : resource}" />
-    </li>
-    <li class="rdfxml">
-        <f:render partial="Api/Link" arguments="{value : 'RDF/XML', action : action, type : '2004', resource : resource}" />
-    </li>
-    <li class="turtle">
-        <f:render partial="Api/Link" arguments="{value : 'Turtle', action : action, type : '2011', resource : resource}" />
-    </li>
-    <li class="ntriples">
-        <f:render partial="Api/Link" arguments="{value : 'N-Triples', action : action, type : '2013', resource : resource}" />
-    </li>
-</ul>
-
-<h3>
-    <f:translate key="about.show.description" />
-</h3>
-<dl class="resource-description">
-    <dt>
-        <f:render partial="Api/Link" arguments="{value : 'type',  action : action, type : '1991', resource : {value: 'type', namespace : {prefix : 'rdf'}}}" />
-    </dt>
-    <f:switch expression="{resource.type}">
-        <f:case value="1">
-            <dd>
-                <f:render partial="Api/Link" arguments="{value : 'Class',  action : action, type : '1991', resource : {value : 'Class', namespace : {prefix : 'rdf'}}}" />
-            </dd>
-        </f:case>
-        <f:case value="2">
-            <dd>
-                <f:render partial="Api/Link" arguments="{value : 'Property',  action : action, type : '1991', resource : {value : 'Property', namespace : {prefix : 'rdf'}}}" />
-            </dd>
-        </f:case>
-    </f:switch>
-    <f:if condition="{resource.label}">
-        <dt>
-            <f:render partial="Api/Link" arguments="{value : 'label',  action : action, type : '1991', resource : {value : 'label', namespace : {prefix : 'rdfs'}}}" />
-        </dt>
-        <dd>{resource.label}</dd>
-    </f:if>
-    <f:if condition="{resource.comment}">
-        <dt>
-            <f:render partial="Api/Link" arguments="{value : 'comment',  action : action, type : '1991', resource : {value : 'comment', namespace : {prefix : 'rdfs'}}}" />
-        </dt>
-        <dd>{resource.comment}</dd>
-    </f:if>
-</dl>
-
-<f:if condition="{statements}">
-    <h3 class="resource-statements-header">
-        <f:translate key="about.show.statements" />
+    <h3>
+        <f:translate key="about.show.alternativeSerialization" />
     </h3>
-    <f:groupedFor each="{statements}" as="groupedStatements" groupBy="name" groupKey="name">
-        <h4 class="resource-statements-graphname">
-        <f:if condition="{name}">
-            <f:then>
-                &lt;{name.iri}&gt;
-            </f:then>
-            <f:else>
-                &lt;Default graph&gt;
-            </f:else>
-        </f:if>
-        </h4>
-        <dl class="resource-statements">
-            <f:for each="{groupedStatements}" as="statement">
-                <dt>
-                    <f:render partial="Api/Link" arguments="{value : statement.predicate.value,  action : action, type : '1991', resource : statement.predicate}" />
-                </dt>
+    <ul class="resource-serialization">
+        <li class="jsonld">
+            <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '2014', resource : resource}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
+                <span property="void:feature" resource="http://www.w3.org/ns/formats/JSON-LD">JSON-LD</span>
+            </a>
+        </li>
+        <li class="rdfxml">
+            <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '2004', resource : resource}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
+                <span property="void:feature" resource="http://www.w3.org/ns/formats/RDF_XML">RDF/XML</span>
+            </a>
+        </li>
+        <li class="turtle">
+            <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '2011', resource : resource}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
+                <span property="void:feature" resource="http://www.w3.org/ns/formats/Turtle">Turtle</span>
+            </a>
+        </li>
+        <li class="ntriples">
+            <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '2013', resource : resource}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
+                <span property="void:feature" resource="http://www.w3.org/ns/formats/N-Triples">N-Triples</span>
+            </a>
+        </li>
+    </ul>
+
+    <h3>
+        <f:translate key="about.show.description" />
+    </h3>
+    <dl class="resource-description">
+        <dt>
+            <f:render partial="Api/Link" arguments="{value : 'type',  action : action, type : '1991', resource : {value: 'type', namespace : {prefix : 'rdf'}}}" />
+        </dt>
+        <f:switch expression="{resource.type}">
+            <f:case value="1">
                 <dd>
-                    <f:render partial="Api/Object" arguments="{object : statement.object}" />
+                    <f:render partial="Api/Link" arguments="{value : 'Class',  action : action, type : '1991', resource : {value : 'Class', namespace : {prefix : 'rdf'}}}" />
                 </dd>
-            </f:for>
-        </dl>
-    </f:groupedFor>
-</f:if>
-
-<f:if condition="{resource.record}">
-    <h3 class="resource-record-header">
-        <f:translate key="about.show.record" />
-    </h3>
-    <dl class="resource-record">
-        <f:if condition="{resource.record.label}">
+            </f:case>
+            <f:case value="2">
+                <dd>
+                    <f:render partial="Api/Link" arguments="{value : 'Property',  action : action, type : '1991', resource : {value : 'Property', namespace : {prefix : 'rdf'}}}" />
+                </dd>
+            </f:case>
+        </f:switch>
+        <f:if condition="{resource.label}">
             <dt>
-                <f:render partial="Api/Link" arguments="{value : 'label',  action : action, type : '1991', resource : {namespace : {prefix : 'rdfs'}}}" />
+                <f:render partial="Api/Link" arguments="{value : 'label',  action : action, type : '1991', resource : {value : 'label', namespace : {prefix : 'rdfs'}}}" />
             </dt>
-            <dd>
-                {resource.record.label}
-            </dd>
+            <dd property="rdfs:label">{resource.label}</dd>
         </f:if>
-        <f:if condition="{resource.record.comment}">
+        <f:if condition="{resource.comment}">
             <dt>
-                <f:render partial="Api/Link" arguments="{value : 'comment',  action : action, type : '1991', resource : {namespace : {prefix : 'rdfs'}}}" />
+                <f:render partial="Api/Link" arguments="{value : 'comment',  action : action, type : '1991', resource : {value : 'comment', namespace : {prefix : 'rdfs'}}}" />
             </dt>
-            <dd>
-                {resource.record.comment}
-            </dd>
+            <dd property="rdfs:comment">{resource.comment}</dd>
         </f:if>
     </dl>
-    <f:comment>
-        {resource.record.domainObject} => contains the mapped extbase domain object for further processing
-    </f:comment>
-</f:if>
+
+    <f:if condition="{statements}">
+        <h3 class="resource-statements-header">
+            <f:translate key="about.show.statements" />
+        </h3>
+        <f:groupedFor each="{statements}" as="groupedStatements" groupBy="name" groupKey="name">
+            <h4 class="resource-statements-graphname">
+            <f:if condition="{name}">
+                <f:then>
+                    &lt;{name.iri}&gt;
+                </f:then>
+                <f:else>
+                    &lt;Default graph&gt;
+                </f:else>
+            </f:if>
+            </h4>
+            <dl class="resource-statements">
+                <f:for each="{groupedStatements}" as="statement">
+                    <dt>
+                        <f:render partial="Api/Link" arguments="{value : statement.predicate.value,  action : action, type : '1991', resource : statement.predicate}" />
+                    </dt>
+                    <dd>
+                        <f:render partial="Api/Object" arguments="{iri: '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.iri}\', else : \'\')}{resource.value}', statement : statement}" />
+                    </dd>
+                </f:for>
+            </dl>
+        </f:groupedFor>
+    </f:if>
+
+    <f:if condition="{resource.record}">
+        <h3 class="resource-record-header">
+            <f:translate key="about.show.record" />
+        </h3>
+        <dl class="resource-record" property="dc:relation" resource="[_:eb0d307c-5915-4d1d-9444-52a8640ef80d]">
+            <f:if condition="{resource.record.label}">
+                <dt>
+                    <f:render partial="Api/Link" arguments="{value : 'label',  action : action, type : '1991', resource : {namespace : {prefix : 'rdfs'}}}" />
+                </dt>
+                <dd about="[_:eb0d307c-5915-4d1d-9444-52a8640ef80d]" property="rdfs:label">
+                    {resource.record.label}
+                </dd>
+            </f:if>
+            <f:if condition="{resource.record.comment}">
+                <dt>
+                    <f:render partial="Api/Link" arguments="{value : 'comment',  action : action, type : '1991', resource : {namespace : {prefix : 'rdfs'}}}" />
+                </dt>
+                <dd about="[_:eb0d307c-5915-4d1d-9444-52a8640ef80d]" property="rdfs:comment">
+                    {resource.record.comment}
+                </dd>
+            </f:if>
+        </dl>
+        <f:comment>
+            {resource.record.domainObject} => contains the mapped extbase domain object for further processing
+        </f:comment>
+    </f:if>
+</div>

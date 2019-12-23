@@ -1,22 +1,14 @@
 ## NEXT #########################################
 
-- API controller: templating
--- list
---- html: as RDFa
--- show
---- html: as RDFa
-
-- BE: add all rdf datatypes according to 2014 W3C https://www.w3.org/TR/rdf-schema
-
-=> html templates => add external links
-=> object data templates => add language tags and data types
-
 - add ViewHelpers
+-- refactor ViewHelpers for 8/9
 -- Trim
 -- EscapeViewHelper(format: ttl, nt, json-ld)
 -- GetPropertyPathViewHelper
 
-- IriRepository: make ordering settable by TypoScript/Plugin/Parameter (label/value)
+- BE: add all rdf datatypes according to 2014 W3C https://www.w3.org/TR/rdf-schema
+-- html templates => add external links
+-- object data templates => add language tags and data types
 
 - iri => should have statements irre field => create triples for resource
 
@@ -33,12 +25,9 @@
 
 - create ext_tables_static+adt.sql for rdf/rdfs
 
-- patterns
--- think about "patterns" that will create sets of triples on save of graph record (maybe next version?)
--- maybe a record is a "fixed pattern"?
--- or maybe a flexform approach?
-
-- basic string search in label/comment for API plugin (list view)
+- API plugin
+-- basic string search in label/comment for API plugin (list view)
+-- IriRepository: make ordering settable by TypoScript/Plugin/Parameter (label/value)
 
 - term plugin => delete?
 
@@ -53,6 +42,11 @@
 - documentation
 
 - create extension with schema.org vocab
+
+- patterns
+-- think about "patterns" that will create sets of triples on save of graph record (maybe next version?)
+-- maybe a record is a "fixed pattern"?
+-- or maybe a flexform approach?
 
 ---
 
