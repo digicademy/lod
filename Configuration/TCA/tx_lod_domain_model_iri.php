@@ -126,16 +126,7 @@ return array(
                 'size' => 1,
                 'maxitems' => 1,
                 'wizards' => array(
-                    'edit' => array(
-                        'type' => 'popup',
-                        'title' => 'Edit',
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_edit.gif',
-                        'popup_onlyOpenIfSelected' => 1,
-                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-                        'module' => array(
-                            'name' => 'wizard_edit',
-                        ),
-                    ),
+                    '_POSITION' => 'right',
                     'add' => Array(
                         'type' => 'popup',
                         'title' => 'Create new',
@@ -148,6 +139,16 @@ return array(
                         'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
                         'module' => array(
                             'name' => 'wizard_add',
+                        ),
+                    ),
+                    'edit' => array(
+                        'type' => 'popup',
+                        'title' => 'Edit',
+                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_edit.gif',
+                        'popup_onlyOpenIfSelected' => 1,
+                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
+                        'module' => array(
+                            'name' => 'wizard_edit',
                         ),
                     ),
                 ),
@@ -188,6 +189,7 @@ return array(
                 'minitems' => 0,
                 'maxitems' => 1,
                 'wizards' => array(
+                    '_POSITION' => 'right',
                     'edit' => Array(
                         'type' => 'popup',
                         'title' => 'Edit',

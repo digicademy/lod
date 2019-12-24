@@ -1,25 +1,61 @@
 /*
 TCEFORM {
-	pages {
-		statements.PAGE_TSCONFIG_ID =
-	}
-	tt_content {
-		statements.PAGE_TSCONFIG_ID =
-	}
-	tx_lod_domain_model_statements {
-		subject.suggest.default.pidList =
-		subject.PAGE_TSCONFIG_ID =
-		predicate.suggest.default.pidList =
-		predicate.PAGE_TSCONFIG_ID =
-		object.suggest.default.pidList =
-		object.PAGE_TSCONFIG_ID =
-	}
-	tx_lod_domain_model_iri {
-		namespace.PAGE_TSCONFIG_IDLIST =
-		namespace.PAGE_TSCONFIG_ID =
-	}
-	tx_lod_domain_model_vocabulary {
-		terms.PAGE_TSCONFIG_IDLIST =
-	}
+    tx_lod_domain_model_iri {
+        namespace {
+            PAGE_TSCONFIG_IDLIST =
+            PAGE_TSCONFIG_ID =
+        }
+    }
+    tx_lod_domain_model_statement {
+        subject {
+            PAGE_TSCONFIG_ID =
+            suggest.default {
+                pidList =
+            }
+        }
+        predicate {
+            PAGE_TSCONFIG_ID =
+            suggest.default {
+                pidList =
+            }
+        }
+        object {
+            PAGE_TSCONFIG_ID =
+            suggest.default {
+                pidList =
+            }
+        }
+        graph {
+            PAGE_TSCONFIG_ID =
+            suggest.default {
+                pidList =
+            }
+        }
+    }
+    tx_lod_domain_model_graph {
+        iri {
+            PAGE_TSCONFIG_ID =
+            suggest.default {
+                pidList =
+            }
+        }
+    }
+    tx_lod_domain_model_vocabulary {
+        iri {
+            PAGE_TSCONFIG_ID =
+            suggest.default {
+                pidList =
+            }
+        }
+        terms {
+            PAGE_TSCONFIG_IDLIST =
+        }
+    }
+}
+
+TCAdefaults {
+    tx_lod_domain_model_statement {
+        pid =
+    }
 }
 */

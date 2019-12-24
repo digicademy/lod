@@ -85,6 +85,7 @@ return array(
                 'minitems' => 1,
                 'maxitems' => 1,
                 'wizards' => array(
+                    '_POSITION' => 'right',
                     'suggest' => Array(
                         'type' => 'suggest',
                         'title' => 'Find records',
@@ -94,16 +95,6 @@ return array(
                         'tx_lod_domain_model_iri' => [
                             'searchCondition' => 'type = 1',
                         ],
-                    ),
-                    'edit' => array(
-                        'type' => 'popup',
-                        'title' => 'Edit',
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_edit.gif',
-                        'popup_onlyOpenIfSelected' => 1,
-                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-                        'module' => array(
-                            'name' => 'wizard_edit',
-                        ),
                     ),
                     'add_vocabulary_iri' => Array(
                         'type' => 'popup',
@@ -117,6 +108,16 @@ return array(
                         'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
                         'module' => array(
                             'name' => 'wizard_add',
+                        ),
+                    ),
+                    'edit' => array(
+                        'type' => 'popup',
+                        'title' => 'Edit',
+                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_edit.gif',
+                        'popup_onlyOpenIfSelected' => 1,
+                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
+                        'module' => array(
+                            'name' => 'wizard_edit',
                         ),
                     ),
                 ),

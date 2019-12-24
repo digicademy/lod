@@ -23,7 +23,12 @@ return array(
         'showRecordFieldList' => 'hidden, subject, subject_type, subject_uid, predicate, predicate_type, predicate_uid, object, object_type, object_uid, graph',
     ),
     'types' => array(
-        '1' => array('showitem' => 'hidden, subject, subject_type, subject_uid, predicate, predicate_type, predicate_uid, object, object_type, object_uid, graph, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'hidden, --palette--;;triple, graph, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+    ),
+    'palettes' => array(
+        'triple' => array(
+            'showitem' => 'subject, predicate, object'
+        ),
     ),
     'columns' => array(
         'hidden' => array(
@@ -79,12 +84,27 @@ return array(
                 'minitems' => 0,
                 'maxitems' => 1,
                 'wizards' => array(
+                    '_POSITION' => 'right',
                     'suggest' => Array(
                         'type' => 'suggest',
                         'title' => 'Find records',
                         'default' => [
-                            'additionalSearchFields' => 'label,comment',
+                            'additionalSearchFields' => 'label',
                         ],
+                    ),
+                    'add' => Array(
+                        'type' => 'popup',
+                        'title' => 'Create new graph',
+                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_add.gif',
+                        'params' => array(
+                            'table' => 'tx_lod_domain_model_graph',
+                            'pid' => '###PAGE_TSCONFIG_ID###',
+                            'setValue' => 'set'
+                        ),
+                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
+                        'module' => array(
+                            'name' => 'wizard_add',
+                        ),
                     ),
                     'edit' => array(
                         'type' => 'popup',
@@ -94,20 +114,6 @@ return array(
                         'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
                         'module' => array(
                             'name' => 'wizard_edit',
-                        ),
-                    ),
-                    'add' => Array(
-                        'type' => 'popup',
-                        'title' => 'Create new namespace',
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_add.gif',
-                        'params' => array(
-                            'table' => 'tx_lod_domain_model_namespace',
-                            'pid' => '###PAGE_TSCONFIG_ID###',
-                            'setValue' => 'set'
-                        ),
-                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-                        'module' => array(
-                            'name' => 'wizard_add',
                         ),
                     ),
                 ),
@@ -129,12 +135,11 @@ return array(
                     ),
                 ),
                 'prepend_tname' => 1,
-                // prevent http://wiki.typo3.org/Exception/CMS/1353170925
-                // 'foreign_table' => 'tx_lod_domain_model_iri',
                 'size' => 1,
                 'minitems' => 1,
                 'maxitems' => 1,
                 'wizards' => array(
+                    '_POSITION' => 'top',
                     'suggest' => Array(
                         'type' => 'suggest',
                         'title' => 'Find records',
@@ -144,16 +149,6 @@ return array(
                         'tx_lod_domain_model_iri' => [
                             'searchCondition' => 'type = 1',
                         ],
-                    ),
-                    'edit' => array(
-                        'type' => 'popup',
-                        'title' => 'Edit',
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_edit.gif',
-                        'popup_onlyOpenIfSelected' => 1,
-                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-                        'module' => array(
-                            'name' => 'wizard_edit',
-                        ),
                     ),
                     'add_subject_iri' => Array(
                         'type' => 'popup',
@@ -183,6 +178,16 @@ return array(
                             'name' => 'wizard_add',
                         ),
                     ),
+                    'edit' => array(
+                        'type' => 'popup',
+                        'title' => 'Edit',
+                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_edit.gif',
+                        'popup_onlyOpenIfSelected' => 1,
+                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
+                        'module' => array(
+                            'name' => 'wizard_edit',
+                        ),
+                    ),
                 ),
             ),
         ),
@@ -193,9 +198,9 @@ return array(
                 'type' => 'group',
                 'internal_type' => 'db',
                 'allowed' => 'tx_lod_domain_model_iri',
-                'prepend_tname' => 1,
                 // prevent http://wiki.typo3.org/Exception/CMS/1353170925
                 'foreign_table' => 'tx_lod_domain_model_iri',
+                'prepend_tname' => 1,
                 'size' => 1,
                 'filter' => array (
                     array(
@@ -208,6 +213,7 @@ return array(
                 'minitems' => 1,
                 'maxitems' => 1,
                 'wizards' => array(
+                    '_POSITION' => 'top',
                     'suggest' => Array(
                         'type' => 'suggest',
                         'title' => 'Find records',
@@ -217,16 +223,6 @@ return array(
                         'tx_lod_domain_model_iri' => [
                             'searchCondition' => 'type = 2',
                         ],
-                    ),
-                    'edit' => array(
-                        'type' => 'popup',
-                        'title' => 'Edit',
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_edit.gif',
-                        'popup_onlyOpenIfSelected' => 1,
-                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-                        'module' => array(
-                            'name' => 'wizard_edit',
-                        ),
                     ),
                     'add_predicate_iri' => Array(
                         'type' => 'popup',
@@ -240,6 +236,16 @@ return array(
                         'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
                         'module' => array(
                             'name' => 'wizard_add',
+                        ),
+                    ),
+                    'edit' => array(
+                        'type' => 'popup',
+                        'title' => 'Edit',
+                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_edit.gif',
+                        'popup_onlyOpenIfSelected' => 1,
+                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
+                        'module' => array(
+                            'name' => 'wizard_edit',
                         ),
                     ),
                 ),
@@ -261,12 +267,11 @@ return array(
                     ),
                 ),
                 'prepend_tname' => 1,
-                // prevent http://wiki.typo3.org/Exception/CMS/1353170925
-                // 'foreign_table' => 'tx_lod_domain_model_iri',
                 'size' => 1,
                 'minitems' => 1,
                 'maxitems' => 1,
                 'wizards' => array(
+                    '_POSITION' => 'top',
                     'suggest' => Array(
                         'type' => 'suggest',
                         'title' => 'Find records',
@@ -279,16 +284,6 @@ return array(
                         'tx_lod_domain_model_iri' => [
                             'searchCondition' => 'type = 1',
                         ],
-                    ),
-                    'edit' => Array(
-                        'type' => 'popup',
-                        'title' => 'Edit record',
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_edit.gif',
-                        'JSopenParams' => 'height=550,width=900,status=0,menubar=0,scrollbars=1',
-                        'popup_onlyOpenIfSelected' => 1,
-                        'module' => array(
-                            'name' => 'wizard_edit',
-                        ),
                     ),
                     'add_object_iri' => Array(
                         'type' => 'popup',
@@ -330,6 +325,16 @@ return array(
                         'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
                         'module' => array(
                             'name' => 'wizard_add',
+                        ),
+                    ),
+                    'edit' => Array(
+                        'type' => 'popup',
+                        'title' => 'Edit record',
+                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_edit.gif',
+                        'JSopenParams' => 'height=550,width=900,status=0,menubar=0,scrollbars=1',
+                        'popup_onlyOpenIfSelected' => 1,
+                        'module' => array(
+                            'name' => 'wizard_edit',
                         ),
                     ),
                 ),
