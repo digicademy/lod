@@ -61,6 +61,9 @@
             <trans-unit id="tx_lod_domain_model_iri.representations">
                 <source>Representations</source>
             </trans-unit>
+            <trans-unit id="tx_lod_domain_model_iri.statements">
+                <source>Statements</source>
+            </trans-unit>
 
             <trans-unit id="tx_lod_domain_model_representation">
                 <source>Representation</source>
@@ -99,6 +102,9 @@
             <trans-unit id="tx_lod_domain_model_bnode.value">
                 <source>Value</source>
             </trans-unit>
+            <trans-unit id="tx_lod_domain_model_bnode.statements">
+                <source>Statements</source>
+            </trans-unit>
 
             <trans-unit id="tx_lod_domain_model_literal">
                 <source>Literal</source>
@@ -116,8 +122,8 @@
             <trans-unit id="tx_lod_domain_model_statement">
                 <source>Statement</source>
             </trans-unit>
-            <trans-unit id="tx_lod_domain_model_statement.name">
-                <source>Name</source>
+            <trans-unit id="tx_lod_domain_model_statement.graph">
+                <source>Graph</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_statement.subject">
                 <source>Subject</source>
@@ -129,21 +135,27 @@
                 <source>Object</source>
             </trans-unit>
 
-            <trans-unit id="tx_lod_domain_model_term">
-                <source>Term</source>
+            <trans-unit id="tx_lod_domain_model_graph">
+                <source>Graph</source>
             </trans-unit>
-            <trans-unit id="tx_lod_domain_model_term.label">
-                <source>label</source>
+            <trans-unit id="tx_lod_domain_model_graph.iri">
+                <source>IRI</source>
             </trans-unit>
-            <trans-unit id="tx_lod_domain_model_term.comment">
+            <trans-unit id="tx_lod_domain_model_graph.label">
+                <source>Label</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_graph.comment">
                 <source>Comment</source>
             </trans-unit>
-            <trans-unit id="tx_lod_domain_model_term.statements">
+            <trans-unit id="tx_lod_domain_model_graph.statements">
                 <source>Statements</source>
             </trans-unit>
 
             <trans-unit id="tx_lod_domain_model_vocabulary">
                 <source>Vocabulary</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_vocabulary.iri">
+                <source>IRI</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_vocabulary.label">
                 <source>Label</source>

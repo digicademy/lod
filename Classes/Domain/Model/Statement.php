@@ -32,11 +32,11 @@ class Statement extends AbstractEntity
 {
 
     /**
-     * name
+     * graph
      *
-     * @var \Digicademy\Lod\Domain\Model\IriNamespace
+     * @var \Digicademy\Lod\Domain\Model\Graph
      */
-    protected $name;
+    protected $graph;
 
     /**
      * subject
@@ -60,25 +60,25 @@ class Statement extends AbstractEntity
     protected $object;
 
     /**
-     * Returns the name
+     * Returns the named graph
      *
-     * @return \Digicademy\Lod\Domain\Model\IriNamespace $name
+     * @return \Digicademy\Lod\Domain\Model\Graph $graph
      */
-    public function getName()
+    public function getGraph()
     {
-        return $this->name;
+        return $this->graph;
     }
 
     /**
-     * Sets the name
+     * Sets the graph
      *
-     * @param \Digicademy\Lod\Domain\Model\IriNamespace $name
+     * @param \Digicademy\Lod\Domain\Model\Graph $graph
      *
      * @return void
      */
-    public function setName(\Digicademy\Lod\Domain\Model\IriNamespace $name)
+    public function setGraph(\Digicademy\Lod\Domain\Model\Graph $graph)
     {
-        $this->name = $name;
+        $this->graph = $graph;
     }
 
     /**

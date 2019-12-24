@@ -1,8 +1,10 @@
 <?php
 return array(
     'ctrl' => array(
-        'title' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_vocabulary',
+        'title' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_graph',
         'label' => 'label',
+        'label_alt' => 'iri',
+        'label_alt_force' => 1,
         'default_sortby' => 'label',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -15,13 +17,13 @@ return array(
             'endtime' => 'endtime',
         ),
         'searchFields' => 'label,comment',
-        'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_vocabulary.svg'
+        'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_graph.svg'
     ),
     'interface' => array(
-        'showRecordFieldList' => 'hidden, iri, label, comment, terms',
+        'showRecordFieldList' => 'hidden, iri, label, comment, statements',
     ),
     'types' => array(
-        '1' => array('showitem' => 'hidden, iri, label, comment, terms, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'hidden, iri, label, comment, statements, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
     ),
     'columns' => array(
         'hidden' => array(
@@ -65,7 +67,7 @@ return array(
         ),
         'iri' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_vocabulary.iri',
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_graph.iri',
             'config' => array(
                 'type' => 'group',
                 'internal_type' => 'db',
@@ -105,7 +107,7 @@ return array(
                             'name' => 'wizard_edit',
                         ),
                     ),
-                    'add_vocabulary_iri' => Array(
+                    'add_graph_iri' => Array(
                         'type' => 'popup',
                         'title' => 'Create new IRI',
                         'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_add.gif',
@@ -124,7 +126,7 @@ return array(
         ),
         'label' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_vocabulary.label',
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_graph.label',
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
@@ -133,25 +135,32 @@ return array(
         ),
         'comment' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_vocabulary.comment',
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_graph.comment',
             'config' => array(
                 'type' => 'text',
                 'cols' => '30',
                 'rows' => '5',
             ),
         ),
-        'terms' => array(
+        'statements' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_vocabulary.terms',
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_graph.statements',
             'config' => array(
-                'type' => 'select',
-                'renderType' => 'selectMultipleSideBySide',
-                'foreign_table' => 'tx_lod_domain_model_graph',
-                'foreign_table_where' => 'AND tx_lod_domain_model_graph.pid IN (###PAGE_TSCONFIG_IDLIST###) ORDER BY tx_lod_domain_model_graph.label',
-                'MM' => 'tx_lod_vocabulary_graph_mm',
-                'size' => 10,
-                'autoSizeMax' => 30,
+                'type' => 'inline',
+                'foreign_table' => 'tx_lod_domain_model_statement',
+                'foreign_field' => 'graph',
+                'foreign_sortby' => 'graph_sorting',
                 'maxitems' => 9999,
+                'appearance' => array(
+                    'collapseAll' => 1,
+                    'expandSingle' => 1,
+                    'levelLinksPosition' => 'bottom',
+                    'newRecordLinkAddTitle' => 1,
+                    'useSortable' => 1,
+                ),
+                'behaviour' => array(
+                    'disableMovingChildrenWithParent' => 1,
+                ),
             ),
         ),
     ),

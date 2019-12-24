@@ -49,7 +49,7 @@ class Vocabulary extends AbstractEntity
     /**
      * terms
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Term>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Graph>
      */
     protected $terms = null;
 
@@ -100,7 +100,7 @@ class Vocabulary extends AbstractEntity
     /**
      * Returns the terms
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Term> $terms
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Graph> $terms
      */
     public function getTerms()
     {
@@ -110,7 +110,7 @@ class Vocabulary extends AbstractEntity
     /**
      * Sets the terms
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Term> $terms
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Graph> $terms
      *
      * @return void
      */

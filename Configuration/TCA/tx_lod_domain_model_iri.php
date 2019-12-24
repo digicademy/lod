@@ -34,10 +34,11 @@ return array(
             namespace,
             value, 
             record,
-            representations',
+            representations,
+            statements',
     ),
     'types' => array(
-        '1' => array('showitem' => 'hidden, type, label, comment, namespace, record, value, representations, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'hidden, type, label, comment, namespace, record, value, representations, statements, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
     ),
     'columns' => array(
         'hidden' => array(
@@ -183,7 +184,6 @@ return array(
                 'allowed' => '*',
                 'internal_type' => 'db',
                 'prepend_tname' => true,
-//                'prepend_tname' => false,
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
@@ -216,6 +216,28 @@ return array(
                     'showSynchronizationLink' => 1,
                     'showPossibleLocalizationRecords' => 1,
                     'showAllLocalizationLink' => 1
+                ),
+            ),
+        ),
+        'statements' => array(
+            'exclude' => 1,
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.statements',
+            'config' => array(
+                'type' => 'inline',
+                'foreign_table' => 'tx_lod_domain_model_statement',
+                'foreign_field' => 'subject_uid',
+                'foreign_table_field' => 'subject_type',
+                'foreign_sortby' => 'iri_sorting',
+                'maxitems' => 9999,
+                'appearance' => array(
+                    'collapseAll' => 1,
+                    'expandSingle' => 1,
+                    'levelLinksPosition' => 'bottom',
+                    'newRecordLinkAddTitle' => 1,
+                    'useSortable' => 1,
+                ),
+                'behaviour' => array(
+                    'disableMovingChildrenWithParent' => 1,
                 ),
             ),
         ),

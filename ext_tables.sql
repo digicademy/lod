@@ -38,6 +38,8 @@ CREATE TABLE tx_lod_domain_model_iri (
     tablename varchar(255) DEFAULT '' NOT NULL,
     record varchar(255) DEFAULT '' NOT NULL,
 
+    statements int(11) unsigned DEFAULT '0' NOT NULL,
+
     tstamp int(11) unsigned DEFAULT '0' NOT NULL,
     crdate int(11) unsigned DEFAULT '0' NOT NULL,
     cruser_id int(11) unsigned DEFAULT '0' NOT NULL,
@@ -56,6 +58,7 @@ CREATE TABLE tx_lod_domain_model_iri (
     KEY representations (representations),
     KEY tablename (tablename),
     KEY record (record),
+    KEY statements (statements),
 
 ) ENGINE=InnoDB;
 
@@ -67,6 +70,8 @@ CREATE TABLE tx_lod_domain_model_bnode (
     label varchar(255) DEFAULT '' NOT NULL,
     comment text NOT NULL,
     value varchar(255) DEFAULT '' NOT NULL,
+
+    statements int(11) unsigned DEFAULT '0' NOT NULL,
 
     tstamp int(11) unsigned DEFAULT '0' NOT NULL,
     crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -82,6 +87,7 @@ CREATE TABLE tx_lod_domain_model_bnode (
 
     KEY label (label),
     KEY value (value),
+    KEY statements (statements),
 
 ) ENGINE=InnoDB;
 
@@ -150,12 +156,18 @@ CREATE TABLE tx_lod_domain_model_statement (
     pid int(11) DEFAULT '0' NOT NULL,
 
     subject varchar(255) DEFAULT '' NOT NULL,
-    predicate varchar(255) DEFAULT '' NOT NULL,
-    object varchar(255) DEFAULT '' NOT NULL,
+    subject_type varchar(255) DEFAULT '' NOT NULL,
+    subject_uid int(11) DEFAULT '0' NOT NULL,
 
-    name int(11) DEFAULT '0' NOT NULL,
-    term int(11) unsigned DEFAULT '0' NOT NULL,
-    records int(11) unsigned DEFAULT '0' NOT NULL,
+    predicate varchar(255) DEFAULT '' NOT NULL,
+    predicate_type varchar(255) DEFAULT '' NOT NULL,
+    predicate_uid int(11) DEFAULT '0' NOT NULL,
+
+    object varchar(255) DEFAULT '' NOT NULL,
+    object_type varchar(255) DEFAULT '' NOT NULL,
+    object_uid int(11) DEFAULT '0' NOT NULL,
+
+    graph int(11) DEFAULT '0' NOT NULL,
 
     tstamp int(11) unsigned DEFAULT '0' NOT NULL,
     crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -165,6 +177,9 @@ CREATE TABLE tx_lod_domain_model_statement (
     starttime int(11) unsigned DEFAULT '0' NOT NULL,
     endtime int(11) unsigned DEFAULT '0' NOT NULL,
     sorting int(11) unsigned DEFAULT '0' NOT NULL,
+    graph_sorting int(11) unsigned DEFAULT '0' NOT NULL,
+    iri_sorting int(11) unsigned DEFAULT '0' NOT NULL,
+    bnode_sorting int(11) unsigned DEFAULT '0' NOT NULL,
 
     PRIMARY KEY (uid),
     KEY pid (pid),
@@ -172,16 +187,16 @@ CREATE TABLE tx_lod_domain_model_statement (
     KEY subject (subject),
     KEY predicate (predicate),
     KEY object (object),
-    KEY term (term),
-    KEY records (records),
+    KEY graph (graph),
 
 ) ENGINE=InnoDB;
 
-CREATE TABLE tx_lod_domain_model_term (
+CREATE TABLE tx_lod_domain_model_graph (
 
     uid int(11) NOT NULL auto_increment,
     pid int(11) DEFAULT '0' NOT NULL,
 
+    iri int(11) unsigned DEFAULT '0' NOT NULL,
     label varchar(255) DEFAULT '' NOT NULL,
     comment text NOT NULL,
 
@@ -199,6 +214,7 @@ CREATE TABLE tx_lod_domain_model_term (
     KEY pid (pid),
 
     KEY label (label),
+    KEY iri (iri),
     KEY statements (statements),
 
 ) ENGINE=InnoDB;
@@ -208,8 +224,9 @@ CREATE TABLE tx_lod_domain_model_vocabulary (
     uid int(11) NOT NULL auto_increment,
     pid int(11) DEFAULT '0' NOT NULL,
 
+    iri int(11) unsigned DEFAULT '0' NOT NULL,
     label varchar(255) DEFAULT '' NOT NULL,
-    comment varchar(255) DEFAULT '' NOT NULL,
+    comment text NOT NULL,
 
     terms int(11) unsigned DEFAULT '0' NOT NULL,
 
@@ -229,7 +246,7 @@ CREATE TABLE tx_lod_domain_model_vocabulary (
 
 ) ENGINE=InnoDB;
 
-CREATE TABLE tx_lod_vocabulary_term_mm (
+CREATE TABLE tx_lod_vocabulary_graph_mm (
     uid_local int(11) unsigned DEFAULT '0' NOT NULL,
     uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
     sorting int(11) unsigned DEFAULT '0' NOT NULL,

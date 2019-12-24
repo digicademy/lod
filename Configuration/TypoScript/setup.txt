@@ -1,34 +1,5 @@
 # libraries
 
-# @see: https://www.w3.org/TR/turtle/#h3_sec-escapes
-lib.tx_lod.escape = TEXT
-lib.tx_lod.escape {
-	current = 1
-	replacement {
-		10.search = \
-		10.replace = \\
-		20.search = "
-		20.replace = \"
-		30.search = '
-		30.replace = \'
-		40.search = /\t/
-		40.replace = \t
-		40.useRegExp = 1
-		50.search = /\b/
-		50.replace = \b
-		50.useRegExp = 1
-		60.search = /\n/
-		60.replace = \n
-		60.useRegExp = 1
-		70.search = /\r/
-		70.replace = \r
-		70.useRegExp = 1
-		80.search = /\f/
-		80.replace = \f
-		80.useRegExp = 1
-	}
-}
-
 lib.tx_lod.apiPlugin = CONTENT
 lib.tx_lod.apiPlugin {
     table = tt_content

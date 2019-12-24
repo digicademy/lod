@@ -40,6 +40,7 @@ class DataHandler
      */
     public function processDatamap_postProcessFieldArray($status, $table, $id, &$fieldArray, &$pObj)
     {
+        // automatically generate XML conformant UUIDs as identifiers for new bnodes
         if (
             $table == 'tx_lod_domain_model_bnode'
         ) {
@@ -75,6 +76,36 @@ class DataHandler
                 $fieldArray['value'] = $uuid;
             }
         }
+
+        // keep subject, predicate, object values synchronised (with and without prepended table names)
+        if (
+            $table == 'tx_lod_domain_model_statement'
+        ) {
+
+            switch ($status) {
+                case 'update':
+                case 'new':
+                    foreach (['subject', 'predicate', 'object'] as $key => $value) {
+                        if (
+                            array_key_exists($value . '_uid', $fieldArray) == false &&
+                            array_key_exists($value . '_type', $fieldArray) == false &&
+                            array_key_exists($value, $fieldArray) == true
+                        ) {
+                            $tableNameAndUid = BackendUtility::splitTable_Uid($fieldArray[$value]);
+                            $fieldArray[$value . '_type'] = $tableNameAndUid[0];
+                            $fieldArray[$value .'_uid'] = $tableNameAndUid[1];
+                        } elseif (
+                            array_key_exists($value . '_uid', $fieldArray) == true &&
+                            array_key_exists($value . '_type', $fieldArray) == true &&
+                            array_key_exists($value, $fieldArray) == false
+                            ) {
+                            $fieldArray[$value] = $fieldArray[$value . '_type'] . '_' . $fieldArray[$value . '_uid'];
+                        }
+                    }
+                    break;
+            }
+        }
+
     }
 
     /**

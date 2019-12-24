@@ -28,14 +28,20 @@ namespace Digicademy\Lod\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
-class Term extends AbstractEntity
+class Graph extends AbstractEntity
 {
+
+    /**
+     * IRI
+     *
+     * @var \Digicademy\Lod\Domain\Model\Iri
+     */
+    protected $iri;
 
     /**
      * label
      *
      * @var string
-     * @validate NotEmpty
      */
     protected $label;
 
@@ -53,6 +59,28 @@ class Term extends AbstractEntity
      * @lazy
      */
     protected $statements;
+
+    /**
+     * Returns the graph iri
+     *
+     * @return \Digicademy\Lod\Domain\Model\Iri $iri
+     */
+    public function getIri()
+    {
+        return $this->iri;
+    }
+
+    /**
+     * Sets the graph iri
+     *
+     * @param \Digicademy\Lod\Domain\Model\Iri $iri
+     *
+     * @return void
+     */
+    public function setIri(\Digicademy\Lod\Domain\Model\Iri $iri)
+    {
+        $this->iri = $iri;
+    }
 
     /**
      * Returns the label

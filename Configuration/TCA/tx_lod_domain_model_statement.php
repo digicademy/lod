@@ -5,7 +5,7 @@ return array(
         'label' => 'subject',
         'label_alt' => 'predicate,object',
         'label_alt_force' => 1,
-        'default_sortby' => 'name',
+        'default_sortby' => 'graph',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -20,10 +20,10 @@ return array(
         'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_statement.svg'
     ),
     'interface' => array(
-        'showRecordFieldList' => 'hidden, subject, predicate, object, name',
+        'showRecordFieldList' => 'hidden, subject, subject_type, subject_uid, predicate, predicate_type, predicate_uid, object, object_type, object_uid, graph',
     ),
     'types' => array(
-        '1' => array('showitem' => 'hidden, subject, predicate, object, name, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'hidden, subject, subject_type, subject_uid, predicate, predicate_type, predicate_uid, object, object_type, object_uid, graph, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
     ),
     'columns' => array(
         'hidden' => array(
@@ -65,16 +65,16 @@ return array(
                 ),
             ),
         ),
-        'name' => array(
+        'graph' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_statement.name',
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_statement.graph',
             'config' => array(
                 'type' => 'group',
                 'internal_type' => 'db',
-                'allowed' => 'tx_lod_domain_model_namespace',
+                'allowed' => 'tx_lod_domain_model_graph',
                 'prepend_tname' => false,
                 // prevent http://wiki.typo3.org/Exception/CMS/1353170925
-                'foreign_table' => 'tx_lod_domain_model_namespace',
+                'foreign_table' => 'tx_lod_domain_model_graph',
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
@@ -83,7 +83,7 @@ return array(
                         'type' => 'suggest',
                         'title' => 'Find records',
                         'default' => [
-                            'additionalSearchFields' => 'prefix,iri',
+                            'additionalSearchFields' => 'label,comment',
                         ],
                     ),
                     'edit' => array(
@@ -335,7 +335,32 @@ return array(
                 ),
             ),
         ),
-        'term' => array(
+        'subject_type' => array(
+            'config' => array(
+                'type' => 'passthrough',
+            ),
+        ),
+        'subject_uid' => array(
+            'config' => array(
+                'type' => 'passthrough',
+            ),
+        ),
+        'predicate_type' => array(
+            'config' => array(
+                'type' => 'passthrough',
+            ),
+        ),
+        'predicate_uid' => array(
+            'config' => array(
+                'type' => 'passthrough',
+            ),
+        ),
+        'object_type' => array(
+            'config' => array(
+                'type' => 'passthrough',
+            ),
+        ),
+        'object_uid' => array(
             'config' => array(
                 'type' => 'passthrough',
             ),

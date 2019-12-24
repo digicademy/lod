@@ -69,11 +69,12 @@
         <h3 class="resource-statements-header">
             <f:translate key="about.show.statements" />
         </h3>
-        <f:groupedFor each="{statements}" as="groupedStatements" groupBy="name" groupKey="name">
+
+        <f:groupedFor each="{statements}" as="groupedStatements" groupBy="graph" groupKey="graph">
             <h4 class="resource-statements-graphname">
-            <f:if condition="{name}">
+            <f:if condition="{graph}">
                 <f:then>
-                    &lt;{name.iri}&gt;
+                    &lt;{graph.iri.namespace.iri.value}{graph.iri.value}&gt;
                 </f:then>
                 <f:else>
                     &lt;Default graph&gt;

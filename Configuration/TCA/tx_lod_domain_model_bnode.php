@@ -19,10 +19,10 @@ return array(
         'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_bnode.svg'
     ),
     'interface' => array(
-        'showRecordFieldList' => 'hidden, label, comment, value',
+        'showRecordFieldList' => 'hidden, label, comment, value, statements',
     ),
     'types' => array(
-        '1' => array('showitem' => 'hidden, label, comment, value, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'hidden, label, comment, value, statements, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
     ),
     'columns' => array(
         'hidden' => array(
@@ -90,6 +90,28 @@ return array(
                 'readOnly' => 1,
                 'size' => 30,
                 'eval' => 'required,trim,unique'
+            ),
+        ),
+        'statements' => array(
+            'exclude' => 1,
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_bnode.statements',
+            'config' => array(
+                'type' => 'inline',
+                'foreign_table' => 'tx_lod_domain_model_statement',
+                'foreign_field' => 'subject_uid',
+                'foreign_table_field' => 'subject_type',
+                'foreign_sortby' => 'bnode_sorting',
+                'maxitems' => 9999,
+                'appearance' => array(
+                    'collapseAll' => 1,
+                    'expandSingle' => 1,
+                    'levelLinksPosition' => 'bottom',
+                    'newRecordLinkAddTitle' => 1,
+                    'useSortable' => 1,
+                ),
+                'behaviour' => array(
+                    'disableMovingChildrenWithParent' => 1,
+                ),
             ),
         ),
     ),
