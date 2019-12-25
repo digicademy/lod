@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve">
 <style type="text/css">
-	.st0{font-family:'RobotoSlab-Black';}
-	.st1{font-size:14px;}
+	.st0{enable-background:new    ;}
 </style>
-<path d="M7,8.5H4.6v2.4c0,0.2-0.1,0.3-0.3,0.3H3.6c-0.2,0-0.3-0.1-0.3-0.3V8.5H0.8c-0.2,0-0.3-0.1-0.3-0.3V7.5
-	c0-0.2,0.1-0.3,0.3-0.3h2.4V4.7c0-0.2,0.1-0.3,0.3-0.3h0.7c0.2,0,0.3,0.1,0.3,0.3v2.4H7c0.2,0,0.3,0.1,0.3,0.3v0.7
-	C7.4,8.4,7.2,8.5,7,8.5z"/>
-<text transform="matrix(1 0 0 1 7.462 13.1468)" class="st0 st1">L</text>
+<g class="st0">
+	<path d="M0.3,16v-1.8l1.1-0.3V4.4L0.1,4.1V2.3h4.4v11.6l1.1,0.3V16H0.3z"/>
+</g>
+<path d="M15.5,7.5h-3v3c0,0.3-0.2,0.4-0.4,0.4h-0.9c-0.3,0-0.4-0.2-0.4-0.4v-3h-3c-0.3,0-0.4-0.2-0.4-0.4V6.2c0-0.3,0.2-0.4,0.4-0.4
+	h3v-3c0-0.3,0.2-0.4,0.4-0.4h0.9c0.3,0,0.4,0.2,0.4,0.4v3h3c0.3,0,0.4,0.2,0.4,0.4v0.9C16,7.3,15.8,7.5,15.5,7.5z"/>
 </svg>
