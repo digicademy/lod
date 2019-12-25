@@ -1,8 +1,35 @@
 ## NEXT #########################################
 
-- value generator for IRIs
+tx_lod {
+    settings {
+        idGenerator {
+            tx_lod_domain_model_iri {
+                type = [UidGenerator, UuidGenerator, ForeignUidGenerator, ForeignTableUidGenerator, none, user]
+                UidGenerator {
+                    entityPrefix = E
+                    propertyPrefix = P
+                }
+                UuidGenerator {}
+                ForeignUidGenerator {}
+                ForeignTableUidGenerator {}
+            }
+            tx_lod_domain_model_bnode {
+                type = [UidGenerator, UuidGenerator, user]
+                UidGenerator {
+                    bnodePrefix = b
+                }
+                UuidGenerator {}
+            }
+        }
+    }
+}
+
+- id generator for IRIs
+-- should be configurable on a per folder basis
 -- manual
 -- standard: E + UID and P + UID
+-- UUID
+-- custom id generator
 
 -- create DataBase Hook / Handler that creates IRIs when creating records
 --- tables configurable with TS

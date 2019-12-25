@@ -100,8 +100,8 @@ return array(
                     ),
                     'add_graph_iri' => Array(
                         'type' => 'popup',
-                        'title' => 'tx_lod_actions_add_iri',
-                        'icon' => 'EXT:lod/Resources/Public/Icons/wizard_add_iri.svg',
+                        'title' => 'Create new IRI',
+                        'icon' => 'tx_lod_actions_add_iri',
                         'params' => array(
                             'table' => 'tx_lod_domain_model_iri',
                             'pid' => '###PAGE_TSCONFIG_ID###',

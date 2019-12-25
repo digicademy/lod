@@ -38,8 +38,8 @@ return array(
             statements',
     ),
     'types' => array(
-        '1' => array('showitem' => 'hidden, type, label, comment, namespace, record, value, representations, statements, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
-        '2' => array('showitem' => 'hidden, type, label, comment, namespace, record, value, representations, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'hidden, value, type, namespace, label, comment, record, representations, statements, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '2' => array('showitem' => 'hidden, value, type, namespace, label, comment, record, representations, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
     ),
     'columns' => array(
         'hidden' => array(
@@ -127,7 +127,6 @@ return array(
                 'size' => 1,
                 'maxitems' => 1,
                 'wizards' => array(
-                    '_POSITION' => 'right',
                     'add' => Array(
                         'type' => 'popup',
                         'title' => 'Create new',
@@ -161,7 +160,9 @@ return array(
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'required,trim'
+                'eval' => 'required,trim',
+                // 'eval' => 'required,trim,unique' // for system wide unique IRIs
+                // 'readOnly' => 1, // recommended if id generator is used
             ),
         ),
         'record' => array(

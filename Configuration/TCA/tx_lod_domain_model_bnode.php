@@ -19,10 +19,10 @@ return array(
         'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_bnode.svg'
     ),
     'interface' => array(
-        'showRecordFieldList' => 'hidden, label, comment, value, statements',
+        'showRecordFieldList' => 'hidden, value, label, comment, statements',
     ),
     'types' => array(
-        '1' => array('showitem' => 'hidden, label, comment, value, statements, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'hidden, value, label, comment, statements, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
     ),
     'columns' => array(
         'hidden' => array(
