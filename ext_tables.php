@@ -60,3 +60,27 @@ $TCA['tt_content']['types']['list']['subtypes_addlist']['lod_vocabulary'] = 'pi_
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_lod_domain_model_vocabulary');
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_lod_domain_model_representation');
+
+// ICONS
+
+$iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+   \TYPO3\CMS\Core\Imaging\IconRegistry::class
+);
+
+$iconRegistry->registerIcon(
+   'tx_lod_actions_add_iri',
+   \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+   ['source' => 'EXT:lod/Resources/Public/Icons/tx_lod_actions_add_iri.svg']
+);
+
+$iconRegistry->registerIcon(
+   'tx_lod_actions_add_bnode',
+   \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+   ['source' => 'EXT:lod/Resources/Public/Icons/tx_lod_actions_add_bnode.svg']
+);
+
+$iconRegistry->registerIcon(
+   'tx_lod_actions_add_literal',
+   \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+   ['source' => 'EXT:lod/Resources/Public/Icons/tx_lod_actions_add_literal.svg']
+);

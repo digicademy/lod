@@ -180,7 +180,7 @@ class ItemMappingService
      *
      * @return void
      */
-    public function mapGenericProperty(&$domainObject)
+    public function mapGenericProperty($domainObject)
     {
         // map record property of IRI object (if not empty)
         if (get_class($domainObject) == 'Digicademy\Lod\Domain\Model\Iri') {

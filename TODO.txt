@@ -1,9 +1,7 @@
 ## NEXT #########################################
 
 - BE
--- set different new wizard icons
 -- hide statements field in IRIs for type property
--- iri/bnode irre fields should use overrideChildTca from 8.7
 
 - on save in popup:
 Uncaught TYPO3 Exception
@@ -25,6 +23,7 @@ Argument 1 passed to TYPO3\CMS\Backend\Controller\FormInlineAjaxController::addF
 - ensure 8.7 and 9.5 compatibility (esp. Doctrine)
 -- check type param rewriting in TYPO3 9.5
 -- alternatively give realUrl config
+-- iri/bnode irre fields should use overrideChildTca from 8.7
 
 - create ext_tables_static+adt.sql for rdf/rdfs
 

@@ -95,7 +95,7 @@ return array(
                     'add' => Array(
                         'type' => 'popup',
                         'title' => 'Create new graph',
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_add.gif',
+                        'icon' => 'actions-add',
                         'params' => array(
                             'table' => 'tx_lod_domain_model_graph',
                             'pid' => '###PAGE_TSCONFIG_ID###',
@@ -109,7 +109,7 @@ return array(
                     'edit' => array(
                         'type' => 'popup',
                         'title' => 'Edit',
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_edit.gif',
+                        'icon' => 'actions-open',
                         'popup_onlyOpenIfSelected' => 1,
                         'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
                         'module' => array(
@@ -153,7 +153,7 @@ return array(
                     'add_subject_iri' => Array(
                         'type' => 'popup',
                         'title' => 'Create new IRI',
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_add.gif',
+                        'icon' => 'tx_lod_actions_add_iri',
                         'params' => array(
                             'table' => 'tx_lod_domain_model_iri',
                             'pid' => '###PAGE_TSCONFIG_ID###',
@@ -167,7 +167,7 @@ return array(
                     'add_subject_bnode' => Array(
                         'type' => 'popup',
                         'title' => 'Create new blank node',
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_add.gif',
+                        'icon' => 'tx_lod_actions_add_bnode',
                         'params' => array(
                             'table' => 'tx_lod_domain_model_bnode',
                             'pid' => '###PAGE_TSCONFIG_ID###',
@@ -181,7 +181,7 @@ return array(
                     'edit' => array(
                         'type' => 'popup',
                         'title' => 'Edit',
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_edit.gif',
+                        'icon' => 'actions-open',
                         'popup_onlyOpenIfSelected' => 1,
                         'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
                         'module' => array(
@@ -227,7 +227,7 @@ return array(
                     'add_predicate_iri' => Array(
                         'type' => 'popup',
                         'title' => 'Create new',
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_add.gif',
+                        'icon' => 'tx_lod_actions_add_iri',
                         'params' => array(
                             'table' => 'tx_lod_domain_model_iri',
                             'pid' => '###PAGE_TSCONFIG_ID###',
@@ -241,7 +241,7 @@ return array(
                     'edit' => array(
                         'type' => 'popup',
                         'title' => 'Edit',
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_edit.gif',
+                        'icon' => 'actions-open',
                         'popup_onlyOpenIfSelected' => 1,
                         'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
                         'module' => array(
@@ -288,7 +288,7 @@ return array(
                     'add_object_iri' => Array(
                         'type' => 'popup',
                         'title' => 'Create new IRI',
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_add.gif',
+                        'icon' => 'tx_lod_actions_add_iri',
                         'params' => array(
                             'table' => 'tx_lod_domain_model_iri',
                             'pid' => '###PAGE_TSCONFIG_ID###',
@@ -302,7 +302,7 @@ return array(
                     'add_object_literal' => Array(
                         'type' => 'popup',
                         'title' => 'Create new literal',
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_add.gif',
+                        'icon' => 'tx_lod_actions_add_literal',
                         'params' => array(
                             'table' => 'tx_lod_domain_model_literal',
                             'pid' => '###PAGE_TSCONFIG_ID###',
@@ -316,7 +316,7 @@ return array(
                     'add_object_bnode' => Array(
                         'type' => 'popup',
                         'title' => 'Create new blank node',
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_add.gif',
+                        'icon' => 'tx_lod_actions_add_bnode',
                         'params' => array(
                             'table' => 'tx_lod_domain_model_bnode',
                             'pid' => '###PAGE_TSCONFIG_ID###',
@@ -330,7 +330,7 @@ return array(
                     'edit' => Array(
                         'type' => 'popup',
                         'title' => 'Edit record',
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_edit.gif',
+                        'icon' => 'actions-open',
                         'JSopenParams' => 'height=550,width=900,status=0,menubar=0,scrollbars=1',
                         'popup_onlyOpenIfSelected' => 1,
                         'module' => array(

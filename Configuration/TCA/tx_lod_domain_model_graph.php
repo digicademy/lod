@@ -100,8 +100,8 @@ return array(
                     ),
                     'add_graph_iri' => Array(
                         'type' => 'popup',
-                        'title' => 'Create new IRI',
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_add.gif',
+                        'title' => 'tx_lod_actions_add_iri',
+                        'icon' => 'EXT:lod/Resources/Public/Icons/wizard_add_iri.svg',
                         'params' => array(
                             'table' => 'tx_lod_domain_model_iri',
                             'pid' => '###PAGE_TSCONFIG_ID###',
@@ -115,7 +115,7 @@ return array(
                     'edit' => array(
                         'type' => 'popup',
                         'title' => 'Edit',
-                        'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_edit.gif',
+                        'icon' => 'actions-open',
                         'popup_onlyOpenIfSelected' => 1,
                         'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
                         'module' => array(
