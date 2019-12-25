@@ -84,3 +84,21 @@ $iconRegistry->registerIcon(
    \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
    ['source' => 'EXT:lod/Resources/Public/Icons/tx_lod_actions_add_literal.svg']
 );
+
+$iconRegistry->registerIcon(
+   'tx_lod_domain_model_iri',
+   \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+   ['source' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_iri.svg']
+);
+
+$iconRegistry->registerIcon(
+   'tx_lod_type_class',
+   \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+   ['source' => 'EXT:lod/Resources/Public/Icons/tx_lod_type_class.svg']
+);
+
+$iconRegistry->registerIcon(
+   'tx_lod_type_property',
+   \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+   ['source' => 'EXT:lod/Resources/Public/Icons/tx_lod_type_property.svg']
+);

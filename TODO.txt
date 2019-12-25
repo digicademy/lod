@@ -1,8 +1,5 @@
 ## NEXT #########################################
 
-- BE
--- hide statements field in IRIs for type property
-
 - on save in popup:
 Uncaught TYPO3 Exception
 Argument 1 passed to TYPO3\CMS\Backend\Controller\FormInlineAjaxController::addFlexFormDataStructurePointersFromAjaxContext() must be of the type array, null given, called in /var/www/vhosts/76.t3xdev.local/vendor/typo3/cms/typo3/sysext/backend/Classes/Controller/FormInlineAjaxController.php on line 77

@@ -4,7 +4,7 @@ return array(
         'title' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri',
         'label' => 'label',
         'label_alt' => 'value',
-        'default_sortby' => 'label,value',
+        'default_sortby' => 'type,label,value',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -18,9 +18,9 @@ return array(
         'type' => 'type',
         'typeicon_column' => 'type',
         'typeicon_classes' => [
-            'default' => 'ext-lod-type-class',
-            '1' => 'ext-lod-type-class',
-            '2' => 'ext-ld-type-property',
+            'default' => 'tx_lod_domain_model_iri',
+            '1' => 'tx_lod_type_class',
+            '2' => 'tx_lod_type_property',
         ],
         'searchFields' => 'label,comment,value',
         'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_iri.svg'
@@ -39,6 +39,7 @@ return array(
     ),
     'types' => array(
         '1' => array('showitem' => 'hidden, type, label, comment, namespace, record, value, representations, statements, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '2' => array('showitem' => 'hidden, type, label, comment, namespace, record, value, representations, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
     ),
     'columns' => array(
         'hidden' => array(
@@ -105,8 +106,8 @@ return array(
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => array(
-                    array('LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.type.I.1', 1, 'ext-lod-type-class'),
-                    array('LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.type.I.2', 2, 'ext-lod-type-property'),
+                    array('LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.type.I.1', 1, 'tx_lod_type_class'),
+                    array('LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.type.I.2', 2, 'tx_lod_type_property'),
                 ),
                 'size' => 1,
                 'maxitems' => 1,
