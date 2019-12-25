@@ -163,20 +163,6 @@ return array(
                 'eval' => 'required,trim'
             ),
         ),
-/*
-        'tablename' => array(
-            'exclude' => 1,
-            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.tablename',
-            'config' => array(
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'items' => [
-                    ['', ''],
-                ],
-                'special' => 'tables'
-            ),
-        ),
-*/
         'record' => array(
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.record',

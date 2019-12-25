@@ -35,7 +35,6 @@ CREATE TABLE tx_lod_domain_model_iri (
     namespace int(11) DEFAULT '0' NOT NULL,
     representations int(11) DEFAULT '0' NOT NULL,
 
-    tablename varchar(255) DEFAULT '' NOT NULL,
     record varchar(255) DEFAULT '' NOT NULL,
 
     statements int(11) unsigned DEFAULT '0' NOT NULL,
@@ -56,7 +55,6 @@ CREATE TABLE tx_lod_domain_model_iri (
     KEY value (value),
     KEY namespace (namespace),
     KEY representations (representations),
-    KEY tablename (tablename),
     KEY record (record),
     KEY statements (statements),
 

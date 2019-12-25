@@ -55,9 +55,6 @@
             <trans-unit id="tx_lod_domain_model_iri.record">
                 <source>Record</source>
             </trans-unit>
-            <trans-unit id="tx_lod_domain_model_iri.tablename">
-                <source>Tablename</source>
-            </trans-unit>
             <trans-unit id="tx_lod_domain_model_iri.representations">
                 <source>Representations</source>
             </trans-unit>

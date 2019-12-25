@@ -4,7 +4,6 @@
 -- set different new wizard icons
 -- hide statements field in IRIs for type property
 -- iri/bnode irre fields should use overrideChildTca from 8.7
--- tablename field in IRI still needed?
 
 - on save in popup:
 Uncaught TYPO3 Exception
@@ -30,6 +29,7 @@ Argument 1 passed to TYPO3\CMS\Backend\Controller\FormInlineAjaxController::addF
 - create ext_tables_static+adt.sql for rdf/rdfs
 
 - documentation
+-- use lists of controlled terms in the system (selects etc.)
 
 ### v.1.1 ###
 
@@ -41,6 +41,10 @@ Argument 1 passed to TYPO3\CMS\Backend\Controller\FormInlineAjaxController::addF
 -- IriRepository: make ordering settable by TypoScript/Plugin/Parameter (label/value)
 
 - create extension with schema.org vocab
+
+### v.1.3 ###
+
+- vocabulary importer
 
 ---
 
