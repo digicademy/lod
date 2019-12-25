@@ -35,7 +35,7 @@
                 <source>Type</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_iri.type.I.1">
-                <source>Class</source>
+                <source>Entity</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_iri.type.I.2">
                 <source>Property</source>

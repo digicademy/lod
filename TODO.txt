@@ -1,13 +1,14 @@
 ## NEXT #########################################
 
-- on save in popup:
-Uncaught TYPO3 Exception
-Argument 1 passed to TYPO3\CMS\Backend\Controller\FormInlineAjaxController::addFlexFormDataStructurePointersFromAjaxContext() must be of the type array, null given, called in /var/www/vhosts/76.t3xdev.local/vendor/typo3/cms/typo3/sysext/backend/Classes/Controller/FormInlineAjaxController.php on line 77
+- value generator for IRIs
+-- manual
+-- standard: E + UID and P + UID
 
 -- create DataBase Hook / Handler that creates IRIs when creating records
 --- tables configurable with TS
 --- setting if IRIs should be deleted if records are deleted
 --- think about hidden settings
+
 -- think about statements in records and vice versa
 --- give example for embedding JSON-LD in pages (or any other record) output (triples retrieved by record assignment)
 
@@ -17,7 +18,11 @@ Argument 1 passed to TYPO3\CMS\Backend\Controller\FormInlineAjaxController::addF
 - a vocabulary consists of a selection of named graphs
 - fix the terms field
 
-- ensure 8.7 and 9.5 compatibility (esp. Doctrine)
+- ensure 8.7 and 9.5 compatibility (esp. Doctrine) / add 7.6 branch and dev branch
+-- TCA migrations
+-- scan extension files
+-- hide label gone
+-- all tables icon in IRI record field broken icon
 -- check type param rewriting in TYPO3 9.5
 -- alternatively give realUrl config
 -- iri/bnode irre fields should use overrideChildTca from 8.7

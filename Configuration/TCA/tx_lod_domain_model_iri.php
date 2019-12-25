@@ -19,7 +19,7 @@ return array(
         'typeicon_column' => 'type',
         'typeicon_classes' => [
             'default' => 'tx_lod_domain_model_iri',
-            '1' => 'tx_lod_type_class',
+            '1' => 'tx_lod_type_entity',
             '2' => 'tx_lod_type_property',
         ],
         'searchFields' => 'label,comment,value',
@@ -106,7 +106,7 @@ return array(
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => array(
-                    array('LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.type.I.1', 1, 'tx_lod_type_class'),
+                    array('LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.type.I.1', 1, 'tx_lod_type_entity'),
                     array('LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.type.I.2', 2, 'tx_lod_type_property'),
                 ),
                 'size' => 1,

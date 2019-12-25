@@ -92,9 +92,9 @@ $iconRegistry->registerIcon(
 );
 
 $iconRegistry->registerIcon(
-   'tx_lod_type_class',
+   'tx_lod_type_entity',
    \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-   ['source' => 'EXT:lod/Resources/Public/Icons/tx_lod_type_class.svg']
+   ['source' => 'EXT:lod/Resources/Public/Icons/tx_lod_type_entity.svg']
 );
 
 $iconRegistry->registerIcon(
