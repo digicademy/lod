@@ -4,44 +4,56 @@ tx_lod {
     settings {
         identifierGenerator {
             tx_lod_domain_model_iri {
-                type = [UidIdentifierGenerator, UuidIdentifierGenerator, ForeignUidIdentifierGenerator, ForeignTableUidIdentifierGenerator, user]
-                UidIdentifierGenerator {
+                type = [
+                    Digicademy\Lod\Generator\UidIdentifierGenerator,
+                    Digicademy\Lod\Generator\UuidIdentifierGenerator,
+                    Digicademy\Lod\Generator\ForeignRecordIdentifierGenerator,
+                    Vendor\Package\My\Generator
+                ]
+                Digicademy\Lod\Generator\UidIdentifierGenerator {
                     entityPrefix = E
                     propertyPrefix = P
-                    bnodePrefix = b
                 }
-                UuidIdentifierGenerator {
+                Digicademy\Lod\Generator\UuidIdentifierGenerator {
                     entityPrefix = E
                     propertyPrefix = P
-                    bnodePrefix = b
                     xmlConformance = 1
                 }
-                ForeignUidIdentifierGenerator {}
-                ForeignTableUidIdentifierGenerator {}
+                Digicademy\Lod\Generator\ForeignRecordIdentifierGenerator {
+                    entityPrefix = E
+                    propertyPrefix = P
+                    includeTablename = 1
+                }
             }
             tx_lod_domain_model_bnode {
-                type = [UidIdentifierGenerator, UuidIdentifierGenerator, user]
-                UidGenerator {
-                    entityPrefix = E
-                    propertyPrefix = P
+                type = [
+                    Digicademy\Lod\Generator\UidIdentifierGenerator,
+                    Digicademy\Lod\Generator\UuidIdentifierGenerator,
+                    Vendor\Package\My\Generator
+                ]
+                Digicademy\Lod\Generator\UidIdentifierGenerator {
                     bnodePrefix = b
                 }
-                UuidIdentifierGenerator {
-                    entityPrefix = E
-                    propertyPrefix = P
+                Digicademy\Lod\Generator\UuidIdentifierGenerator, {
                     bnodePrefix = b
                     xmlConformance = 1
                 }
             }
         }
         tableTracking {
-            pages = 1
-            tt_content = 1
+            pages {
+                track = 1
+                enableFields {
+                    trackHide = 1
+                    trackDeleted = 1
+                }
+            }
+            tt_content {
+                track = 1
+            }
         }
     }
 }
-
-- id generator for IRIs
 
 -- tableTracking : create DataBase Hook / Handler that creates IRIs when creating records
 --- tables configurable with TS

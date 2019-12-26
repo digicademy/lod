@@ -162,8 +162,8 @@ return array(
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim',
-                // 'eval' => 'required,trim,unique' // for system wide unique IRIs
-                // 'readOnly' => 1, // recommended if id generator is used
+                // 'eval' => 'required,trim,unique' // for system wide mandatory and unique IRIs
+                // 'readOnly' => 1, // recommended if an identifier generator is used
             ),
         ),
         'record' => array(

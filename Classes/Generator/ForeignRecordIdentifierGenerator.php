@@ -26,44 +26,29 @@ namespace Digicademy\Lod\Generator;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-class UuidIdentifierGenerator extends AbstractIdentifierGenerator implements IdentifierGeneratorInterface
+use TYPO3\CMS\Backend\Utility\BackendUtility;
+
+class ForeignRecordIdentifierGenerator extends AbstractIdentifierGenerator implements IdentifierGeneratorInterface
 {
 
     /**
-     * Generates an (optionally xml conforming) uuid with a possible prefix for entities, properties or bnodes
+     * Takes the uid of the record associated with the IRI as basis for the identifier generation.
+     * Will only set an identifier if the record field in the IRI is set
      *
      * @return string
      */
     public function generate()
     {
-        if ($this->configuration['xmlConformance'] == '1') {
-            do {
-                $identifier = $this->createUUID();
-            } while (preg_match('/^[a-z]/', $identifier) !== 1);
-        } else {
-            $identifier = $this->createUUID();
+        $identifier = '';
+
+        if ($this->configuration['includeTablename'] == '1' && $this->record['record']) {
+            $identifier = $this->record['record'];
+        } elseif ($this->record['record']) {
+            $tableNameAndUid = BackendUtility::splitTable_Uid($this->record['record']);
+            $identifier = $tableNameAndUid[1];
         }
 
         return $this->setIdentifierPrefix($identifier);
-    }
-
-    /**
-     * Generates a universally unique identifier (UUID) according to RFC 4122 v4.
-     * The algorithm used here, might not be completely random.
-     *
-     * @return string The universally unique id
-     */
-    private function createUUID()
-    {
-        return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
-            mt_rand(0, 0xffff),
-            mt_rand(0, 0xffff),
-            mt_rand(0, 0xffff),
-            mt_rand(0, 0x0fff) | 0x4000,
-            mt_rand(0, 0x3fff) | 0x8000,
-            mt_rand(0, 0xffff),
-            mt_rand(0, 0xffff),
-            mt_rand(0, 0xffff));
     }
 
 }
