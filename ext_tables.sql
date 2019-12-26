@@ -47,6 +47,9 @@ CREATE TABLE tx_lod_domain_model_iri (
     starttime int(11) unsigned DEFAULT '0' NOT NULL,
     endtime int(11) unsigned DEFAULT '0' NOT NULL,
 
+    # needed for identifying a copy of a record
+    t3_origuid int(11) DEFAULT '0' NOT NULL,
+
     PRIMARY KEY (uid),
     KEY pid (pid),
 
@@ -79,6 +82,9 @@ CREATE TABLE tx_lod_domain_model_bnode (
     starttime int(11) unsigned DEFAULT '0' NOT NULL,
     endtime int(11) unsigned DEFAULT '0' NOT NULL,
     sorting int(11) unsigned DEFAULT '0' NOT NULL,
+
+    # needed for identifying a copy of a record
+    t3_origuid int(11) DEFAULT '0' NOT NULL,
 
     PRIMARY KEY (uid),
     KEY pid (pid),

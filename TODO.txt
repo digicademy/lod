@@ -2,36 +2,48 @@
 
 tx_lod {
     settings {
-        idGenerator {
+        identifierGenerator {
             tx_lod_domain_model_iri {
-                type = [UidGenerator, UuidGenerator, ForeignUidGenerator, ForeignTableUidGenerator, none, user]
+                type = [UidIdentifierGenerator, UuidIdentifierGenerator, ForeignUidIdentifierGenerator, ForeignTableUidIdentifierGenerator, user]
+                UidIdentifierGenerator {
+                    entityPrefix = E
+                    propertyPrefix = P
+                    bnodePrefix = b
+                }
+                UuidIdentifierGenerator {
+                    entityPrefix = E
+                    propertyPrefix = P
+                    bnodePrefix = b
+                    xmlConformance = 1
+                }
+                ForeignUidIdentifierGenerator {}
+                ForeignTableUidIdentifierGenerator {}
+            }
+            tx_lod_domain_model_bnode {
+                type = [UidIdentifierGenerator, UuidIdentifierGenerator, user]
                 UidGenerator {
                     entityPrefix = E
                     propertyPrefix = P
-                }
-                UuidGenerator {}
-                ForeignUidGenerator {}
-                ForeignTableUidGenerator {}
-            }
-            tx_lod_domain_model_bnode {
-                type = [UidGenerator, UuidGenerator, user]
-                UidGenerator {
                     bnodePrefix = b
                 }
-                UuidGenerator {}
+                UuidIdentifierGenerator {
+                    entityPrefix = E
+                    propertyPrefix = P
+                    bnodePrefix = b
+                    xmlConformance = 1
+                }
             }
+        }
+        tableTracking {
+            pages = 1
+            tt_content = 1
         }
     }
 }
 
 - id generator for IRIs
--- should be configurable on a per folder basis
--- manual
--- standard: E + UID and P + UID
--- UUID
--- custom id generator
 
--- create DataBase Hook / Handler that creates IRIs when creating records
+-- tableTracking : create DataBase Hook / Handler that creates IRIs when creating records
 --- tables configurable with TS
 --- setting if IRIs should be deleted if records are deleted
 --- think about hidden settings

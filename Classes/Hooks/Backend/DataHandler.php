@@ -24,108 +24,149 @@ namespace Digicademy\Lod\Hooks\Backend;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use Digicademy\Lod\Service\IdentifierGeneratorService;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class DataHandler
 {
 
     /**
-     * Generates XML conformant UUIDs for bnodes
+     * Ensures that fields in statement table are always in sync depending on editing context
      *
      * @param $status
      * @param $table
      * @param $id
      * @param $fieldArray
      * @param $pObj
+     * @throws
      */
     public function processDatamap_postProcessFieldArray($status, $table, $id, &$fieldArray, &$pObj)
     {
-        // automatically generate XML conformant UUIDs as identifiers for new bnodes
-        if (
-            $table == 'tx_lod_domain_model_bnode'
-        ) {
-            $generate = false;
-
-            switch ($status) {
-
-                case 'new':
-                    // copy record - can be guessed because in this case t3_origuid is filled and a origin record exists
-                    if ($fieldArray['t3_origuid'] > 0) {
-                        $originalRecord = BackendUtility::getRecord($table, (int)$fieldArray['t3_origuid'], 'value');
-                        if ($originalRecord['value']) {
-                            $generate = true;
-                        }
-                    // create record
-                    } elseif (empty($fieldArray['value'])) {
-                        $generate = true;
-                    }
-                    break;
-
-                case 'update':
-                    $record = BackendUtility::getRecord($table, (int)$id, 'value');
-                    if (empty($fieldArray['value']) && !$record['value']) {
-                        $generate = true;
-                    }
-                    break;
-            }
-
-            if ($generate == true) {
-                do {
-                    $uuid = $this->generateUUID();
-                } while (preg_match('/^[a-z]/', $uuid) !== 1);
-                $fieldArray['value'] = $uuid;
-            }
+        if ($table == 'tx_lod_domain_model_statement') {
+            $fieldArray = $this->synchronizeStatement($status, $fieldArray);
         }
-
-        // keep subject, predicate, object values synchronised (with and without prepended table names)
-        if (
-            $table == 'tx_lod_domain_model_statement'
-        ) {
-
-            switch ($status) {
-                case 'update':
-                case 'new':
-                    foreach (['subject', 'predicate', 'object'] as $key => $value) {
-                        if (
-                            array_key_exists($value . '_uid', $fieldArray) == false &&
-                            array_key_exists($value . '_type', $fieldArray) == false &&
-                            array_key_exists($value, $fieldArray) == true
-                        ) {
-                            $tableNameAndUid = BackendUtility::splitTable_Uid($fieldArray[$value]);
-                            $fieldArray[$value . '_type'] = $tableNameAndUid[0];
-                            $fieldArray[$value .'_uid'] = $tableNameAndUid[1];
-                        } elseif (
-                            array_key_exists($value . '_uid', $fieldArray) == true &&
-                            array_key_exists($value . '_type', $fieldArray) == true &&
-                            array_key_exists($value, $fieldArray) == false
-                            ) {
-                            $fieldArray[$value] = $fieldArray[$value . '_type'] . '_' . $fieldArray[$value . '_uid'];
-                        }
-                    }
-                    break;
-            }
-        }
-
     }
 
     /**
-     * Generates a universally unique identifier (UUID) according to RFC 4122 v4.
-     * The algorithm used here, might not be completely random. Copied from the identity extension.
+     * Implements identifier generation IRIs and bnodes and table tracking for IRIs
      *
-     * @return string The universally unique id
-     * @author Unknown
+     * @param $status
+     * @param $table
+     * @param $id
+     * @param $fieldArray
+     * @param $pObj
+     * @throws
      */
-    private function generateUUID()
+    public function processDatamap_afterDatabaseOperations($status, $table, $id, $fieldArray, $pObj)
     {
-        return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
-            mt_rand(0, 0xffff),
-            mt_rand(0, 0xffff),
-            mt_rand(0, 0xffff),
-            mt_rand(0, 0x0fff) | 0x4000,
-            mt_rand(0, 0x3fff) | 0x8000,
-            mt_rand(0, 0xffff),
-            mt_rand(0, 0xffff),
-            mt_rand(0, 0xffff));
+        // identifier generation for IRIs and bnodes
+        if ($table == 'tx_lod_domain_model_iri' || $table == 'tx_lod_domain_model_bnode') {
+            $this->generateIdentifier($status, $table, $id, $fieldArray, $pObj);
+        }
+    }
+
+    /**
+     * Keeps subject, predicate, object values synchronised (with and without prepended table names)
+     *
+     * @param string $status
+     * @param array $fieldArray
+     * @return array
+     */
+    private function synchronizeStatement($status, $fieldArray)
+    {
+        switch ($status) {
+            case 'update':
+            case 'new':
+                foreach (['subject', 'predicate', 'object'] as $key => $value) {
+                    if (
+                        array_key_exists($value . '_uid', $fieldArray) == false &&
+                        array_key_exists($value . '_type', $fieldArray) == false &&
+                        array_key_exists($value, $fieldArray) == true
+                    ) {
+                        $tableNameAndUid = BackendUtility::splitTable_Uid($fieldArray[$value]);
+                        $fieldArray[$value . '_type'] = $tableNameAndUid[0];
+                        $fieldArray[$value .'_uid'] = $tableNameAndUid[1];
+                    } elseif (
+                        array_key_exists($value . '_uid', $fieldArray) == true &&
+                        array_key_exists($value . '_type', $fieldArray) == true &&
+                        array_key_exists($value, $fieldArray) == false
+                        ) {
+                        $fieldArray[$value] = $fieldArray[$value . '_type'] . '_' . $fieldArray[$value . '_uid'];
+                    }
+                }
+                break;
+        }
+
+        return $fieldArray;
+    }
+
+    /**
+     * Generates identifiers using a generator specified in TSConfig
+     *
+     * @param $status
+     * @param $table
+     * @param $id
+     * @param $fieldArray
+     * @param $pObj
+     * @throws
+     */
+    private function generateIdentifier($status, $table, $id, $fieldArray, $pObj)
+    {
+        // get full record - in case it is a new record swap id from substNEWwithIDs
+        if ($status == 'new') $id = $pObj->substNEWwithIDs[$id];
+        $record = BackendUtility::getRecord($table, (int)$id);
+        // get TSConfig for record
+        $TSConfig = BackendUtility::getPagesTSconfig($record['pid']);
+
+        // on copy action empty the value field - copy action can be guessed because t3_origuid is set
+        if ($fieldArray['t3_origuid'] > 0) $record['value'] = '';
+
+        // flag to only execute generation if it is configured in TSConfig
+        $tableConfiguredForIdentifierGeneration = false;
+
+        // optional identifier generation for iri table
+        if ($table == 'tx_lod_domain_model_iri' && $TSConfig['tx_lod.']['settings.']['identifierGenerator.']['tx_lod_domain_model_iri.']) {
+            $tableConfiguredForIdentifierGeneration = true;
+            // mandatory identifier generation for bnode table
+        } elseif ($table == 'tx_lod_domain_model_bnode') {
+            // always set uid generator unless configured otherwise
+            if (empty($TSConfig['tx_lod.']['settings.']['identifierGenerator.']['tx_lod_domain_model_bnode.'])) {
+                $TSConfig['tx_lod.']['settings.']['identifierGenerator.']['tx_lod_domain_model_bnode.'] = [
+                    'type' => 'Digicademy\Lod\Generator\UidIdentifierGenerator',
+                    'Digicademy\Lod\Generator\UidIdentifierGenerator.' => ['bnodePrefix' => 'b']
+                ];
+            }
+            $tableConfiguredForIdentifierGeneration = true;
+        }
+
+        // start generation if configured and no identifier exists
+        if ($tableConfiguredForIdentifierGeneration == true && $record['value'] == '') {
+
+            // get generator service
+            $generatorService = GeneralUtility::makeInstance(IdentifierGeneratorService::class);
+            $generatorName = $TSConfig['tx_lod.']['settings.']['identifierGenerator.'][$table . '.']['type'];
+
+            if (class_exists($generatorName)) {
+
+                // get configuration
+                if ($TSConfig['tx_lod.']['settings.']['identifierGenerator.'][$table . '.'][$generatorName . '.']) {
+                    $generatorConfiguration = $TSConfig['tx_lod.']['settings.']['identifierGenerator.'][$table . '.'][$generatorName . '.'];
+                } else {
+                    $generatorConfiguration = [];
+                }
+
+                // generate identifier
+                $generatedIdentifier = $generatorService->generateId($generatorName, $generatorConfiguration, $record);
+
+                // update record with generated identifier
+// @TODO: 9.5 compatibility
+                $GLOBALS['TYPO3_DB']->exec_UPDATEquery($table, 'uid = ' . (int)$id, ['value' => $generatedIdentifier]);
+            } else {
+                throw new \TYPO3\CMS\Backend\Exception('Given identifier generator is not loaded and/or does not exist',
+                    1577284728);
+            }
+        }
     }
 
 }

@@ -50,7 +50,7 @@
                 <source>Namespace</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_iri.value">
-                <source>Value</source>
+                <source>Identifier</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_iri.record">
                 <source>Record</source>
@@ -97,7 +97,7 @@
                 <source>Comment</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_bnode.value">
-                <source>Value</source>
+                <source>Identifier</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_bnode.statements">
                 <source>Statements</source>

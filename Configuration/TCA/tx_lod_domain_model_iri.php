@@ -4,12 +4,13 @@ return array(
         'title' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri',
         'label' => 'label',
         'label_alt' => 'value',
-        'default_sortby' => 'type,label,value',
+        'default_sortby' => 'type ASC, label ASC, value ASC',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
         'dividers2tabs' => true,
         'delete' => 'deleted',
+        'origUid' => 't3_origuid',
         'enablecolumns' => array(
             'disabled' => 'hidden',
             'starttime' => 'starttime',
@@ -160,7 +161,7 @@ return array(
             'config' => array(
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'required,trim',
+                'eval' => 'trim',
                 // 'eval' => 'required,trim,unique' // for system wide unique IRIs
                 // 'readOnly' => 1, // recommended if id generator is used
             ),
