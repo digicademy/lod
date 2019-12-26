@@ -117,7 +117,11 @@ class TableTrackingService
             // a copied tracked record is the same as a new record - no iri will yet exists with a 'tablename_uid' in the iri record field
             if ($this->action == 'new' || $this->action == 'update') {
                 $uid = 'NEW_' . uniqid('');
-                ($this->configuration['createOnPid']) ? $pid = (int)$this->configuration['createOnPid'] : $pid = (int)$this->record['pid'];
+                if ($this->configuration['createOnPid']) {
+                    $pid = (int)$this->configuration['createOnPid'];
+                } else {
+                    $pid = (int)$this->record['pid'];
+                }
                 ($this->configuration['createType']) ? $type = (int)$this->configuration['createType'] : $type = 1;
                 $dataMap = array(
                     'tx_lod_domain_model_iri' => array(
@@ -126,6 +130,8 @@ class TableTrackingService
                             'type' => $type,
                             'hidden' => $this->record['hidden'],
                             'record' => $tableAndUid,
+                            'record_uid' => $this->record['uid'],
+                            'record_tablename' => $this->table,
                         ],
                     )
                 );

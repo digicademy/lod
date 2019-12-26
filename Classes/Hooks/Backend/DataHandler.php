@@ -41,17 +41,20 @@ class DataHandler
      * @param $id
      * @param $fieldArray
      * @param $pObj
-     * @throws
      */
     public function processDatamap_postProcessFieldArray($status, $table, $id, &$fieldArray, &$pObj)
     {
         if ($table == 'tx_lod_domain_model_statement') {
             $fieldArray = $this->synchronizeStatement($status, $fieldArray);
         }
+
+        if ($table == 'tx_lod_domain_model_iri') {
+            $fieldArray = $this->synchronizeIri($status, $fieldArray);
+        }
     }
 
     /**
-     * Implements identifier generation IRIs and bnodes and table tracking for IRIs
+     * Implements identifier generation IRIs and bnodes and table tracking for new/update/copy actions
      *
      * @param $status
      * @param $table
@@ -71,6 +74,16 @@ class DataHandler
         $this->trackTables($status, $table, $id, $pObj);
     }
 
+    /**
+     * Implements table tracking for delete/undelete actions
+     *
+     * @param $command
+     * @param $table
+     * @param $id
+     * @param $value
+     * @param $pObj
+     * @param $pasteUpdate
+     */
     public function processCmdmap_preProcess($command, $table, $id, $value, $pObj, $pasteUpdate)
     {
         if ($command == 'delete' || $command == 'undelete' ) {
@@ -106,6 +119,40 @@ class DataHandler
                         ) {
                         $fieldArray[$value] = $fieldArray[$value . '_type'] . '_' . $fieldArray[$value . '_uid'];
                     }
+                }
+                break;
+        }
+
+        return $fieldArray;
+    }
+
+    /**
+     * Keeps record, record_uid and record_tablename field in IRI records in sync depending on editing context
+     *
+     * @param string $status
+     * @param array $fieldArray
+     *
+     * @return array
+     */
+    private function synchronizeIri($status, $fieldArray)
+    {
+        switch ($status) {
+            case 'update':
+            case 'new':
+                if (
+                    array_key_exists('record_uid', $fieldArray) == false &&
+                    array_key_exists('record_tablename', $fieldArray) == false &&
+                    array_key_exists('record', $fieldArray) == true
+                ) {
+                    $tableNameAndUid = BackendUtility::splitTable_Uid($fieldArray['record']);
+                    $fieldArray['record_tablename'] = $tableNameAndUid[0];
+                    $fieldArray['record_uid'] = $tableNameAndUid[1];
+                } elseif (
+                    array_key_exists('record_uid', $fieldArray) == true &&
+                    array_key_exists('record_tablename', $fieldArray) == true &&
+                    array_key_exists('record', $fieldArray) == false
+                ) {
+                    $fieldArray['record'] = $fieldArray['record_tablename'] . '_' . $fieldArray['record_tablename'];
                 }
                 break;
         }
@@ -189,7 +236,6 @@ class DataHandler
      * @param $id
      * @param $fieldArray
      * @param $pObj
-     * @throws
      */
     private function trackTables($action, $table, $id, $pObj = null)
     {

@@ -1,5 +1,82 @@
 ## NEXT #########################################
 
+- term plugin => delete?
+
+- vocabulary plugin
+- a vocabulary consists of a selection of named graphs
+- fix the terms field
+
+- ensure 8.7 and 9.5 compatibility (esp. Doctrine) / add 7.6 branch and dev branch
+-- TCA migrations
+-- scan extension files
+-- hide label gone
+-- add wizard is gone
+-- all tables icon in IRI record field broken icon
+-- check type param rewriting in TYPO3 9.5
+-- alternatively give realUrl config
+-- iri/bnode irre fields should use overrideChildTca from 8.7
+
+- create ext_tables_static+adt.sql for rdf/rdfs
+
+- documentation
+-- use lists of controlled terms in the system (selects etc.)
+
+### v.1.1 ###
+
+- named graphs
+-- add named graph structures to ttl, json-ld and nt templates
+
+- API plugin
+-- basic string search in label/comment for API plugin (list view)
+-- IriRepository: make ordering settable by TypoScript/Plugin/Parameter (label/value)
+
+- create extension with schema.org vocab
+
+- give example for embedding JSON-LD in pages
+
+### v.1.3 ###
+
+- vocabulary importer
+
+---
+
+id=123 => rewritten by realurl to 'id' or whatever (= pagePath)
+&tx_lod_api%5Bsubject%5D=1995 => rewritten by realurl to /id/value (= fixedPostVars)
+&type=2004 => rewritten by realUrl to about.xyz (= fileName)
+
+&tx_lod_about%5Baction%5D=about => skipped (by initializeAction and fixedPostVars)
+&tx_lod_about%5Bcontroller%5D=Api skipped (by initializeAction and fixedPostVars)
+&tx_lod_about%5Bformat%5D=rdfxml => ignored/suppressed (by initialize Action; switch is by pageType)
+
+&cHash => skipped (by realUrl config)
+
+/id/I385
+
+/id/I385/about.html
+
+/id.html
+
+/id/about.rdf?tx_lod_api[offset]=1&tx_lod_api[limit]=100
+
+- api plugin
+-- think about cacheable actions => configurable cHash calculation during redirection => check performance
+-- think about content negotiation service and move logic from controller
+-- remaining todos in controller
+
+- resolver
+-- call different typolink handlers according to $representation->getAuthority();
+-- implement language negotiation
+
+---
+
+scheme = handler type => t3 triggers internal resolving
+authority = handler keyword
+path = typolink parameter
+query = additionalParams
+fragment = section
+
+---
+
 tx_lod {
     settings {
         identifierGenerator {
@@ -53,83 +130,6 @@ tx_lod {
         }
     }
 }
-
--- think about statements in records and vice versa
---- give example for embedding JSON-LD in pages (or any other record) output (triples retrieved by record assignment)
-
-- term plugin => delete?
-
-- vocabulary plugin
-- a vocabulary consists of a selection of named graphs
-- fix the terms field
-
-- ensure 8.7 and 9.5 compatibility (esp. Doctrine) / add 7.6 branch and dev branch
--- TCA migrations
--- scan extension files
--- hide label gone
--- all tables icon in IRI record field broken icon
--- check type param rewriting in TYPO3 9.5
--- alternatively give realUrl config
--- iri/bnode irre fields should use overrideChildTca from 8.7
-
-- create ext_tables_static+adt.sql for rdf/rdfs
-
-- documentation
--- use lists of controlled terms in the system (selects etc.)
-
-### v.1.1 ###
-
-- named graphs
--- add named graph structures to ttl, json-ld and nt templates
-
-- API plugin
--- basic string search in label/comment for API plugin (list view)
--- IriRepository: make ordering settable by TypoScript/Plugin/Parameter (label/value)
-
-- create extension with schema.org vocab
-
-### v.1.3 ###
-
-- vocabulary importer
-
----
-
-id=123 => rewritten by realurl to 'id' or whatever (= pagePath)
-&tx_lod_api%5Bsubject%5D=1995 => rewritten by realurl to /id/value (= fixedPostVars)
-&type=2004 => rewritten by realUrl to about.xyz (= fileName)
-
-&tx_lod_about%5Baction%5D=about => skipped (by initializeAction and fixedPostVars)
-&tx_lod_about%5Bcontroller%5D=Api skipped (by initializeAction and fixedPostVars)
-&tx_lod_about%5Bformat%5D=rdfxml => ignored/suppressed (by initialize Action; switch is by pageType)
-
-&cHash => skipped (by realUrl config)
-
-/id/I385
-
-/id/I385/about.html
-
-/id.html
-
-/id/about.rdf?tx_lod_api[offset]=1&tx_lod_api[limit]=100
-
-- api plugin
--- think about cacheable actions => configurable cHash calculation during redirection => check performance
--- think about content negotiation service and move logic from controller
--- remaining todos in controller
-
-- resolver
--- call different typolink handlers according to $representation->getAuthority();
--- implement language negotiation
-
----
-
-scheme = handler type => t3 triggers internal resolving
-authority = handler keyword
-path = typolink parameter
-query = additionalParams
-fragment = section
-
----
 
 # map items to generic domainObject
 

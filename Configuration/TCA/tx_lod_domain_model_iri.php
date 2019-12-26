@@ -35,6 +35,8 @@ return array(
             namespace,
             value, 
             record,
+            record_uid,
+            record_tablename,
             representations,
             statements',
     ),
@@ -191,6 +193,16 @@ return array(
                     ),
                 ),
             )
+        ),
+        'record_uid' => array(
+            'config' => array(
+                'type' => 'passthrough',
+            ),
+        ),
+        'record_tablename' => array(
+            'config' => array(
+                'type' => 'passthrough',
+            ),
         ),
         'representations' => array(
             'exclude' => 1,

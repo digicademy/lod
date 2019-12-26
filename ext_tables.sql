@@ -36,6 +36,8 @@ CREATE TABLE tx_lod_domain_model_iri (
     representations int(11) DEFAULT '0' NOT NULL,
 
     record varchar(255) DEFAULT '' NOT NULL,
+    record_uid int(11) DEFAULT '0' NOT NULL,
+    record_tablename varchar(255) DEFAULT '' NOT NULL,
 
     statements int(11) unsigned DEFAULT '0' NOT NULL,
 
@@ -59,6 +61,8 @@ CREATE TABLE tx_lod_domain_model_iri (
     KEY namespace (namespace),
     KEY representations (representations),
     KEY record (record),
+    KEY record (record_uid),
+    KEY record (record_tablename),
     KEY statements (statements),
 
 ) ENGINE=InnoDB;
@@ -261,30 +265,8 @@ CREATE TABLE tx_lod_vocabulary_graph_mm (
 
 ) ENGINE=InnoDB;
 
-CREATE TABLE tx_lod_statement_record_mm (
-
-    uid_local int(11) unsigned DEFAULT '0' NOT NULL,
-    uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
-    sorting int(11) unsigned DEFAULT '0' NOT NULL,
-    sorting_foreign int(11) unsigned DEFAULT '0' NOT NULL,
-
-    ident varchar(255) DEFAULT '' NOT NULL,
-    tablenames varchar(255) DEFAULT '' NOT NULL,
-    fieldname varchar(255) DEFAULT '' NOT NULL,
-
-    KEY uid_local (uid_local),
-    KEY uid_foreign (uid_foreign)
-
-) ENGINE=InnoDB;
-
 CREATE TABLE pages (
-    statements int(11) unsigned DEFAULT '0' NOT NULL,
+    iri int(11) unsigned DEFAULT '0' NOT NULL,
 
-    KEY statements (statements)
-);
-
-CREATE TABLE tt_content (
-    statements int(11) unsigned DEFAULT '0' NOT NULL,
-
-    KEY statements (statements)
+    KEY iri (iri)
 );
