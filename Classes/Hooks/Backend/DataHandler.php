@@ -25,14 +25,16 @@ namespace Digicademy\Lod\Hooks\Backend;
  ***************************************************************/
 
 use Digicademy\Lod\Service\IdentifierGeneratorService;
+use Digicademy\Lod\Service\TableTrackingService;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 
 class DataHandler
 {
 
     /**
-     * Ensures that fields in statement table are always in sync depending on editing context
+     * Ensures that all fields in statement table are in sync depending on the editing context (IRRE or other)
      *
      * @param $status
      * @param $table
@@ -63,6 +65,16 @@ class DataHandler
         // identifier generation for IRIs and bnodes
         if ($table == 'tx_lod_domain_model_iri' || $table == 'tx_lod_domain_model_bnode') {
             $this->generateIdentifier($status, $table, $id, $fieldArray, $pObj);
+        }
+
+        // track tables for IRI generation
+        $this->trackTables($status, $table, $id, $pObj);
+    }
+
+    public function processCmdmap_preProcess($command, $table, $id, $value, $pObj, $pasteUpdate)
+    {
+        if ($command == 'delete' || $command == 'undelete' ) {
+            $this->trackTables($command, $table, $id);
         }
     }
 
@@ -157,7 +169,7 @@ class DataHandler
                 }
 
                 // generate identifier
-                $generatedIdentifier = $generatorService->generateId($generatorName, $generatorConfiguration, $record);
+                $generatedIdentifier = $generatorService->generateIdentifier($generatorName, $generatorConfiguration, $record);
 
                 // update record with generated identifier
 // @TODO: 9.5 compatibility
@@ -165,6 +177,57 @@ class DataHandler
             } else {
                 throw new \TYPO3\CMS\Backend\Exception('Given identifier generator is not loaded and/or does not exist',
                     1577284728);
+            }
+        }
+    }
+
+    /**
+     * Keeps track on registered tables and creates iris for records in those tables
+     *
+     * @param $action
+     * @param $table
+     * @param $id
+     * @param $fieldArray
+     * @param $pObj
+     * @throws
+     */
+    private function trackTables($action, $table, $id, $pObj = null)
+    {
+        // get extension configuration
+        $typo3Version = VersionNumberUtility::convertVersionNumberToInteger(VersionNumberUtility::getNumericTypo3Version());
+        if ($typo3Version >= 9005000) {
+// @TODO: check 9.5 compat
+            $backendConfiguration = GeneralUtility::makeInstance(
+                \TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class
+            )->get('lod');
+        } else {
+            $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['lod']);
+        }
+
+        // get list of tables registered in extConf for tracking
+        $tablesToTrack = GeneralUtility::trimExplode(',', $extConf['trackTables']);
+
+        // further steps only executed if current table is in tracked table list
+        if (in_array($table, $tablesToTrack)) {
+
+            // get the tracked record and according TSConfig
+            if ($action == 'new' && is_object($pObj)) $id = $pObj->substNEWwithIDs[$id];
+            // get record
+            $trackedRecord = BackendUtility::getRecord($table, (int)$id);
+
+            // get TSConfig for record
+            $TSConfig = BackendUtility::getPagesTSconfig($trackedRecord['pid']);
+
+            // only if the registered table is configured in TSConfig next steps are executed
+            if ($TSConfig['tx_lod.']['settings.']['tableTracking.'][$table . '.']['track'] == '1') {
+                $trackingService = GeneralUtility::makeInstance(
+                    TableTrackingService::class,
+                    $action,
+                    $table,
+                    $trackedRecord,
+                    $TSConfig['tx_lod.']['settings.']['tableTracking.'][$table . '.']
+                );
+                $trackingService->track();
             }
         }
     }

@@ -1,0 +1,2 @@
+# cat=basic/enable/10; type=string; label=LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:extconf.trackTables
+trackTables =

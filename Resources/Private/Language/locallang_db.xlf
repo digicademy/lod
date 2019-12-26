@@ -4,6 +4,10 @@
         <header/>
         <body>
 
+            <trans-unit id="extconf.trackTables">
+                <source>Track tables for IRI generation</source>
+            </trans-unit>
+
             <trans-unit id="plugin.sheet.general">
                 <source>General Settings</source>
             </trans-unit>

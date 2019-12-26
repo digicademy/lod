@@ -38,7 +38,7 @@ class IdentifierGeneratorService
      *
      * @return string
      */
-     public function generateId($generatorName, $generatorConfiguration, $record)
+     public function generateIdentifier($generatorName, $generatorConfiguration, $record)
      {
         $generator = GeneralUtility::makeInstance(
             $generatorName,
