@@ -12,11 +12,18 @@
                         <TCEforms>
                             <label>LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:plugin.vocab.selectedVocabulary</label>
                             <config>
-                                <type>select</type>
-                                <foreign_table>tx_lod_domain_model_vocabulary</foreign_table>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>tx_lod_domain_model_vocabulary</allowed>
+                                <prepend_tname>0</prepend_tname>
                                 <size>1</size>
                                 <maxitems>1</maxitems>
                                 <minitems>1</minitems>
+                                <wizards>
+                                    <suggest>
+                                        <type>suggest</type>
+                                    </suggest>
+                                </wizards>
                             </config>
                         </TCEforms>
                     </settings.general.selectedVocabulary>

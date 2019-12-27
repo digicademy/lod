@@ -16,5 +16,5 @@ ttl {
 }
 
 [globalVar = GP : type = 2011]
-ttl.10 < lib.tx_lod.apiPlugin
+ttl.10 < lib.tx_lod.plugin
 [global]

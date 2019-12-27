@@ -16,5 +16,5 @@ nt {
 }
 
 [globalVar = GP : type = 2013]
-nt.10  < lib.tx_lod.apiPlugin
+nt.10  < lib.tx_lod.plugin
 [global]

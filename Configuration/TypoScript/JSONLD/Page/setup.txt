@@ -16,5 +16,5 @@ jsonld {
 }
 
 [globalVar = GP : type = 2014]
-jsonld.10 < lib.tx_lod.apiPlugin
+jsonld.10 < lib.tx_lod.plugin
 [global]

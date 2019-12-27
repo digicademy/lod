@@ -1,23 +1,34 @@
 # libraries
 
-lib.tx_lod.apiPlugin = CONTENT
-lib.tx_lod.apiPlugin {
+lib.tx_lod.plugin = CONTENT
+lib.tx_lod.plugin {
     table = tt_content
     select {
         pidInList = this
         max = 1
         orderBy = sorting
-        where = list_type = ###list_type###
+        where = list_type LIKE ###list_type###
         markers {
-            list_type.value = lod_api
+            list_type.value = lod_%
         }
     }
-    renderObj = USER
+    renderObj = CASE
     renderObj {
-        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
-        extensionName = Lod
-        pluginName = Api
-        vendorName = Digicademy
+        key.field = list_type
+        lod_api = USER
+        lod_api {
+            userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+            extensionName = Lod
+            pluginName = Api
+            vendorName = Digicademy
+        }
+        lod_vocabulary = USER
+        lod_vocabulary {
+            userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+            extensionName = Lod
+            pluginName = Vocabulary
+            vendorName = Digicademy
+        }
     }
 }
 

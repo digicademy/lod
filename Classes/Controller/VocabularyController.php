@@ -26,11 +26,16 @@ namespace Digicademy\Lod\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use Digicademy\Lod\Domain\Repository\IriNamespaceRepository;
 use Digicademy\Lod\Domain\Repository\VocabularyRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class VocabularyController extends ActionController
 {
+    /**
+     * @var \Digicademy\Lod\Domain\Repository\IriNamespaceRepository
+     */
+    protected $iriNamespaceRepository;
 
     /**
      * @var \Digicademy\Lod\Domain\Repository\VocabularyRepository
@@ -40,11 +45,14 @@ class VocabularyController extends ActionController
     /**
      * Initializes the controller and dependencies
      *
+     * @param \Digicademy\Lod\Domain\Repository\IriNamespaceRepository      $iriNamespaceRepository
      * @param \Digicademy\Lod\Domain\Repository\VocabularyRepository        $vocabularyRepository
      */
     public function __construct(
+        IriNamespaceRepository $iriNamespaceRepository,
         VocabularyRepository $vocabularyRepository
     ) {
+        $this->iriNamespaceRepository = $iriNamespaceRepository;
         $this->vocabularyRepository = $vocabularyRepository;
     }
 
@@ -55,12 +63,18 @@ class VocabularyController extends ActionController
      */
     public function showAction()
     {
+        // assign selected vocabulary
         if ((int)$selectedVocabulary = $this->settings['general']['selectedVocabulary']) {
             $this->view->assign(
                 'vocabulary',
                 $this->vocabularyRepository->findByUid($selectedVocabulary)
             );
         }
+
+        // assign existing namespaces
+        $this->view->assign('namespaces', $this->iriNamespaceRepository->findAll());
+
+        // assign current arguments
         $this->view->assign('arguments', $this->request->getArguments());
     }
 

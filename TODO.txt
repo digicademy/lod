@@ -1,7 +1,9 @@
 ## NEXT #########################################
 
+- API paginator limit prev/next problem
+- little bugs in JSON-LD (,) and RDF/XML (duplicate namespace)
+
 - vocabulary plugin
--- FlexForm => change to group field with suggest
 -- Templates
 --- HTML/RDFa
 --- JSON-LD

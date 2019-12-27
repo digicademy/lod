@@ -1,0 +1,5 @@
+{namespace lod = Digicademy\Lod\ViewHelpers}<?xml version="1.0" encoding="UTF-8"?><lod:RemoveEmptyLines>
+<rdf:RDF <f:for each="{namespaces}" as="namespace">
+    xmlns:{namespace.prefix}="{namespace.iri}"</f:for>>
+</rdf:RDF>
+</lod:RemoveEmptyLines>

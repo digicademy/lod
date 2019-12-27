@@ -45,7 +45,7 @@
                 <source>Property</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_iri.label">
-                <source>Preferred Label</source>
+                <source>Label</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_iri.comment">
                 <source>Description</source>
@@ -95,10 +95,10 @@
                 <source>Blank Node</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_bnode.label">
-                <source>Internal label</source>
+                <source>Label</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_bnode.comment">
-                <source>Internal comment</source>
+                <source>Description</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_bnode.value">
                 <source>Identifier</source>
@@ -140,13 +140,13 @@
                 <source>Graph</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_graph.iri">
-                <source>IRI</source>
+                <source>Graph IRI</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_graph.label">
-                <source>Internal label</source>
+                <source>Label</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_graph.comment">
-                <source>Internal comment</source>
+                <source>Description</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_graph.statements">
                 <source>Statements</source>
@@ -156,13 +156,13 @@
                 <source>Vocabulary</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_vocabulary.iri">
-                <source>IRI</source>
+                <source>Vocabulary IRI</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_vocabulary.label">
-                <source>Internal label</source>
+                <source>Label</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_vocabulary.comment">
-                <source>Internal comment</source>
+                <source>Description</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_vocabulary.terms">
                 <source>Terms</source>

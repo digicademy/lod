@@ -33,6 +33,13 @@ class Vocabulary extends AbstractEntity
 {
 
     /**
+     * IRI
+     *
+     * @var \Digicademy\Lod\Domain\Model\Iri
+     */
+    protected $iri;
+
+    /**
      * label
      *
      * @var string
@@ -52,6 +59,29 @@ class Vocabulary extends AbstractEntity
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Iri>
      */
     protected $terms = null;
+
+    /**
+     * Returns the graph iri
+     *
+     * @return \Digicademy\Lod\Domain\Model\Iri $iri
+     */
+    public function getIri()
+    {
+        return $this->iri;
+    }
+
+    /**
+     * Sets the graph iri
+     *
+     * @param \Digicademy\Lod\Domain\Model\Iri $iri
+     *
+     * @return void
+     */
+    public function setIri(\Digicademy\Lod\Domain\Model\Iri $iri)
+    {
+        $this->iri = $iri;
+    }
+
 
     /**
      * Returns the label
