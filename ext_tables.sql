@@ -236,7 +236,7 @@ CREATE TABLE tx_lod_domain_model_vocabulary (
     label varchar(255) DEFAULT '' NOT NULL,
     comment text NOT NULL,
 
-    terms int(11) unsigned DEFAULT '0' NOT NULL,
+    graphs int(11) unsigned DEFAULT '0' NOT NULL,
 
     tstamp int(11) unsigned DEFAULT '0' NOT NULL,
     crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -250,7 +250,7 @@ CREATE TABLE tx_lod_domain_model_vocabulary (
     KEY pid (pid),
 
     KEY label (label),
-    KEY terms (terms),
+    KEY graphs (graphs),
 
 ) ENGINE=InnoDB;
 

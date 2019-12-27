@@ -1,10 +1,13 @@
 ## NEXT #########################################
 
-- term plugin => delete?
-
 - vocabulary plugin
-- a vocabulary consists of a selection of named graphs
-- fix the terms field
+-- FlexForm
+-- Templates
+--- HTML/RDFa
+--- JSON-LD
+--- NT
+--- TTL
+--- RDF/XML
 
 - ensure 8.7 and 9.5 compatibility (esp. Doctrine) / add 7.6 branch and dev branch
 -- TCA migrations

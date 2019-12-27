@@ -19,26 +19,17 @@ if (!defined('TYPO3_MODE')) {
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     'Digicademy.lod',
-    'Term',
-    'LOD: Selected Terms'
-);
-
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'Digicademy.lod',
     'Vocabulary',
-    'LOD: Selected Vocabulary'
+    'LOD Vocabulary'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     'Digicademy.lod',
     'Api',
-    'LOD: Restful API'
+    'LOD API'
 );
 
 // FLEXFORMS
-
-$TCA['tt_content']['types']['list']['subtypes_addlist']['lod_term'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('lod_term', 'FILE:EXT:lod/Configuration/FlexForms/TermPlugin.xml');
 
 $TCA['tt_content']['types']['list']['subtypes_addlist']['lod_vocabulary'] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('lod_vocabulary', 'FILE:EXT:lod/Configuration/FlexForms/VocabularyPlugin.xml');

@@ -7,20 +7,9 @@ if (!defined('TYPO3_MODE')) {
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'Digicademy.lod',
-    'Term',
-    array(
-        'Term' => 'listSelectedTerms',
-    ),
-    array(
-        'Term' => '',
-    )
-);
-
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'Digicademy.lod',
     'Vocabulary',
     array(
-        'Vocabulary' => 'showSelectedVocabulary',
+        'Vocabulary' => 'show',
     ),
     array(
         'Vocabulary' => '',

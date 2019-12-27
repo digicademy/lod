@@ -26,29 +26,39 @@ namespace Digicademy\Lod\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use Digicademy\Lod\Domain\Repository\VocabularyRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class VocabularyController extends ActionController
 {
 
     /**
-     * vocabularyRepository
-     *
      * @var \Digicademy\Lod\Domain\Repository\VocabularyRepository
-     * @inject
      */
     protected $vocabularyRepository = null;
+
+    /**
+     * Initializes the controller and dependencies
+     *
+     * @param \Digicademy\Lod\Domain\Repository\VocabularyRepository        $vocabularyRepository
+     */
+    public function __construct(
+        VocabularyRepository $vocabularyRepository
+    ) {
+        parent::__construct();
+        $this->vocabularyRepository = $vocabularyRepository;
+    }
 
     /**
      * show selected vocabulary
      *
      * @return void
      */
-    public function showSelectedVocabularyAction()
+    public function showAction()
     {
         if ((int)$selectedVocabulary = $this->settings['general']['selectedVocabulary']) {
             $this->view->assign(
-                'selectedVocabulary',
+                'vocabulary',
                 $this->vocabularyRepository->findByUid($selectedVocabulary)
             );
         }

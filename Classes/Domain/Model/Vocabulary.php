@@ -27,6 +27,7 @@ namespace Digicademy\Lod\Domain\Model;
  ***************************************************************/
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 class Vocabulary extends AbstractEntity
 {
@@ -47,11 +48,11 @@ class Vocabulary extends AbstractEntity
     protected $comment = '';
 
     /**
-     * terms
+     * graphs
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Graph>
      */
-    protected $terms = null;
+    protected $graphs = null;
 
     /**
      * Returns the label
@@ -98,25 +99,25 @@ class Vocabulary extends AbstractEntity
     }
 
     /**
-     * Returns the terms
+     * Returns the graphs
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Graph> $terms
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Graph> $graphs
      */
-    public function getTerms()
+    public function getGraphs()
     {
-        return $this->terms;
+        return $this->graphs;
     }
 
     /**
-     * Sets the terms
+     * Sets the graphs
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Graph> $terms
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Graph> $graphs
      *
      * @return void
      */
-    public function setTerms(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $terms)
+    public function setGraphs(ObjectStorage $graphs)
     {
-        $this->terms = $terms;
+        $this->graphs = $graphs;
     }
 
 }

@@ -18,10 +18,10 @@ return array(
         'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_vocabulary.svg'
     ),
     'interface' => array(
-        'showRecordFieldList' => 'hidden, iri, label, comment, terms',
+        'showRecordFieldList' => 'hidden, iri, label, comment, graphs',
     ),
     'types' => array(
-        '1' => array('showitem' => 'hidden, iri, label, comment, terms, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'hidden, iri, label, comment, graphs, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
     ),
     'columns' => array(
         'hidden' => array(
@@ -141,9 +141,9 @@ return array(
                 'rows' => '5',
             ),
         ),
-        'terms' => array(
+        'graphs' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_vocabulary.terms',
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_vocabulary.graphs',
             'config' => array(
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
@@ -153,6 +153,32 @@ return array(
                 'size' => 10,
                 'autoSizeMax' => 30,
                 'maxitems' => 9999,
+                'wizards' => array(
+                    'add' => Array(
+                        'type' => 'popup',
+                        'title' => 'Create new Graph',
+                        'icon' => 'actions-add',
+                        'params' => array(
+                            'table' => 'tx_lod_domain_model_graph',
+                            'pid' => '###PAGE_TSCONFIG_ID###',
+                            'setValue' => 'set'
+                        ),
+                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
+                        'module' => array(
+                            'name' => 'wizard_add',
+                        ),
+                    ),
+                    'edit' => array(
+                        'type' => 'popup',
+                        'title' => 'Edit',
+                        'icon' => 'actions-open',
+                        'popup_onlyOpenIfSelected' => 1,
+                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
+                        'module' => array(
+                            'name' => 'wizard_edit',
+                        ),
+                    ),
+                ),
             ),
         ),
     ),

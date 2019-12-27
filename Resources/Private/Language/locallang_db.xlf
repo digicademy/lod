@@ -164,8 +164,8 @@
             <trans-unit id="tx_lod_domain_model_vocabulary.comment">
                 <source>Comment</source>
             </trans-unit>
-            <trans-unit id="tx_lod_domain_model_vocabulary.terms">
-                <source>Terms</source>
+            <trans-unit id="tx_lod_domain_model_vocabulary.graphs">
+                <source>Graphs</source>
             </trans-unit>
 
         </body>

@@ -1,10 +1,8 @@
 /*
 TCEFORM {
     tx_lod_domain_model_iri {
-        namespace {
-            PAGE_TSCONFIG_IDLIST =
-            PAGE_TSCONFIG_ID =
-        }
+        namespace.PAGE_TSCONFIG_IDLIST =
+        namespace.PAGE_TSCONFIG_ID =
     }
     tx_lod_domain_model_statement {
         subject {
@@ -47,8 +45,9 @@ TCEFORM {
                 pidList =
             }
         }
-        terms {
+        graphs {
             PAGE_TSCONFIG_IDLIST =
+            PAGE_TSCONFIG_ID =
         }
     }
 }
@@ -56,6 +55,49 @@ TCEFORM {
 TCAdefaults {
     tx_lod_domain_model_statement {
         pid =
+    }
+}
+
+tx_lod {
+    settings {
+        identifierGenerator {
+            tx_lod_domain_model_iri {
+                type = Digicademy\Lod\Generator\UidIdentifierGenerator
+                Digicademy\Lod\Generator\UidIdentifierGenerator {
+                    entityPrefix = E
+                    propertyPrefix = P
+                }
+                Digicademy\Lod\Generator\UuidIdentifierGenerator {
+                    entityPrefix = E
+                    propertyPrefix = P
+                }
+                Digicademy\Lod\Generator\ForeignRecordIdentifierGenerator {
+                    entityPrefix = E
+                    propertyPrefix = P
+                    includeTablename = 0
+                }
+            }
+            tx_lod_domain_model_bnode {
+                type = Digicademy\Lod\Generator\UidIdentifierGenerator
+                Digicademy\Lod\Generator\UidIdentifierGenerator {
+                    bnodePrefix = b
+                }
+                Digicademy\Lod\Generator\UuidIdentifierGenerator {
+                    entityPrefix = E
+                    propertyPrefix = P
+                }
+            }
+        }
+        tableTracking {
+            pages {
+                track = 0
+                hideUnhide = 1
+                deleteUndelete = 1
+                createOnPid =
+                iriPidList =
+                iriPidList.recursive =
+            }
+        }
     }
 }
 */

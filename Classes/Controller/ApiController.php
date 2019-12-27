@@ -35,7 +35,6 @@ use Digicademy\Lod\Service\ResolverService;
 use Digicademy\Lod\Domain\Repository\StatementRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 
 class ApiController extends ActionController
 {
@@ -67,7 +66,6 @@ class ApiController extends ActionController
     /**
      * Initializes the controller and dependencies
      *
-     * @param \TYPO3\CMS\Extbase\Object\ObjectManagerInterface              $objectManager
      * @param \Digicademy\Lod\Domain\Repository\IriNamespaceRepository      $iriNamespaceRepository
      * @param \Digicademy\Lod\Domain\Repository\IriRepository               $iriRepository
      * @param \Digicademy\Lod\Domain\Repository\StatementRepository         $statementRepository
@@ -75,14 +73,13 @@ class ApiController extends ActionController
      * @param \Digicademy\Lod\Service\ResolverService                       $resolverService
      */
     public function __construct(
-        ObjectManagerInterface $objectManager,
         IriNamespaceRepository $iriNamespaceRepository,
         IriRepository $iriRepository,
         StatementRepository $statementRepository,
         ContentNegotiationService $contentNegotiationService,
         ResolverService $resolverService
     ) {
-        parent::__construct($objectManager);
+        parent::__construct();
         $this->iriNamespaceRepository = $iriNamespaceRepository;
         $this->iriRepository = $iriRepository;
         $this->statementRepository = $statementRepository;

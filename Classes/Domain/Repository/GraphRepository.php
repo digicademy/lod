@@ -29,7 +29,7 @@ namespace Digicademy\Lod\Domain\Repository;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
-class TermRepository extends Repository
+class GraphRepository extends Repository
 {
     protected $defaultOrderings = array(
         'label' => QueryInterface::ORDER_ASCENDING
