@@ -12,8 +12,8 @@
 <{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2013', limit : arguments.limit, page : arguments.page})}> <http://www.w3.org/ns/hydra/core#next> <{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2013', page : pagination.next, limit : arguments.limit})}> .
 <f:for each="{resources}" as="resource" iteration="iterator">
 <f:alias map="{uri : '{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {iri : \'{f:if(condition : \\\'{resource.namespace}\\\', then : \\\'{resource.namespace.prefix}:\\\', else : \\\'\\\')}{resource.value}\'}, noCacheHash : 1)}'}">
-<f:if condition="{resource.label}"><{uri}> <http://www.w3.org/2000/01/rdf-schema#label> {lod:EscapeLiteral(literal : resource.label, format : 'ntriples')} .</f:if>
-<f:if condition="{resource.comment}"><{uri}> <http://www.w3.org/2000/01/rdf-schema#comment> {lod:EscapeLiteral(literal : resource.comment, format : 'ntriples')} .</f:if>
+<f:if condition="{resource.label}"><{uri}> <http://www.w3.org/2000/01/rdf-schema#label> {lod:EscapeLiteral(literal : resource.label, format : 'ntriples')}{f:if(condition: '{resource.labelLanguage}', then: '@{resource.labelLanguage}')} .</f:if>
+<f:if condition="{resource.comment}"><{uri}> <http://www.w3.org/2000/01/rdf-schema#comment> {lod:EscapeLiteral(literal : resource.comment, format : 'ntriples')}{f:if(condition: '{resource.commentLanguage}', then: '@{resource.commentLanguage}')} .</f:if>
 <f:render partial="Api/AlternativeSerializations" arguments="{iri : uri, mode : 'object', resource : resource, environment : environment}"/>
 </f:alias>
 </f:for>

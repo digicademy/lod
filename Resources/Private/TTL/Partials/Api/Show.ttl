@@ -4,9 +4,9 @@
 @prefix void: <http://rdfs.org/ns/void#> .
 
 <{f:if(condition : '{resource.namespace}', then : '{resource.namespace.iri}', else : '')}{resource.value}>
-    <f:if condition="{resource.label}">rdfs:label {lod:EscapeLiteral(literal : resource.label, format : 'turtle')} ;</f:if>
-    <f:if condition="{resource.comment}">rdfs:comment {lod:EscapeLiteral(literal : resource.comment, format : 'turtle')} ;</f:if>
-    <f:for each="{statements}" as="statement">
+    <f:if condition="{resource.label}">rdfs:label {lod:EscapeLiteral(literal : resource.label, format : 'turtle')}{f:if(condition: '{resource.labelLanguage}', then: '@{resource.labelLanguage}')} ;</f:if>
+    <f:if condition="{resource.comment}">rdfs:comment {lod:EscapeLiteral(literal : resource.comment, format : 'turtle')}{f:if(condition: '{resource.commentLanguage}', then: '@{resource.commentLanguage}')} ;</f:if>
+    <f:for each="{resource.statements}" as="statement">
     <f:render partial="Api/Object" arguments="{statement : statement}" />
     </f:for>
     <f:if condition="{resource.record}">

@@ -1,6 +1,6 @@
-{namespace lod = Digicademy\Lod\ViewHelpers}<f:alias map="{iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.iri}\', else : \'\')}{resource.value}'}"><f:if condition="{resource.label}"><{iri}> <http://www.w3.org/2000/01/rdf-schema#label> {lod:EscapeLiteral(literal : resource.label, format : 'ntriples')} .</f:if>
-<f:if condition="{resource.comment}"><{iri}> <http://www.w3.org/2000/01/rdf-schema#comment> {lod:EscapeLiteral(literal : resource.comment, format : 'ntriples')} .</f:if>
-<f:for each="{statements}" as="statement">
+{namespace lod = Digicademy\Lod\ViewHelpers}<f:alias map="{iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.iri}\', else : \'\')}{resource.value}'}"><f:if condition="{resource.label}"><{iri}> <http://www.w3.org/2000/01/rdf-schema#label> {lod:EscapeLiteral(literal : resource.label, format : 'ntriples')}{f:if(condition: '{resource.labelLanguage}', then: '@{resource.labelLanguage}')} .</f:if>
+<f:if condition="{resource.comment}"><{iri}> <http://www.w3.org/2000/01/rdf-schema#comment> {lod:EscapeLiteral(literal : resource.comment, format : 'ntriples')}{f:if(condition: '{resource.commentLanguage}', then: '@{resource.commentLanguage}')} .</f:if>
+<f:for each="{resource.statements}" as="statement">
 <f:render partial="Api/Object" arguments="{iri : '<{iri}>', statement : statement}" />
 </f:for>
 <f:if condition="{resource.record}">

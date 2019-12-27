@@ -17,8 +17,14 @@
 <f:for each="{resources}" as="resource" iteration="iterator">
       <f:format.raw>{</f:format.raw>
         "@id": "{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}, noCacheHash : 1)}",
-        <f:if condition="{resource.label}">"rdfs:label": {lod:EscapeLiteral(literal : resource.label, format : 'jsonld')},</f:if>
-        <f:if condition="{resource.comment}">"rdfs:comment": {lod:EscapeLiteral(literal : resource.comment, format : 'jsonld')},</f:if>
+        <f:if condition="{resource.label}">"rdfs:label": <f:format.raw>{</f:format.raw>
+          <f:if condition="{resource.labelLanguage}">"@language" : "{resource.labelLanguage}",</f:if>
+          "@value" : {lod:EscapeLiteral(literal : resource.label, format : 'jsonld')}
+        <f:format.raw>}</f:format.raw>,</f:if>
+        <f:if condition="{resource.comment}">"rdfs:comment": <f:format.raw>{</f:format.raw>
+          <f:if condition="{resource.commentLanguage}">"@language" : "{resource.commentLanguage}",</f:if>
+          "@value" : {lod:EscapeLiteral(literal : resource.comment, format : 'jsonld')}
+        <f:format.raw>}</f:format.raw>,</f:if>
         "rdfs:seeAlso" : <f:format.raw>[</f:format.raw>
         <f:render partial="Api/AlternativeSerializations" arguments="{_all}" />
         <f:format.raw>]</f:format.raw>

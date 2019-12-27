@@ -1,7 +1,7 @@
 ## NEXT #########################################
 
 - vocabulary plugin
--- FlexForm
+-- FlexForm => change to group field with suggest
 -- Templates
 --- HTML/RDFa
 --- JSON-LD

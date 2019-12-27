@@ -4,9 +4,9 @@
     xmlns:void="http://rdfs.org/ns/void#">
     <rdf:Description rdf:about="{f:if(condition : '{resource.namespace}', then : '{resource.namespace.iri}', else : '')}{resource.value}">
         <f:render partial="Api/AlternativeSerializations" arguments="{_all}" />
-        <f:if condition="{resource.label}"><rdfs:label>{resource.label}</rdfs:label></f:if>
-        <f:if condition="{resource.comment}"><rdfs:comment>{resource.comment}</rdfs:comment></f:if>
-        <f:for each="{statements}" as="statement">
+        <f:if condition="{resource.label}"><rdfs:label{f:if(condition: '{resource.labelLanguage}', then: ' xml:lang="{resource.labelLanguage}"')}>{resource.label}</rdfs:label></f:if>
+        <f:if condition="{resource.comment}"><rdfs:comment{f:if(condition: '{resource.commentLanguage}', then: ' xml:lang="{resource.commentLanguage}"')}>{resource.comment}</rdfs:comment></f:if>
+        <f:for each="{resource.statements}" as="statement">
         <f:render partial="Api/Object" arguments="{statement : statement}" />
         </f:for>
         <f:if condition="{resource.record}">

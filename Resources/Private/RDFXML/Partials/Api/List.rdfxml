@@ -19,8 +19,8 @@
         <hydra:member>
             <rdf:Description rdf:about="{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}, noCacheHash : 1) -> f:format.htmlspecialchars()}">
                 <f:render partial="Api/AlternativeSerializations" arguments="{_all}" />
-                <f:if condition="{resource.label}"><rdfs:label>{resource.label}</rdfs:label></f:if>
-                <f:if condition="{resource.comment}"><rdfs:comment>{resource.comment}</rdfs:comment></f:if>
+                <f:if condition="{resource.label}"><rdfs:label{f:if(condition: '{resource.labelLanguage}', then: ' xml:lang="{resource.labelLanguage}"')}>{resource.label}</rdfs:label></f:if>
+                <f:if condition="{resource.comment}"><rdfs:comment{f:if(condition: '{resource.commentLanguage}', then: ' xml:lang="{resource.commentLanguage}"')}>{resource.comment}</rdfs:comment></f:if>
             </rdf:Description>
         </hydra:member></f:for>
     </rdf:Description>

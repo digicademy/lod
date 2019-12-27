@@ -271,19 +271,6 @@ class ApiController extends ActionController
         // assign the resource
         $this->view->assign('resource', $resource);
 
-        // assign statements containing the resource
-        switch ($resource->getType()) {
-            // in case resource is an entity: find statements with IRI in subject
-            case 1:
-                $statements = $this->statementRepository->findByPosition('subject', $resource);
-                break;
-            // in case resource is a property: find statements with IRI in predicate position
-            case 2:
-                $statements = $this->statementRepository->findByPosition('predicate', $resource);
-                break;
-        }
-        $this->view->assign('statements', $statements);
-
         // assign existing namespaces
         $this->view->assign('namespaces', $this->iriNamespaceRepository->findAll());
 
