@@ -45,7 +45,6 @@ class VocabularyController extends ActionController
     public function __construct(
         VocabularyRepository $vocabularyRepository
     ) {
-        parent::__construct();
         $this->vocabularyRepository = $vocabularyRepository;
     }
 

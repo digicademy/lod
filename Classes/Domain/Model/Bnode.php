@@ -54,6 +54,14 @@ class Bnode extends AbstractEntity
     protected $value;
 
     /**
+     * Statements with this blank node as subject
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Statement> $statement
+     * @lazy
+     */
+    protected $statements;
+
+    /**
      * Returns the label
      *
      * @return string $label
@@ -117,6 +125,28 @@ class Bnode extends AbstractEntity
     public function setValue($value)
     {
         $this->value = $value;
+    }
+
+    /**
+     * Returns the statements
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Statement> $statements
+     */
+    public function getStatements()
+    {
+        return $this->statements;
+    }
+
+    /**
+     * Sets the statements
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Statement> $statements
+     *
+     * @return void
+     */
+    public function setStatements($statements)
+    {
+        $this->statements = $statements;
     }
 
 }

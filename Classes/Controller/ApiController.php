@@ -79,7 +79,6 @@ class ApiController extends ActionController
         ContentNegotiationService $contentNegotiationService,
         ResolverService $resolverService
     ) {
-        parent::__construct();
         $this->iriNamespaceRepository = $iriNamespaceRepository;
         $this->iriRepository = $iriRepository;
         $this->statementRepository = $statementRepository;

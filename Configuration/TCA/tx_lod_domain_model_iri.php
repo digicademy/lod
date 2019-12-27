@@ -41,8 +41,16 @@ return array(
             statements',
     ),
     'types' => array(
-        '1' => array('showitem' => 'hidden, value, type, namespace, label, comment, record, representations, statements, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
-        '2' => array('showitem' => 'hidden, value, type, namespace, label, comment, record, representations, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'hidden, value, type, namespace, --palette--;;label, --palette--;;comment, record, representations, statements, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '2' => array('showitem' => 'hidden, value, type, namespace, --palette--;;label, --palette--;;comment, record, representations, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+    ),
+    'palettes' => array(
+        'label' => array(
+            'showitem' => 'label, label_language'
+        ),
+        'comment' => array(
+            'showitem' => 'comment, comment_language'
+        ),
     ),
     'columns' => array(
         'hidden' => array(
@@ -93,6 +101,21 @@ return array(
                 'eval' => 'trim'
             ),
         ),
+        'label_language' => array(
+            'exclude' => 1,
+            'label' => 'LLL:EXT:lang/locallang_tca.xlf:sys_language.language_isocode',
+            'config' => array(
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'size' => 1,
+                'minitems' => 0,
+                'maxitems' => 1,
+                'items' => [
+                    ['', '']
+                ],
+                'itemsProcFunc' => \TYPO3\CMS\Core\Service\IsoCodeService::class . '->renderIsoCodeSelectDropdown',
+            ),
+        ),
         'comment' => array(
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.comment',
@@ -100,6 +123,21 @@ return array(
                 'type' => 'text',
                 'cols' => '30',
                 'rows' => '5',
+            ),
+        ),
+        'comment_language' => array(
+            'exclude' => 1,
+            'label' => 'LLL:EXT:lang/locallang_tca.xlf:sys_language.language_isocode',
+            'config' => array(
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'size' => 1,
+                'minitems' => 0,
+                'maxitems' => 1,
+                'items' => [
+                    ['', '']
+                ],
+                'itemsProcFunc' => \TYPO3\CMS\Core\Service\IsoCodeService::class . '->renderIsoCodeSelectDropdown',
             ),
         ),
         'type' => array(

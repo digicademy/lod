@@ -45,9 +45,11 @@ TCEFORM {
                 pidList =
             }
         }
-        graphs {
-            PAGE_TSCONFIG_IDLIST =
+        terms {
             PAGE_TSCONFIG_ID =
+            suggest.default {
+                pidList =
+            }
         }
     }
 }

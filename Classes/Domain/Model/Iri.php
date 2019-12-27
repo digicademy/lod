@@ -46,11 +46,25 @@ class Iri extends AbstractEntity
     protected $label = '';
 
     /**
+     * labelLanguage
+     *
+     * @var string
+     */
+    protected $labelLanguage = '';
+
+    /**
      * comment
      *
      * @var string
      */
     protected $comment = '';
+
+    /**
+     * commentLanguage
+     *
+     * @var string
+     */
+    protected $commentLanguage = '';
 
     /**
      * namespace
@@ -81,6 +95,14 @@ class Iri extends AbstractEntity
      * @lazy
      */
     protected $representations;
+
+    /**
+     * Statements with this IRI as subject
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Statement> $statement
+     * @lazy
+     */
+    protected $statements;
 
     /**
      * Returns the type
@@ -127,6 +149,28 @@ class Iri extends AbstractEntity
     }
 
     /**
+     * Returns the labelLanguage
+     *
+     * @return string $labelLanguage
+     */
+    public function getLabelLanguage()
+    {
+        return $this->labelLanguage;
+    }
+
+    /**
+     * Sets the labelLanguage
+     *
+     * @param string $labelLanguage
+     *
+     * @return void
+     */
+    public function setLabelLanguage($labelLanguage)
+    {
+        $this->labelLanguage = $labelLanguage;
+    }
+
+    /**
      * Returns the comment
      *
      * @return string $comment
@@ -146,6 +190,28 @@ class Iri extends AbstractEntity
     public function setComment($comment)
     {
         $this->comment = $comment;
+    }
+
+    /**
+     * Returns the commentLanguage
+     *
+     * @return string $commentLanguage
+     */
+    public function getCommentLanguage()
+    {
+        return $this->commentLanguage;
+    }
+
+    /**
+     * Sets the commentLanguage
+     *
+     * @param string $commentLanguage
+     *
+     * @return void
+     */
+    public function setCommentLanguage($commentLanguage)
+    {
+        $this->commentLanguage = $commentLanguage;
     }
 
     /**
@@ -234,6 +300,28 @@ class Iri extends AbstractEntity
     public function setRepresentations($representations)
     {
         $this->representations = $representations;
+    }
+
+    /**
+     * Returns the statements
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Statement> $statements
+     */
+    public function getStatements()
+    {
+        return $this->statements;
+    }
+
+    /**
+     * Sets the statements
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Statement> $statements
+     *
+     * @return void
+     */
+    public function setStatements($statements)
+    {
+        $this->statements = $statements;
     }
 
 }

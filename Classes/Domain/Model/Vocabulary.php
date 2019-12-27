@@ -36,7 +36,6 @@ class Vocabulary extends AbstractEntity
      * label
      *
      * @var string
-     * @validate NotEmpty
      */
     protected $label;
 
@@ -48,11 +47,11 @@ class Vocabulary extends AbstractEntity
     protected $comment = '';
 
     /**
-     * graphs
+     * terms
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Graph>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Iri>
      */
-    protected $graphs = null;
+    protected $terms = null;
 
     /**
      * Returns the label
@@ -99,25 +98,25 @@ class Vocabulary extends AbstractEntity
     }
 
     /**
-     * Returns the graphs
+     * Returns the terms
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Graph> $graphs
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Iri> $terms
      */
-    public function getGraphs()
+    public function getTerms()
     {
-        return $this->graphs;
+        return $this->terms;
     }
 
     /**
-     * Sets the graphs
+     * Sets the terms
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Graph> $graphs
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Iri> $terms
      *
      * @return void
      */
-    public function setGraphs(ObjectStorage $graphs)
+    public function setTerms(ObjectStorage $terms)
     {
-        $this->graphs = $graphs;
+        $this->terms = $terms;
     }
 
 }

@@ -29,7 +29,9 @@ CREATE TABLE tx_lod_domain_model_iri (
 
     type int(11) DEFAULT '0' NOT NULL,
     label varchar(255) DEFAULT '' NOT NULL,
+    label_language varchar(2) DEFAULT '' NOT NULL,
     comment text NOT NULL,
+    comment_language varchar(2) DEFAULT '' NOT NULL,
     value varchar(255) DEFAULT '' NOT NULL,
 
     namespace int(11) DEFAULT '0' NOT NULL,
@@ -61,8 +63,8 @@ CREATE TABLE tx_lod_domain_model_iri (
     KEY namespace (namespace),
     KEY representations (representations),
     KEY record (record),
-    KEY record (record_uid),
-    KEY record (record_tablename),
+    KEY record_uid (record_uid),
+    KEY record_tablename (record_tablename),
     KEY statements (statements),
 
 ) ENGINE=InnoDB;
@@ -154,7 +156,7 @@ CREATE TABLE tx_lod_domain_model_representation (
     KEY scheme (scheme),
     KEY authority (authority),
     KEY content_type (content_type),
-    KEY content_language (content_language)
+    KEY content_language (content_language),
 
 ) ENGINE=InnoDB;
 
@@ -221,7 +223,6 @@ CREATE TABLE tx_lod_domain_model_graph (
     PRIMARY KEY (uid),
     KEY pid (pid),
 
-    KEY label (label),
     KEY iri (iri),
     KEY statements (statements),
 
@@ -236,7 +237,7 @@ CREATE TABLE tx_lod_domain_model_vocabulary (
     label varchar(255) DEFAULT '' NOT NULL,
     comment text NOT NULL,
 
-    graphs int(11) unsigned DEFAULT '0' NOT NULL,
+    terms int(11) unsigned DEFAULT '0' NOT NULL,
 
     tstamp int(11) unsigned DEFAULT '0' NOT NULL,
     crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -249,24 +250,26 @@ CREATE TABLE tx_lod_domain_model_vocabulary (
     PRIMARY KEY (uid),
     KEY pid (pid),
 
-    KEY label (label),
-    KEY graphs (graphs),
+    KEY iri (iri),
+    KEY terms (terms),
 
 ) ENGINE=InnoDB;
 
-CREATE TABLE tx_lod_vocabulary_graph_mm (
+CREATE TABLE tx_lod_vocabulary_iri_mm (
+
     uid_local int(11) unsigned DEFAULT '0' NOT NULL,
     uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
     sorting int(11) unsigned DEFAULT '0' NOT NULL,
     sorting_foreign int(11) unsigned DEFAULT '0' NOT NULL,
 
     KEY uid_local (uid_local),
-    KEY uid_foreign (uid_foreign)
+    KEY uid_foreign (uid_foreign),
 
 ) ENGINE=InnoDB;
 
 CREATE TABLE pages (
+
     iri int(11) unsigned DEFAULT '0' NOT NULL,
 
-    KEY iri (iri)
+    KEY iri (iri),
 );

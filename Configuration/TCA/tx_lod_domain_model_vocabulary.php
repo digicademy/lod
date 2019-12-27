@@ -18,10 +18,10 @@ return array(
         'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_vocabulary.svg'
     ),
     'interface' => array(
-        'showRecordFieldList' => 'hidden, iri, label, comment, graphs',
+        'showRecordFieldList' => 'hidden, iri, label, comment, terms',
     ),
     'types' => array(
-        '1' => array('showitem' => 'hidden, iri, label, comment, graphs, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'hidden, iri, label, comment, terms, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
     ),
     'columns' => array(
         'hidden' => array(
@@ -141,25 +141,35 @@ return array(
                 'rows' => '5',
             ),
         ),
-        'graphs' => array(
+        'terms' => array(
             'exclude' => 1,
-            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_vocabulary.graphs',
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_vocabulary.terms',
             'config' => array(
-                'type' => 'select',
-                'renderType' => 'selectMultipleSideBySide',
-                'foreign_table' => 'tx_lod_domain_model_graph',
-                'foreign_table_where' => 'AND tx_lod_domain_model_graph.pid IN (###PAGE_TSCONFIG_IDLIST###) ORDER BY tx_lod_domain_model_graph.label',
-                'MM' => 'tx_lod_vocabulary_graph_mm',
+                'type' => 'group',
+                'internal_type' => 'db',
+                'allowed' => 'tx_lod_domain_model_iri',
+                'prepend_tname' => false,
+                // prevent http://wiki.typo3.org/Exception/CMS/1353170925
+                'foreign_table' => 'tx_lod_domain_model_iri',
+                'MM' => 'tx_lod_vocabulary_iri_mm',
                 'size' => 10,
-                'autoSizeMax' => 30,
+                'minitems' => 0,
                 'maxitems' => 9999,
                 'wizards' => array(
+                    '_POSITION' => 'right',
+                    'suggest' => Array(
+                        'type' => 'suggest',
+                        'title' => 'Find records',
+                        'default' => [
+                            'additionalSearchFields' => 'label',
+                        ],
+                    ),
                     'add' => Array(
                         'type' => 'popup',
-                        'title' => 'Create new Graph',
-                        'icon' => 'actions-add',
+                        'title' => 'Create new IRI',
+                        'icon' => 'tx_lod_actions_add_iri',
                         'params' => array(
-                            'table' => 'tx_lod_domain_model_graph',
+                            'table' => 'tx_lod_domain_model_iri',
                             'pid' => '###PAGE_TSCONFIG_ID###',
                             'setValue' => 'set'
                         ),
