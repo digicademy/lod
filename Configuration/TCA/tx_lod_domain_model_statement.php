@@ -20,12 +20,15 @@ return array(
         'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_statement.svg'
     ),
     'interface' => array(
-        'showRecordFieldList' => 'hidden, subject, subject_type, subject_uid, predicate, predicate_type, predicate_uid, object, object_type, object_uid, graph',
+        'showRecordFieldList' => 'hidden, subject, subject_type, subject_uid, predicate, predicate_type, predicate_uid, object, object_type, object_uid, object_recursion, graph',
     ),
     'types' => array(
-        '1' => array('showitem' => 'hidden, --palette--;;triple, graph, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => '--palette--;;recursion, --palette--;;triple, graph, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
     ),
     'palettes' => array(
+        'recursion' => array(
+            'showitem' => 'hidden, object_recursion'
+        ),
         'triple' => array(
             'showitem' => 'subject, predicate, object'
         ),
@@ -126,6 +129,8 @@ return array(
                 'type' => 'group',
                 'internal_type' => 'db',
                 'allowed' => 'tx_lod_domain_model_iri,tx_lod_domain_model_bnode',
+// @TODO: make this configurable per TSConfig per page
+/*
                 'filter' => array (
                     array(
                         'userFunc' => 'Digicademy\Lod\Utility\Backend\IriUtility->filterByType',
@@ -134,6 +139,7 @@ return array(
                          ),
                     ),
                 ),
+*/
                 'prepend_tname' => 1,
                 'size' => 1,
                 'minitems' => 1,
@@ -146,9 +152,12 @@ return array(
                         'default' => [
                             'additionalSearchFields' => 'label,comment,value',
                         ],
+// @TODO: make this configurable per TSConfig per page
+/*
                         'tx_lod_domain_model_iri' => [
                             'searchCondition' => 'type = 1',
                         ],
+*/
                     ),
                     'add_subject_iri' => Array(
                         'type' => 'popup',
@@ -338,6 +347,13 @@ return array(
                         ),
                     ),
                 ),
+            ),
+        ),
+        'object_recursion' => array(
+            'exclude' => 1,
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_statement.object_recursion',
+            'config' => array(
+                'type' => 'check',
             ),
         ),
         'subject_type' => array(

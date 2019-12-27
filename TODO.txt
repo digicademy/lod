@@ -1,7 +1,10 @@
 ## NEXT #########################################
 
+- should come with a few static namespaces: rdf, rdfs, owl, dc, void
+
 - API paginator limit prev/next problem
 - little bugs in JSON-LD (,) and RDF/XML (duplicate namespace)
+- test/think about object recursion in API templates
 
 - vocabulary plugin
 -- Templates
@@ -9,7 +12,6 @@
 --- JSON-LD
 --- NT
 --- TTL
---- RDF/XML
 
 - ensure 8.7 and 9.5 compatibility (esp. Doctrine) / add 7.6 branch and dev branch
 -- TCA migrations

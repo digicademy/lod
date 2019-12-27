@@ -135,6 +135,9 @@
             <trans-unit id="tx_lod_domain_model_statement.object">
                 <source>Object</source>
             </trans-unit>
+            <trans-unit id="tx_lod_domain_model_statement.object_recursion">
+                <source>Recursion</source>
+            </trans-unit>
 
             <trans-unit id="tx_lod_domain_model_graph">
                 <source>Graph</source>
@@ -156,7 +159,7 @@
                 <source>Vocabulary</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_vocabulary.iri">
-                <source>Vocabulary IRI</source>
+                <source>Vocabulary IRI / Ontology Header</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_vocabulary.label">
                 <source>Label</source>

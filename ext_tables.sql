@@ -176,6 +176,7 @@ CREATE TABLE tx_lod_domain_model_statement (
     object varchar(255) DEFAULT '' NOT NULL,
     object_type varchar(255) DEFAULT '' NOT NULL,
     object_uid int(11) DEFAULT '0' NOT NULL,
+    object_recursion tinyint(4) unsigned DEFAULT '0' NOT NULL,
 
     graph int(11) DEFAULT '0' NOT NULL,
 

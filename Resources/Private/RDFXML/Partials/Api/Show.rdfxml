@@ -1,7 +1,5 @@
 <rdf:RDF <f:for each="{namespaces}" as="namespace">
-    xmlns:{namespace.prefix}="{namespace.iri}"</f:for>
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:void="http://rdfs.org/ns/void#">
+    xmlns:{namespace.prefix}="{namespace.iri}"</f:for>>
     <rdf:Description rdf:about="{f:if(condition : '{resource.namespace}', then : '{resource.namespace.iri}', else : '')}{resource.value}">
         <f:render partial="Api/AlternativeSerializations" arguments="{_all}" />
         <f:if condition="{resource.label}"><rdfs:label{f:if(condition: '{resource.labelLanguage}', then: ' xml:lang="{resource.labelLanguage}"')}>{resource.label}</rdfs:label></f:if>

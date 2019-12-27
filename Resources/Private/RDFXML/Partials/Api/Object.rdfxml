@@ -1,6 +1,26 @@
 {namespace lod = Digicademy\Lod\ViewHelpers}<f:switch expression="{lod:DetermineEntity(entity : statement.object)}">
     <f:case value="Digicademy\Lod\Domain\Model\Iri">
+        <f:if condition="{statement.objectRecursion}">
+        <f:then>
+            <f:if condition="{statement.object.statements}">
+                <f:then>
+                <{statement.predicate.namespace.prefix}:{statement.predicate.value}>
+                <rdf:Description rdf:about="{statement.object.namespace.iri}{statement.object.value}">
+                <f:for each="{statement.object.statements}" as="iriStatement">
+                    <f:render partial="Api/Object" arguments="{statement : iriStatement}" />
+                </f:for>
+                </rdf:Description>
+                </{statement.predicate.namespace.prefix}:{statement.predicate.value}>
+                </f:then>
+                <f:else>
+                <{statement.predicate.namespace.prefix}:{statement.predicate.value} rdf:resource="{statement.object.namespace.iri}{statement.object.value}"/>
+                </f:else>
+            </f:if>
+        </f:then>
+        <f:else>
         <{statement.predicate.namespace.prefix}:{statement.predicate.value} rdf:resource="{statement.object.namespace.iri}{statement.object.value}"/>
+        </f:else>
+        </f:if>
     </f:case>
     <f:case value="Digicademy\Lod\Domain\Model\Literal">
         <{statement.predicate.namespace.prefix}:{statement.predicate.value}{lod:LangDatatype(literal : statement.object, format : 'rdfxml')}>
@@ -9,7 +29,7 @@
     </f:case>
     <f:case default="Digicademy\Lod\Domain\Model\Bnode">
         <{statement.predicate.namespace.prefix}:{statement.predicate.value} rdf:parseType="Resource">
-        <f:for each="{lod:FetchBnode(bnode : statement.object)}" as="bnodeStatement">
+        <f:for each="{statement.object.statements}" as="bnodeStatement">
             <f:render partial="Api/Object" arguments="{statement : bnodeStatement}" />
         </f:for>
         </{statement.predicate.namespace.prefix}:{statement.predicate.value}>

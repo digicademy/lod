@@ -40,9 +40,10 @@ return array(
             representations,
             statements',
     ),
+    // at the moment, types are the same (but leave option open for future)
     'types' => array(
         '1' => array('showitem' => 'hidden, value, type, namespace, --palette--;;label, --palette--;;comment, record, representations, statements, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
-        '2' => array('showitem' => 'hidden, value, type, namespace, --palette--;;label, --palette--;;comment, record, representations, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '2' => array('showitem' => 'hidden, value, type, namespace, --palette--;;label, --palette--;;comment, record, representations, statements, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
     ),
     'palettes' => array(
         'label' => array(
