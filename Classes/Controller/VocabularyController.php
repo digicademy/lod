@@ -29,6 +29,7 @@ namespace Digicademy\Lod\Controller;
 use Digicademy\Lod\Domain\Repository\IriNamespaceRepository;
 use Digicademy\Lod\Domain\Repository\VocabularyRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class VocabularyController extends ActionController
 {
@@ -76,6 +77,13 @@ class VocabularyController extends ActionController
 
         // assign current arguments
         $this->view->assign('arguments', $this->request->getArguments());
+
+        // provide environment vars
+        $environment = [
+            'TYPO3_REQUEST_HOST' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_HOST'),
+            'TYPO3_REQUEST_URL' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_URL')
+        ];
+        $this->view->assign('environment', $environment);
     }
 
 }

@@ -48,6 +48,8 @@ class IriUtility
         if (preg_match('/tx_lod_domain_model_iri/', $parameters['values'][0])) {
 
             // get record uid
+// @TODO: BackendUtility splitTableUid?
+// @TODO: statementIriTypeFilter.subject = 1|2
             $recordUid = (int)substr(strrchr($parameters['values'][0], '_'), 1);
 
             // test type of record

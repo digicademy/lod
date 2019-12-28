@@ -1,0 +1,7 @@
+<f:if condition="{term.label}"><rdfs:label{f:if(condition: '{term.labelLanguage}', then: ' xml:lang="{term.labelLanguage}"')}>{term.label}</rdfs:label></f:if>
+<f:if condition="{term.comment}"><rdfs:comment{f:if(condition: '{term.commentLanguage}', then: ' xml:lang="{term.commentLanguage}"')}>{term.comment}</rdfs:comment></f:if>
+<f:if condition="{term.statements}">
+<f:for each="{term.statements}" as="termStatement">
+<f:render partial="Common/Object" arguments="{statement : termStatement}" />
+</f:for>
+</f:if>

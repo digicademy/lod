@@ -5,11 +5,22 @@
     2013 : {uri : 'http://www.w3.org/ns/formats/N-Triples', mime : 'application/n-triples'},
     2014 : {uri : 'http://www.w3.org/ns/formats/JSON-LD', mime : 'application/ld+json'}
 }" as="format" key="type">
-        <rdfs:seeAlso>
-            <rdf:Description rdf:about="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource}) -> f:format.htmlspecialchars()}">
-                <rdf:type rdf:resource="http://rdfs.org/ns/void#Dataset"/>
-                <void:feature rdf:resource="{format.uri}"/>
-                <dc:format>{format.mime}</dc:format>
-            </rdf:Description>
-        </rdfs:seeAlso>
+    <rdfs:seeAlso>
+        <f:switch expression="{action}">
+        <f:case value="vocabulary">
+        <rdf:Description rdf:about="{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : '{type : type}') -> f:format.htmlspecialchars()}">
+            <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+            <void:feature rdf:resource="{format.uri}"/>
+            <dc:format>{format.mime}</dc:format>
+        </rdf:Description>
+        </f:case>
+        <f:case default="TRUE">
+        <rdf:Description rdf:about="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource}) -> f:format.htmlspecialchars()}">
+            <rdf:type rdf:resource="http://rdfs.org/ns/void#Dataset"/>
+            <void:feature rdf:resource="{format.uri}"/>
+            <dc:format>{format.mime}</dc:format>
+        </rdf:Description>
+        </f:case>
+        </f:switch>
+    </rdfs:seeAlso>
 </f:for>

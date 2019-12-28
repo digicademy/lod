@@ -1,11 +1,13 @@
 ## NEXT #########################################
 
-- should come with a few static namespaces: rdf, rdfs, owl, dc, void
+BE
+- statementIriTypeFilter.subject = 1|2
+- remove settings key from TSConfig
 
+FE
+- object recursion in API templates
 - API paginator limit prev/next problem
-- little bugs in JSON-LD (,) and RDF/XML (duplicate namespace)
-- test/think about object recursion in API templates
-
+- little bugs in JSON-LD (,)
 - vocabulary plugin
 -- Templates
 --- HTML/RDFa
@@ -23,7 +25,9 @@
 -- alternatively give realUrl config
 -- iri/bnode irre fields should use overrideChildTca from 8.7
 
-- create ext_tables_static+adt.sql for rdf/rdfs
+- create ext_tables_static+adt.sql
+-- set static namespaces: rdf, rdfs, owl, dc, void
+-- maybe create all rdf/rdfs Classes/Properties?
 
 - documentation
 -- use lists of controlled terms in the system (selects etc.)
@@ -67,8 +71,6 @@ id=123 => rewritten by realurl to 'id' or whatever (= pagePath)
 
 - api plugin
 -- think about cacheable actions => configurable cHash calculation during redirection => check performance
--- think about content negotiation service and move logic from controller
--- remaining todos in controller
 
 - resolver
 -- call different typolink handlers according to $representation->getAuthority();
@@ -85,55 +87,56 @@ fragment = section
 ---
 
 tx_lod {
-    settings {
-        identifierGenerator {
-            tx_lod_domain_model_iri {
-                type = [
-                    Digicademy\Lod\Generator\UidIdentifierGenerator,
-                    Digicademy\Lod\Generator\UuidIdentifierGenerator,
-                    Digicademy\Lod\Generator\ForeignRecordIdentifierGenerator,
-                    Vendor\Package\My\Generator
-                ]
-                Digicademy\Lod\Generator\UidIdentifierGenerator {
-                    entityPrefix = E
-                    propertyPrefix = P
-                }
-                Digicademy\Lod\Generator\UuidIdentifierGenerator {
-                    entityPrefix = E
-                    propertyPrefix = P
-                    xmlConformance = 1
-                }
-                Digicademy\Lod\Generator\ForeignRecordIdentifierGenerator {
-                    entityPrefix = E
-                    propertyPrefix = P
-                    includeTablename = 1
-                }
+    identifierGenerator {
+        tx_lod_domain_model_iri {
+            type = [
+                Digicademy\Lod\Generator\UidIdentifierGenerator,
+                Digicademy\Lod\Generator\UuidIdentifierGenerator,
+                Digicademy\Lod\Generator\ForeignRecordIdentifierGenerator,
+                Vendor\Package\My\Generator
+            ]
+            Digicademy\Lod\Generator\UidIdentifierGenerator {
+                entityPrefix = E
+                propertyPrefix = P
             }
-            tx_lod_domain_model_bnode {
-                type = [
-                    Digicademy\Lod\Generator\UidIdentifierGenerator,
-                    Digicademy\Lod\Generator\UuidIdentifierGenerator,
-                    Vendor\Package\My\Generator
-                ]
-                Digicademy\Lod\Generator\UidIdentifierGenerator {
-                    bnodePrefix = b
-                }
-                Digicademy\Lod\Generator\UuidIdentifierGenerator, {
-                    bnodePrefix = b
-                    xmlConformance = 1
-                }
+            Digicademy\Lod\Generator\UuidIdentifierGenerator {
+                entityPrefix = E
+                propertyPrefix = P
+                xmlConformance = 1
+            }
+            Digicademy\Lod\Generator\ForeignRecordIdentifierGenerator {
+                entityPrefix = E
+                propertyPrefix = P
+                includeTablename = 1
             }
         }
-        tableTracking {
-            tx_my_table {
-                track = 1
-                iriPidList = 1,2,3,...
-                iriPidList.recursive = 1
-                createOnPid = ...
-                createType = 1|2
-                hideUnhide = 1
-                deleteUndelete = 1
+        tx_lod_domain_model_bnode {
+            type = [
+                Digicademy\Lod\Generator\UidIdentifierGenerator,
+                Digicademy\Lod\Generator\UuidIdentifierGenerator,
+                Vendor\Package\My\Generator
+            ]
+            Digicademy\Lod\Generator\UidIdentifierGenerator {
+                bnodePrefix = b
             }
+            Digicademy\Lod\Generator\UuidIdentifierGenerator, {
+                bnodePrefix = b
+                xmlConformance = 1
+            }
+        }
+    }
+    statementIriTypeFilter {
+        subject = 1|2
+    }
+    tableTracking {
+        tx_my_table {
+            track = 1
+            iriPidList = 1,2,3,...
+            iriPidList.recursive = 1
+            createOnPid = ...
+            createType = 1|2
+            hideUnhide = 1
+            deleteUndelete = 1
         }
     }
 }
