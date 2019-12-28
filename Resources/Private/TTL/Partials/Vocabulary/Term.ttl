@@ -1,0 +1,8 @@
+{namespace lod = Digicademy\Lod\ViewHelpers}
+    <f:if condition="{term.label}">rdfs:label {lod:EscapeLiteral(literal : term.label, format : 'turtle')}{f:if(condition: '{term.labelLanguage}', then: '@{term.labelLanguage}')} ;</f:if>
+    <f:if condition="{term.comment}">rdfs:comment {lod:EscapeLiteral(literal : term.comment, format : 'turtle')}{f:if(condition: '{term.commentLanguage}', then: '@{term.commentLanguage}')} ;</f:if>
+    <f:if condition="{term.statements}">
+    <f:for each="{term.statements}" as="termStatement" iteration="statementIterator">
+    <f:render partial="Common/Object" arguments="{statement : termStatement, statementIterator : statementIterator}" />
+    </f:for>
+    </f:if>

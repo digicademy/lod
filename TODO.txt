@@ -3,6 +3,8 @@
 BE
 - statementIriTypeFilter.subject = 1|2
 - remove settings key from TSConfig
+- iri field for sys_category
+- graph could serve as collection of statements added to records etc. (think)
 
 FE
 - object recursion in API templates
@@ -14,12 +16,13 @@ FE
 --- JSON-LD
 --- NT
 --- TTL
+- add RDF ViewHelpers (esp. serialisation VH, class check, composer suggestion)
 
 - ensure 8.7 and 9.5 compatibility (esp. Doctrine) / add 7.6 branch and dev branch
 -- TCA migrations
 -- scan extension files
 -- hide label gone
--- add wizard is gone
+-- add wizard is gone: https://docs.typo3.org/c/typo3/cms-core/8.7/en-us/Changelog/8.6/Deprecation-79440-TcaChanges.html
 -- all tables icon in IRI record field broken icon
 -- check type param rewriting in TYPO3 9.5
 -- alternatively give realUrl config

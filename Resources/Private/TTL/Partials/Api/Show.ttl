@@ -7,7 +7,7 @@
     <f:if condition="{resource.label}">rdfs:label {lod:EscapeLiteral(literal : resource.label, format : 'turtle')}{f:if(condition: '{resource.labelLanguage}', then: '@{resource.labelLanguage}')} ;</f:if>
     <f:if condition="{resource.comment}">rdfs:comment {lod:EscapeLiteral(literal : resource.comment, format : 'turtle')}{f:if(condition: '{resource.commentLanguage}', then: '@{resource.commentLanguage}')} ;</f:if>
     <f:for each="{resource.statements}" as="statement">
-    <f:render partial="Api/Object" arguments="{statement : statement}" />
+    <f:render partial="Common/Object" arguments="{statement : statement}" />
     </f:for>
     <f:if condition="{resource.record}">
     dc:relation [
