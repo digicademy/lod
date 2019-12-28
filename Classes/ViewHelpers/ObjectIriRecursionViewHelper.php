@@ -60,7 +60,8 @@ class ObjectIriRecursionViewHelper extends AbstractViewHelper
     }
 
     /**
-     * Collects IRI objects in a template variable. Needed for Turtle serialisation (recursion of IRI objects).
+     * Recursively collects object IRIs in a flat list.
+     * Especially needed for Turtle serialisation.
      *
      * @return
      * @throws
@@ -68,8 +69,7 @@ class ObjectIriRecursionViewHelper extends AbstractViewHelper
     public function render()
     {
         $this->recurse($this->arguments['iri'], $this->arguments['maxDepth']);
-        $this->templateVariableContainer->add('iriCollection', $this->iriCollection);
-        return null;
+        return $this->iriCollection;
     }
 
     /**

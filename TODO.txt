@@ -7,7 +7,7 @@ BE
 - graph could serve as collection of statements added to records etc. (think)
 
 FE
-- object recursion in API templates
+- object recursion in API templates => (still to test: ttl, nt, json-ld, rdfa)
 - API paginator limit prev/next problem
 - little bugs in JSON-LD (,)
 - vocabulary plugin
@@ -15,7 +15,7 @@ FE
 --- HTML/RDFa
 --- JSON-LD
 --- NT
---- TTL
+--- TTL => seeAlso serialisation
 - add RDF ViewHelpers (esp. serialisation VH, class check, composer suggestion)
 
 - ensure 8.7 and 9.5 compatibility (esp. Doctrine) / add 7.6 branch and dev branch

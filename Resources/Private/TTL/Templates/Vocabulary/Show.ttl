@@ -9,15 +9,39 @@
     <f:render partial="Vocabulary/Term" arguments="{term : vocabulary.iri}" />
 
 <f:if condition="{vocabulary.iri.statements}">
-    <lod:ObjectIriRecursion iri="{vocabulary.iri}" maxDepth="5" />
-    <f:if condition="{iriCollection}">
-        <f:for each="{iriCollection}" as="iri">
+<f:for each="{lod:ObjectIriRecursion(iri : vocabulary.iri, maxDepth : 5)}" as="iri">
 <{iri.namespace.value}{iri.value}>
     <f:render partial="Vocabulary/Term" arguments="{term : iri}" />
-        </f:for>
-    </f:if>
+</f:for>
 </f:if>
 
-### TERMS ###
+<f:if condition="{vocabulary.terms}">
+<f:for each="{vocabulary.terms}" as="term">
+<{term.namespace.iri}{term.value}>
+<f:switch expression="{term.type}">
+<f:case value="1">
+    a owl:Class ;
+    <f:render partial="Vocabulary/Term" arguments="{term : term}" />
 
+<f:if condition="{vocabulary.iri.statements}">
+<f:for each="{lod:ObjectIriRecursion(iri : term, maxDepth : 5)}" as="iri">
+<{iri.namespace.value}{iri.value}>
+    <f:render partial="Vocabulary/Term" arguments="{term : iri}" />
+</f:for>
+</f:if>
+</f:case>
+<f:case value="2">
+    a rdf:Property ;
+    <f:render partial="Vocabulary/Term" arguments="{term : term}" />
+
+<f:if condition="{vocabulary.iri.statements}">
+<f:for each="{lod:ObjectIriRecursion(iri : term, maxDepth : 5)}" as="iri">
+<{iri.namespace.value}{iri.value}>
+    <f:render partial="Vocabulary/Term" arguments="{term : iri}" />
+</f:for>
+</f:if>
+</f:case>
+</f:switch>
+</f:for>
+</f:if>
 </lod:RemoveEmptyLines>
