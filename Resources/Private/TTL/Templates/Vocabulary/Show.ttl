@@ -5,13 +5,15 @@
     a owl:Ontology ;
     <f:if condition="{vocabulary.label}">dc:title {lod:EscapeLiteral(literal : vocabulary.label, format : 'turtle')} ;</f:if>
     <f:if condition="{vocabulary.comment}">dc:description {lod:EscapeLiteral(literal : vocabulary.comment, format : 'turtle')} ;</f:if>
-    ### SERIALISATION ###
-    <f:render partial="Vocabulary/Term" arguments="{term : vocabulary.iri}" />
+    <f:render partial="Common/AlternativeSerializations" arguments="{mode : 'vocabularyObject', environment : environment}"/>
+    <f:render partial="Common/Iri" arguments="{iri : vocabulary.iri}"/>
+
+<f:render partial="Common/AlternativeSerializations" arguments="{mode : 'vocabularySubject', environment : environment}"/>
 
 <f:if condition="{vocabulary.iri.statements}">
 <f:for each="{lod:ObjectIriRecursion(iri : vocabulary.iri, maxDepth : 5)}" as="iri">
 <{iri.namespace.value}{iri.value}>
-    <f:render partial="Vocabulary/Term" arguments="{term : iri}" />
+    <f:render partial="Common/Iri" arguments="{iri : iri}" />
 </f:for>
 </f:if>
 
@@ -21,23 +23,23 @@
 <f:switch expression="{term.type}">
 <f:case value="1">
     a owl:Class ;
-    <f:render partial="Vocabulary/Term" arguments="{term : term}" />
+    <f:render partial="Common/Iri" arguments="{iri : term}" />
 
 <f:if condition="{vocabulary.iri.statements}">
 <f:for each="{lod:ObjectIriRecursion(iri : term, maxDepth : 5)}" as="iri">
 <{iri.namespace.value}{iri.value}>
-    <f:render partial="Vocabulary/Term" arguments="{term : iri}" />
+    <f:render partial="Common/Iri" arguments="{iri : iri}" />
 </f:for>
 </f:if>
 </f:case>
 <f:case value="2">
     a rdf:Property ;
-    <f:render partial="Vocabulary/Term" arguments="{term : term}" />
+    <f:render partial="Common/Iri" arguments="{iri : term}" />
 
 <f:if condition="{vocabulary.iri.statements}">
 <f:for each="{lod:ObjectIriRecursion(iri : term, maxDepth : 5)}" as="iri">
 <{iri.namespace.value}{iri.value}>
-    <f:render partial="Vocabulary/Term" arguments="{term : iri}" />
+    <f:render partial="Common/Iri" arguments="{iri : iri}" />
 </f:for>
 </f:if>
 </f:case>

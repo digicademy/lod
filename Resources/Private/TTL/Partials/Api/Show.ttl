@@ -15,6 +15,13 @@
         <f:if condition="{resource.record.comment}">rdfs:comment {lod:EscapeLiteral(literal : resource.record.comment, format : 'turtle')}</f:if>
     ] ;
     </f:if>
-    <f:render partial="Api/AlternativeSerializations" arguments="{mode : 'object', resource : resource, environment : environment}"/>
+    <f:render partial="Common/AlternativeSerializations" arguments="{mode : 'apiObject', resource : resource, environment : environment}"/>
 
-<f:render partial="Api/AlternativeSerializations" arguments="{mode : 'subject', resource : resource, environment : environment}"/>
+<f:render partial="Common/AlternativeSerializations" arguments="{mode : 'apiSubject', resource : resource, environment : environment}"/>
+
+<f:if condition="{resource.statements}">
+<f:for each="{lod:ObjectIriRecursion(iri : resource, maxDepth : 5)}" as="iri">
+<{iri.namespace.value}{iri.value}>
+    <f:render partial="Common/Iri" arguments="{iri : iri}" />
+</f:for>
+</f:if>

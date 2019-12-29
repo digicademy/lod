@@ -4,7 +4,7 @@
     <owl:Ontology rdf:about="{vocabulary.iri.namespace.value}{vocabulary.iri.value}">
         <f:if condition="{vocabulary.label}"><dc:title>{vocabulary.label}</dc:title></f:if>
         <f:if condition="{vocabulary.comment}"><dc:description>{vocabulary.comment}</dc:description></f:if>
-        <f:render partial="Api/AlternativeSerializations" arguments="{action : 'vocabulary', environment : environment}" />
+        <f:render partial="Common/AlternativeSerializations" arguments="{action : 'vocabulary', environment : environment}" />
         <f:render partial="Vocabulary/Term" arguments="{term : vocabulary.iri}" />
     </owl:Ontology>
 <f:if condition="{vocabulary.terms}">
