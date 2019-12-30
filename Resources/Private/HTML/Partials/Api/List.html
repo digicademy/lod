@@ -1,35 +1,17 @@
 {namespace lod = Digicademy\Lod\ViewHelpers}
 <div vocab="http://www.w3.org/ns/hydra/core#" prefix="rdfs: http://www.w3.org/2000/01/rdf-schema# dc: http://purl.org/dc/elements/1.1/ void: http://rdfs.org/ns/void#" typeof="Collection void:Dataset">
 
-    <h2>
-        <f:translate key="about.list.header" /> (<span property="totalItems">{totalItems}</span>)
-    </h2>
+    <h2><f:translate key="api.list.header" /> (<span property="totalItems">{totalItems}</span>)</h2>
 
-    <h3>
-        <f:translate key="about.list.alternativeSerialization" />
-    </h3>
+    <h3><f:translate key="general.alternativeSerialization" /></h3>
 
-    <ul class="resource-serialization">
-        <li class="jsonld">
-            <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', page : arguments.page, limit : arguments.limit}) -> f:format.htmlspecialchars()}" typeof="Dataset">
-                <span property="void:feature" resource="http://www.w3.org/ns/formats/JSON-LD">JSON-LD</span>
-            </a>
-        </li>
-        <li class="rdfxml">
-            <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', page : arguments.page, limit : arguments.limit}) -> f:format.htmlspecialchars()}" typeof="Dataset">
-                <span property="void:feature" resource="http://www.w3.org/ns/formats/RDF_XML">RDF/XML</span>
-            </a>
-        </li>
-        <li class="turtle">
-            <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2011', page : arguments.page, limit : arguments.limit}) -> f:format.htmlspecialchars()}" typeof="Dataset">
-                <span property="void:feature" resource="http://www.w3.org/ns/formats/Turtle">Turtle</span>
-            </a>
-        </li>
-        <li class="ntriples">
-            <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2013', page : arguments.page, limit : arguments.limit}) -> f:format.htmlspecialchars()}" typeof="Dataset">
-                <span property="void:feature" resource="http://www.w3.org/ns/formats/N-Triples">N-Triples</span>
-            </a>
-        </li>
+    <ul class="alternative-serialization">
+        <f:render partial="Common/AlternativeSerializations" arguments="{
+            action : 'apiList',
+            environment : environment,
+            page : arguments.page,
+            limit : arguments.limit
+        }"/>
     </ul>
 
     <f:render partial="Api/PaginationNavigation" arguments="{_all}" />
@@ -41,38 +23,24 @@
     <table>
         <thead>
             <tr>
-                <th><f:translate key="about.list.resource" /></th>
-                <th colspan="4"><f:translate key="about.list.alternativeSerialization" /></th>
+                <th><f:translate key="api.list.resource" /></th>
+                <th colspan="4"><f:translate key="general.alternativeSerialization" /></th>
             </tr>
         </thead>
         <tbody>
         <f:for each="{resources}" as="resource">
             <tr property="member" resource="{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}, noCacheHash : 1) -> f:format.htmlspecialchars()}">
                 <td>
-                    <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '1991', resource : resource}) -> f:format.htmlspecialchars()}" typeof="Dataset">
+                    <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '1991', resource : resource}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
                         <span property="void:feature" resource="http://www.w3.org/ns/formats/RDFa">{resource.value}</span>
                     </a>
                 </td>
-                <td>
-                    <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '2014', resource : resource}) -> f:format.htmlspecialchars()}" typeof="Dataset">
-                        <span property="void:feature" resource="http://www.w3.org/ns/formats/JSON-LD">JSON-LD</span>
-                    </a>
-                </td>
-                <td>
-                    <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '2004', resource : resource}) -> f:format.htmlspecialchars()}" typeof="Dataset">
-                        <span property="void:feature" resource="http://www.w3.org/ns/formats/RDF_XML">RDF/XML</span>
-                    </a>
-                </td>
-                <td>
-                    <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '2011', resource : resource}) -> f:format.htmlspecialchars()}" typeof="Dataset">
-                        <span property="void:feature" resource="http://www.w3.org/ns/formats/Turtle">Turtle</span>
-                    </a>
-                </td>
-                <td>
-                    <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '2013', resource : resource}) -> f:format.htmlspecialchars()}" typeof="Dataset">
-                        <span property="void:feature" resource="http://www.w3.org/ns/formats/N-Triples">N-Triples</span>
-                    </a>
-                </td>
+                <f:render partial="Common/AlternativeSerializations" arguments="{
+                    action : 'apiShow',
+                    resource : resource,
+                    environment : environment,
+                    mode : 'td'
+                }"/>
             </tr>
         </f:for>
         </tbody>

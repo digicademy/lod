@@ -1,1 +1,105 @@
-<f:debug>{vocabulary}</f:debug>
+{namespace lod = Digicademy\Lod\ViewHelpers}<lod:RemoveEmptyLines>
+<div prefix="{lod:RdfaPrefix(namespaces : namespaces)}">
+
+    <div about="{vocabulary.iri.namespace.value}{vocabulary.iri.value}" typeof="owl:Ontology">
+        <f:if condition="{vocabulary.label}">
+            <h2 class="vocabulary-title" property="dc:title">{vocabulary.label}</h2>
+        </f:if>
+        <f:if condition="{vocabulary.comment}">
+            <p class="vocabulary-description" property="dc:description">{vocabulary.comment}</p>
+        </f:if>
+        <dl class="vocabulary-statements">
+        <f:if condition="{vocabulary.iri.label}">
+            <dt><f:translate key="general.label" /></dt>
+            <dd property="rdfs:label"{f:if(condition: '{vocabulary.iri.labelLanguage}', then: ' lang="{vocabulary.iri.labelLanguage}"')}>{vocabulary.iri.label}</dd>
+        </f:if>
+        <f:if condition="{vocabulary.iri.comment}">
+            <dt><f:translate key="general.description" /></dt>
+            <dd property="rdfs:comment"{f:if(condition: '{vocabulary.iri.commentLanguage}', then: ' lang="{vocabulary.iri.commentLanguage}"')}>{vocabulary.iri.comment}</dd>
+        </f:if>
+        <f:if condition="{vocabulary.iri.statements}">
+            <f:for each="{vocabulary.iri.statements}" as="vocabularyStatement">
+            <dt>
+                {vocabularyStatement.predicate.value}
+            </dt>
+            <dd>
+                <f:render partial="Common/Object" arguments="{
+                    iri : '{vocabulary.iri.namespace.value}{vocabulary.iri.value}',
+                    statement : vocabularyStatement
+                }"/>
+            </dd>
+            </f:for>
+        </f:if>
+        </dl>
+    </div>
+
+    <h3><f:translate key="general.alternativeSerialization" /></h3>
+    <ul class="alternative-serialization">
+        <f:render partial="Common/AlternativeSerializations" arguments="{
+            action : 'vocabularyShow',
+            environment : environment
+        }"/>
+    </ul>
+
+    <h3><f:translate key="vocabulary.summary"/></h3>
+    <dl>
+    <f:groupedFor each="{vocabulary.terms}" as="groupedTerms" groupBy="type" groupKey="type">
+        <dt>
+        <f:switch expression="{type}">
+            <f:case value="1"><f:translate key="vocabulary.classes"/></f:case>
+            <f:case value="2"><f:translate key="vocabulary.properties"/></f:case>
+        </f:switch>
+        </dt>
+        <dd class="resource-statements">
+            <f:for each="{groupedTerms}" as="term">
+                <a href="{term.namespace.iri}{term.value}">{term.value}</a>
+            </f:for>
+        </dd>
+    </f:groupedFor>
+    </dl>
+
+    <f:groupedFor each="{vocabulary.terms}" as="groupedTerms" groupBy="type" groupKey="type">
+        <h3>
+        <f:switch expression="{type}">
+            <f:case value="1"><f:translate key="vocabulary.classes"/></f:case>
+            <f:case value="2"><f:translate key="vocabulary.properties"/></f:case>
+        </f:switch>
+        </h3>
+        <f:for each="{groupedTerms}" as="term">
+            <div id="{term.value}">
+                <h4>{term.value}</h4>
+                <table>
+                    <tr>
+                        <th><f:translate key="general.iri"/></th>
+                        <td><a href="{term.namespace.iri}{term.value}">{term.namespace.iri}{term.value}</a></td>
+                    </tr>
+                    <f:if condition="{term.label}">
+                    <tr>
+                        <th><f:translate key="general.label"/></th>
+                        <td about="{term.namespace.iri}{term.value}" property="rdfs:label"{f:if(condition: '{term.labelLanguage}', then: ' lang="{term.labelLanguage}"')}>{term.label}</a></td>
+                    </tr>
+                    </f:if>
+                    <f:if condition="{term.comment}">
+                    <tr>
+                        <th><f:translate key="general.description"/></th>
+                        <td about="{term.namespace.iri}{term.value}" property="rdfs:comment"{f:if(condition: '{term.labelLanguage}', then: ' lang="{term.labelLanguage}"')}>{term.comment}</td>
+                    </tr>
+                    </f:if>
+                    <f:for each="{term.statements}" as="termStatement">
+                    <tr>
+                        <th>{termStatement.predicate.value}</th>
+                        <td>
+                            <f:render partial="Common/Object" arguments="{
+                                iri : '{term.namespace.iri}{term.value}',
+                                statement : termStatement
+                            }"/>
+                        </td>
+                    </tr>
+                    </f:for>
+                </table>
+            </div>
+        </f:for>
+    </f:groupedFor>
+
+</div>
+</lod:RemoveEmptyLines>

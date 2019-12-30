@@ -14,7 +14,7 @@
             <dc:format>{format.mime}</dc:format>
         </rdf:Description>
         </f:case>
-        <f:case default="TRUE">
+        <f:case value="api">
         <rdf:Description rdf:about="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource}) -> f:format.htmlspecialchars()}">
             <rdf:type rdf:resource="http://rdfs.org/ns/void#Dataset"/>
             <void:feature rdf:resource="{format.uri}"/>

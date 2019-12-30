@@ -6,49 +6,33 @@
         </a>
     </h2>
 
-    <h3>
-        <f:translate key="about.show.alternativeSerialization" />
-    </h3>
-    <ul class="resource-serialization">
-        <li class="jsonld">
-            <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '2014', resource : resource}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
-                <span property="void:feature" resource="http://www.w3.org/ns/formats/JSON-LD">JSON-LD</span>
-            </a>
-        </li>
-        <li class="rdfxml">
-            <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '2004', resource : resource}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
-                <span property="void:feature" resource="http://www.w3.org/ns/formats/RDF_XML">RDF/XML</span>
-            </a>
-        </li>
-        <li class="turtle">
-            <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '2011', resource : resource}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
-                <span property="void:feature" resource="http://www.w3.org/ns/formats/Turtle">Turtle</span>
-            </a>
-        </li>
-        <li class="ntriples">
-            <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '2013', resource : resource}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
-                <span property="void:feature" resource="http://www.w3.org/ns/formats/N-Triples">N-Triples</span>
-            </a>
-        </li>
+    <h3><f:translate key="general.alternativeSerialization" /></h3>
+    <ul class="alternative-serialization">
+        <f:render partial="Common/AlternativeSerializations" arguments="{
+            action : 'apiShow',
+            resource : resource,
+            environment : environment
+        }"/>
     </ul>
 
     <h3>
-        <f:translate key="about.show.description" />
+        <f:translate key="api.show.description" />
     </h3>
     <dl class="resource-description">
         <dt>
-            <f:render partial="Api/Link" arguments="{value : 'type',  action : action, type : '1991', resource : {value: 'type', namespace : {prefix : 'rdf'}}}" />
+            <f:render partial="Api/Link" arguments="{
+                value : 'type',
+                action : action,
+                type : '1991',
+                resource : {value: 'type', namespace : {prefix : 'rdf'}}
+            }" />
         </dt>
         <f:switch expression="{resource.type}">
             <f:case value="1">
-                <dd>
-                    Entity
-                </dd>
+                <dd>Entity</dd>
             </f:case>
             <f:case value="2">
-                <dd>
-                    Property
-                </dd>
+                <dd>Property</dd>
             </f:case>
         </f:switch>
         <f:if condition="{resource.label}">
@@ -67,7 +51,7 @@
 
     <f:if condition="{resource.statements}">
         <h3 class="resource-statements-header">
-            <f:translate key="about.show.statements" />
+            <f:translate key="api.show.statements" />
         </h3>
 
         <f:groupedFor each="{resource.statements}" as="groupedStatements" groupBy="graph" groupKey="graph">
@@ -87,7 +71,11 @@
                         <f:render partial="Api/Link" arguments="{value : statement.predicate.value,  action : action, type : '1991', resource : statement.predicate}" />
                     </dt>
                     <dd>
-                        <f:render partial="Api/Object" arguments="{iri: '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.iri}\', else : \'\')}{resource.value}', statement : statement}" />
+                        <f:render partial="Common/Object" arguments="{
+                            iri: '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.iri}\', else : \'\')}{resource.value}',
+                            statement : statement,
+                            mode : 'api'
+                        }"/>
                     </dd>
                 </f:for>
             </dl>
@@ -96,7 +84,7 @@
 
     <f:if condition="{resource.record}">
         <h3 class="resource-record-header">
-            <f:translate key="about.show.record" />
+            <f:translate key="api.show.record" />
         </h3>
         <dl class="resource-record" property="dc:relation" resource="[_:eb0d307c-5915-4d1d-9444-52a8640ef80d]">
             <f:if condition="{resource.record.label}">

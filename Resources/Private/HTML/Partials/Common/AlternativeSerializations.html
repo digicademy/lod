@@ -1,0 +1,42 @@
+<f:for each="{
+    1991 : {name : 'HTML/RDFa', uri : 'http://www.w3.org/ns/formats/RDFa', mime : 'text/html'},
+    2004 : {name : 'RDF/XML', uri : 'http://www.w3.org/ns/formats/RDF_XML', mime : 'application/rdf+xml'},
+    2011 : {name : 'Turtle', uri : 'http://www.w3.org/ns/formats/Turtle', mime : 'text/turtle'},
+    2013 : {name : 'N-Triples', uri : 'http://www.w3.org/ns/formats/N-Triples', mime : 'application/n-triples'},
+    2014 : {name : 'JSON-LD', uri : 'http://www.w3.org/ns/formats/JSON-LD', mime : 'application/ld+json'}
+}" as="format" key="type">
+<f:switch expression="{action}">
+    <f:case value="apiList">
+        <li>
+            <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : type, page : page, limit : limit}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
+                <span property="void:feature" resource="{format.uri}">{format.name}</span>
+            </a>
+        </li>
+    </f:case>
+    <f:case value="apiShow">
+        <f:if condition="{mode} == 'td'">
+            <f:then>
+                <td>
+                    <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
+                        <span property="void:feature" resource="{format.uri}">{format.name}</span>
+                    </a>
+                </td>
+            </f:then>
+            <f:else>
+                <li>
+                    <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
+                        <span property="void:feature" resource="{format.uri}">{format.name}</span>
+                    </a>
+                </li>
+            </f:else>
+        </f:if>
+    </f:case>
+    <f:case value="vocabularyShow">
+        <li>
+            <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : '{type : type}') -> f:format.htmlspecialchars()}" typeof="void:Dataset">
+                <span property="void:feature" resource="{format.uri}">{format.name}</span>
+            </a>
+        </li>
+    </f:case>
+</f:switch>
+</f:for>

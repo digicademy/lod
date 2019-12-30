@@ -4,41 +4,55 @@
         <header/>
         <body>
 
-            <trans-unit id="about.list.header">
+            <trans-unit id="general.alternativeSerialization">
+                <source>Alternative serializations</source>
+            </trans-unit>
+            <trans-unit id="general.label">
+                <source>label</source>
+            </trans-unit>
+            <trans-unit id="general.description">
+                <source>description</source>
+            </trans-unit>
+            <trans-unit id="general.iri">
+                <source>IRI</source>
+            </trans-unit>
+
+            <trans-unit id="api.list.header">
                 <source>LOD Resources</source>
             </trans-unit>
-            <trans-unit id="about.list.alternativeSerialization">
-                <source>Alternative serializations</source>
-            </trans-unit>
-            <trans-unit id="about.list.page">
+            <trans-unit id="api.list.page">
                 <source>Page</source>
             </trans-unit>
-            <trans-unit id="about.list.of">
+            <trans-unit id="api.list.of">
                 <source>of</source>
             </trans-unit>
-            <trans-unit id="about.list.resourcesPerPage">
+            <trans-unit id="api.list.resourcesPerPage">
                 <source>Resources per page</source>
             </trans-unit>
-            <trans-unit id="about.list.resource">
+            <trans-unit id="api.list.resource">
                 <source>Resource</source>
             </trans-unit>
-            <trans-unit id="about.list.representation">
+            <trans-unit id="api.list.representation">
                 <source>Representation</source>
             </trans-unit>
-            <trans-unit id="about.list.type">
+            <trans-unit id="api.list.type">
                 <source>Type</source>
             </trans-unit>
-            <trans-unit id="about.show.statements">
+            <trans-unit id="api.show.statements">
                 <source>Statements</source>
             </trans-unit>
-            <trans-unit id="about.show.record">
+            <trans-unit id="api.show.record">
                 <source>Record</source>
             </trans-unit>
-            <trans-unit id="about.show.alternativeSerialization">
-                <source>Alternative serializations</source>
+
+            <trans-unit id="vocabulary.summary">
+                <source>Terms summary</source>
             </trans-unit>
-            <trans-unit id="about.show.description">
-                <source>Description</source>
+            <trans-unit id="vocabulary.classes">
+                <source>Classes</source>
+            </trans-unit>
+            <trans-unit id="vocabulary.properties">
+                <source>Properties</source>
             </trans-unit>
 
         </body>

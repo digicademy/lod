@@ -1,0 +1,62 @@
+{namespace lod = Digicademy\Lod\ViewHelpers}
+<f:switch expression="{lod:DetermineEntity(entity : statement.object)}">
+    <f:case value="Digicademy\Lod\Domain\Model\Iri">
+        <div class="statement" about="{iri}" property="{statement.predicate.namespace.prefix}:{statement.predicate.value}" resource="{statement.object.namespace.iri}{statement.object.value}">
+            <f:if condition="{mode} == 'api'">
+                <f:then>
+                    <a href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '1991', resource : statement.object}) -> f:format.htmlspecialchars()}">{statement.object.value}</a>
+                </f:then>
+                <f:else>
+                    <a href="{statement.object.namespace.iri}{statement.object.value}">{statement.object.value}</a>
+                </f:else>
+            </f:if>
+            <f:if condition="{statement.objectRecursion}">
+                <f:if condition="{statement.object.statements}">
+                    <f:if condition="{mode} == 'api'">
+                        <f:then>
+                            <f:for each="{statement.object.statements}" as="objectStatement">
+                                <f:render partial="Common/Object" arguments="{
+                                    iri : '{objectStatement.object.namespace.iri}{objectStatement.object.value}',
+                                    statement : objectStatement,
+                                    mode : 'api'
+                                }"/>
+                            </f:for>
+                        </f:then>
+                        <f:else>
+                            <f:for each="{statement.object.statements}" as="objectStatement">
+                                <f:render partial="Common/Object" arguments="{
+                                    iri : '{statement.object.namespace.iri}{statement.object.value}',
+                                    statement : objectStatement
+                                }"/>
+                            </f:for>
+                        </f:else>
+                    </f:if>
+                </f:if>
+            </f:if>
+        </div>
+    </f:case>
+    <f:case value="Digicademy\Lod\Domain\Model\Literal">
+        <div class="statement" about="{iri}" property="{statement.predicate.namespace.prefix}:{statement.predicate.value}"{lod:LangDatatype(literal : statement.object, format : 'rdfa')}>{statement.object.value}</div>
+    </f:case>
+    <f:case default="Digicademy\Lod\Domain\Model\Bnode">
+        <div class="statement" about="{iri}" property="{statement.predicate.namespace.prefix}:{statement.predicate.value}" resource="_:{statement.object.value}">
+        <f:for each="{lod:FetchBnode(bnode : statement.object)}" as="bnodeStatement">
+            <f:if condition="{mode} == 'api'">
+                <f:then>
+                    <f:render partial="Common/Object" arguments="{
+                        iri : '_:{statement.object.value}',
+                        statement : bnodeStatement,
+                        mode : 'api'
+                    }"/>
+                </f:then>
+                <f:else>
+                    <f:render partial="Common/Object" arguments="{
+                        iri : '_:{statement.object.value}',
+                        statement : bnodeStatement
+                    }"/>
+                </f:else>
+            </f:if>
+        </f:for>
+        </div>
+    </f:case>
+</f:switch>

@@ -5,19 +5,19 @@
         <f:if condition="{vocabulary.label}"><dc:title>{vocabulary.label}</dc:title></f:if>
         <f:if condition="{vocabulary.comment}"><dc:description>{vocabulary.comment}</dc:description></f:if>
         <f:render partial="Common/AlternativeSerializations" arguments="{action : 'vocabulary', environment : environment}" />
-        <f:render partial="Vocabulary/Term" arguments="{term : vocabulary.iri}" />
+        <f:render partial="Common/Iri" arguments="{iri : vocabulary.iri}" />
     </owl:Ontology>
 <f:if condition="{vocabulary.terms}">
 <f:for each="{vocabulary.terms}" as="term">
 <f:switch expression="{term.type}">
 <f:case value="1">
     <owl:Class rdf:about="{term.namespace.iri}{term.value}">
-        <f:render partial="Vocabulary/Term" arguments="{term : term}" />
+        <f:render partial="Common/Iri" arguments="{iri : term}" />
     </owl:Class>
 </f:case>
 <f:case value="2">
     <rdf:Property rdf:about="{term.namespace.iri}{term.value}">
-        <f:render partial="Vocabulary/Term" arguments="{term : term}" />
+        <f:render partial="Common/Iri" arguments="{iri : term}" />
     </rdf:Property>
 </f:case>
 </f:switch>

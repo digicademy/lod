@@ -7,12 +7,11 @@ BE
 - graph could serve as collection of statements added to records etc. (think)
 
 FE
-- object recursion in API templates => (still to test: nt, json-ld, rdfa)
+- object recursion in API templates => (still to test: nt, json-ld)
 - API paginator limit prev/next problem
 - little bugs in JSON-LD (,)
 - vocabulary plugin
 -- Templates
---- HTML/RDFa
 --- JSON-LD
 --- NT
 - add RDF ViewHelpers (esp. serialisation VH, class check, composer suggestion)

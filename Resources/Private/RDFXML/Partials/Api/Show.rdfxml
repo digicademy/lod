@@ -1,7 +1,7 @@
 <rdf:RDF <f:for each="{namespaces}" as="namespace">
     xmlns:{namespace.prefix}="{namespace.iri}"</f:for>>
     <rdf:Description rdf:about="{f:if(condition : '{resource.namespace}', then : '{resource.namespace.iri}', else : '')}{resource.value}">
-        <f:render partial="Common/AlternativeSerializations" arguments="{_all}" />
+        <f:render partial="Common/AlternativeSerializations" arguments="{action : 'api', resource : resource, environment : environment}" />
         <f:if condition="{resource.label}"><rdfs:label{f:if(condition: '{resource.labelLanguage}', then: ' xml:lang="{resource.labelLanguage}"')}>{resource.label}</rdfs:label></f:if>
         <f:if condition="{resource.comment}"><rdfs:comment{f:if(condition: '{resource.commentLanguage}', then: ' xml:lang="{resource.commentLanguage}"')}>{resource.comment}</rdfs:comment></f:if>
         <f:for each="{resource.statements}" as="statement">
