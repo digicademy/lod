@@ -4,12 +4,10 @@ BE
 - statementIriTypeFilter.subject = 1|2
 - remove settings key from TSConfig
 - iri field for sys_category
-- graph could serve as collection of statements added to records etc. (think)
 
 FE
 - object recursion in API templates => (still to test: nt, json-ld)
 - API paginator limit prev/next problem
-- little bugs in JSON-LD (,)
 - vocabulary plugin
 -- Templates
 --- JSON-LD
@@ -37,6 +35,8 @@ FE
 
 - named graphs
 -- add named graph structures to ttl, json-ld and nt templates
+-- maybe graph could serve as collection of statements added to records etc. (think)
+-- graph filter on api list view: only show resources that belong to a given graph
 
 - API plugin
 -- basic string search in label/comment for API plugin (list view)

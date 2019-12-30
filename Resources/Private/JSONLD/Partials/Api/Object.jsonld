@@ -6,7 +6,9 @@
   "@type": "{statement.object.namespace.prefix}:{statement.object.value}"
   </f:then>
   <f:else>
-  "{statement.predicate.namespace.prefix}:{statement.predicate.value}": "{statement.object.namespace.prefix}:{statement.object.value}"
+  "{statement.predicate.namespace.prefix}:{statement.predicate.value}": <f:format.raw>{</f:format.raw>
+    "@id" : "{f:if(condition : '{statement.object.namespace}', then : '{statement.object.namespace.iri}:', else : '')}{statement.object.value}"
+  <f:format.raw>}</f:format.raw>
   </f:else>
   </f:if>
 </f:case>

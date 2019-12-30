@@ -1,10 +1,8 @@
 {namespace lod = Digicademy\Lod\ViewHelpers}<f:format.raw>{</f:format.raw>
   "@context": <f:format.raw>{</f:format.raw>
 <f:for each="{namespaces}" as="namespace" iteration="namespaceIterator">
-    "{namespace.prefix}": "{namespace.iri}",
+    "{namespace.prefix}": "{namespace.iri}"<f:if condition="{namespaceIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if>
 </f:for>
-    "void": "http://rdfs.org/ns/void#",
-    "dc": "http://purl.org/dc/elements/1.1/"
   <f:format.raw>},</f:format.raw>
 <f:alias map="{iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.iri}\', else : \'\')}{resource.value}'}">
   "@id": "{iri}",
@@ -16,8 +14,6 @@
     <f:if condition="{resource.commentLanguage}">"@language" : "{resource.commentLanguage}",</f:if>
     "@value" : {lod:EscapeLiteral(literal : resource.comment, format : 'jsonld')}
   <f:format.raw>}</f:format.raw>,</f:if>
-  <f:for each="{resource.statements}" as="statement" iteration="objectIterator">
-  <f:render partial="Api/Object" arguments="{statement : statement}" /><f:if condition="{objectIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if></f:for>
   <f:if condition="{resource.record}">
   "dc:relation": {
     <f:if condition="{resource.record.label}">"rdfs:label" : {lod:EscapeLiteral(literal : resource.record.label, format : 'jsonld')},</f:if>
@@ -26,6 +22,8 @@
   </f:if>
   "rdfs:seeAlso" : <f:format.raw>[</f:format.raw>
   <f:render partial="Api/AlternativeSerializations" arguments="{_all}" />
-  <f:format.raw>]</f:format.raw>
+  <f:format.raw>],</f:format.raw>
+  <f:for each="{resource.statements}" as="statement" iteration="objectIterator">
+  <f:render partial="Api/Object" arguments="{statement : statement}" /><f:if condition="{objectIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if></f:for>
 </f:alias>
 <f:format.raw>}</f:format.raw>
