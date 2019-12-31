@@ -26,7 +26,7 @@
           "@value" : {lod:EscapeLiteral(literal : resource.comment, format : 'jsonld')}
         <f:format.raw>}</f:format.raw>,</f:if>
         "rdfs:seeAlso" : <f:format.raw>[</f:format.raw>
-        <f:render partial="Api/AlternativeSerializations" arguments="{_all}" />
+        <f:render partial="Common/AlternativeSerializations" arguments="{mode : 'api', environment : environment, resource : resource}" />
         <f:format.raw>]</f:format.raw>
       <f:format.raw>}</f:format.raw><f:if condition="{iterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if>
 </f:for>

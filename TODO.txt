@@ -6,11 +6,12 @@ BE
 - iri field for sys_category
 
 FE
-- object recursion in API templates => (still to test: nt, json-ld)
+- object recursion in API templates => (still to test: nt)
 - API paginator limit prev/next problem
+- hydra:view has no alternative serialisations in none of the serialisation formats
+- check (and possibly clear) fixed namespaces
 - vocabulary plugin
 -- Templates
---- JSON-LD
 --- NT
 - add RDF ViewHelpers (esp. serialisation VH, class check, composer suggestion)
 

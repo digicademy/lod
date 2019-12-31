@@ -1,0 +1,23 @@
+<f:for each="{
+    1991 : {uri : 'http://www.w3.org/ns/formats/RDFa', mime : 'text/html'},
+    2004 : {uri : 'http://www.w3.org/ns/formats/RDF_XML', mime : 'application/rdf+xml'},
+    2011 : {uri : 'http://www.w3.org/ns/formats/Turtle', mime : 'text/turtle'},
+    2013 : {uri : 'http://www.w3.org/ns/formats/N-Triples', mime : 'application/n-triples'},
+    2014 : {uri : 'http://www.w3.org/ns/formats/JSON-LD', mime : 'application/ld+json'}
+}" as="format" key="type" iteration="serializationIterator">
+      <f:format.raw>{</f:format.raw>
+<f:switch expression="{mode}">
+<f:case value="api">
+        "@id" : "{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource}) -> f:format.htmlspecialchars()}",
+</f:case>
+<f:case value="vocabulary">
+        "@id" : "{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : '{type : type}') -> f:format.htmlspecialchars()}",
+</f:case>
+</f:switch>
+        "@type" : "void:Dataset",
+        "void:feature" : <f:format.raw>{</f:format.raw>
+          "@id" : "{format.uri}"
+        <f:format.raw>}</f:format.raw>,
+        "dc:format" : "{format.mime}"
+      <f:format.raw>}</f:format.raw><f:if condition="{serializationIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if>
+</f:for>

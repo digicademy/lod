@@ -1,0 +1,15 @@
+{namespace lod = Digicademy\Lod\ViewHelpers}<f:format.raw>{</f:format.raw>
+<f:if condition="{iri.label}">"rdfs:label_ext_lod_i{iri.uid}": <f:format.raw>{</f:format.raw>
+<f:if condition="{iri.labelLanguage}">"@language" : "{iri.labelLanguage}",</f:if>
+    "@value" : {lod:EscapeLiteral(literal : iri.label, format : 'jsonld')}
+<f:format.raw>}</f:format.raw>,</f:if>
+<f:if condition="{iri.comment}">"rdfs:comment_ext_lod_i{iri.uid}": <f:format.raw>{</f:format.raw>
+  <f:if condition="{iri.commentLanguage}">"@language" : "{iri.commentLanguage}",</f:if>
+    "@value" : {lod:EscapeLiteral(literal : iri.comment, format : 'jsonld')}
+<f:format.raw>}</f:format.raw>,</f:if>
+  "@id": "{iri.namespace.iri}{iri.value}"<f:if condition="{iri.statements}">,
+<f:for each="{iri.statements}" as="iriStatement" iteration="iriStatementIterator">
+  <f:render partial="Common/Object" arguments="{statement : iriStatement}" /><f:if condition="{iriStatementIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if>
+</f:for>
+  </f:if>
+<f:format.raw>}</f:format.raw>

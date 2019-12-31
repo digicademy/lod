@@ -25,7 +25,7 @@
     a owl:Class ;
     <f:render partial="Common/Iri" arguments="{iri : term}" />
 
-<f:if condition="{vocabulary.iri.statements}">
+<f:if condition="{term.statements}">
 <f:for each="{lod:ObjectIriRecursion(iri : term, maxDepth : 5)}" as="iri">
 <{iri.namespace.value}{iri.value}>
     <f:render partial="Common/Iri" arguments="{iri : iri}" />
@@ -36,7 +36,7 @@
     a rdf:Property ;
     <f:render partial="Common/Iri" arguments="{iri : term}" />
 
-<f:if condition="{vocabulary.iri.statements}">
+<f:if condition="{term.statements}">
 <f:for each="{lod:ObjectIriRecursion(iri : term, maxDepth : 5)}" as="iri">
 <{iri.namespace.value}{iri.value}>
     <f:render partial="Common/Iri" arguments="{iri : iri}" />

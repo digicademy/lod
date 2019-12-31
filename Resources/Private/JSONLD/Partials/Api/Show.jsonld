@@ -1,29 +1,35 @@
-{namespace lod = Digicademy\Lod\ViewHelpers}<f:format.raw>{</f:format.raw>
+{namespace lod = Digicademy\Lod\ViewHelpers}<lod:jsonldSerialize><f:format.raw>{</f:format.raw>
   "@context": <f:format.raw>{</f:format.raw>
 <f:for each="{namespaces}" as="namespace" iteration="namespaceIterator">
     "{namespace.prefix}": "{namespace.iri}"<f:if condition="{namespaceIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if>
 </f:for>
   <f:format.raw>},</f:format.raw>
-<f:alias map="{iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.iri}\', else : \'\')}{resource.value}'}">
-  "@id": "{iri}",
-  <f:if condition="{resource.label}">"rdfs:label": <f:format.raw>{</f:format.raw>
-    <f:if condition="{resource.labelLanguage}">"@language" : "{resource.labelLanguage}",</f:if>
-    "@value" : {lod:EscapeLiteral(literal : resource.label, format : 'jsonld')}
-  <f:format.raw>}</f:format.raw>,</f:if>
-  <f:if condition="{resource.comment}">"rdfs:comment": <f:format.raw>{</f:format.raw>
-    <f:if condition="{resource.commentLanguage}">"@language" : "{resource.commentLanguage}",</f:if>
-    "@value" : {lod:EscapeLiteral(literal : resource.comment, format : 'jsonld')}
-  <f:format.raw>}</f:format.raw>,</f:if>
-  <f:if condition="{resource.record}">
-  "dc:relation": {
-    <f:if condition="{resource.record.label}">"rdfs:label" : {lod:EscapeLiteral(literal : resource.record.label, format : 'jsonld')},</f:if>
-    <f:if condition="{resource.record.comment}">"rdfs:comment" : {lod:EscapeLiteral(literal : resource.record.comment, format : 'jsonld')}</f:if>
-  },
-  </f:if>
-  "rdfs:seeAlso" : <f:format.raw>[</f:format.raw>
-  <f:render partial="Api/AlternativeSerializations" arguments="{_all}" />
-  <f:format.raw>],</f:format.raw>
-  <f:for each="{resource.statements}" as="statement" iteration="objectIterator">
-  <f:render partial="Api/Object" arguments="{statement : statement}" /><f:if condition="{objectIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if></f:for>
-</f:alias>
-<f:format.raw>}</f:format.raw>
+  "@graph" : [
+    <f:format.raw>{</f:format.raw>
+      "@id": "{resource.namespace.iri}{resource.value}",
+      <f:if condition="{resource.label}">"rdfs:label_ext_lod_r{resource.uid}": <f:format.raw>{</f:format.raw>
+        <f:if condition="{resource.labelLanguage}">"@language" : "{resource.labelLanguage}",</f:if>
+        "@value" : {lod:EscapeLiteral(literal : resource.label, format : 'jsonld')}
+      <f:format.raw>}</f:format.raw>,</f:if>
+      <f:if condition="{resource.comment}">"rdfs:comment_ext_lod_r{resource.uid}": <f:format.raw>{</f:format.raw>
+        <f:if condition="{resource.commentLanguage}">"@language" : "{resource.commentLanguage}",</f:if>
+        "@value" : {lod:EscapeLiteral(literal : resource.comment, format : 'jsonld')}
+      <f:format.raw>}</f:format.raw>,</f:if>
+      <f:if condition="{resource.record}">
+        "dc:relation_ext_lod_r{resource.uid}": {
+          <f:if condition="{resource.record.label}">"rdfs:label" : {lod:EscapeLiteral(literal : resource.record.label, format : 'jsonld')},</f:if>
+          <f:if condition="{resource.record.comment}">"rdfs:comment" : {lod:EscapeLiteral(literal : resource.record.comment, format : 'jsonld')}</f:if>
+        },
+      </f:if>
+        "rdfs:seeAlso_ext_lod_r{resource.uid}" : <f:format.raw>[</f:format.raw>
+          <f:render partial="Common/AlternativeSerializations" arguments="{mode : 'api', environment : environment, resource : resource}"/>
+        <f:format.raw>]</f:format.raw><f:if condition="{resource.statements}">,
+        <f:for each="{resource.statements}" as="statement" iteration="objectIterator">
+        <f:render partial="Common/Object" arguments="{statement : statement}"/><f:if condition="{objectIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if>
+        </f:for>
+        </f:if>
+    <f:format.raw>}</f:format.raw><lod:IriCollection add="{lod:ObjectIriRecursion(iri : resource, maxDepth : 5)}"/><f:if condition="{iriCollection}">,
+    <f:for each="{iriCollection}" as="collectedIri" iteration="iriCollectionIterator">
+    <f:render partial="Common/Iri" arguments="{iri : collectedIri}" /><f:if condition="{iriCollectionIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if></f:for></f:if>
+  ]
+<f:format.raw>}</f:format.raw></lod:jsonldSerialize>
