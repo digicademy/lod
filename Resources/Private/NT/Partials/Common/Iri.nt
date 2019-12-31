@@ -1,0 +1,7 @@
+{namespace lod = Digicademy\Lod\ViewHelpers}<f:if condition="{iri.label}"><{iri.namespace.iri}{iri.value}> <http://www.w3.org/2000/01/rdf-schema#label> {lod:EscapeLiteral(literal : iri.label, format : 'ntriples')}{f:if(condition: '{iri.labelLanguage}', then: '@{iri.labelLanguage}')} .</f:if>
+<f:if condition="{iri.comment}"><{iri.namespace.iri}{iri.value}> <http://www.w3.org/2000/01/rdf-schema#comment> {lod:EscapeLiteral(literal : iri.comment, format : 'ntriples')}{f:if(condition: '{iri.commentLanguage}', then: '@{iri.commentLanguage}')} .</f:if>
+<f:if condition="{iri.statements}">
+<f:for each="{iri.statements}" as="iriStatement" iteration="statementIterator">
+<f:render partial="Common/Object" arguments="{iri : '<{iri.namespace.iri}{iri.value}>', statement : iriStatement, statementIterator : statementIterator}" />
+</f:for>
+</f:if>

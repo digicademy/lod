@@ -1,0 +1,33 @@
+{namespace lod = Digicademy\Lod\ViewHelpers}<lod:RemoveEmptyLines><f:alias map="{vocabularyIri : '{vocabulary.iri.namespace.value}{vocabulary.iri.value}'}"><{vocabularyIri}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+<f:if condition="{vocabulary.label}"><{vocabularyIri}> <http://purl.org/dc/elements/1.1/title> {lod:EscapeLiteral(literal : vocabulary.label, format : 'ntriples')} .</f:if>
+<f:if condition="{vocabulary.comment}"><{vocabularyIri}> <http://purl.org/dc/elements/1.1/description> {lod:EscapeLiteral(literal : vocabulary.comment, format : 'ntriples')} .</f:if>
+
+<f:render partial="Common/AlternativeSerializations" arguments="{subject : vocabularyIri, environment : environment}"/>
+
+<f:render partial="Common/Iri" arguments="{iri : vocabulary.iri}"/>
+
+<f:if condition="{vocabulary.iri.statements}">
+<f:for each="{lod:ObjectIriRecursion(iri : vocabulary.iri, maxDepth : 5)}" as="iri">
+<f:render partial="Common/Iri" arguments="{iri : iri}" />
+</f:for>
+</f:if>
+</f:alias>
+<f:if condition="{vocabulary.terms}">
+<f:for each="{vocabulary.terms}" as="term">
+<f:switch expression="{term.type}">
+<f:case value="1">
+<{term.namespace.iri}{term.value}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+</f:case>
+<f:case value="2">
+<{term.namespace.iri}{term.value}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+</f:case>
+</f:switch>
+<f:render partial="Common/Iri" arguments="{iri : term}" />
+<f:if condition="{term.statements}">
+<f:for each="{lod:ObjectIriRecursion(iri : term, maxDepth : 5)}" as="collectedIri">
+<f:render partial="Common/Iri" arguments="{iri : collectedIri}" />
+</f:for>
+</f:if>
+</f:for>
+</f:if>
+</lod:RemoveEmptyLines>

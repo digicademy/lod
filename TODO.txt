@@ -6,14 +6,11 @@ BE
 - iri field for sys_category
 
 FE
-- object recursion in API templates => (still to test: nt)
 - API paginator limit prev/next problem
 - hydra:view has no alternative serialisations in none of the serialisation formats
-- check (and possibly clear) fixed namespaces
-- vocabulary plugin
--- Templates
---- NT
+- check (and possibly clear) fixed namespaces in show templates (list remains fixed)
 - add RDF ViewHelpers (esp. serialisation VH, class check, composer suggestion)
+- check that all serialisations generate same data/statements
 
 - ensure 8.7 and 9.5 compatibility (esp. Doctrine) / add 7.6 branch and dev branch
 -- TCA migrations

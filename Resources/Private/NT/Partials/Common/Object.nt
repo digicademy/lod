@@ -8,7 +8,7 @@
 <f:case default="Digicademy\Lod\Domain\Model\Bnode">
 {iri} <{statement.predicate.namespace.iri}{statement.predicate.value}> _:{statement.object.value} .
 <f:for each="{lod:FetchBnode(bnode : statement.object)}" as="bnodeStatement">
-<f:render partial="Api/Object" arguments="{iri : '_:{statement.object.value}', statement : bnodeStatement}" />
+<f:render partial="Common/Object" arguments="{iri : '_:{statement.object.value}', statement : bnodeStatement}" />
 </f:for>
 </f:case>
 </f:switch>

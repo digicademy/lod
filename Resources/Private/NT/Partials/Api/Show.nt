@@ -1,13 +1,17 @@
-{namespace lod = Digicademy\Lod\ViewHelpers}<f:alias map="{iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.iri}\', else : \'\')}{resource.value}'}"><f:if condition="{resource.label}"><{iri}> <http://www.w3.org/2000/01/rdf-schema#label> {lod:EscapeLiteral(literal : resource.label, format : 'ntriples')}{f:if(condition: '{resource.labelLanguage}', then: '@{resource.labelLanguage}')} .</f:if>
-<f:if condition="{resource.comment}"><{iri}> <http://www.w3.org/2000/01/rdf-schema#comment> {lod:EscapeLiteral(literal : resource.comment, format : 'ntriples')}{f:if(condition: '{resource.commentLanguage}', then: '@{resource.commentLanguage}')} .</f:if>
+{namespace lod = Digicademy\Lod\ViewHelpers}<f:alias map="{resourceIri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.iri}\', else : \'\')}{resource.value}'}"><f:if condition="{resource.label}"><{resourceIri}> <http://www.w3.org/2000/01/rdf-schema#label> {lod:EscapeLiteral(literal : resource.label, format : 'ntriples')}{f:if(condition: '{resource.labelLanguage}', then: '@{resource.labelLanguage}')} .</f:if>
+<f:if condition="{resource.comment}"><{resourceIri}> <http://www.w3.org/2000/01/rdf-schema#comment> {lod:EscapeLiteral(literal : resource.comment, format : 'ntriples')}{f:if(condition: '{resource.commentLanguage}', then: '@{resource.commentLanguage}')} .</f:if>
+<f:if condition="{resource.statements}">
 <f:for each="{resource.statements}" as="statement">
-<f:render partial="Api/Object" arguments="{iri : '<{iri}>', statement : statement}" />
+<f:render partial="Common/Object" arguments="{iri : '<{resourceIri}>', statement : statement}" />
 </f:for>
+<f:for each="{lod:ObjectIriRecursion(iri : resource, maxDepth : 5)}" as="objectIri">
+<f:render partial="Common/Iri" arguments="{iri : objectIri}" />
+</f:for>
+</f:if>
 <f:if condition="{resource.record}">
-<{iri}> <http://purl.org/dc/elements/1.1/relation> _:eb0d307c-5915-4d1d-9444-52a8640ef80d .
+<{resourceIri}> <http://purl.org/dc/elements/1.1/relation> _:eb0d307c-5915-4d1d-9444-52a8640ef80d .
 <f:if condition="{resource.record.label}">_:eb0d307c-5915-4d1d-9444-52a8640ef80d <http://www.w3.org/2000/01/rdf-schema#label> {lod:EscapeLiteral(literal : resource.record.label, format : 'ntriples')} .</f:if>
 <f:if condition="{resource.record.comment}">_:eb0d307c-5915-4d1d-9444-52a8640ef80d <http://www.w3.org/2000/01/rdf-schema#comment> {lod:EscapeLiteral(literal : resource.record.comment, format : 'ntriples')} .</f:if>
 </f:if>
-<f:render partial="Api/AlternativeSerializations" arguments="{iri : iri, mode : 'object', resource : resource, environment : environment}"/>
-<f:render partial="Api/AlternativeSerializations" arguments="{iri : '{environment.TYPO3_REQUEST_HOST}/{f:render(partial : \'Api/Uri\', arguments : {action : \'show\', type : type, resource : resource})}', mode : 'subject', resource : resource, environment : environment}"/>
+<f:render partial="Common/AlternativeSerializations" arguments="{subject : iri, environment : environment, resource : resource, mode : 'api'}"/>
 </f:alias>
