@@ -1,5 +1,5 @@
 {namespace lod = Digicademy\Lod\ViewHelpers}
-<div prefix="void: http://rdfs.org/ns/void# dc: http://purl.org/dc/elements/1.1/ {lod:RdfaPrefix(namespaces : namespaces)}" resource="{f:if(condition : '{resource.namespace}', then : '{resource.namespace.iri}', else : '')}{resource.value}">
+<div prefix="{lod:RdfaPrefix(namespaces : namespaces)}" resource="{resource.namespace.iri}{resource.value}">
     <h2 class="resource-iri">
         <a href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '1991', resource : resource}) -> f:format.htmlspecialchars()}">
         &lt;<f:if condition="{resource.namespace}">{resource.namespace.iri}</f:if>{resource.value}&gt;

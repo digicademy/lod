@@ -1,16 +1,15 @@
 ## NEXT #########################################
 
 BE
-- statementIriTypeFilter.subject = 1|2
+- Add TSConfig option: statementIriTypeFilter.subject = 1|2
 - remove settings key from TSConfig
 - iri field for sys_category
 
 FE
 - API paginator limit prev/next problem
 - hydra:view has no alternative serialisations in none of the serialisation formats
-- check (and possibly clear) fixed namespaces in show templates (list remains fixed)
 - add RDF ViewHelpers (esp. serialisation VH, class check, composer suggestion)
-- check that all serialisations generate same data/statements
+- add JSON-LD injection for pages table
 
 - ensure 8.7 and 9.5 compatibility (esp. Doctrine) / add 7.6 branch and dev branch
 -- TCA migrations
@@ -23,7 +22,7 @@ FE
 -- iri/bnode irre fields should use overrideChildTca from 8.7
 
 - create ext_tables_static+adt.sql
--- set static namespaces: rdf, rdfs, owl, dc, void
+-- set static namespaces: rdf, rdfs, owl, dc, dct, void
 -- maybe create all rdf/rdfs Classes/Properties?
 
 - documentation
@@ -33,8 +32,12 @@ FE
 
 - named graphs
 -- add named graph structures to ttl, json-ld and nt templates
--- maybe graph could serve as collection of statements added to records etc. (think)
+-- maybe graph could serve as collection of statements added to records etc.
 -- graph filter on api list view: only show resources that belong to a given graph
+
+- table tracking
+-- create statements defined by TSConfig when new IRI is created (per IRI per tracked table)
+-- create representations defined by TSConfig when new IRI is created (per IRI per tracked table)
 
 - API plugin
 -- basic string search in label/comment for API plugin (list view)
@@ -42,11 +45,16 @@ FE
 
 - create extension with schema.org vocab
 
-- give example for embedding JSON-LD in pages
-
-### v.1.3 ###
+### v.1.2 ###
 
 - vocabulary importer
+
+- api plugin
+-- think about cacheable actions => configurable cHash calculation during redirection => check performance
+
+- resolver
+-- call different typolink handlers according to $representation->getAuthority();
+-- implement language negotiation
 
 ---
 
@@ -67,13 +75,6 @@ id=123 => rewritten by realurl to 'id' or whatever (= pagePath)
 /id.html
 
 /id/about.rdf?tx_lod_api[offset]=1&tx_lod_api[limit]=100
-
-- api plugin
--- think about cacheable actions => configurable cHash calculation during redirection => check performance
-
-- resolver
--- call different typolink handlers according to $representation->getAuthority();
--- implement language negotiation
 
 ---
 
@@ -172,7 +173,7 @@ config.recordLinks.image {
 	}
 }
 
-plugin.tx_lod_about {
+plugin.tx_lod_api {
 	settings {
 
 		resolver {

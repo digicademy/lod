@@ -1,7 +1,5 @@
 {namespace lod = Digicademy\Lod\ViewHelpers}<f:for each="{namespaces}" as="namespace">@prefix {namespace.prefix}: <{namespace.iri}> .
 </f:for>
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix void: <http://rdfs.org/ns/void#> .
 
 <{f:if(condition : '{resource.namespace}', then : '{resource.namespace.iri}', else : '')}{resource.value}>
     <f:if condition="{resource.label}">rdfs:label {lod:EscapeLiteral(literal : resource.label, format : 'turtle')}{f:if(condition: '{resource.labelLanguage}', then: '@{resource.labelLanguage}')} ;</f:if>

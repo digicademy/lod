@@ -46,7 +46,7 @@ class JsonldSerializeViewHelper extends AbstractViewHelper
     {
         $this->jsonLD = json_decode($this->renderChildren(), true);
         $this->mergeKeysRecursive($this->jsonLD['@graph']);
-        return json_encode($this->jsonLD, JSON_UNESCAPED_SLASHES);
+        return json_encode($this->jsonLD, JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
 
     /**
@@ -73,7 +73,7 @@ class JsonldSerializeViewHelper extends AbstractViewHelper
                     if (is_array($value)) $this->mergeKeysRecursive($value);
                 }
                 if ($type) {
-                    $element['@type'] = $type;
+                    (count($type) > 1) ? $element['@type'] = $type : $element['@type'] = $type[0];
                 }
             }
         }

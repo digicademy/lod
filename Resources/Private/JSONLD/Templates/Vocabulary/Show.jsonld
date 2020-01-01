@@ -6,15 +6,13 @@
   <f:format.raw>},</f:format.raw>
   "@graph" : [
     <f:format.raw>{</f:format.raw>
-      "@id" : "{vocabulary.iri.namespace.value}{vocabulary.iri.value}",
-      "@type_tx_lod_v{vocabulary.uid}" : "owl:Ontology"<f:if condition="{vocabulary.iri.statements}">,
+      "@type_tx_lod_v{vocabulary.uid}" : "owl:Ontology",
       "rdfs:seeAlso" : <f:format.raw>[</f:format.raw>
         <f:render partial="Common/AlternativeSerializations" arguments="{mode : 'vocabulary', environment : environment}"/>
       <f:format.raw>]</f:format.raw>,
-      <f:for each="{vocabulary.iri.statements}" as="vocabularyStatement" iteration="vocabularyStatementIterator">
-      <f:render partial="Common/Object" arguments="{statement : vocabularyStatement}"/><f:if condition="{vocabularyStatementIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if>
-      </f:for>
-      <lod:IriCollection add="{lod:ObjectIriRecursion(iri : vocabulary.iri, maxDepth : 5)}"/>
+      <f:render partial="Common/Iri" arguments="{iri : vocabulary.iri}"/>
+      <f:if condition="{vocabulary.iri.statements}">
+        <lod:IriCollection add="{lod:ObjectIriRecursion(iri : vocabulary.iri, maxDepth : 5)}"/>
       </f:if>
     <f:format.raw>}<f:if condition="{vocabulary.terms}">,</f:if></f:format.raw>
     <f:if condition="{vocabulary.terms}">
@@ -22,29 +20,25 @@
     <f:format.raw>{</f:format.raw>
     <f:switch expression="{term.type}">
     <f:case value="1">
-      "@id" : "{term.namespace.iri}{term.value}",
-      "@type_tx_lod_t{term.uid}" : "owl:Class"<f:if condition="{term.statements}">,
-      <f:for each="{term.statements}" as="termStatement" iteration="termStatementIterator">
-      <f:render partial="Common/Object" arguments="{statement : termStatement}"/><f:if condition="{termStatementIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if>
-      </f:for>
-      <lod:IriCollection add="{lod:ObjectIriRecursion(iri : term, maxDepth : 5)}"/>
+      "@type_tx_lod_t{term.uid}" : "owl:Class",
+      <f:if condition="{term.statements}">
+        <lod:IriCollection add="{lod:ObjectIriRecursion(iri : term, maxDepth : 5)}"/>
       </f:if>
+      <f:render partial="Common/Iri" arguments="{iri : term}"/>
     </f:case>
     <f:case value="2">
-      "@id" : "{term.namespace.iri}{term.value}",
-      "@type_tx_lod_t{term.uid}" : "rdf:Property"<f:if condition="{term.statements}">,
-      <f:for each="{term.statements}" as="termStatement" iteration="termStatementIterator">
-      <f:render partial="Common/Object" arguments="{statement : termStatement}"/><f:if condition="{termStatementIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if>
-      </f:for>
-      <lod:IriCollection add="{lod:ObjectIriRecursion(iri : term, maxDepth : 5)}"/>
+      "@type_tx_lod_t{term.uid}" : "rdf:Property",
+      <f:if condition="{term.statements}">
+        <lod:IriCollection add="{lod:ObjectIriRecursion(iri : term, maxDepth : 5)}"/>
       </f:if>
+      <f:render partial="Common/Iri" arguments="{iri : term}"/>
     </f:case>
     </f:switch>
     <f:format.raw>}</f:format.raw><f:if condition="{termIterator.isLast}"><f:then><f:if condition="{iriCollection}"><f:then>,</f:then><f:else></f:else></f:if></f:then><f:else>,</f:else></f:if>
     </f:for>
     <f:if condition="{iriCollection}">
     <f:for each="{iriCollection}" as="collectedIri" iteration="iriCollectionIterator">
-    <f:render partial="Common/Iri" arguments="{iri : collectedIri}" /><f:if condition="{iriCollectionIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if></f:for>
+    <f:render partial="Common/Iri" arguments="{iri : collectedIri, asJsonObject : 1}" /><f:if condition="{iriCollectionIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if></f:for>
     </f:if>
     </f:if>
   ]
