@@ -10,6 +10,9 @@ FE
 - hydra:view has no alternative serialisations in none of the serialisation formats
 - add RDF ViewHelpers (esp. serialisation VH, class check, composer suggestion)
 - add JSON-LD injection for pages table
+-- add Digicademy\Lod\Domain\Model\Page => property $iri
+-- add page.headerData.cObject = CONTENT => select from IRI where record_tablename and record_uid
+-- add Digicademy\Lod\Controller\SerializerController => serializes a given IRI to RDF format (using the show action/templates)
 
 - ensure 8.7 and 9.5 compatibility (esp. Doctrine) / add 7.6 branch and dev branch
 -- TCA migrations

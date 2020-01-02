@@ -30,6 +30,6 @@
         </f:if>
     <f:format.raw>}</f:format.raw><lod:IriCollection add="{lod:ObjectIriRecursion(iri : resource, maxDepth : 5)}"/><f:if condition="{iriCollection}">,
     <f:for each="{iriCollection}" as="collectedIri" iteration="iriCollectionIterator">
-    <f:render partial="Common/Iri" arguments="{iri : collectedIri}" /><f:if condition="{iriCollectionIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if></f:for></f:if>
+    <f:render partial="Common/Iri" arguments="{iri : collectedIri, asJsonObject : 1}" /><f:if condition="{iriCollectionIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if></f:for></f:if>
   ]
 <f:format.raw>}</f:format.raw></lod:jsonldSerialize>
