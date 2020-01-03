@@ -3,11 +3,9 @@
 BE
 - Add TSConfig option: statementIriTypeFilter.subject = 1|2
 - remove settings key from TSConfig
-- iri field for sys_category
 
 FE
-- add JSON-LD injection for pages table
--- add Digicademy\Lod\Domain\Model\Page => property $iri
+- add JSON-LD injection example for pages table
 -- add page.headerData.cObject = CONTENT => select from IRI where record_tablename and record_uid
 -- add Digicademy\Lod\Controller\SerializerController => serializes a given IRI to RDF format (using the show action/templates)
 
@@ -22,7 +20,7 @@ FE
 -- iri/bnode irre fields should use overrideChildTca from 8.7
 
 - create ext_tables_static+adt.sql
--- set static namespaces: rdf, rdfs, owl, dc, dct, void
+-- set static namespaces: rdf, rdfs, owl, dc, dct, void, skos
 -- maybe create all rdf/rdfs Classes/Properties?
 
 - documentation

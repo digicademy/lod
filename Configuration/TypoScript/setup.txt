@@ -35,46 +35,56 @@ lib.tx_lod.plugin {
 # general extension configuration
 
 plugin.tx_lod {
-	persistence {
-		classes {
-			Digicademy\Lod\Domain\Model\IriNamespace {
-				mapping {
-					tableName = tx_lod_domain_model_namespace
-				}
-			}
-			# mapping configuration of other classes for use in ItemMappingService
-			Digicademy\Lod\Domain\Model\Iri {
-				mapping {
-					tableName = tx_lod_domain_model_iri
-				}
-			}
-			Digicademy\Lod\Domain\Model\Bnode {
-				mapping {
-					tableName = tx_lod_domain_model_bnode
-				}
-			}
-			Digicademy\Lod\Domain\Model\Literal {
-				mapping {
-					tableName = tx_lod_domain_model_literal
-				}
-			}
-		}
-	}
+    persistence {
+        classes {
+            Digicademy\Lod\Domain\Model\IriNamespace {
+                mapping {
+                    tableName = tx_lod_domain_model_namespace
+                }
+            }
+            # mapping configuration of other classes for use in ItemMappingService
+            Digicademy\Lod\Domain\Model\Iri {
+                mapping {
+                    tableName = tx_lod_domain_model_iri
+                }
+            }
+            Digicademy\Lod\Domain\Model\Bnode {
+                mapping {
+                    tableName = tx_lod_domain_model_bnode
+                }
+            }
+            Digicademy\Lod\Domain\Model\Literal {
+                mapping {
+                    tableName = tx_lod_domain_model_literal
+                }
+            }
+            Digicademy\Lod\Domain\Model\Page {
+                mapping {
+                    tableName = pages
+                }
+            }
+            Digicademy\Lod\Domain\Model\Category {
+                mapping {
+                    tableName = sys_category
+                }
+            }
+        }
+    }
 }
 
 plugin.tx_lod_api {
-	settings {
-		api {
-			realurlTypeParam = about
-		}
-		resolver {
-			t3 {
-			}
-			http {
-			}
-			https < .http
-		}
-	}
+    settings {
+        api {
+            realurlTypeParam = about
+        }
+        resolver {
+            t3 {
+            }
+            http {
+            }
+            https < .http
+        }
+    }
 }
 
 # serialization specific configuration
