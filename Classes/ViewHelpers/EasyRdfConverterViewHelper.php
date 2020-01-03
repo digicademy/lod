@@ -71,6 +71,12 @@ class EasyRdfConverterViewHelper extends AbstractViewHelper
             'Serialiser-specific options, for fine-tuning the output',
             false
         );
+        $this->registerArgument(
+            'data',
+            'mixed',
+            'RDF data to convert',
+            false
+        );
     }
 
     /**
@@ -81,8 +87,12 @@ class EasyRdfConverterViewHelper extends AbstractViewHelper
     {
         if (class_exists('EasyRdf_Graph') || class_exists('\EasyRdf\Graph')) {
 
-            // render the data
-            $data = $this->renderChildren();
+            // set data
+            if ($this->arguments['data']) {
+                $data = $this->arguments['data'];
+            } else {
+                $data = $this->renderChildren();
+            }
 
             // take care of EasyRdf namespaces after version 0.9
             if (class_exists('EasyRdf_Graph')) {
@@ -102,7 +112,7 @@ class EasyRdfConverterViewHelper extends AbstractViewHelper
             }
 
         } else {
-            throw new Exception('RdfConverterViewHelper needs the EasyRdf library but it seems the library is not available', 1577942008);
+            throw new Exception('The EasyRdf library is needed but seems not to be available', 1577942008);
         }
 
         return $convertedData;

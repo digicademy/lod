@@ -7,8 +7,6 @@ BE
 
 FE
 - API paginator limit prev/next problem
-- hydra:view has no alternative serialisations in none of the serialisation formats
-- add RDF ViewHelpers (esp. serialisation VH, class check, composer suggestion)
 - add JSON-LD injection for pages table
 -- add Digicademy\Lod\Domain\Model\Page => property $iri
 -- add page.headerData.cObject = CONTENT => select from IRI where record_tablename and record_uid
@@ -45,8 +43,12 @@ FE
 - API plugin
 -- basic string search in label/comment for API plugin (list view)
 -- IriRepository: make ordering settable by TypoScript/Plugin/Parameter (label/value)
+-- https://www.w3.org/TR/sparql11-http-rdf-update/#http-get
+-- https://www.w3.org/TR/sparql11-protocol/#query
 
 - create extension with schema.org vocab
+
+- hydra:view has no alternative serialisations in none of the serialisation formats
 
 ### v.1.2 ###
 
