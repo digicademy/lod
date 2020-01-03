@@ -6,7 +6,6 @@ BE
 - iri field for sys_category
 
 FE
-- API paginator limit prev/next problem
 - add JSON-LD injection for pages table
 -- add Digicademy\Lod\Domain\Model\Page => property $iri
 -- add page.headerData.cObject = CONTENT => select from IRI where record_tablename and record_uid

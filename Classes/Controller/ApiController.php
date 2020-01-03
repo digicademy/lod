@@ -178,11 +178,11 @@ class ApiController extends ActionController
         $arguments = $this->request->getArguments();
 
         // calculate pagination
-        ($arguments['limit']) ? $limit = (int)$arguments['limit'] : $limit = 100;
+        ($arguments['limit']) ? $limit = (int)$arguments['limit'] : $limit = 50;
         if ($limit > 500) $limit = 500;
 
         $totalItems = $this->iriRepository->countAll();
-        $totalPages = (int)floor($totalItems / $limit);
+        $totalPages = (int)ceil($totalItems / $limit);
         if ($totalPages < 1) $totalPages = 1;
 
         if ($arguments['page']) {
