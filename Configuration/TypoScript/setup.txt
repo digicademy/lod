@@ -74,9 +74,7 @@ plugin.tx_lod {
 
 plugin.tx_lod_api {
     settings {
-        api {
-            realurlTypeParam = about
-        }
+        # apiPage =
         resolver {
             t3 {
             }
@@ -98,3 +96,40 @@ plugin.tx_lod_api {
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:lod/Configuration/TypoScript/RDFXML/setup.txt">
 
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:lod/Configuration/TypoScript/TTL/setup.txt">
+
+# configure serializer templates without pagetype condition in descending order (JSON-LD is default)
+
+plugin.tx_lod_serializer {
+    settings {
+        # apiPage =
+        recordToArgumentMapping {
+            pages {
+                argumentName = id
+            }
+        }
+        format {
+            default = jsonld
+        }
+        mode = embedded
+    }
+    view {
+        layoutRootPaths {
+            10 = EXT:lod/Resources/Private/NT/Layouts/
+            20 = EXT:lod/Resources/Private/TTL/Layouts/
+            30 = EXT:lod/Resources/Private/RDFXML/Layouts/
+            40 = EXT:lod/Resources/Private/JSONLD/Layouts/
+        }
+        partialRootPaths {
+            10 = EXT:lod/Resources/Private/NT/Partials/
+            20 = EXT:lod/Resources/Private/TTL/Partials/
+            30 = EXT:lod/Resources/Private/RDFXML/Partials/
+            40 = EXT:lod/Resources/Private/JSONLD/Partials/
+        }
+        templateRootPaths {
+            10 = EXT:lod/Resources/Private/NT/Templates/
+            20 = EXT:lod/Resources/Private/TTL/Templates/
+            30 = EXT:lod/Resources/Private/RDFXML/Templates/
+            40 = EXT:lod/Resources/Private/JSONLD/Templates/
+        }
+    }
+}

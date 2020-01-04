@@ -1,0 +1,83 @@
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:plugin.sheet.general</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+
+                    <settings.general.selectedIri>
+                        <TCEforms>
+                            <label>LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:plugin.serializer.selectedIri</label>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>tx_lod_domain_model_iri</allowed>
+                                <prepend_tname>0</prepend_tname>
+                                <size>1</size>
+                                <maxitems>1</maxitems>
+                                <minitems>0</minitems>
+                                <wizards>
+                                    <suggest>
+                                        <type>suggest</type>
+                                    </suggest>
+                                </wizards>
+                            </config>
+                        </TCEforms>
+                    </settings.general.selectedIri>
+
+                    <settings.general.format>
+                        <TCEforms>
+                            <label>LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:plugin.serializer.format</label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <items>
+                                    <numIndex index="10">
+                                        <numIndex index="0">LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:plugin.serializer.format.jsonld</numIndex>
+                                        <numIndex index="1">jsonld</numIndex>
+                                    </numIndex>
+                                    <numIndex index="20">
+                                        <numIndex index="0">LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:plugin.serializer.format.turtle</numIndex>
+                                        <numIndex index="1">ttl</numIndex>
+                                    </numIndex>
+                                    <numIndex index="30">
+                                        <numIndex index="0">LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:plugin.serializer.format.rdfxml</numIndex>
+                                        <numIndex index="1">rdfxml</numIndex>
+                                    </numIndex>
+                                    <numIndex index="40">
+                                        <numIndex index="0">LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:plugin.serializer.format.ntriples</numIndex>
+                                        <numIndex index="1">nt</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.general.format>
+
+                    <settings.general.mode>
+                        <TCEforms>
+                            <label>LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:plugin.serializer.mode</label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <items>
+                                    <numIndex index="10">
+                                        <numIndex index="0">LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:plugin.serializer.mode.embedded</numIndex>
+                                        <numIndex index="1">embedded</numIndex>
+                                    </numIndex>
+                                    <numIndex index="99">
+                                        <numIndex index="0">LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:plugin.serializer.mode.none</numIndex>
+                                        <numIndex index="1"></numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.general.mode>
+
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

@@ -27,6 +27,17 @@ if (!defined('TYPO3_MODE')) {
     )
 );
 
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    'Digicademy.lod',
+    'Serializer',
+    array(
+        'Serializer' => 'iri',
+    ),
+    array(
+        'Serializer' => '',
+    )
+);
+
 // REGISTERES URI RESOLVER
 
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['lod']['resolver'] = [

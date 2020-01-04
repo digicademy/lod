@@ -1,0 +1,12 @@
+<f:if condition="{resource}">
+<f:if condition="{settings.mode} == 'embedded'">
+<f:then>
+<script type="application/ld+json">
+    <f:render partial="Api/Show" arguments="{_all}"/>
+</script>
+</f:then>
+<f:else>
+    <f:render partial="Api/Show" arguments="{_all}"/>
+</f:else>
+</f:if>
+</f:if>

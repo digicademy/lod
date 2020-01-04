@@ -20,19 +20,28 @@ if (!defined('TYPO3_MODE')) {
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     'Digicademy.lod',
     'Vocabulary',
-    'LOD Vocabulary'
+    'LOD: Vocabulary'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     'Digicademy.lod',
     'Api',
-    'LOD API'
+    'LOD: Api'
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+    'Digicademy.lod',
+    'Serializer',
+    'LOD: Serializer'
 );
 
 // FLEXFORMS
 
 $TCA['tt_content']['types']['list']['subtypes_addlist']['lod_vocabulary'] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('lod_vocabulary', 'FILE:EXT:lod/Configuration/FlexForms/VocabularyPlugin.xml');
+
+$TCA['tt_content']['types']['list']['subtypes_addlist']['lod_serializer'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('lod_serializer', 'FILE:EXT:lod/Configuration/FlexForms/SerializerPlugin.xml');
 
 // TABLES
 

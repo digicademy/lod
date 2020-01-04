@@ -5,9 +5,9 @@ BE
 - remove settings key from TSConfig
 
 FE
-- add JSON-LD injection example for pages table
--- add page.headerData.cObject = CONTENT => select from IRI where record_tablename and record_uid
--- add Digicademy\Lod\Controller\SerializerController => serializes a given IRI to RDF format (using the show action/templates)
+- create ext_tables_static+adt.sql
+-- set static namespaces: rdf, rdfs, owl, dc, dct, void, skos
+-- maybe create all rdf/rdfs Classes/Properties?
 
 - ensure 8.7 and 9.5 compatibility (esp. Doctrine) / add 7.6 branch and dev branch
 -- TCA migrations
@@ -18,10 +18,6 @@ FE
 -- check type param rewriting in TYPO3 9.5
 -- alternatively give realUrl config
 -- iri/bnode irre fields should use overrideChildTca from 8.7
-
-- create ext_tables_static+adt.sql
--- set static namespaces: rdf, rdfs, owl, dc, dct, void, skos
--- maybe create all rdf/rdfs Classes/Properties?
 
 - documentation
 -- use lists of controlled terms in the system (selects etc.)
@@ -154,55 +150,85 @@ plugin.tx_lod_api.persistence.classes {
 # standard record link configuration from T3 V8 and higher
 
 TCEMAIN.linkHandler.image {
-	handler = TYPO3\CMS\Recordlist\LinkHandler\RecordLinkHandler
-	label = LLL:EXT:cvma/Resources/Private/Language/locallang.xlf:link.customTab
-	configuration {
-		table = sys_file_metadata
-	}
-	scanBefore = page
+    handler = TYPO3\CMS\Recordlist\LinkHandler\RecordLinkHandler
+    label = LLL:EXT:cvma/Resources/Private/Language/locallang.xlf:link.customTab
+    configuration {
+        table = sys_file_metadata
+    }
+    scanBefore = page
 }
 
 config.recordLinks.image {
 
-	forceLink = 0
+    forceLink = 0
 
-	typolink {
-		parameter = 13
-		additionalParams.data = field:uid
-		additionalParams.wrap = &tx_cvma_archive[image]=|&tx_cvma_archive[action]=show&tx_cvma_archive[controller]=Gallery
-		section.data = field:fragment
-		useCacheHash = 1
-	}
+    typolink {
+        parameter = 13
+        additionalParams.data = field:uid
+        additionalParams.wrap = &tx_cvma_archive[image]=|&tx_cvma_archive[action]=show&tx_cvma_archive[controller]=Gallery
+        section.data = field:fragment
+        useCacheHash = 1
+    }
 }
 
 plugin.tx_lod_api {
-	settings {
+    settings {
 
-		resolver {
+        resolver {
 
-			# each scheme can have its own custom resolver
-#			scheme {
-#				# each resolver should implement one standard resolving mechanism for all authorities in this scheme
-#				# it should also respect special configurations specified authorities that should be treated different
-#				authority {
-#					# typolink configuration ($cObj->data is current representation record)
-#				}
-#			}
+            # each scheme can have its own custom resolver
+#            scheme {
+#                # each resolver should implement one standard resolving mechanism for all authorities in this scheme
+#                # it should also respect special configurations specified authorities that should be treated different
+#                authority {
+#                    # typolink configuration ($cObj->data is current representation record)
+#                }
+#            }
 
-			t3 {
-				# the t3 scheme implements the TYPO3 linkhandler (from 8.7 onwards but with backwards comp. for 7.6)
-				# each authority equals / can have it's own linkhandler (=linkhander keyword)
-				# the record authority implements the generic record linkhandler
-				record < config.recordLinks.image
-			}
+            t3 {
+                # the t3 scheme implements the TYPO3 linkhandler (from 8.7 onwards but with backwards comp. for 7.6)
+                # each authority equals / can have it's own linkhandler (=linkhander keyword)
+                # the record authority implements the generic record linkhandler
+                record < config.recordLinks.image
+            }
 
-			http {
-				my\.domain\.com {
-					# typolink configuration ($cObj->data is current representation record)
-				}
-			}
+            http {
+                my\.domain\.com {
+                    # typolink configuration ($cObj->data is current representation record)
+                }
+            }
 
-			https < .http
-		}
-	}
+            https < .http
+        }
+    }
+}
+
+page.headerData.333 = USER
+page.headerData.333 {
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    extensionName = Lod
+    pluginName = Serializer
+    vendorName = Digicademy
+    persistence.storagePid = PID
+    settings < plugin.tx_lod_serializer.settings
+    view < plugin.tx_lod_serializer.view
+}
+
+plugin.tx_lod_serializer.settings {
+    selectedIri = UID
+    mode = embedded
+    apiPage = PID
+    recordToArgumentMapping {
+        pages {
+            argumentName = id
+        }
+        tx_hisodat_domain_model_persons {
+            pluginNamespace = tx_hisodat_registers
+            argumentName = person
+        }
+    }
+    format {
+        default = jsonld
+        tx_my_table = FORMAT (jsonld, ttl, rdfxml, nt)
+    }
 }

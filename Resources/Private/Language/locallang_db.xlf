@@ -17,6 +17,33 @@
             <trans-unit id="plugin.vocab.selectedVocabulary">
                 <source>Selected Vocabulary</source>
             </trans-unit>
+            <trans-unit id="plugin.serializer.selectedIri">
+                <source>Selected IRI</source>
+            </trans-unit>
+            <trans-unit id="plugin.serializer.format">
+                <source>Serialization format</source>
+            </trans-unit>
+            <trans-unit id="plugin.serializer.format.jsonld">
+                <source>JSON-LD</source>
+            </trans-unit>
+            <trans-unit id="plugin.serializer.format.turtle">
+                <source>Turtle</source>
+            </trans-unit>
+            <trans-unit id="plugin.serializer.format.ntriples">
+                <source>N-Triples</source>
+            </trans-unit>
+            <trans-unit id="plugin.serializer.format.rdfxml">
+                <source>RDF/XML</source>
+            </trans-unit>
+            <trans-unit id="plugin.serializer.mode">
+                <source>Mode</source>
+            </trans-unit>
+            <trans-unit id="plugin.serializer.mode.none">
+                <source>none</source>
+            </trans-unit>
+            <trans-unit id="plugin.serializer.mode.embedded">
+                <source>embedded</source>
+            </trans-unit>
 
             <trans-unit id="wizard_edit">
                 <source>Edit statement</source>

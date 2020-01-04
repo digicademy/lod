@@ -22,7 +22,7 @@
         },
       </f:if>
         "rdfs:seeAlso_ext_lod_r{resource.uid}" : <f:format.raw>[</f:format.raw>
-          <f:render partial="Common/AlternativeSerializations" arguments="{mode : 'api', environment : environment, resource : resource}"/>
+          <f:render partial="Common/AlternativeSerializations" arguments="{mode : 'api', environment : environment, resource : resource, settings : settings}"/>
         <f:format.raw>]</f:format.raw><f:if condition="{resource.statements}">,
         <f:for each="{resource.statements}" as="statement" iteration="objectIterator">
         <f:render partial="Common/Object" arguments="{statement : statement}"/><f:if condition="{objectIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if>
