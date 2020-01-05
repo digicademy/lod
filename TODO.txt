@@ -1,23 +1,24 @@
 ## NEXT #########################################
 
+FE
+- create ext_tables_static+adt.sql
+-- set static namespaces: rdf, rdfs, owl, dc, dcterms, void, skos
+-- maybe create all rdf/rdfs Classes/Properties?
+
 BE
 - Add TSConfig option: statementIriTypeFilter.subject = 1|2
 - remove settings key from TSConfig
 
-FE
-- create ext_tables_static+adt.sql
--- set static namespaces: rdf, rdfs, owl, dc, dct, void, skos
--- maybe create all rdf/rdfs Classes/Properties?
-
 - ensure 8.7 and 9.5 compatibility (esp. Doctrine) / add 7.6 branch and dev branch
 -- TCA migrations
--- scan extension files
--- hide label gone
--- add wizard is gone: https://docs.typo3.org/c/typo3/cms-core/8.7/en-us/Changelog/8.6/Deprecation-79440-TcaChanges.html
--- all tables icon in IRI record field broken icon
+--- hide label gone
+--- add wizard is gone: https://docs.typo3.org/c/typo3/cms-core/8.7/en-us/Changelog/8.6/Deprecation-79440-TcaChanges.html
+--- iri/bnode irre fields should use overrideChildTca from 8.7
+--- all tables icon in IRI record field broken icon
+--- scan extension files
+--- Doctrine Migration
 -- check type param rewriting in TYPO3 9.5
 -- alternatively give realUrl config
--- iri/bnode irre fields should use overrideChildTca from 8.7
 
 - documentation
 -- use lists of controlled terms in the system (selects etc.)

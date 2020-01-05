@@ -16,7 +16,8 @@ return array(
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ),
-        'type' => 'type',
+        // disable type field: no reload is needed since displayed fields are the same (though type if IRI is of course different)
+        // 'type' => 'type',
         'typeicon_column' => 'type',
         'typeicon_classes' => [
             'default' => 'tx_lod_domain_model_iri',
@@ -154,6 +155,7 @@ return array(
                 'size' => 1,
                 'maxitems' => 1,
             ),
+            'onChange' => '0',
         ),
         'namespace' => array(
             'exclude' => 1,
