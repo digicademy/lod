@@ -13,8 +13,6 @@ return array(
         'origUid' => 't3_origuid',
         'enablecolumns' => array(
             'disabled' => 'hidden',
-            'starttime' => 'starttime',
-            'endtime' => 'endtime',
         ),
         'searchFields' => 'label,comment,value',
         'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_bnode.svg'
@@ -23,7 +21,7 @@ return array(
         'showRecordFieldList' => 'hidden, value, label, comment, statements',
     ),
     'types' => array(
-        '1' => array('showitem' => 'hidden, value, label, comment, statements, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'hidden, value, label, comment, statements'),
     ),
     'columns' => array(
         'hidden' => array(
@@ -31,38 +29,6 @@ return array(
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
             'config' => array(
                 'type' => 'check',
-            ),
-        ),
-        'starttime' => array(
-            'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
-            'config' => array(
-                'type' => 'input',
-                'size' => 13,
-                'max' => 20,
-                'eval' => 'datetime',
-                'checkbox' => 0,
-                'default' => 0,
-                'range' => array(
-                    'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
-                ),
-            ),
-        ),
-        'endtime' => array(
-            'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
-            'config' => array(
-                'type' => 'input',
-                'size' => 13,
-                'max' => 20,
-                'eval' => 'datetime',
-                'checkbox' => 0,
-                'default' => 0,
-                'range' => array(
-                    'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
-                ),
             ),
         ),
         'label' => array(

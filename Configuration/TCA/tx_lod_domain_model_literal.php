@@ -11,8 +11,6 @@ return array(
         'delete' => 'deleted',
         'enablecolumns' => array(
             'disabled' => 'hidden',
-            'starttime' => 'starttime',
-            'endtime' => 'endtime',
         ),
         'searchFields' => 'type,value,lang,datatype,',
         'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_literal.svg'
@@ -21,7 +19,7 @@ return array(
         'showRecordFieldList' => 'hidden, type, value, language, datatype',
     ),
     'types' => array(
-        '1' => array('showitem' => 'hidden, value, language, datatype, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'hidden, value, language, datatype'),
     ),
     'columns' => array(
         'hidden' => array(
@@ -29,38 +27,6 @@ return array(
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
             'config' => array(
                 'type' => 'check',
-            ),
-        ),
-        'starttime' => array(
-            'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
-            'config' => array(
-                'type' => 'input',
-                'size' => 13,
-                'max' => 20,
-                'eval' => 'datetime',
-                'checkbox' => 0,
-                'default' => 0,
-                'range' => array(
-                    'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
-                ),
-            ),
-        ),
-        'endtime' => array(
-            'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
-            'config' => array(
-                'type' => 'input',
-                'size' => 13,
-                'max' => 20,
-                'eval' => 'datetime',
-                'checkbox' => 0,
-                'default' => 0,
-                'range' => array(
-                    'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
-                ),
             ),
         ),
         'value' => array(

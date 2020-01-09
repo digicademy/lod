@@ -13,8 +13,6 @@ return array(
         'origUid' => 't3_origuid',
         'enablecolumns' => array(
             'disabled' => 'hidden',
-            'starttime' => 'starttime',
-            'endtime' => 'endtime',
         ),
         // disable type field: no reload is needed since displayed fields are the same (though type if IRI is of course different)
         // 'type' => 'type',
@@ -43,8 +41,8 @@ return array(
     ),
     // at the moment, types are the same (but leave option open for future)
     'types' => array(
-        '1' => array('showitem' => 'hidden, value, type, namespace, --palette--;;label, --palette--;;comment, record, representations, statements, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
-        '2' => array('showitem' => 'hidden, value, type, namespace, --palette--;;label, --palette--;;comment, record, representations, statements, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'hidden, value, type, namespace, --palette--;;label, --palette--;;comment, record, representations, statements'),
+        '2' => array('showitem' => 'hidden, value, type, namespace, --palette--;;label, --palette--;;comment, record, representations, statements'),
     ),
     'palettes' => array(
         'label' => array(
@@ -60,38 +58,6 @@ return array(
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
             'config' => array(
                 'type' => 'check',
-            ),
-        ),
-        'starttime' => array(
-            'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
-            'config' => array(
-                'type' => 'input',
-                'size' => 13,
-                'max' => 20,
-                'eval' => 'datetime',
-                'checkbox' => 0,
-                'default' => 0,
-                'range' => array(
-                    'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
-                ),
-            ),
-        ),
-        'endtime' => array(
-            'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
-            'config' => array(
-                'type' => 'input',
-                'size' => 13,
-                'max' => 20,
-                'eval' => 'datetime',
-                'checkbox' => 0,
-                'default' => 0,
-                'range' => array(
-                    'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
-                ),
             ),
         ),
         'label' => array(

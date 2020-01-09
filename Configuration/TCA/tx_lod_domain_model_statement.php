@@ -13,8 +13,6 @@ return array(
         'delete' => 'deleted',
         'enablecolumns' => array(
             'disabled' => 'hidden',
-            'starttime' => 'starttime',
-            'endtime' => 'endtime',
         ),
         'searchFields' => 'subject,predicate,object,name',
         'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_statement.svg'
@@ -23,7 +21,7 @@ return array(
         'showRecordFieldList' => 'hidden, subject, subject_type, subject_uid, predicate, predicate_type, predicate_uid, object, object_type, object_uid, object_recursion, graph',
     ),
     'types' => array(
-        '1' => array('showitem' => '--palette--;;recursion, --palette--;;triple, graph, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => '--palette--;;recursion, --palette--;;triple, graph'),
     ),
     'palettes' => array(
         'recursion' => array(
@@ -39,38 +37,6 @@ return array(
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
             'config' => array(
                 'type' => 'check',
-            ),
-        ),
-        'starttime' => array(
-            'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
-            'config' => array(
-                'type' => 'input',
-                'size' => 13,
-                'max' => 20,
-                'eval' => 'datetime',
-                'checkbox' => 0,
-                'default' => 0,
-                'range' => array(
-                    'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
-                ),
-            ),
-        ),
-        'endtime' => array(
-            'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
-            'config' => array(
-                'type' => 'input',
-                'size' => 13,
-                'max' => 20,
-                'eval' => 'datetime',
-                'checkbox' => 0,
-                'default' => 0,
-                'range' => array(
-                    'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
-                ),
             ),
         ),
         'graph' => array(
