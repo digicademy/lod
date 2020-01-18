@@ -7,7 +7,7 @@ management.
 This is the development repository for the LOD extension. The extension has not yet been 
 officially released to the TYPO3 extension repository.
 
-**TYPO3 version compatibility**: 7.6.0-9.5.99
+**TYPO3 version compatibility**: 9.5
 
 ## Research Software Engineering
 

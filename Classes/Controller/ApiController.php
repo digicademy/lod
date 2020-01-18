@@ -35,6 +35,8 @@ use Digicademy\Lod\Service\ResolverService;
 use Digicademy\Lod\Domain\Repository\StatementRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Frontend\Controller\ErrorController;
+use TYPO3\CMS\Frontend\Page\PageAccessFailureReasons;
 
 class ApiController extends ActionController
 {
@@ -158,7 +160,12 @@ class ApiController extends ActionController
             if ($resource) {
                 $this->showAction($resource);
             } else {
-                $GLOBALS['TSFE']->pageNotFoundAndExit();
+
+            // throw PSR-7 compliant error response
+            GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction(
+                $this->request,
+                'The requested page does not exist',
+                ['code' => PageAccessFailureReasons::PAGE_NOT_FOUND]);
             }
 
         // no resource argument, forward to list

@@ -27,6 +27,7 @@ namespace Digicademy\Lod\Service;
  ***************************************************************/
 
 use Digicademy\Lod\Domain\Model\Record;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
@@ -110,21 +111,20 @@ class ItemMappingService
 
         // if class and tablename exist perform MM query for items, map them and add them to the object storage
         if ($tablename && $uid) {
-// @TODO: Doctrine switch for 8.7 and 9.5
-            $row = $this->getDatabaseConnection()->exec_SELECTgetRows(
-                '*',
-                $tablename,
-                'uid=' . (int) $uid,
-                '',
-                '',
-                '1'
-            );
+
+            $row = GeneralUtility::makeInstance(ConnectionPool::class)
+                ->getConnectionForTable($tablename)
+                ->select(
+                    ['*'], // fields
+                    $tablename, // from
+                    [ 'uid' => (int)$uid ] // where
+                )->fetch();
 
             if ($row) {
                 $result = [
                     'tablename'  => $tablename,
                     'uid' => $uid,
-                    'row' => $row[0]
+                    'row' => $row
                 ];
             }
         }
@@ -163,16 +163,6 @@ class ItemMappingService
         }
 
         return $result;
-    }
-
-    /**
-     * Gets the database object.
-     *
-     * @return \TYPO3\CMS\Core\Database\DatabaseConnection
-     */
-    protected function getDatabaseConnection()
-    {
-        return $GLOBALS['TYPO3_DB'];
     }
 
     /**

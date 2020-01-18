@@ -15,6 +15,7 @@ BE
 - ensure 8.7 and 9.5 compatibility (esp. Doctrine) / add 7.6 branch and dev branch
 -- scan extension files
 --- Doctrine Migration
+
 -- check type param rewriting in TYPO3 9.5
 -- alternatively give realUrl config
 

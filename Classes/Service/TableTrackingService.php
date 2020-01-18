@@ -26,6 +26,8 @@ namespace Digicademy\Lod\Service;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Database\QueryGenerator;
@@ -164,17 +166,24 @@ class TableTrackingService
             $iriPidList = $this->record['pid'];
         }
 
-        $typo3Version = VersionNumberUtility::convertVersionNumberToInteger(VersionNumberUtility::getNumericTypo3Version());
-        if ($typo3Version >= 8007000) {
-// @TODO: implement 8.7 and 9.5 doctrine query
-        } else {
-            $result = BackendUtility::getRecordsByField(
-                'tx_lod_domain_model_iri',
-                'record',
-                $this->table . '_' . $this->record['uid'],
-                'AND pid IN (' . $iriPidList . ')'
-            );
-        }
+        $pidList = GeneralUtility::intExplode(',', $iriPidList);
+
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getQueryBuilderForTable('tx_lod_domain_model_iri');
+
+        $result = $queryBuilder
+            ->select('*')
+            ->from('tx_lod_domain_model_iri')
+            ->where(
+                $queryBuilder->expr()->andX(
+                    $queryBuilder->expr()->eq('record', ':record'),
+                    $queryBuilder->expr()->in('pid', ':pidList')
+                )
+            )
+            ->setParameter('record', $this->table . '_' . $this->record['uid'], \PDO::PARAM_STR)
+            ->setParameter('pidList', $pidList, \Doctrine\DBAL\Connection::PARAM_INT_ARRAY)
+            ->execute()
+            ->fetchAll();
 
         return $result;
     }

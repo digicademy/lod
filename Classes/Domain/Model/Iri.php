@@ -27,6 +27,8 @@ namespace Digicademy\Lod\Domain\Model;
  ***************************************************************/
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Annotation as Extbase;
+use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
 
 class Iri extends AbstractEntity
 {
@@ -77,7 +79,7 @@ class Iri extends AbstractEntity
      * value
      *
      * @var string
-     * @validate NotEmpty
+     * @Extbase\Validate("NotEmpty")
      */
     protected $value;
 
@@ -92,7 +94,7 @@ class Iri extends AbstractEntity
      * Document representations for the subject
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Representation> $representations
-     * @lazy
+     * @Lazy
      */
     protected $representations;
 
@@ -100,7 +102,7 @@ class Iri extends AbstractEntity
      * Statements with this IRI as subject
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Statement> $statement
-     * @lazy
+     * @Lazy
      */
     protected $statements;
 

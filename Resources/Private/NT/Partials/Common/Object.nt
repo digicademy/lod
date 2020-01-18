@@ -5,7 +5,7 @@
 <f:case value="Digicademy\Lod\Domain\Model\Literal">
 {iri} <{statement.predicate.namespace.iri}{statement.predicate.value}> {lod:EscapeLiteral(literal : statement.object.value, format : 'ntriples')}{lod:LangDatatype(literal : statement.object, format : 'ntriples')} .
 </f:case>
-<f:case default="Digicademy\Lod\Domain\Model\Bnode">
+<f:case value="Digicademy\Lod\Domain\Model\Bnode">
 {iri} <{statement.predicate.namespace.iri}{statement.predicate.value}> _:{statement.object.value} .
 <f:for each="{lod:FetchBnode(bnode : statement.object)}" as="bnodeStatement">
 <f:render partial="Common/Object" arguments="{iri : '_:{statement.object.value}', statement : bnodeStatement}" />

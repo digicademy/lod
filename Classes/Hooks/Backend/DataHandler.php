@@ -27,8 +27,10 @@ namespace Digicademy\Lod\Hooks\Backend;
 use Digicademy\Lod\Service\IdentifierGeneratorService;
 use Digicademy\Lod\Service\TableTrackingService;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\VersionNumberUtility;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 
 class DataHandler
 {
@@ -257,8 +259,14 @@ class DataHandler
                 $generatedIdentifier = $generatorService->generateIdentifier($generatorName, $generatorConfiguration, $record);
 
                 // update record with generated identifier
-// @TODO: 9.5 compatibility
-                $GLOBALS['TYPO3_DB']->exec_UPDATEquery($table, 'uid = ' . (int)$id, ['value' => $generatedIdentifier]);
+                GeneralUtility::makeInstance(ConnectionPool::class)
+                    ->getConnectionForTable($table)
+                    ->update(
+                        $table,
+                        ['value' => $generatedIdentifier],
+                        ['uid' => (int)$id]
+                    );
+
             } else {
                 throw new \TYPO3\CMS\Backend\Exception('Given identifier generator is not loaded and/or does not exist',
                     1577284728);
@@ -278,18 +286,10 @@ class DataHandler
     private function trackTables($action, $table, $id, $pObj = null)
     {
         // get extension configuration
-        $typo3Version = VersionNumberUtility::convertVersionNumberToInteger(VersionNumberUtility::getNumericTypo3Version());
-        if ($typo3Version >= 9005000) {
-// @TODO: check 9.5 compat
-            $backendConfiguration = GeneralUtility::makeInstance(
-                \TYPO3\CMS\Core\Configuration\ExtensionConfiguration::class
-            )->get('lod');
-        } else {
-            $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['lod']);
-        }
+        $backendConfiguration = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('lod');
 
         // get list of tables registered in extConf for tracking
-        $tablesToTrack = GeneralUtility::trimExplode(',', $extConf['trackTables']);
+        $tablesToTrack = GeneralUtility::trimExplode(',', $backendConfiguration['trackTables']);
 
         // further steps only executed if current table is in tracked table list
         if (in_array($table, $tablesToTrack)) {

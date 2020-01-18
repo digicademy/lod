@@ -25,7 +25,7 @@
     <f:case value="Digicademy\Lod\Domain\Model\Literal">
         <{statement.predicate.namespace.prefix}:{statement.predicate.value}{lod:LangDatatype(literal : statement.object, format : 'rdfxml')}>{statement.object.value}</{statement.predicate.namespace.prefix}:{statement.predicate.value}>
     </f:case>
-    <f:case default="Digicademy\Lod\Domain\Model\Bnode">
+    <f:case value="Digicademy\Lod\Domain\Model\Bnode">
         <{statement.predicate.namespace.prefix}:{statement.predicate.value} rdf:parseType="Resource">
         <f:for each="{statement.object.statements}" as="bnodeStatement">
             <f:render partial="Common/Object" arguments="{statement : bnodeStatement}" />
