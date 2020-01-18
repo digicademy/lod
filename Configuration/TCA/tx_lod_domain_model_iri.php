@@ -1,6 +1,6 @@
 <?php
-return array(
-    'ctrl' => array(
+return [
+    'ctrl' => [
         'title' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri',
         'label' => 'label',
         'label_alt' => 'value',
@@ -11,11 +11,11 @@ return array(
         'dividers2tabs' => true,
         'delete' => 'deleted',
         'origUid' => 't3_origuid',
-        'enablecolumns' => array(
+        'enablecolumns' => [
             'disabled' => 'hidden',
-        ),
+        ],
         // disable type field: no reload is needed since displayed fields are the same (though type if IRI is of course different)
-        // 'type' => 'type',
+//        'type' => 'type',
         'typeicon_column' => 'type',
         'typeicon_classes' => [
             'default' => 'tx_lod_domain_model_iri',
@@ -24,8 +24,8 @@ return array(
         ],
         'searchFields' => 'label,comment,value',
         'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_iri.svg'
-    ),
-    'interface' => array(
+    ],
+    'interface' => [
         'showRecordFieldList' => '
             hidden, 
             type, 
@@ -38,41 +38,41 @@ return array(
             record_tablename,
             representations,
             statements',
-    ),
+    ],
     // at the moment, types are the same (but leave option open for future)
-    'types' => array(
-        '1' => array('showitem' => 'hidden, value, type, namespace, --palette--;;label, --palette--;;comment, record, representations, statements'),
-        '2' => array('showitem' => 'hidden, value, type, namespace, --palette--;;label, --palette--;;comment, record, representations, statements'),
-    ),
-    'palettes' => array(
-        'label' => array(
+    'types' => [
+        '1' => ['showitem' => 'hidden, value, type, namespace, --palette--;;label, --palette--;;comment, record, representations, statements'],
+        '2' => ['showitem' => 'hidden, value, type, namespace, --palette--;;label, --palette--;;comment, record, representations, statements'],
+    ],
+    'palettes' => [
+        'label' => [
             'showitem' => 'label, label_language'
-        ),
-        'comment' => array(
+        ],
+        'comment' => [
             'showitem' => 'comment, comment_language'
-        ),
-    ),
-    'columns' => array(
-        'hidden' => array(
+        ],
+    ],
+    'columns' => [
+        'hidden' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
-            'config' => array(
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
+            'config' => [
                 'type' => 'check',
-            ),
-        ),
-        'label' => array(
+            ],
+        ],
+        'label' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.label',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim'
-            ),
-        ),
-        'label_language' => array(
+            ],
+        ],
+        'label_language' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lang/locallang_tca.xlf:sys_language.language_isocode',
-            'config' => array(
+            'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'size' => 1,
@@ -82,21 +82,21 @@ return array(
                     ['', '']
                 ],
                 'itemsProcFunc' => \TYPO3\CMS\Core\Service\IsoCodeService::class . '->renderIsoCodeSelectDropdown',
-            ),
-        ),
-        'comment' => array(
+            ],
+        ],
+        'comment' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.comment',
-            'config' => array(
+            'config' => [
                 'type' => 'text',
                 'cols' => '30',
                 'rows' => '5',
-            ),
-        ),
-        'comment_language' => array(
+            ],
+        ],
+        'comment_language' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lang/locallang_tca.xlf:sys_language.language_isocode',
-            'config' => array(
+            'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'size' => 1,
@@ -106,79 +106,70 @@ return array(
                     ['', '']
                 ],
                 'itemsProcFunc' => \TYPO3\CMS\Core\Service\IsoCodeService::class . '->renderIsoCodeSelectDropdown',
-            ),
-        ),
-        'type' => array(
+            ],
+        ],
+        'type' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.type',
-            'config' => array(
+            'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'items' => array(
-                    array('LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.type.I.1', 1, 'tx_lod_type_entity'),
-                    array('LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.type.I.2', 2, 'tx_lod_type_property'),
-                ),
+                'items' => [
+                    ['LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.type.I.1', 1, 'tx_lod_type_entity'],
+                    ['LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.type.I.2', 2, 'tx_lod_type_property'],
+                ],
                 'size' => 1,
                 'maxitems' => 1,
-            ),
+            ],
             'onChange' => '0',
-        ),
-        'namespace' => array(
+        ],
+        'namespace' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.namespace',
-            'config' => array(
+            'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'foreign_table' => 'tx_lod_domain_model_namespace',
                 'foreign_table_where' => 'AND tx_lod_domain_model_namespace.pid IN (###PAGE_TSCONFIG_IDLIST###) ORDER BY tx_lod_domain_model_namespace.prefix',
-                'items' => array(
-                    array('', 0),
-                ),
+                'items' => [
+                    ['', 0],
+                ],
                 'size' => 1,
                 'maxitems' => 1,
-                'wizards' => array(
-                    'add' => Array(
-                        'type' => 'popup',
-                        'title' => 'Create new',
-                        'icon' => 'actions-add',
-                        'params' => array(
+// @TODO: TYPO3 bug in FormEngine - https://forge.typo3.org/issues/89032
+                'fieldControl' => [
+                    'addRecord' => [
+                        'disabled' => false,
+                        'options' => [
                             'table' => 'tx_lod_domain_model_namespace',
                             'pid' => '###PAGE_TSCONFIG_ID###',
                             'setValue' => 'set'
-                        ),
-                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-                        'module' => array(
-                            'name' => 'wizard_add',
-                        ),
-                    ),
-                    'edit' => array(
-                        'type' => 'popup',
-                        'title' => 'Edit',
-                        'icon' => 'actions-open',
-                        'popup_onlyOpenIfSelected' => 1,
-                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-                        'module' => array(
-                            'name' => 'wizard_edit',
-                        ),
-                    ),
-                ),
-            ),
-        ),
-        'value' => array(
+                        ],
+                    ],
+                    'editPopup' => [
+                        'disabled' => false,
+//                        'options' => [
+//                            'windowOpenParameters' => 'height=650,width=900,status=0,menubar=0,scrollbars=1',
+//                        ],
+                    ],
+                ],
+            ],
+        ],
+        'value' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.value',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim',
-                // 'eval' => 'required,trim,unique' // for system wide mandatory and unique IRIs
-                // 'readOnly' => 1, // recommended if an identifier generator is used
-            ),
-        ),
-        'record' => array(
+//                'eval' => 'required,trim,unique' // for system wide mandatory and unique IRIs
+//                'readOnly' => 1, // recommended if an identifier generator is used
+            ],
+        ],
+        'record' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.record',
-            'config' => array(
+            'config' => [
                 'type' => 'group',
                 'allowed' => '*',
                 'internal_type' => 'db',
@@ -186,70 +177,78 @@ return array(
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
-                'wizards' => array(
-                    '_POSITION' => 'right',
-                    'edit' => Array(
-                        'type' => 'popup',
-                        'title' => 'Edit',
-                        'icon' => 'actions-open',
-                        'JSopenParams' => 'height=550,width=900,status=0,menubar=0,scrollbars=1',
-                        'popup_onlyOpenIfSelected' => 1,
-                        'module' => array(
-                            'name' => 'wizard_edit',
-                        ),
-                    ),
-                ),
-            )
-        ),
-        'record_uid' => array(
-            'config' => array(
+                'fieldControl' => [
+                    'editPopup' => [
+                        'disabled' => false,
+//                        'options' => [
+//                            'windowOpenParameters' => 'height=650,width=900,status=0,menubar=0,scrollbars=1',
+//                        )
+                    ],
+                ],
+// @TODO: Bug in TYPO3 Core - internal type '*' leads to broken icon in tableList fieldWizard - see TYPO3\CMS\Backend\Form\FieldWizard\TableList
+                'fieldWizard' => [
+                    'tableList' => [
+                        'disabled' => true,
+                    ],
+                ],
+            ],
+        ],
+        'record_uid' => [
+            'config' => [
                 'type' => 'passthrough',
-            ),
-        ),
-        'record_tablename' => array(
-            'config' => array(
+            ],
+        ],
+        'record_tablename' => [
+            'config' => [
                 'type' => 'passthrough',
-            ),
-        ),
-        'representations' => array(
+            ],
+        ],
+        'representations' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.representations',
-            'config' => array(
+            'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'tx_lod_domain_model_representation',
                 'foreign_field' => 'parent',
                 'minitems' => 0,
                 'maxitems' => 999,
-                'appearance' => array(
+                'appearance' => [
                     'collapseAll' => 1,
                     'levelLinksPosition' => 'top',
                     'showSynchronizationLink' => 1,
                     'showPossibleLocalizationRecords' => 1,
                     'showAllLocalizationLink' => 1
-                ),
-            ),
-        ),
-        'statements' => array(
+                ],
+            ],
+        ],
+        'statements' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.statements',
-            'config' => array(
+            'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'tx_lod_domain_model_statement',
                 'foreign_field' => 'subject_uid',
                 'foreign_table_field' => 'subject_type',
                 'foreign_sortby' => 'iri_sorting',
                 'maxitems' => 9999,
-                'appearance' => array(
+                'appearance' => [
                     'collapseAll' => 1,
                     'expandSingle' => 1,
                     'levelLinksPosition' => 'bottom',
                     'newRecordLinkAddTitle' => 1,
                     'useSortable' => 1,
-                ),
-                'behaviour' => array(
+                ],
+                'behaviour' => [
                     'disableMovingChildrenWithParent' => 1,
-                ),
-            ),
-        ),
-    ),
-);
+                ],
+                'overrideChildTca' => [
+                    'types' => [
+                        '1' => [
+                            'showitem' => '--palette--;;recursion, --palette--;;PredicateObject, graph'
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ],
+];

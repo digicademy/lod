@@ -3,6 +3,9 @@
 FE
 - create ext_tables_static+adt.sql
 -- set static namespaces: rdf, rdfs, owl, dc, dcterms, void, skos
+--- https://ogp.me/
+--- https://github.com/schemaorg/schemaorg/blob/master/data/releases/5.0/all-layers-properties.csv
+--- https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#elements-title
 -- maybe create all rdf/rdfs Classes/Properties?
 
 BE
@@ -10,12 +13,7 @@ BE
 - remove settings key from TSConfig
 
 - ensure 8.7 and 9.5 compatibility (esp. Doctrine) / add 7.6 branch and dev branch
--- TCA migrations
---- hide label gone
---- add wizard is gone: https://docs.typo3.org/c/typo3/cms-core/8.7/en-us/Changelog/8.6/Deprecation-79440-TcaChanges.html
---- iri/bnode irre fields should use overrideChildTca from 8.7
---- all tables icon in IRI record field broken icon
---- scan extension files
+-- scan extension files
 --- Doctrine Migration
 -- check type param rewriting in TYPO3 9.5
 -- alternatively give realUrl config
@@ -39,6 +37,9 @@ BE
 -- IriRepository: make ordering settable by TypoScript/Plugin/Parameter (label/value)
 -- https://www.w3.org/TR/sparql11-http-rdf-update/#http-get
 -- https://www.w3.org/TR/sparql11-protocol/#query
+
+- backend
+-- TCA optimization: addRecord fieldControl as popup
 
 - create extension with schema.org vocab
 

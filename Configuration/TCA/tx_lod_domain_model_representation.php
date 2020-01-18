@@ -1,6 +1,6 @@
 <?php
-return array(
-    'ctrl' => array(
+return [
+    'ctrl' => [
         'title' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_representation',
         'label' => 'content_type',
         'default_sortby' => 'ORDER BY parent',
@@ -8,13 +8,13 @@ return array(
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
         'delete' => 'deleted',
-        'enablecolumns' => array(
+        'enablecolumns' => [
             'disabled' => 'hidden',
-        ),
+        ],
         'searchFields' => 'content_type, content_language, parameters',
         'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_representation.svg'
-    ),
-    'interface' => array(
+    ],
+    'interface' => [
         'showRecordFieldList' => '
             hidden,
             parent,
@@ -26,9 +26,9 @@ return array(
             content_type,
             content_language
         ',
-    ),
-    'types' => array(
-        '1' => array(
+    ],
+    'types' => [
+        '1' => [
             'showitem' => '
                 hidden,
                 parent,
@@ -40,82 +40,82 @@ return array(
                 content_type,
                 content_language,
             '
-        ),
-    ),
-    'palettes' => array(
-        '1' => array('showitem' => ''),
-    ),
-    'columns' => array(
-        'hidden' => array(
+        ],
+    ],
+    'palettes' => [
+        '1' => ['showitem' => ''],
+    ],
+    'columns' => [
+        'hidden' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
-            'config' => array(
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
+            'config' => [
                 'type' => 'check',
-            ),
-        ),
-        'parent' => array(
-            'config' => array(
+            ],
+        ],
+        'parent' => [
+            'config' => [
                 'type' => 'passthrough'
-            )
-        ),
-        'scheme' => array(
+            ],
+        ],
+        'scheme' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_representation.scheme',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 10,
                 'eval' => 'required,trim'
-            ),
-        ),
-        'authority' => array(
+            ],
+        ],
+        'authority' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_representation.authority',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 50,
                 'eval' => 'required,trim'
-            ),
-        ),
-        'path' => array(
+            ],
+        ],
+        'path' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_representation.path',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 50,
                 'eval' => 'required,trim'
-            ),
-        ),
-        'query' => array(
+            ],
+        ],
+        'query' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_representation.query',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 50,
                 'eval' => 'trim'
-            ),
-        ),
-        'fragment' => array(
+            ],
+        ],
+        'fragment' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_representation.fragment',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 20,
                 'eval' => 'trim'
-            ),
-        ),
-        'content_type' => array(
+            ],
+        ],
+        'content_type' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_representation.content_type',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 50,
                 'eval' => 'trim'
-            ),
-        ),
-        'content_language' => array(
+            ],
+        ],
+        'content_language' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lang/locallang_tca.xlf:sys_language.language_isocode',
-            'config' => array(
+            'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'size' => 1,
@@ -125,7 +125,7 @@ return array(
                     ['', '']
                 ],
                 'itemsProcFunc' => \TYPO3\CMS\Core\Service\IsoCodeService::class . '->renderIsoCodeSelectDropdown',
-            ),
-        ),
-    ),
-);
+            ],
+        ],
+    ],
+];

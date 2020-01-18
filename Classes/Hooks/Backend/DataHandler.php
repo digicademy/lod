@@ -45,11 +45,11 @@ class DataHandler
     public function processDatamap_postProcessFieldArray($status, $table, $id, &$fieldArray, &$pObj)
     {
         if ($table == 'tx_lod_domain_model_statement') {
-            $fieldArray = $this->synchronizeStatement($status, $fieldArray);
+            $fieldArray = $this->synchronizeStatement($status, $id, $fieldArray, $pObj);
         }
 
         if ($table == 'tx_lod_domain_model_iri') {
-            $fieldArray = $this->synchronizeIri($status, $fieldArray);
+            $fieldArray = $this->synchronizeIri($status, $id, $fieldArray, $pObj);
         }
     }
 
@@ -70,7 +70,7 @@ class DataHandler
             $this->generateIdentifier($status, $table, $id, $fieldArray, $pObj);
         }
 
-        // track tables for IRI generation
+        // track tables during IRI generation
         $this->trackTables($status, $table, $id, $pObj);
     }
 
@@ -95,14 +95,20 @@ class DataHandler
      * Keeps subject, predicate, object values synchronised (with and without prepended table names)
      *
      * @param string $status
+     * @param string $id
      * @param array $fieldArray
+     * @param object $pObj
+     *
      * @return array
      */
-    private function synchronizeStatement($status, $fieldArray)
+    private function synchronizeStatement($status, $id, $fieldArray, $pObj)
     {
+
         switch ($status) {
             case 'update':
             case 'new':
+
+                // standard editing context with three group fields
                 foreach (['subject', 'predicate', 'object'] as $key => $value) {
                     if (
                         array_key_exists($value . '_uid', $fieldArray) == false &&
@@ -112,14 +118,25 @@ class DataHandler
                         $tableNameAndUid = BackendUtility::splitTable_Uid($fieldArray[$value]);
                         $fieldArray[$value . '_type'] = $tableNameAndUid[0];
                         $fieldArray[$value .'_uid'] = $tableNameAndUid[1];
-                    } elseif (
-                        array_key_exists($value . '_uid', $fieldArray) == true &&
-                        array_key_exists($value . '_type', $fieldArray) == true &&
-                        array_key_exists($value, $fieldArray) == false
-                        ) {
-                        $fieldArray[$value] = $fieldArray[$value . '_type'] . '_' . $fieldArray[$value . '_uid'];
                     }
                 }
+
+                // inline edition context (iri/bnode table) with predicate/object fields
+                // IRRE context is subsumed because then parent and child tables will exist in the datamap
+                $parentTable = '';
+                if (array_key_exists('tx_lod_domain_model_iri', $pObj->datamap)) {
+                    $parentTable = 'tx_lod_domain_model_iri';
+                } elseif (array_key_exists('tx_lod_domain_model_bnode', $pObj->datamap)) {
+                    $parentTable = 'tx_lod_domain_model_bnode';
+                }
+                if ($parentTable && substr($id, 0, 3) == 'NEW') {
+                    $parentUid = key($pObj->datamap[$parentTable]);
+                    if (substr($parentUid, 0, 3) == 'NEW') $parentUid = $pObj->substNEWwithIDs[$parentUid];
+                    $fieldArray['subject'] = $parentTable . '_' . $parentUid;
+                    $fieldArray['subject_uid'] = $parentUid;
+                    $fieldArray['subject_type'] = $parentTable;
+                }
+
                 break;
         }
 
@@ -130,15 +147,20 @@ class DataHandler
      * Keeps record, record_uid and record_tablename field in IRI records in sync depending on editing context
      *
      * @param string $status
+     * @param string $id
      * @param array $fieldArray
+     * @param object $pObj
      *
      * @return array
      */
-    private function synchronizeIri($status, $fieldArray)
+    private function synchronizeIri($status, $id, $fieldArray, $pObj)
     {
+
         switch ($status) {
             case 'update':
             case 'new':
+
+                // standard editing context (single iri record)
                 if (
                     array_key_exists('record_uid', $fieldArray) == false &&
                     array_key_exists('record_tablename', $fieldArray) == false &&
@@ -147,13 +169,29 @@ class DataHandler
                     $tableNameAndUid = BackendUtility::splitTable_Uid($fieldArray['record']);
                     $fieldArray['record_tablename'] = $tableNameAndUid[0];
                     $fieldArray['record_uid'] = $tableNameAndUid[1];
-                } elseif (
-                    array_key_exists('record_uid', $fieldArray) == true &&
-                    array_key_exists('record_tablename', $fieldArray) == true &&
-                    array_key_exists('record', $fieldArray) == false
-                ) {
-                    $fieldArray['record'] = $fieldArray['record_tablename'] . '_' . $fieldArray['record_tablename'];
                 }
+
+                // inline editing context (iri and parent table)
+                if (count($pObj->datamap) > 1  && substr($id, 0, 3) == 'NEW') {
+                    $parentTable = '';
+                    $parentUid = 0;
+                    foreach ($pObj->datamap as $tableName => $records) {
+                        if ($tableName == 'tx_lod_domain_model_iri') continue;
+                        foreach ($records as $uid => $fields) {
+                            if (array_key_exists('iri', $fields) && preg_match('/' . $id . '/', $fields['iri'])) {
+                                $parentTable = $tableName;
+                                $parentUid = $uid;
+                                if (substr($parentUid, 0, 3) == 'NEW') $parentUid = $pObj->substNEWwithIDs[$parentUid];
+                            }
+                        }
+                    }
+                    if ($parentTable && $parentUid) {
+                        $fieldArray['record'] = $parentTable . '_' . $parentUid;
+                        $fieldArray['record_uid'] = $parentUid;
+                        $fieldArray['record_tablename'] = $parentTable;
+                    }
+                }
+
                 break;
         }
 

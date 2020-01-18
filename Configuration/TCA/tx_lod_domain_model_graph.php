@@ -1,6 +1,6 @@
 <?php
-return array(
-    'ctrl' => array(
+return [
+    'ctrl' => [
         'title' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_graph',
         'label' => 'label',
         'label_alt' => 'iri',
@@ -11,124 +11,113 @@ return array(
         'cruser_id' => 'cruser_id',
         'dividers2tabs' => true,
         'delete' => 'deleted',
-        'enablecolumns' => array(
+        'enablecolumns' => [
             'disabled' => 'hidden',
-        ),
+        ],
         'searchFields' => 'label,comment',
         'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_graph.svg'
-    ),
-    'interface' => array(
+    ],
+    'interface' => [
         'showRecordFieldList' => 'hidden, iri, label, comment, statements',
-    ),
-    'types' => array(
-        '1' => array('showitem' => 'hidden, iri, label, comment, statements'),
-    ),
-    'columns' => array(
-        'hidden' => array(
+    ],
+    'types' => [
+        '1' => ['showitem' => 'hidden, iri, label, comment, statements'],
+    ],
+    'columns' => [
+        'hidden' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
-            'config' => array(
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
+            'config' => [
                 'type' => 'check',
-            ),
-        ),
-        'iri' => array(
+            ],
+        ],
+        'iri' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_graph.iri',
-            'config' => array(
+            'config' => [
                 'type' => 'group',
                 'internal_type' => 'db',
                 'allowed' => 'tx_lod_domain_model_iri',
-                'filter' => array (
-                    array(
+                'filter' => [
+                    [
                         'userFunc' => 'Digicademy\Lod\Utility\Backend\IriUtility->filterByType',
-                        'parameters' => array(
+                        'parameters' => [
                             'type' => '1',
-                         ),
-                    ),
-                ),
+                         ],
+                    ],
+                ],
                 'prepend_tname' => false,
                 // prevent http://wiki.typo3.org/Exception/CMS/1353170925
                 // 'foreign_table' => 'tx_lod_domain_model_iri',
                 'size' => 1,
                 'minitems' => 1,
                 'maxitems' => 1,
-                'wizards' => array(
-                    '_POSITION' => 'right',
-                    'suggest' => Array(
-                        'type' => 'suggest',
-                        'title' => 'Find records',
-                        'default' => [
-                            'additionalSearchFields' => 'label,comment,value',
-                        ],
-                        'tx_lod_domain_model_iri' => [
-                            'searchCondition' => 'type = 1',
-                        ],
-                    ),
-                    'add_graph_iri' => Array(
-                        'type' => 'popup',
-                        'title' => 'Create new IRI',
-                        'icon' => 'tx_lod_actions_add_iri',
-                        'params' => array(
+                'suggestOptions' => [
+                    'default' => [
+                        'additionalSearchFields' => 'label,comment,value',
+                    ],
+                    'tx_lod_domain_model_iri' => [
+                        'searchCondition' => 'type = 1',
+                    ],
+                ],
+                'fieldWizard' => [
+                    'tableList' => [
+                        'disabled' => true,
+                    ],
+                ],
+                'fieldControl' => [
+                    'addRecord' => [
+                        'disabled' => false,
+                        'options' => [
                             'table' => 'tx_lod_domain_model_iri',
                             'pid' => '###PAGE_TSCONFIG_ID###',
                             'setValue' => 'set'
-                        ),
-                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-                        'module' => array(
-                            'name' => 'wizard_add',
-                        ),
-                    ),
-                    'edit' => array(
-                        'type' => 'popup',
-                        'title' => 'Edit',
-                        'icon' => 'actions-open',
-                        'popup_onlyOpenIfSelected' => 1,
-                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-                        'module' => array(
-                            'name' => 'wizard_edit',
-                        ),
-                    ),
-                ),
-            ),
-        ),
-        'label' => array(
+                        ]
+                    ],
+                    'editPopup' => [
+                        'disabled' => false,
+                    ]
+                ],
+            ],
+        ],
+        'label' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_graph.label',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim'
-            ),
-        ),
-        'comment' => array(
+            ],
+        ],
+        'comment' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_graph.comment',
-            'config' => array(
+            'config' => [
                 'type' => 'text',
                 'cols' => '30',
                 'rows' => '5',
-            ),
-        ),
-        'statements' => array(
+            ],
+        ],
+        'statements' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_graph.statements',
-            'config' => array(
+            'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'tx_lod_domain_model_statement',
                 'foreign_field' => 'graph',
                 'foreign_sortby' => 'graph_sorting',
                 'maxitems' => 9999,
-                'appearance' => array(
+                'appearance' => [
                     'collapseAll' => 1,
                     'expandSingle' => 1,
                     'levelLinksPosition' => 'bottom',
                     'newRecordLinkAddTitle' => 1,
                     'useSortable' => 1,
-                ),
-                'behaviour' => array(
+                ],
+                'behaviour' => [
                     'disableMovingChildrenWithParent' => 1,
-                ),
-            ),
-        ),
-    ),
-);
+                ],
+            ],
+        ],
+    ],
+];
