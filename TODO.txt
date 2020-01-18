@@ -12,11 +12,11 @@ BE
 - Add TSConfig option: statementIriTypeFilter.subject = 1|2
 - remove settings key from TSConfig
 
-- ensure 8.7 and 9.5 compatibility (esp. Doctrine) / add 7.6 branch and dev branch
--- scan extension files
---- Doctrine Migration
+- ensure 9.5 compatibility
+-- templates
 
 -- check type param rewriting in TYPO3 9.5
+-- https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/9.5/Feature-86365-RoutingEnhancersAndAspects.html#staticvaluemapper
 -- alternatively give realUrl config
 
 - documentation

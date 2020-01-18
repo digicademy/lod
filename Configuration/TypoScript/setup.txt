@@ -35,6 +35,7 @@ lib.tx_lod.plugin {
 # general extension configuration
 
 plugin.tx_lod {
+    features.requireCHashArgumentForActionArguments = 0
     persistence {
         classes {
             Digicademy\Lod\Domain\Model\IriNamespace {
