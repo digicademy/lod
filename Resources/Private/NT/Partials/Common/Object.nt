@@ -1,12 +1,12 @@
 {namespace lod = Digicademy\Lod\ViewHelpers}<f:switch expression="{lod:DetermineEntity(entity : statement.object)}">
 <f:case value="Digicademy\Lod\Domain\Model\Iri">
-{iri} <{statement.predicate.namespace.iri}{statement.predicate.value}> <{f:if(condition : '{statement.object.namespace}', then : '{statement.object.namespace.iri}', else : '')}{statement.object.value}> .
+<f:format.raw>{iri}</f:format.raw> <{statement.predicate.namespace.iri}{statement.predicate.value}> <{f:if(condition : '{statement.object.namespace}', then : '{statement.object.namespace.iri}', else : '')}{statement.object.value}> .
 </f:case>
 <f:case value="Digicademy\Lod\Domain\Model\Literal">
-{iri} <{statement.predicate.namespace.iri}{statement.predicate.value}> {lod:EscapeLiteral(literal : statement.object.value, format : 'ntriples')}{lod:LangDatatype(literal : statement.object, format : 'ntriples')} .
+<f:format.raw>{iri}</f:format.raw> <{statement.predicate.namespace.iri}{statement.predicate.value}> {lod:EscapeLiteral(literal : statement.object.value, format : 'ntriples')}{lod:LangDatatype(literal : statement.object, format : 'ntriples')} .
 </f:case>
 <f:case value="Digicademy\Lod\Domain\Model\Bnode">
-{iri} <{statement.predicate.namespace.iri}{statement.predicate.value}> _:{statement.object.value} .
+<f:format.raw>{iri}</f:format.raw> <{statement.predicate.namespace.iri}{statement.predicate.value}> _:{statement.object.value} .
 <f:for each="{lod:FetchBnode(bnode : statement.object)}" as="bnodeStatement">
 <f:render partial="Common/Object" arguments="{iri : '_:{statement.object.value}', statement : bnodeStatement}" />
 </f:for>

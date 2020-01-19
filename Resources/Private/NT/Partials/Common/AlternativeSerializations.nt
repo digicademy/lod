@@ -1,5 +1,5 @@
 <f:for each="{1991 : {uri : 'http://www.w3.org/ns/formats/RDFa', mime : 'text/html'}, 2004 : {uri : 'http://www.w3.org/ns/formats/RDF_XML', mime : 'application/rdf+xml'}, 2011 : {uri : 'http://www.w3.org/ns/formats/Turtle', mime : 'text/turtle'}, 2013 : {uri : 'http://www.w3.org/ns/formats/N-Triples', mime : 'application/n-triples'}, 2014 : {uri : 'http://www.w3.org/ns/formats/JSON-LD', mime : 'application/ld+json'}}" as="format" key="type" iteration="serializationIterator">
-<f:if condition="{mode} == 'api">
+<f:if condition="{mode} == 'api'">
 <f:then>
 <f:alias map="{object : '{environment.TYPO3_REQUEST_HOST}/{f:render(partial : \'Api/Uri\', arguments : {action : \'show\', type : type, resource : resource, settings : settings})}'}">
 <{subject}> <http://www.w3.org/2000/01/rdf-schema#seeAlso> <{object}> .

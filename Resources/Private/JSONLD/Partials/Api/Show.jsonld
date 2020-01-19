@@ -1,6 +1,6 @@
 {namespace lod = Digicademy\Lod\ViewHelpers}<lod:jsonldSerialize><f:format.raw>{</f:format.raw>
   "@context": <f:format.raw>{</f:format.raw>
-<f:for each="{namespaces}" as="namespace" iteration="namespaceIterator">
+<f:for each="{iriNamespaces}" as="namespace" iteration="namespaceIterator">
     "{namespace.prefix}": "{namespace.iri}"<f:if condition="{namespaceIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if>
 </f:for>
   <f:format.raw>},</f:format.raw>

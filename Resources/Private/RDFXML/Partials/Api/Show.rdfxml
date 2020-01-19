@@ -1,4 +1,4 @@
-<rdf:RDF <f:for each="{namespaces}" as="namespace">
+<rdf:RDF <f:for each="{iriNamespaces}" as="namespace">
     xmlns:{namespace.prefix}="{namespace.iri}"</f:for>>
     <rdf:Description rdf:about="{f:if(condition : '{resource.namespace}', then : '{resource.namespace.iri}', else : '')}{resource.value}">
         <f:render partial="Common/AlternativeSerializations" arguments="{action : 'api', resource : resource, environment : environment, settings : settings}" />

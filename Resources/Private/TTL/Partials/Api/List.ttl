@@ -1,14 +1,14 @@
-{namespace lod = Digicademy\Lod\ViewHelpers}@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+{namespace lod = Digicademy\Lod\ViewHelpers}{escaping off}@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix hydra: <http://www.w3.org/ns/hydra/core#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix void: <http://rdfs.org/ns/void#> .
 
-<{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {type : '2011'}, noCacheHash : 1)}>
+<{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {type : '2011'})}>
     a hydra:Collection, void:Dataset ;
     hydra:totalItems "{totalItems}" ;
     hydra:view <{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2011', limit : arguments.limit, page : arguments.page})}> ;<f:for each="{resources}" as="resource" iteration="iterator">
-    hydra:member <{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}, noCacheHash : 1)}><f:if condition="{iterator.isLast}"><f:then> .</f:then><f:else> ;</f:else></f:if></f:for>
+    hydra:member <{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {tx_lod_api : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}})}><f:if condition="{iterator.isLast}"><f:then> .</f:then><f:else> ;</f:else></f:if></f:for>
 
 <{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2011', limit : arguments.limit, page : arguments.page})}>
     a hydra:PartialCollectionView ;
@@ -18,7 +18,7 @@
     hydra:next <{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2011', page : pagination.next, limit : arguments.limit})}> .
 
 <f:for each="{resources}" as="resource" iteration="iterator">
-<{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}, noCacheHash : 1)}>
+<{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {tx_lod_api : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}})}>
     <f:if condition="{resource.label}">rdfs:label {lod:EscapeLiteral(literal : resource.label, format : 'turtle')}{f:if(condition: '{resource.labelLanguage}', then: '@{resource.labelLanguage}')} ;</f:if>
     <f:if condition="{resource.comment}">rdfs:comment {lod:EscapeLiteral(literal : resource.comment, format : 'turtle')}{f:if(condition: '{resource.commentLanguage}', then: '@{resource.commentLanguage}')} ;</f:if>
     <f:render partial="Common/AlternativeSerializations" arguments="{mode : 'apiObject', resource : resource, environment : environment}"/></f:for>
