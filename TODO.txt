@@ -1,6 +1,22 @@
 ## NEXT #########################################
 
+BE
+- Add TSConfig option: statementIriTypeFilter.subject = 1|2
+
 FE
+- ensure 9.5 compatibility
+-- templates
+--- send iris in iri param through urlencode
+--- think about htmlspecialchars
+
+-- type param rewriting in TYPO3 9.5
+-- https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/9.5/Feature-86365-RoutingEnhancersAndAspects.html#staticvaluemapper
+
+BACKPORTS
+- bug in 7.6 ttl & nt templates (list view) => iri param => tx_lod_api[iri] param
+- missing ' in AlternativeSerialization.nt in if condition
+
+DATA
 - create ext_tables_static+adt.sql
 -- set static namespaces: rdf, rdfs, owl, dc, dcterms, void, skos
 --- https://ogp.me/
@@ -8,22 +24,7 @@ FE
 --- https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#elements-title
 -- maybe create all rdf/rdfs Classes/Properties?
 
-BE
-- Add TSConfig option: statementIriTypeFilter.subject = 1|2
-- remove settings key from TSConfig
-
-- ensure 9.5 compatibility
--- templates
---- send iris in iri param through urlencode
-
-- bug in 7.6 ttl & nt templates (list view) => iri param => tx_lod_api[iri] param
-- missing ' in AlternativeSerialization.nt in if condition
-
--- check type param rewriting in TYPO3 9.5
--- https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/9.5/Feature-86365-RoutingEnhancersAndAspects.html#staticvaluemapper
--- alternatively give realUrl config
-
-- documentation
+DOCUMENTATION
 -- use lists of controlled terms in the system (selects etc.)
 
 ### v.1.1 ###
@@ -92,56 +93,58 @@ fragment = section
 ---
 
 tx_lod {
-    identifierGenerator {
-        tx_lod_domain_model_iri {
-            type = [
-                Digicademy\Lod\Generator\UidIdentifierGenerator,
-                Digicademy\Lod\Generator\UuidIdentifierGenerator,
-                Digicademy\Lod\Generator\ForeignRecordIdentifierGenerator,
-                Vendor\Package\My\Generator
-            ]
-            Digicademy\Lod\Generator\UidIdentifierGenerator {
-                entityPrefix = E
-                propertyPrefix = P
+    settings {
+        identifierGenerator {
+            tx_lod_domain_model_iri {
+                type = [
+                    Digicademy\Lod\Generator\UidIdentifierGenerator,
+                    Digicademy\Lod\Generator\UuidIdentifierGenerator,
+                    Digicademy\Lod\Generator\ForeignRecordIdentifierGenerator,
+                    Vendor\Package\My\Generator
+                ]
+                Digicademy\Lod\Generator\UidIdentifierGenerator {
+                    entityPrefix = E
+                    propertyPrefix = P
+                }
+                Digicademy\Lod\Generator\UuidIdentifierGenerator {
+                    entityPrefix = E
+                    propertyPrefix = P
+                    xmlConformance = 1
+                }
+                Digicademy\Lod\Generator\ForeignRecordIdentifierGenerator {
+                    entityPrefix = E
+                    propertyPrefix = P
+                    includeTablename = 1
+                }
             }
-            Digicademy\Lod\Generator\UuidIdentifierGenerator {
-                entityPrefix = E
-                propertyPrefix = P
-                xmlConformance = 1
-            }
-            Digicademy\Lod\Generator\ForeignRecordIdentifierGenerator {
-                entityPrefix = E
-                propertyPrefix = P
-                includeTablename = 1
+            tx_lod_domain_model_bnode {
+                type = [
+                    Digicademy\Lod\Generator\UidIdentifierGenerator,
+                    Digicademy\Lod\Generator\UuidIdentifierGenerator,
+                    Vendor\Package\My\Generator
+                ]
+                Digicademy\Lod\Generator\UidIdentifierGenerator {
+                    bnodePrefix = b
+                }
+                Digicademy\Lod\Generator\UuidIdentifierGenerator, {
+                    bnodePrefix = b
+                    xmlConformance = 1
+                }
             }
         }
-        tx_lod_domain_model_bnode {
-            type = [
-                Digicademy\Lod\Generator\UidIdentifierGenerator,
-                Digicademy\Lod\Generator\UuidIdentifierGenerator,
-                Vendor\Package\My\Generator
-            ]
-            Digicademy\Lod\Generator\UidIdentifierGenerator {
-                bnodePrefix = b
-            }
-            Digicademy\Lod\Generator\UuidIdentifierGenerator, {
-                bnodePrefix = b
-                xmlConformance = 1
-            }
+        statementIriTypeFilter {
+            subject = 1|2
         }
-    }
-    statementIriTypeFilter {
-        subject = 1|2
-    }
-    tableTracking {
-        tx_my_table {
-            track = 1
-            iriPidList = 1,2,3,...
-            iriPidList.recursive = 1
-            createOnPid = ...
-            createType = 1|2
-            hideUnhide = 1
-            deleteUndelete = 1
+        tableTracking {
+            tx_my_table {
+                track = 1
+                iriPidList = 1,2,3,...
+                iriPidList.recursive = 1
+                createOnPid = ...
+                createType = 1|2
+                hideUnhide = 1
+                deleteUndelete = 1
+            }
         }
     }
 }
@@ -152,7 +155,7 @@ plugin.tx_lod_api.persistence.classes {
     My\Class.mapping.tableName = tx_extension_domain_model_xyz
 }
 
-## TYPO3 8.7
+## TYPO3 8.7 and higher
 
 # standard record link configuration from T3 V8 and higher
 
@@ -221,21 +224,23 @@ page.headerData.333 {
     view < plugin.tx_lod_serializer.view
 }
 
-plugin.tx_lod_serializer.settings {
-    selectedIri = UID
-    mode = embedded
-    apiPage = PID
-    recordToArgumentMapping {
-        pages {
-            argumentName = id
+plugin.tx_lod_serializer {
+    settings {
+        selectedIri = UID
+        mode = embedded
+        apiPage = PID
+        recordToArgumentMapping {
+            pages {
+                argumentName = id
+            }
+            tx_hisodat_domain_model_persons {
+                pluginNamespace = tx_hisodat_registers
+                argumentName = person
+            }
         }
-        tx_hisodat_domain_model_persons {
-            pluginNamespace = tx_hisodat_registers
-            argumentName = person
+        format {
+            default = jsonld
+            tx_my_table = FORMAT (jsonld, ttl, rdfxml, nt)
         }
-    }
-    format {
-        default = jsonld
-        tx_my_table = FORMAT (jsonld, ttl, rdfxml, nt)
     }
 }

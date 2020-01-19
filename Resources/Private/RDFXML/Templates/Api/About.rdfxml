@@ -1,4 +1,4 @@
-{namespace lod = Digicademy\Lod\ViewHelpers}<?xml version="1.0" encoding="UTF-8"?><lod:RemoveEmptyLines><f:switch expression="{action}">
+{namespace lod = Digicademy\Lod\ViewHelpers}<?xml version="1.0" encoding="UTF-8"?><f:format.raw><lod:RemoveEmptyLines><f:switch expression="{action}">
 <f:case value="list">
 <f:render partial="Api/List" arguments="{_all}" />
 </f:case>
@@ -8,4 +8,4 @@
 <f:defaultCase>
 400 - BAD REQUEST
 </f:defaultCase>
-</f:switch></lod:RemoveEmptyLines>
+</f:switch></lod:RemoveEmptyLines></f:format.raw>

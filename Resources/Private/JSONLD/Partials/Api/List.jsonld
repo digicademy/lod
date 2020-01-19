@@ -16,7 +16,7 @@
     "hydra:member": [
 <f:for each="{resources}" as="resource" iteration="iterator">
       <f:format.raw>{</f:format.raw>
-        "@id": "{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'})}",
+        "@id": "{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {tx_lod_api : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}})}",
         <f:if condition="{resource.label}">"rdfs:label": <f:format.raw>{</f:format.raw>
           <f:if condition="{resource.labelLanguage}">"@language" : "{resource.labelLanguage}",</f:if>
           "@value" : {lod:EscapeLiteral(literal : resource.label, format : 'jsonld')}

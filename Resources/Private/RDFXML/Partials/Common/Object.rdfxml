@@ -5,7 +5,7 @@
             <f:if condition="{statement.object.statements}">
                 <f:then>
                 <{statement.predicate.namespace.prefix}:{statement.predicate.value}>
-                <rdf:Description rdf:about="{statement.object.namespace.iri}{statement.object.value}">
+                <rdf:Description xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" rdf:about="{statement.object.namespace.iri}{statement.object.value}">
                 <f:for each="{statement.object.statements}" as="iriStatement">
                     <f:render partial="Common/Object" arguments="{statement : iriStatement}" />
                 </f:for>

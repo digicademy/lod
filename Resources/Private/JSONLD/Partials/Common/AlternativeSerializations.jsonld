@@ -8,10 +8,10 @@
       <f:format.raw>{</f:format.raw>
 <f:switch expression="{mode}">
 <f:case value="api">
-        "@id" : "{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource, settings : settings}) -> f:format.htmlspecialchars()}",
+        "@id" : "{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource, settings : settings})}",
 </f:case>
 <f:case value="vocabulary">
-        "@id" : "{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : '{type : type}') -> f:format.htmlspecialchars()}",
+        "@id" : "{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : '{type : type}')}",
 </f:case>
 </f:switch>
         "@type" : "void:Dataset",
