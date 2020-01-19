@@ -14,7 +14,6 @@ BE
 
 - ensure 9.5 compatibility
 -- templates
---- change {namespaces} to {iriNamespaces}
 --- send iris in iri param through urlencode
 
 - bug in 7.6 ttl & nt templates (list view) => iri param => tx_lod_api[iri] param

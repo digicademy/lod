@@ -1,4 +1,4 @@
-{namespace lod = Digicademy\Lod\ViewHelpers}<f:format.raw>{</f:format.raw>
+{namespace lod = Digicademy\Lod\ViewHelpers}{escaping off}<f:format.raw>{</f:format.raw>
   "@context": {
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
@@ -8,7 +8,7 @@
   },
   "@graph": [
   <f:format.raw>{</f:format.raw>
-    "@id": "{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {type : '2014'}, noCacheHash : 1)}",
+    "@id": "{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {type : '2014'})}",
     "@type": [
       "hydra:Collection",
       "void:Dataset"
@@ -16,7 +16,7 @@
     "hydra:member": [
 <f:for each="{resources}" as="resource" iteration="iterator">
       <f:format.raw>{</f:format.raw>
-        "@id": "{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}, noCacheHash : 1)}",
+        "@id": "{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'})}",
         <f:if condition="{resource.label}">"rdfs:label": <f:format.raw>{</f:format.raw>
           <f:if condition="{resource.labelLanguage}">"@language" : "{resource.labelLanguage}",</f:if>
           "@value" : {lod:EscapeLiteral(literal : resource.label, format : 'jsonld')}

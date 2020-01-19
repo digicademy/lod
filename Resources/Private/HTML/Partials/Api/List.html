@@ -29,7 +29,7 @@
         </thead>
         <tbody>
         <f:for each="{resources}" as="resource">
-            <tr property="member" resource="{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}, noCacheHash : 1) -> f:format.htmlspecialchars()}">
+            <tr property="member" resource="{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}) -> f:format.htmlspecialchars()}">
                 <td>
                     <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '1991', resource : resource}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
                         <span property="void:feature" resource="http://www.w3.org/ns/formats/RDFa">{resource.value}</span>
