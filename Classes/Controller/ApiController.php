@@ -100,39 +100,54 @@ class ApiController extends ActionController
      */
     public function aboutAction()
     {
-        $pageType = GeneralUtility::_GP('type');
+        // check if pageType is set (either via param or masked through PageTypeSuffix)
+        if (GeneralUtility::_GP('type')) {
+            $pageType = GeneralUtility::_GP('type');
+        } else if ($GLOBALS['TSFE']->pageArguments->getPageType()) {
+            $pageType = $GLOBALS['TSFE']->pageArguments->getPageType();
+        } else {
+            $pageType = 0;
+        }
 
-        // if page type is given set extbase response format directly
+        // if page type is set define response format directly
         if ($pageType > 0) {
 
             $this->request->setFormat($this->contentNegotiationService->getFormat());
 
-        // otherwise redirect to URL including negotiated page type
+        // if not 303 to URL including a negotiated page type
         } else {
 
             // make sure request url does not end in a slash
-            $requestUrl = rtrim(GeneralUtility::getIndpEnv('TYPO3_REQUEST_URL'), '/');
+            $requestUrl = $GLOBALS['TYPO3_REQUEST']->getAttributes()['normalizedParams']->getRequestUri();
+            $cleanRequestUrl = rtrim($requestUrl, '/');
 
-// @TODO: check type param rewriting in TYPO3 9.5
+            // get current site configuration
+            $siteConfiguration = $GLOBALS['TYPO3_REQUEST']->getAttributes()['site']->getConfiguration();
 
-            // generate url for redirection depending if realurl is installed or not
-            if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl'])) {
-                $uri =
-                    $requestUrl .
-                    '/.' .
-                    $this->settings['api']['realurlTypeParam'] .
-                    $this->contentNegotiationService->getFormat();
+            // get target page type via content negotiation
+            $targetPageType = array_search(
+                $this->contentNegotiationService->getContentType(),
+                $this->contentNegotiationService->getAvailableMimeTypes()
+            );
+
+            // generate url for redirection depending if routeEnhancers are configured
+            if (
+                array_key_exists('routeEnhancers', $siteConfiguration) &&
+                array_key_exists('PageTypeSuffix', $siteConfiguration['routeEnhancers']) &&
+                array_key_exists('map', $siteConfiguration['routeEnhancers']['PageTypeSuffix']) &&
+                in_array($targetPageType, $siteConfiguration['routeEnhancers']['PageTypeSuffix']['map'])
+            ) {
+                $targetPageTypeSuffix = array_search($targetPageType, $siteConfiguration['routeEnhancers']['PageTypeSuffix']['map']);
+                $uri = $cleanRequestUrl . $targetPageTypeSuffix;
+
+            // parameterized URI (no configured routeEnhancers)
             } else {
-                $targetPageType = array_search(
-                    $this->contentNegotiationService->getContentType(),
-                    $this->contentNegotiationService->getAvailableMimeTypes()
-                );
-                if (preg_match('/\?/', $requestUrl)) {
+                if (preg_match('/\?/', $cleanRequestUrl)) {
                     $typeParameterKeyword = '&type=';
                 } else {
                     $typeParameterKeyword = '?type=';
                 }
-                $uri = $requestUrl . $typeParameterKeyword . $targetPageType;
+                $uri = $cleanRequestUrl . $typeParameterKeyword . $targetPageType;
             }
 
             $this->redirectToUri($uri);
@@ -162,6 +177,7 @@ class ApiController extends ActionController
             } else {
 
             // throw PSR-7 compliant error response
+// @TODO: throws wrong error (test by entering non existing iri)
             GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction(
                 $this->request,
                 'The requested page does not exist',

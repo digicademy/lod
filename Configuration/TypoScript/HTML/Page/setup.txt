@@ -10,6 +10,6 @@ html {
     }
 }
 
-[globalVar = GP : type = 1991]
+[getTSFE().type == 1991]
 html.10 < lib.tx_lod.plugin
 [global]

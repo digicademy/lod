@@ -2,15 +2,19 @@
 
 BE
 - Add TSConfig option: statementIriTypeFilter.subject = 1|2
+- Add namespacesToIncludeInPrologue field to api plugin flexform
 
 FE
 - ensure 9.5 compatibility
+-- test serializer plugin
+-- test vocabulary plugin
 -- templates
 --- send iris in iri param through urlencode
 --- think about htmlspecialchars
 
 -- type param rewriting in TYPO3 9.5
--- https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/9.5/Feature-86365-RoutingEnhancersAndAspects.html#staticvaluemapper
+--- throw correct error if iri not found
+--- double slash after SITE_ROOT
 
 BACKPORTS
 - bug in 7.6 ttl & nt templates (list view) => iri param => tx_lod_api[iri] param
