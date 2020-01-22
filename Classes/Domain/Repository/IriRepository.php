@@ -33,6 +33,7 @@ class IriRepository extends Repository
 {
 
     protected $defaultOrderings = array(
+        'label' => QueryInterface::ORDER_ASCENDING,
         'value' => QueryInterface::ORDER_ASCENDING
     );
 
