@@ -247,7 +247,8 @@ class ApiController extends ActionController
         // provide environment vars
         $environment = [
             'TYPO3_REQUEST_HOST' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_HOST'),
-            'TYPO3_REQUEST_URL' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_URL')
+            'TYPO3_REQUEST_URL' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_URL'),
+            'TSFE' => ['pageArguments' => $GLOBALS['TSFE']->pageArguments]
         ];
         $this->view->assign('environment', $environment);
     }
@@ -306,7 +307,8 @@ class ApiController extends ActionController
         // provide environment vars
         $environment = [
             'TYPO3_REQUEST_HOST' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_HOST'),
-            'TYPO3_REQUEST_URL' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_URL')
+            'TYPO3_REQUEST_URL' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_URL'),
+            'TSFE' => ['pageArguments' => $GLOBALS['TSFE']->pageArguments]
         ];
         $this->view->assign('environment', $environment);
     }
