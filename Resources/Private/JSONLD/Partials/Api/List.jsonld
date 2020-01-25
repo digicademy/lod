@@ -8,7 +8,7 @@
   },
   "@graph": [
   <f:format.raw>{</f:format.raw>
-    "@id": "{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {type : '2014'})}",
+    "@id": "{environment.TYPO3_REQUEST_HOST}{f:uri.page(additionalParams : {type : '2014'})}",
     "@type": [
       "hydra:Collection",
       "void:Dataset"
@@ -16,7 +16,7 @@
     "hydra:member": [
 <f:for each="{resources}" as="resource" iteration="iterator">
       <f:format.raw>{</f:format.raw>
-        "@id": "{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {tx_lod_api : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}})}",
+        "@id": "{environment.TYPO3_REQUEST_HOST}{f:uri.page(additionalParams : {tx_lod_api : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}})}",
         <f:if condition="{resource.label}">"rdfs:label": <f:format.raw>{</f:format.raw>
           <f:if condition="{resource.labelLanguage}">"@language" : "{resource.labelLanguage}",</f:if>
           "@value" : {lod:EscapeLiteral(literal : resource.label, format : 'jsonld')}
@@ -33,25 +33,25 @@
     ],
     "hydra:totalItems": "{totalItems}",
     "hydra:view": <f:format.raw>{</f:format.raw>
-      "@id": "{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', limit : arguments.limit, page : arguments.page})}"
+      "@id": "{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', limit : arguments.limit, page : arguments.page})}"
     <f:format.raw>}</f:format.raw>
   <f:format.raw>}</f:format.raw>,
   <f:format.raw>{</f:format.raw>
-    "@id": "{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', limit : arguments.limit, page : arguments.page})}",
+    "@id": "{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', limit : arguments.limit, page : arguments.page})}",
     "@type": [
       "hydra:PartialCollectionView"
     ],
     "hydra:first": <f:format.raw>{</f:format.raw>
-      "@id": "{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', page : pagination.first, limit : arguments.limit})}"
+      "@id": "{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', page : pagination.first, limit : arguments.limit})}"
     <f:format.raw>}</f:format.raw>,
     "hydra:last": <f:format.raw>{</f:format.raw>
-      "@id": "{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', page : pagination.last, limit : arguments.limit})}"
+      "@id": "{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', page : pagination.last, limit : arguments.limit})}"
     <f:format.raw>}</f:format.raw>,
     "hydra:next": <f:format.raw>{</f:format.raw>
-      "@id": "{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', page : pagination.next, limit : arguments.limit})}"
+      "@id": "{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', page : pagination.next, limit : arguments.limit})}"
     <f:format.raw>}</f:format.raw>,
     "hydra:previous": <f:format.raw>{</f:format.raw>
-      "@id": "{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', page : pagination.previous, limit : arguments.limit})}"
+      "@id": "{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', page : pagination.previous, limit : arguments.limit})}"
     <f:format.raw>}</f:format.raw>
   <f:format.raw>}</f:format.raw>
   ]

@@ -11,10 +11,15 @@ FE
 -- templates
 --- send iris in iri param through urlencode
 --- think about htmlspecialchars
+- definedNamespaces condition in ttl, nt, json, rdfa templates
 
 -- type param rewriting in TYPO3 9.5
 --- throw correct error if iri not found
---- double slash after SITE_ROOT
+--- double slash after SITE_ROOT => take out of templates {TYPO3_SITE_URL} and test without routeEnhancer
+
+- simple search in list
+- list sorting by: value, label
+- filter list with graph param
 
 BACKPORTS
 - bug in 7.6 ttl & nt templates (list view) => iri param => tx_lod_api[iri] param

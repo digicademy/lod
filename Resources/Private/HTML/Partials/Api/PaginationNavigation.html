@@ -1,21 +1,21 @@
 <ul property="view" typeof="PartialCollectionView">
     <li>
-        <a property="first" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '1991', page : pagination.first, limit : arguments.limit}) -> f:format.htmlspecialchars()}">
+        <a property="first" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '1991', page : pagination.first, limit : arguments.limit}) -> f:format.htmlspecialchars()}">
             « First
         </a>
     </li>
     <li>
-        <a property="previous" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '1991', page : pagination.previous, limit : arguments.limit}) -> f:format.htmlspecialchars()}">
+        <a property="previous" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '1991', page : pagination.previous, limit : arguments.limit}) -> f:format.htmlspecialchars()}">
             ‹ Previous
         </a>
     </li>
     <li>
-        <a property="next" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '1991', page : pagination.next, limit : arguments.limit}) -> f:format.htmlspecialchars()}">
+        <a property="next" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '1991', page : pagination.next, limit : arguments.limit}) -> f:format.htmlspecialchars()}">
             › Next
         </a>
     </li>
     <li>
-        <a property="last" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '1991', page : pagination.last, limit : arguments.limit}) -> f:format.htmlspecialchars()}">
+        <a property="last" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '1991', page : pagination.last, limit : arguments.limit}) -> f:format.htmlspecialchars()}">
             » Last
         </a>
     </li>
