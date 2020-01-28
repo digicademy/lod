@@ -4,6 +4,10 @@ BE
 - Add TSConfig option: statementIriTypeFilter.subject = 1|2
 - Add namespacesToIncludeInPrologue field to api plugin flexform
 
+- AboutController / IriRepository: add possibility/setting to retrieve statements by object
+-- generally for all IRIs by TypoScript
+-- checkbox in statement: "Allow inversion"
+
 FE
 - ensure 9.5 compatibility
 -- test serializer plugin
@@ -11,15 +15,17 @@ FE
 -- templates
 --- send iris in iri param through urlencode
 --- think about htmlspecialchars
+
 - definedNamespaces condition in ttl, nt, json, rdfa templates
 
 -- type param rewriting in TYPO3 9.5
 --- throw correct error if iri not found
---- double slash after SITE_ROOT => take out of templates {TYPO3_SITE_URL} and test without routeEnhancer
 
 - simple search in list
 - list sorting by: value, label
 - filter list with graph param
+-- https://www.w3.org/TR/sparql11-http-rdf-update/
+-- https://www.w3.org/TR/sparql11-protocol/#query
 
 BACKPORTS
 - bug in 7.6 ttl & nt templates (list view) => iri param => tx_lod_api[iri] param
@@ -38,23 +44,21 @@ DOCUMENTATION
 
 ### v.1.1 ###
 
+- inverse properties
+-- if IRI type 2 (property) add group field "inverse of" (bidirectional mm relation shown from both sides)
+-- https://www.semanticarts.com/named-property-inverses-yay-or-nay/
+-- http://richard.cyganiak.de/blog/2006/06/an-rdf-design-pattern-inverse-property-labels/
+
 - named graphs
 -- add named graph structures to ttl, json-ld and nt templates
 -- maybe graph could serve as collection of statements added to records etc.
--- graph filter on api list view: only show resources that belong to a given graph
 
 - table tracking
 -- create statements defined by TSConfig when new IRI is created (per IRI per tracked table)
 -- create representations defined by TSConfig when new IRI is created (per IRI per tracked table)
 
-- API plugin
--- basic string search in label/comment for API plugin (list view)
--- IriRepository: make ordering settable by TypoScript/Plugin/Parameter (label/value)
--- https://www.w3.org/TR/sparql11-http-rdf-update/#http-get
--- https://www.w3.org/TR/sparql11-protocol/#query
-
 - backend
--- TCA optimization: addRecord fieldControl as popup
+-- TCA optimization: addRecord fieldControl as popup ?
 
 - create extension with schema.org vocab
 
@@ -70,26 +74,6 @@ DOCUMENTATION
 - resolver
 -- call different typolink handlers according to $representation->getAuthority();
 -- implement language negotiation
-
----
-
-id=123 => rewritten by realurl to 'id' or whatever (= pagePath)
-&tx_lod_api%5Bsubject%5D=1995 => rewritten by realurl to /id/value (= fixedPostVars)
-&type=2004 => rewritten by realUrl to about.xyz (= fileName)
-
-&tx_lod_about%5Baction%5D=about => skipped (by initializeAction and fixedPostVars)
-&tx_lod_about%5Bcontroller%5D=Api skipped (by initializeAction and fixedPostVars)
-&tx_lod_about%5Bformat%5D=rdfxml => ignored/suppressed (by initialize Action; switch is by pageType)
-
-&cHash => skipped (by realUrl config)
-
-/id/I385
-
-/id/I385/about.html
-
-/id.html
-
-/id/about.rdf?tx_lod_api[offset]=1&tx_lod_api[limit]=100
 
 ---
 
@@ -253,3 +237,31 @@ plugin.tx_lod_serializer {
         }
     }
 }
+
+# speaking URL configuration
+
+#routeEnhancers:
+#  ApiPlugin:
+#    type: Extbase
+#    limitToPages:
+#      - x
+#      - y
+#    extension: Lod
+#    plugin: Api
+#    routes:
+#      -
+#        routePath: '/id/{iri}'
+#        _controller: 'Api::about'
+#        _arguments:
+#          iri: iri
+#    defaultController: 'Api::about'
+#  PageTypeSuffix:
+#    type: PageType
+#    default: ''
+#    map:
+#      .html: 0
+#      /about.html: 1991
+#      /about.rdf: 2004
+#      /about.ttl: 2011
+#      /about.nt: 2013
+#      /about.json: 2014

@@ -1,0 +1,29 @@
+.navbar {
+	list-style: none;
+	margin-left: 0;
+}
+
+.navbar li {
+	display: inline-block;
+}
+
+.navbar li:after {
+	content: "|";
+	display: inline;
+	margin: 0 0.3em;
+	padding: 0;
+}
+
+.navbar li:first-child:after,
+.navbar li:last-child:after {
+	content: "";
+	margin: 0;
+}
+
+.pagination {
+	float: left;
+}
+
+.resources-per-page {
+	float: right;
+}

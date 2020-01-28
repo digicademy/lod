@@ -1,7 +1,5 @@
-<p>
-    <f:translate key="api.list.resourcesPerPage" />
-</p>
-<ul>
+<ul class="resources-per-page navbar">
+    <li><f:translate key="api.list.resourcesPerPage" />:</li>
     <f:for each="{0 : '50', 1 : '100', 2 : '200', 3 : '500'}" as="limit">
         <li>
             <f:render partial="Api/Link" arguments="{

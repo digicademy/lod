@@ -3,9 +3,8 @@
 
     <h2><f:translate key="api.list.header" /> (<span property="totalItems">{totalItems}</span>)</h2>
 
-    <h3><f:translate key="general.alternativeSerialization" /></h3>
-
-    <ul class="alternative-serialization">
+    <ul class="alternative-serialization navbar">
+        <li><strong><f:translate key="general.alternativeSerialization" /></strong>:</li>
         <f:render partial="Common/AlternativeSerializations" arguments="{
             action : 'apiList',
             environment : environment,
@@ -16,15 +15,13 @@
 
     <f:render partial="Api/PaginationNavigation" arguments="{_all}" />
 
-    <f:render partial="Api/PaginationFromTo" arguments="{_all}" />
-
     <f:render partial="Api/PaginationResourcesPerPage" arguments="{_all}" />
 
     <table>
         <thead>
             <tr>
                 <th><f:translate key="api.list.resource" /></th>
-                <th colspan="4"><f:translate key="general.alternativeSerialization" /></th>
+                <th colspan="5"><f:translate key="general.alternativeSerialization" /></th>
             </tr>
         </thead>
         <tbody>
@@ -47,6 +44,4 @@
     </table>
 
     <f:render partial="Api/PaginationNavigation" arguments="{_all}" />
-
-    <f:render partial="Api/PaginationFromTo" arguments="{_all}" />
 </div>
