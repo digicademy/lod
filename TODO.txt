@@ -89,12 +89,13 @@ tx_lod {
     settings {
         identifierGenerator {
             tx_lod_domain_model_iri {
-                type = [
-                    Digicademy\Lod\Generator\UidIdentifierGenerator,
-                    Digicademy\Lod\Generator\UuidIdentifierGenerator,
-                    Digicademy\Lod\Generator\ForeignRecordIdentifierGenerator,
-                    Vendor\Package\My\Generator
-                ]
+
+                # type = Digicademy\Lod\Generator\UidIdentifierGenerator,
+                # type = Digicademy\Lod\Generator\UuidIdentifierGenerator,
+                # type = Digicademy\Lod\Generator\ForeignRecordTablenameUidIdentifierGenerator,
+                # type = Digicademy\Lod\Generator\ForeignRecordFieldIdentifierGenerator,
+                # type = Vendor\Package\My\Generator
+
                 Digicademy\Lod\Generator\UidIdentifierGenerator {
                     entityPrefix = E
                     propertyPrefix = P
@@ -104,18 +105,23 @@ tx_lod {
                     propertyPrefix = P
                     xmlConformance = 1
                 }
-                Digicademy\Lod\Generator\ForeignRecordIdentifierGenerator {
+                Digicademy\Lod\Generator\ForeignRecordTablenameUidIdentifierGenerator {
                     entityPrefix = E
                     propertyPrefix = P
                     includeTablename = 1
                 }
+                Digicademy\Lod\Generator\ForeignRecordFieldIdentifierGenerator {
+                    entityPrefix = E
+                    propertyPrefix = P
+                    foreignFieldName = my_foreign_field
+                }
             }
             tx_lod_domain_model_bnode {
-                type = [
-                    Digicademy\Lod\Generator\UidIdentifierGenerator,
-                    Digicademy\Lod\Generator\UuidIdentifierGenerator,
-                    Vendor\Package\My\Generator
-                ]
+
+                # type = Digicademy\Lod\Generator\UidIdentifierGenerator,
+                # type = Digicademy\Lod\Generator\UuidIdentifierGenerator,
+                # type = Vendor\Package\My\Generator
+
                 Digicademy\Lod\Generator\UidIdentifierGenerator {
                     bnodePrefix = b
                 }
@@ -128,6 +134,7 @@ tx_lod {
         statementIriTypeFilter {
             subject = 1|2
         }
+        # also register tables in extension configuration
         tableTracking {
             tx_my_table {
                 track = 1
