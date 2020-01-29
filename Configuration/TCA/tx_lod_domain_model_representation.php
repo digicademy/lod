@@ -114,9 +114,9 @@ return [
         ],
         'content_language' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:lang/locallang_tca.xlf:sys_language.language_isocode',
+            'label' => 'content_language',
             'config' => [
-                'type' => 'select',
+                'type' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_representation.content_language',
                 'renderType' => 'selectSingle',
                 'size' => 1,
                 'minitems' => 0,

@@ -4,10 +4,6 @@ BE
 - Add TSConfig option: statementIriTypeFilter.subject = 1|2
 - Add namespacesToIncludeInPrologue field to api plugin flexform
 
-- AboutController / IriRepository: add possibility/setting to retrieve statements by object
--- generally for all IRIs by TypoScript
--- checkbox in statement: "Allow inversion"
-
 FE
 - ensure 9.5 compatibility
 -- test serializer plugin
@@ -21,15 +17,15 @@ FE
 -- type param rewriting in TYPO3 9.5
 --- throw correct error if iri not found
 
+- AboutController / IriRepository: add possibility/setting to retrieve statements by object
+-- generally for all IRIs by TypoScript
+-- checkbox in statement: "Allow inversion"
+
 - simple search in list
 - list sorting by: value, label
 - filter list with graph param
 -- https://www.w3.org/TR/sparql11-http-rdf-update/
 -- https://www.w3.org/TR/sparql11-protocol/#query
-
-BACKPORTS
-- bug in 7.6 ttl & nt templates (list view) => iri param => tx_lod_api[iri] param
-- missing ' in AlternativeSerialization.nt in if condition
 
 DATA
 - create ext_tables_static+adt.sql
@@ -39,8 +35,12 @@ DATA
 --- https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#elements-title
 -- maybe create all rdf/rdfs Classes/Properties?
 
+BACKPORTS
+- bug in 7.6 ttl & nt templates (list view) => iri param => tx_lod_api[iri] param
+- missing ' in AlternativeSerialization.nt in if condition
+
 DOCUMENTATION
--- use lists of controlled terms in the system (selects etc.)
+-- use IRIs as lists of controlled and resolvable terms for selects etc.
 
 ### v.1.1 ###
 
@@ -87,6 +87,7 @@ fragment = section
 
 tx_lod {
     settings {
+
         identifierGenerator {
             tx_lod_domain_model_iri {
 
@@ -131,9 +132,7 @@ tx_lod {
                 }
             }
         }
-        statementIriTypeFilter {
-            subject = 1|2
-        }
+
         # also register tables in extension configuration
         tableTracking {
             tx_my_table {
@@ -141,11 +140,50 @@ tx_lod {
                 iriPidList = 1,2,3,...
                 iriPidList.recursive = 1
                 createOnPid = ...
-                createType = 1|2
                 hideUnhide = 1
                 deleteUndelete = 1
+
+                # @TODO: will have tracked record as $cobj->data and stdWrap on all properties
+                createType = 1|2 => change to "type"
+                namespace =
+                label =
+                label_language =
+                comment =
+                comment_language =
+
+                # @TODO: will have tracked record as $cobj->data and stdWrap on all properties ; send through TCE
+                createRepresentations {
+                    t3 {
+                        pid
+                        authority
+                        path
+                        queryParameters
+                        fragment
+                        content_type
+                        content_language
+                    }
+                    https { ... }
+                }
+
+                # @TODO: will have tracked record as $cobj->data and stdWrap on all properties ; send through TCE
+                createStatements {
+                    1 {
+                        pid
+                        predicate
+                        object
+                        graph
+                    }
+                    2 { ... }
+                }
+
             }
         }
+
+        # @TODO
+        statementIriTypeFilter {
+            subject = 1|2
+        }
+
     }
 }
 
