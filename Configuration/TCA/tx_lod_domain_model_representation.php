@@ -114,9 +114,9 @@ return [
         ],
         'content_language' => [
             'exclude' => 1,
-            'label' => 'content_language',
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_representation.content_language',
             'config' => [
-                'type' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_representation.content_language',
+                'type' => 'select',
                 'renderType' => 'selectSingle',
                 'size' => 1,
                 'minitems' => 0,
