@@ -3,6 +3,9 @@
 BE
 - Add TSConfig option: statementIriTypeFilter.subject = 1|2
 - Add namespacesToIncludeInPrologue field to api plugin flexform
+- trackTables
+-- createRepresentations
+-- createStatements
 
 FE
 - ensure 9.5 compatibility
@@ -136,6 +139,7 @@ tx_lod {
         # also register tables in extension configuration
         tableTracking {
             tx_my_table {
+
                 track = 1
                 iriPidList = 1,2,3,...
                 iriPidList.recursive = 1

@@ -100,11 +100,12 @@ class ApiController extends ActionController
      */
     public function aboutAction()
     {
+
         // check if pageType is set (either via param or masked through PageTypeSuffix)
         if (GeneralUtility::_GP('type')) {
             $pageType = GeneralUtility::_GP('type');
-        } else if ($GLOBALS['TSFE']->pageArguments->getPageType()) {
-            $pageType = $GLOBALS['TSFE']->pageArguments->getPageType();
+        } else if ($GLOBALS['TSFE']->type > 0) {
+            $pageType = $GLOBALS['TSFE']->type;
         } else {
             $pageType = 0;
         }
@@ -122,7 +123,11 @@ class ApiController extends ActionController
             $cleanRequestUrl = rtrim($requestUrl, '/');
 
             // get current site configuration
-            $siteConfiguration = $GLOBALS['TYPO3_REQUEST']->getAttributes()['site']->getConfiguration();
+            if (method_exists($GLOBALS['TYPO3_REQUEST']->getAttributes()['site'], 'getConfiguration')) {
+                $siteConfiguration = $GLOBALS['TYPO3_REQUEST']->getAttributes()['site']->getConfiguration();
+            } else {
+                $siteConfiguration = [];
+            }
 
             // get target page type via content negotiation
             $targetPageType = array_search(

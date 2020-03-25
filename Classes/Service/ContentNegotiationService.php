@@ -69,7 +69,14 @@ class ContentNegotiationService
      */
     public function __construct()
     {
-        $pageType = GeneralUtility::_GP('type');
+
+        if (GeneralUtility::_GP('type')) {
+            $pageType = GeneralUtility::_GP('type');
+        } else if ($GLOBALS['TSFE']->type > 0) {
+            $pageType = $GLOBALS['TSFE']->type;
+        } else {
+            $pageType = 0;
+        }
 
         $this->setAcceptedMimeTypes();
         $this->setAvailableMimeTypes();

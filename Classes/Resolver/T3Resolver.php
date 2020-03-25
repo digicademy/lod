@@ -65,6 +65,13 @@ class T3Resolver extends AbstractResolver implements ResolverInterface
                     $representation->getFragment() ? $record['fragment'] = $representation->getFragment() : false;
                     $this->contentObjectRenderer->start($record, $linkHandlerConfiguration['table']);
                     $url = $this->contentObjectRenderer->typoLink_URL($typoScriptConfiguration);
+
+                    // in some cases (e.g. TYPO3 9 with site configuration) forceAbsoluteUrl seems not to be
+                    // evaluated by typoLink_URL function; therefore append request host to make sure that the
+                    // url is absolute
+                    if (!preg_match('#://#', $url)) {
+                        $url = GeneralUtility::getIndpEnv('TYPO3_REQUEST_HOST') . $url;
+                    }
                 }
             }
         }
