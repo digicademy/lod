@@ -27,12 +27,10 @@ namespace Digicademy\Lod\Service;
  ***************************************************************/
 
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Database\QueryGenerator;
-use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
+use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 class TableTrackingService
 {
@@ -77,6 +75,10 @@ class TableTrackingService
         $tableAndUid = $this->table . '_' . $this->record['uid'];
         $dataMap = [];
         $cmdMap = [];
+
+        // create contentObjectRenderer for TypoScript functionality during record creation
+        $contentObjectRenderer = GeneralUtility::makeInstance(ContentObjectRenderer::class);
+        $contentObjectRenderer->start($this->record, $this->table);
 
         // first of all check if IRI exists for the current record
         if ($existingIRIs) {
@@ -124,13 +126,36 @@ class TableTrackingService
                 } else {
                     $pid = (int)$this->record['pid'];
                 }
-                ($this->configuration['createType']) ? $type = (int)$this->configuration['createType'] : $type = 1;
+
+                ($this->configuration['type'] || $this->configuration['type.']) ?
+                    $type = (int)$contentObjectRenderer->stdWrap($this->configuration['type'], $this->configuration['type.']) : $type = 1;
+
+                ($this->configuration['namespace'] || $this->configuration['namespace.']) ?
+                    $namespace = (int)$contentObjectRenderer->stdWrap($this->configuration['namespace'], $this->configuration['namespace.']) : $namespace = 0;
+
+                ($this->configuration['label'] || $this->configuration['label.']) ?
+                    $label = $contentObjectRenderer->stdWrap($this->configuration['label'], $this->configuration['label.']) : $label = '';
+
+                ($this->configuration['label_language'] || $this->configuration['label_language.']) ?
+                    $label_language = (int)$contentObjectRenderer->stdWrap($this->configuration['label_language'], $this->configuration['label_language.']) : $label_language = 0;
+
+                ($this->configuration['comment'] || $this->configuration['comment.']) ?
+                    $comment = $contentObjectRenderer->stdWrap($this->configuration['comment'], $this->configuration['comment.']) : $comment = '';
+
+                ($this->configuration['comment_language'] || $this->configuration['comment_language.']) ?
+                    $comment_language = (int)$contentObjectRenderer->stdWrap($this->configuration['comment_language'], $this->configuration['comment_language.']) : $comment_language = 0;
+
                 $dataMap = array(
                     'tx_lod_domain_model_iri' => array(
                         $uid => [
                             'pid' => $pid,
                             'type' => $type,
                             'hidden' => $this->record['hidden'],
+                            'namespace' => $namespace,
+                            'label' => $label,
+                            'label_language' => $label_language,
+                            'comment' => $comment,
+                            'comment_language' => $comment_language,
                             'record' => $tableAndUid,
                             'record_uid' => $this->record['uid'],
                             'record_tablename' => $this->table,
@@ -150,6 +175,9 @@ class TableTrackingService
             $tce->start(null, $cmdMap);
             $tce->process_cmdmap();
         }
+
+// @TODO: if iri was created and "createRepresentations" and/or "createStatements" is set: implement right here
+
      }
 
     /**

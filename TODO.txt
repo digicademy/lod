@@ -1,11 +1,12 @@
 ## NEXT #########################################
 
+### v.1.0 ###
+
 BE
 - Add TSConfig option: statementIriTypeFilter.subject = 1|2
 - Add namespacesToIncludeInPrologue field to api plugin flexform
 - trackTables
--- createRepresentations
--- createStatements
+-- create representations defined by TSConfig when new IRI is created (per IRI per tracked table)
 
 FE
 - ensure 9.5 compatibility
@@ -58,7 +59,6 @@ DOCUMENTATION
 
 - table tracking
 -- create statements defined by TSConfig when new IRI is created (per IRI per tracked table)
--- create representations defined by TSConfig when new IRI is created (per IRI per tracked table)
 
 - backend
 -- TCA optimization: addRecord fieldControl as popup ?
@@ -147,8 +147,8 @@ tx_lod {
                 hideUnhide = 1
                 deleteUndelete = 1
 
-                # @TODO: will have tracked record as $cobj->data and stdWrap on all properties
-                createType = 1|2 => change to "type"
+                # stdWrap on all properties and tracked record as $cobj->data
+                type =
                 namespace =
                 label =
                 label_language =
@@ -169,7 +169,7 @@ tx_lod {
                     https { ... }
                 }
 
-                # @TODO: will have tracked record as $cobj->data and stdWrap on all properties ; send through TCE
+                # @TODO (v: will have tracked record as $cobj->data and stdWrap on all properties ; send through TCE
                 createStatements {
                     1 {
                         pid
