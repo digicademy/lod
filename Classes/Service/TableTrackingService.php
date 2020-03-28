@@ -120,34 +120,36 @@ class TableTrackingService
             // in case of an 'updated' tracked record that has no iri (this is why we are in else) also leads to iri creation
             // a copied tracked record is the same as a new record - no iri will yet exists with a 'tablename_uid' in the iri record field
             if ($this->action == 'new' || $this->action == 'update') {
-                $uid = 'NEW_' . uniqid('');
-                if ($this->configuration['createOnPid']) {
-                    $pid = (int)$this->configuration['createOnPid'];
+
+                $iriUid = 'NEW' . uniqid('');
+
+                if ($this->configuration['iri.']['pid']) {
+                    $pid = (int)$contentObjectRenderer->stdWrap($this->configuration['iri.']['pid'], $this->configuration['iri.']['pid.']);
                 } else {
                     $pid = (int)$this->record['pid'];
                 }
 
-                ($this->configuration['type'] || $this->configuration['type.']) ?
-                    $type = (int)$contentObjectRenderer->stdWrap($this->configuration['type'], $this->configuration['type.']) : $type = 1;
+                ($this->configuration['iri.']['type'] || $this->configuration['iri.']['type.']) ?
+                    $type = (int)$contentObjectRenderer->stdWrap($this->configuration['iri.']['type'], $this->configuration['iri.']['type.']) : $type = 1;
 
-                ($this->configuration['namespace'] || $this->configuration['namespace.']) ?
-                    $namespace = (int)$contentObjectRenderer->stdWrap($this->configuration['namespace'], $this->configuration['namespace.']) : $namespace = 0;
+                ($this->configuration['iri.']['namespace'] || $this->configuration['iri.']['namespace.']) ?
+                    $namespace = (int)$contentObjectRenderer->stdWrap($this->configuration['iri.']['namespace'], $this->configuration['iri.']['namespace.']) : $namespace = 0;
 
-                ($this->configuration['label'] || $this->configuration['label.']) ?
-                    $label = $contentObjectRenderer->stdWrap($this->configuration['label'], $this->configuration['label.']) : $label = '';
+                ($this->configuration['iri.']['label'] || $this->configuration['iri.']['label.']) ?
+                    $label = $contentObjectRenderer->stdWrap($this->configuration['iri.']['label'], $this->configuration['iri.']['label.']) : $label = '';
 
-                ($this->configuration['label_language'] || $this->configuration['label_language.']) ?
-                    $label_language = (int)$contentObjectRenderer->stdWrap($this->configuration['label_language'], $this->configuration['label_language.']) : $label_language = 0;
+                ($this->configuration['iri.']['label_language'] || $this->configuration['iri.']['label_language.']) ?
+                    $label_language = (int)$contentObjectRenderer->stdWrap($this->configuration['iri.']['label_language'], $this->configuration['iri.']['label_language.']) : $label_language = 0;
 
-                ($this->configuration['comment'] || $this->configuration['comment.']) ?
-                    $comment = $contentObjectRenderer->stdWrap($this->configuration['comment'], $this->configuration['comment.']) : $comment = '';
+                ($this->configuration['iri.']['comment'] || $this->configuration['iri.']['comment.']) ?
+                    $comment = $contentObjectRenderer->stdWrap($this->configuration['iri.']['comment'], $this->configuration['iri.']['comment.']) : $comment = '';
 
-                ($this->configuration['comment_language'] || $this->configuration['comment_language.']) ?
-                    $comment_language = (int)$contentObjectRenderer->stdWrap($this->configuration['comment_language'], $this->configuration['comment_language.']) : $comment_language = 0;
+                ($this->configuration['iri.']['comment_language'] || $this->configuration['iri.']['comment_language.']) ?
+                    $comment_language = (int)$contentObjectRenderer->stdWrap($this->configuration['iri.']['comment_language'], $this->configuration['iri.']['comment_language.']) : $comment_language = 0;
 
-                $dataMap = array(
-                    'tx_lod_domain_model_iri' => array(
-                        $uid => [
+                $dataMap = [
+                    'tx_lod_domain_model_iri' => [
+                        $iriUid => [
                             'pid' => $pid,
                             'type' => $type,
                             'hidden' => $this->record['hidden'],
@@ -160,9 +162,70 @@ class TableTrackingService
                             'record_uid' => $this->record['uid'],
                             'record_tablename' => $this->table,
                         ],
-                    )
-                );
+                    ]
+                ];
+
+                if (is_array($this->configuration['representations.'])) {
+
+                    foreach ($this->configuration['representations.'] as $representationToCreate) {
+
+                        $representationUid = 'NEW' . uniqid('');
+
+                        ($representationToCreate['pid'] || $representationToCreate['pid.']) ?
+                            $representationPid = (int)$contentObjectRenderer->stdWrap(
+                                $representationToCreate['pid'], $representationToCreate['pid.']
+                            ) : $representationPid = 1;
+
+                        ($representationToCreate['scheme'] || $representationToCreate['scheme.']) ?
+                            $scheme = $contentObjectRenderer->stdWrap(
+                                $representationToCreate['scheme'], $representationToCreate['scheme.']
+                            ) : $scheme = '';
+
+                        ($representationToCreate['authority'] || $representationToCreate['authority.']) ?
+                            $authority = $contentObjectRenderer->stdWrap(
+                                $representationToCreate['authority'], $representationToCreate['authority.']
+                            ) : $authority = '';
+
+                        ($representationToCreate['path'] || $representationToCreate['path.']) ?
+                            $path = $contentObjectRenderer->stdWrap(
+                                $representationToCreate['path'], $representationToCreate['path.']
+                            ) : $path = '';
+
+                        ($representationToCreate['query'] || $representationToCreate['query.']) ?
+                            $query = $contentObjectRenderer->stdWrap(
+                                $representationToCreate['query'], $representationToCreate['query.']
+                            ) : $query = '';
+
+                        ($representationToCreate['fragment'] || $representationToCreate['fragment.']) ?
+                            $fragment = $contentObjectRenderer->stdWrap(
+                                $representationToCreate['fragment'], $representationToCreate['fragment.']
+                            ) : $fragment = '';
+
+                        ($representationToCreate['content_type'] || $representationToCreate['content_type.']) ?
+                            $content_type = $contentObjectRenderer->stdWrap(
+                                $representationToCreate['content_type'], $representationToCreate['content_type.']
+                            ) : $content_type = '';
+
+                        ($representationToCreate['content_language'] || $representationToCreate['content_language.']) ?
+                            $content_language = $contentObjectRenderer->stdWrap(
+                                $representationToCreate['content_language'], $representationToCreate['content_language.']
+                            ) : $content_language = '';
+
+                        $dataMap['tx_lod_domain_model_representation'][$representationUid] = [
+                            'pid' => $representationPid,
+                            'parent' => $iriUid,
+                            'scheme' => $scheme,
+                            'authority'  => $authority,
+                            'path' => $path,
+                            'query' => $query,
+                            'fragment' => $fragment,
+                            'content_type' => $content_type,
+                            'content_language' => $content_language
+                        ];
+                    }
+                }
             }
+
             // in case of a deleted tracked record that has no IRI nothing is done
         }
 

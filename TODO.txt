@@ -1,6 +1,6 @@
 ## NEXT #########################################
 
-### v.1.0 ###
+### v1.0 ###
 
 BE
 - Add TSConfig option: statementIriTypeFilter.subject = 1|2
@@ -46,7 +46,7 @@ BACKPORTS
 DOCUMENTATION
 -- use IRIs as lists of controlled and resolvable terms for selects etc.
 
-### v.1.1 ###
+### v1.1 ###
 
 - inverse properties
 -- if IRI type 2 (property) add group field "inverse of" (bidirectional mm relation shown from both sides)
@@ -67,7 +67,7 @@ DOCUMENTATION
 
 - hydra:view has no alternative serialisations in none of the serialisation formats
 
-### v.1.2 ###
+### v1.2 ###
 
 - vocabulary importer
 
@@ -77,14 +77,6 @@ DOCUMENTATION
 - resolver
 -- call different typolink handlers according to $representation->getAuthority();
 -- implement language negotiation
-
----
-
-scheme = handler type => t3 triggers internal resolving
-authority = handler keyword
-path = typolink parameter
-query = additionalParams
-fragment = section
 
 ---
 
@@ -136,46 +128,48 @@ tx_lod {
             }
         }
 
-        # also register tables in extension configuration
+        # tables also have to be registered in extension configuration
         tableTracking {
             tx_my_table {
 
                 track = 1
                 iriPidList = 1,2,3,...
                 iriPidList.recursive = 1
-                createOnPid = ...
                 hideUnhide = 1
                 deleteUndelete = 1
 
                 # stdWrap on all properties and tracked record as $cobj->data
-                type =
-                namespace =
-                label =
-                label_language =
-                comment =
-                comment_language =
+                iri {
+                    type =
+                    namespace =
+                    label =
+                    label_language =
+                    comment =
+                    comment_language =
+                }
 
-                # @TODO: will have tracked record as $cobj->data and stdWrap on all properties ; send through TCE
-                createRepresentations {
-                    t3 {
-                        pid
-                        authority
-                        path
-                        queryParameters
-                        fragment
-                        content_type
-                        content_language
+                # stdWrap on all properties and tracked record as $cobj->data
+                representations {
+                    1 {
+                        pid =
+                        scheme =
+                        authority  =
+                        path =
+                        query =
+                        fragment =
+                        content_type =
+                        content_language =
                     }
-                    https { ... }
+                    2 { ... }
                 }
 
                 # @TODO (v: will have tracked record as $cobj->data and stdWrap on all properties ; send through TCE
-                createStatements {
+                statements {
                     1 {
-                        pid
-                        predicate
-                        object
-                        graph
+                        pid =
+                        predicate =
+                        object =
+                        graph =
                     }
                     2 { ... }
                 }
@@ -183,7 +177,7 @@ tx_lod {
             }
         }
 
-        # @TODO
+        # @TODO: see IRI TCA for details
         statementIriTypeFilter {
             subject = 1|2
         }
@@ -192,13 +186,11 @@ tx_lod {
 }
 
 # map items to generic domainObject
-
 plugin.tx_lod_api.persistence.classes {
     My\Class.mapping.tableName = tx_extension_domain_model_xyz
 }
 
 ## TYPO3 8.7 and higher
-
 # standard record link configuration from T3 V8 and higher
 
 TCEMAIN.linkHandler.image {

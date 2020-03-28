@@ -55,7 +55,18 @@ return [
         ],
         'parent' => [
             'config' => [
+/*
                 'type' => 'passthrough'
+*/
+                'type' => 'group',
+                'internal_type' => 'db',
+                'allowed' => 'tx_lod_domain_model_iri',
+                // prevent http://wiki.typo3.org/Exception/CMS/1353170925
+                'foreign_table' => 'tx_lod_domain_model_iri',
+                'prepend_tname' => 0,
+                'size' => 1,
+                'minitems' => 0,
+                'maxitems' => 1,
             ],
         ],
         'scheme' => [
@@ -82,7 +93,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 50,
-                'eval' => 'required,trim'
+                'eval' => 'trim'
             ],
         ],
         'query' => [
