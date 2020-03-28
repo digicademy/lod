@@ -5,8 +5,6 @@
 BE
 - Add TSConfig option: statementIriTypeFilter.subject = 1|2
 - Add namespacesToIncludeInPrologue field to api plugin flexform
-- trackTables
--- create representations defined by TSConfig when new IRI is created (per IRI per tracked table)
 
 FE
 - ensure 9.5 compatibility
@@ -20,10 +18,6 @@ FE
 
 -- type param rewriting in TYPO3 9.5
 --- throw correct error if iri not found
-
-- AboutController / IriRepository: add possibility/setting to retrieve statements by object
--- generally for all IRIs by TypoScript
--- checkbox in statement: "Allow inversion"
 
 - simple search in list
 - list sorting by: value, label
@@ -44,7 +38,7 @@ BACKPORTS
 - missing ' in AlternativeSerialization.nt in if condition
 
 DOCUMENTATION
--- use IRIs as lists of controlled and resolvable terms for selects etc.
+-- idea: use IRIs as lists of controlled and resolvable terms for selects etc.
 
 ### v1.1 ###
 
@@ -53,12 +47,13 @@ DOCUMENTATION
 -- https://www.semanticarts.com/named-property-inverses-yay-or-nay/
 -- http://richard.cyganiak.de/blog/2006/06/an-rdf-design-pattern-inverse-property-labels/
 
+- AboutController / IriRepository: add possibility/setting to retrieve statements by object
+-- generally for all IRIs by TypoScript
+-- checkbox in statement: "Allow inversion"
+
 - named graphs
 -- add named graph structures to ttl, json-ld and nt templates
 -- maybe graph could serve as collection of statements added to records etc.
-
-- table tracking
--- create statements defined by TSConfig when new IRI is created (per IRI per tracked table)
 
 - backend
 -- TCA optimization: addRecord fieldControl as popup ?
@@ -163,13 +158,15 @@ tx_lod {
                     2 { ... }
                 }
 
-                # @TODO (v: will have tracked record as $cobj->data and stdWrap on all properties ; send through TCE
+                # stdWrap on all properties and tracked record as $cobj->data
                 statements {
                     1 {
                         pid =
                         predicate =
                         object =
-                        graph =
+                        object_type =
+                        graph = 1
+                        recursion = 1
                     }
                     2 { ... }
                 }

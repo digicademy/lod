@@ -202,14 +202,14 @@ class TableTrackingService
                             ) : $fragment = '';
 
                         ($representationToCreate['content_type'] || $representationToCreate['content_type.']) ?
-                            $content_type = $contentObjectRenderer->stdWrap(
+                            $contentType = $contentObjectRenderer->stdWrap(
                                 $representationToCreate['content_type'], $representationToCreate['content_type.']
-                            ) : $content_type = '';
+                            ) : $contentType = '';
 
                         ($representationToCreate['content_language'] || $representationToCreate['content_language.']) ?
-                            $content_language = $contentObjectRenderer->stdWrap(
+                            $contentLanguage = $contentObjectRenderer->stdWrap(
                                 $representationToCreate['content_language'], $representationToCreate['content_language.']
-                            ) : $content_language = '';
+                            ) : $contentLanguage = '';
 
                         $dataMap['tx_lod_domain_model_representation'][$representationUid] = [
                             'pid' => $representationPid,
@@ -219,11 +219,63 @@ class TableTrackingService
                             'path' => $path,
                             'query' => $query,
                             'fragment' => $fragment,
-                            'content_type' => $content_type,
-                            'content_language' => $content_language
+                            'content_type' => $contentType,
+                            'content_language' => $contentLanguage
                         ];
                     }
                 }
+
+                if (is_array($this->configuration['representations.'])) {
+
+                    foreach ($this->configuration['statements.'] as $statementToCreate) {
+
+                        $statementUid = 'NEW' . uniqid('');
+
+                        ($statementToCreate['pid'] || $statementToCreate['pid.']) ?
+                            $statementPid = (int)$contentObjectRenderer->stdWrap(
+                                $statementToCreate['pid'], $statementToCreate['pid.']
+                            ) : $statementPid = 1;
+
+                        ($statementToCreate['predicate'] || $statementToCreate['predicate.']) ?
+                            $predicateUid = $contentObjectRenderer->stdWrap(
+                                $statementToCreate['predicate'], $statementToCreate['predicate.']
+                            ) : $predicateUid = '';
+
+                        ($statementToCreate['object'] || $statementToCreate['object.']) ?
+                            $objectUid = $contentObjectRenderer->stdWrap(
+                                $statementToCreate['object'], $statementToCreate['object.']
+                            ) : $objectUid = '';
+
+                        ($statementToCreate['object_type'] || $statementToCreate['object_type.']) ?
+                            $objectType = $contentObjectRenderer->stdWrap(
+                                $statementToCreate['object_type'], $statementToCreate['object_type.']
+                            ) : $objectType = 'tx_lod_domain_model_iri';
+
+                        ($statementToCreate['graph'] || $statementToCreate['graph.']) ?
+                            $graph = $contentObjectRenderer->stdWrap(
+                                $statementToCreate['graph'], $statementToCreate['graph.']
+                            ) : $graph = '';
+
+                        ($statementToCreate['recursion'] || $statementToCreate['recursion.']) ?
+                            $objectRecursion = $contentObjectRenderer->stdWrap(
+                                $statementToCreate['recursion'], $statementToCreate['recursion.']
+                            ) : $objectRecursion = 0;
+
+                        $dataMap['tx_lod_domain_model_statement'][$statementUid] = [
+                            'pid' => $statementPid,
+                            'subject_uid' => $iriUid,
+                            'predicate' => 'tx_lod_domain_model_iri_' . $predicateUid,
+                            'predicate_type' => 'tx_lod_domain_model_iri',
+                            'predicate_uid' => $predicateUid,
+                            'object'  => $objectType . '_' . $objectUid,
+                            'object_type'  => $objectType,
+                            'object_uid'  => $objectUid,
+                            'object_recursion' => $objectRecursion,
+                            'graph'  => $graph,
+                        ];
+                    }
+                }
+
             }
 
             // in case of a deleted tracked record that has no IRI nothing is done
@@ -238,8 +290,6 @@ class TableTrackingService
             $tce->start(null, $cmdMap);
             $tce->process_cmdmap();
         }
-
-// @TODO: if iri was created and "createRepresentations" and/or "createStatements" is set: implement right here
 
      }
 
