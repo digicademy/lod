@@ -161,7 +161,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim',
+                'eval' => 'required,trim',
 //                'eval' => 'required,trim,unique' // for system wide mandatory and unique IRIs
 //                'readOnly' => 1, // recommended if an identifier generator is used
             ],
