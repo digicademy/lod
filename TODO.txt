@@ -1,12 +1,37 @@
-## NEXT #########################################
+####################### DEVELOPMENT ############################
 
 ### v1.0 ###
+
+NEXT
+- enhance list view
+-- filter IRIs by statement predicate/object (e.g. rdf:type schema:Person)
+--- http://lod.academy.local/wiag/about.html?tx_lod_api[predicate]=rdf:type&tx_lod_api[object]=schema:Person
+---- if only predicate : all IRIs that have a statement with this predicate
+---- if predicate AND object : all IRIs that have a statement matching this pattern
+-- search IRIs by label and comment
+--- http://lod.academy.local/wiag/about.html?tx_lod_api[search]=Agerich
+-- sort list by value or label
+--- http://lod.academy.local/wiag/about.html?tx_lod_api[page]=3&tx_lod_api[limit]=50&tx_lod_api[sortBy]=1|2
+
+- api plugin
+-- TS setting: displayMode = 1|2|3 (only entities, only properties, both - default)
+-- TS setting: excludeFromList = page1, page2, page3 (still accessible in single view)
+
+- enhance single view
+-- if graph IRI display statements in graph
+--- showAction() => $this->graphRepository->findByIri(Iri) => $this->view->assign('graph', $graph)
+--- in template: if {graph} then display graph, else {resource}
+---- graph template displays the IRI and then all statements in the graph
+--- this implements direct graph display in API accoding to https://www.w3.org/TR/sparql11-http-rdf-update/
 
 BE
 - Add TSConfig option: statementIriTypeFilter.subject = 1|2
 - Add namespacesToIncludeInPrologue field to api plugin flexform
 
 FE
+- bug in HTML view: links to show action contain broken list page param and miss limit param
+-- http://lod.academy.local/wiag/id/wiag:WIAG-Pers-EPISCGatz-5167-001/about.html?tx_lod_api__page=2
+
 - ensure 9.5 compatibility
 -- test serializer plugin
 -- test vocabulary plugin
@@ -14,16 +39,13 @@ FE
 --- send iris in iri param through urlencode
 --- think about htmlspecialchars
 
+- HTML view: should IRI links really always point back to API ??
+-- but then: how would you filter a list by rdf:type if it points outwards?
+
 - definedNamespaces condition in ttl, nt, json, rdfa templates
 
--- type param rewriting in TYPO3 9.5
+-- type param rewriting error in TYPO3 9.5
 --- throw correct error if iri not found
-
-- simple search in list
-- list sorting by: value, label
-- filter list with graph param
--- https://www.w3.org/TR/sparql11-http-rdf-update/
--- https://www.w3.org/TR/sparql11-protocol/#query
 
 DATA
 - create ext_tables_static+adt.sql
@@ -37,9 +59,6 @@ BACKPORTS
 - bug in 7.6 ttl & nt templates (list view) => iri param => tx_lod_api[iri] param
 - missing ' in AlternativeSerialization.nt in if condition
 
-DOCUMENTATION
--- idea: use IRIs as lists of controlled and resolvable terms for selects etc.
-
 ### v1.1 ###
 
 - inverse properties
@@ -50,6 +69,13 @@ DOCUMENTATION
 - AboutController / IriRepository: add possibility/setting to retrieve statements by object
 -- generally for all IRIs by TypoScript
 -- checkbox in statement: "Allow inversion"
+
+- statement/sparql plugin (similar to api plugin)
+-- support for basic SPARQL select queries
+--- http://base.url/typo3-plugin-page?query=XYZ
+-- filter statement list with graph param
+--- https://www.w3.org/TR/sparql11-http-rdf-update/
+--- http://base.url/typo3-plugin-page?qraph=http://base.url/id/graph => list of statements belonging to graph record
 
 - named graphs
 -- add named graph structures to ttl, json-ld and nt templates
@@ -73,12 +99,14 @@ DOCUMENTATION
 -- call different typolink handlers according to $representation->getAuthority();
 -- implement language negotiation
 
----
+####################### DOCUMENTATION ############################
+
+### TSCONFIG SETTINGS ###
 
 tx_lod {
     settings {
-
         identifierGenerator {
+
             tx_lod_domain_model_iri {
 
                 # type = Digicademy\Lod\Generator\UidIdentifierGenerator,
@@ -107,6 +135,7 @@ tx_lod {
                     foreignFieldName = my_foreign_field
                 }
             }
+
             tx_lod_domain_model_bnode {
 
                 # type = Digicademy\Lod\Generator\UidIdentifierGenerator,
@@ -182,41 +211,52 @@ tx_lod {
     }
 }
 
-# map items to generic domainObject
-plugin.tx_lod_api.persistence.classes {
-    My\Class.mapping.tableName = tx_extension_domain_model_xyz
-}
+### RESOLVER / LINK HANDLER CONFIGURATION ###
 
-## TYPO3 8.7 and higher
-# standard record link configuration from T3 V8 and higher
+# in PageTSconfig
 
-TCEMAIN.linkHandler.image {
+TCEMAIN.linkHandler.MY_HANDLER_KEYWORD {
     handler = TYPO3\CMS\Recordlist\LinkHandler\RecordLinkHandler
-    label = LLL:EXT:cvma/Resources/Private/Language/locallang.xlf:link.customTab
+    label = LLL:EXT:my_ext/Resources/Private/Language/locallang.xlf:link.customTab
     configuration {
-        table = sys_file_metadata
+        table = my_table
     }
     scanBefore = page
 }
 
-config.recordLinks.image {
+# in TypoScript
 
-    forceLink = 0
-
+config.recordLinks.MY_HANDLER_KEYWORD {
     typolink {
-        parameter = 13
+        parameter = PAGE_ID
         additionalParams.data = field:uid
-        additionalParams.wrap = &tx_cvma_archive[image]=|&tx_cvma_archive[action]=show&tx_cvma_archive[controller]=Gallery
+        additionalParams.wrap = &tx_my_plugin[record]=|&tx_my_plugin[action]=myAction&tx_my_plugin[controller]=MyController
         section.data = field:fragment
         useCacheHash = 1
     }
 }
 
+### LOD API CONFIGURATION ###
+
 plugin.tx_lod_api {
+
     settings {
 
-        resolver {
+        list {
+            excludeFromList = page1, page2, page3
+            displayMode = 1|2|3
+        }
 
+#        show {
+#        }
+
+        # map items to generic domainObject
+        persistence.classes {
+            My\Class.mapping.tableName = tx_extension_domain_model_xyz
+        }
+
+        # URI resolver configuration
+        resolver {
             # each scheme can have its own custom resolver
 #            scheme {
 #                # each resolver should implement one standard resolving mechanism for all authorities in this scheme
@@ -243,6 +283,8 @@ plugin.tx_lod_api {
         }
     }
 }
+
+### SERIALIZER CONFIGURATION ###
 
 page.headerData.333 = USER
 page.headerData.333 {
@@ -276,7 +318,7 @@ plugin.tx_lod_serializer {
     }
 }
 
-# speaking URL configuration
+### SPEAKING URIs CONFIGURATION ###
 
 #routeEnhancers:
 #  ApiPlugin:

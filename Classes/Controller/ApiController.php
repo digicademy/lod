@@ -189,7 +189,7 @@ class ApiController extends ActionController
                 ['code' => PageAccessFailureReasons::PAGE_NOT_FOUND]);
             }
 
-        // no resource argument, forward to list
+        // no resource argument, forward to list of IRIs
         } else {
             $this->listAction();
         }
