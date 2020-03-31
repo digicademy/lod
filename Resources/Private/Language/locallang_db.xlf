@@ -165,6 +165,9 @@
             <trans-unit id="tx_lod_domain_model_statement.object_recursion">
                 <source>Allow recursion</source>
             </trans-unit>
+            <trans-unit id="tx_lod_domain_model_statement.object_inversion">
+                <source>Allow inversion</source>
+            </trans-unit>
 
             <trans-unit id="tx_lod_domain_model_graph">
                 <source>Graph</source>

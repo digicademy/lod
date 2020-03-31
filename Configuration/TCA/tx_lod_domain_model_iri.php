@@ -244,7 +244,7 @@ return [
                 'overrideChildTca' => [
                     'types' => [
                         '1' => [
-                            'showitem' => '--palette--;;recursion, --palette--;;PredicateObject, graph'
+                            'showitem' => '--palette--;;flags, --palette--;;PredicateObject, graph'
                         ],
                     ],
                 ],

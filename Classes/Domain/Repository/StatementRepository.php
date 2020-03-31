@@ -85,9 +85,9 @@ class StatementRepository extends Repository
         return $result;
     }
 
-    /**
-     * @param \Digicademy\Lod\Domain\Model\IriNamespace $graph
-     */
+//    /**
+//     * @param \Digicademy\Lod\Domain\Model\IriNamespace $graph
+//     */
 //     public function findByName($graph)
 //     {
 //     }

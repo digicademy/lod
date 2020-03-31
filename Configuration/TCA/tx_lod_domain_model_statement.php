@@ -18,14 +18,14 @@ return [
         'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_statement.svg',
     ],
     'interface' => [
-        'showRecordFieldList' => 'hidden, subject, subject_type, subject_uid, predicate, predicate_type, predicate_uid, object, object_type, object_uid, object_recursion, graph',
+        'showRecordFieldList' => 'hidden, subject, subject_type, subject_uid, predicate, predicate_type, predicate_uid, object, object_type, object_uid, object_recursion, object_inversion, graph',
     ],
     'types' => [
-        '1' => ['showitem' => '--palette--;;recursion, --palette--;;SubjectPredicateObject, graph'],
+        '1' => ['showitem' => '--palette--;;flags, --palette--;;SubjectPredicateObject, graph'],
     ],
     'palettes' => [
-        'recursion' => [
-            'showitem' => 'hidden, object_recursion'
+        'flags' => [
+            'showitem' => 'hidden, object_inversion, object_recursion'
         ],
         'SubjectPredicateObject' => [
             'showitem' => 'subject, predicate, object'
@@ -293,6 +293,13 @@ return [
         'object_recursion' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_statement.object_recursion',
+            'config' => [
+                'type' => 'check',
+            ],
+        ],
+        'object_inversion' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_statement.object_inversion',
             'config' => [
                 'type' => 'check',
             ],

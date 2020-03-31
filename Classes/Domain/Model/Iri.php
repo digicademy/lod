@@ -26,9 +26,12 @@ namespace Digicademy\Lod\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
+use Digicademy\Lod\Domain\Repository\StatementRepository;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 class Iri extends AbstractEntity
 {
@@ -105,6 +108,14 @@ class Iri extends AbstractEntity
      * @Lazy
      */
     protected $statements;
+
+    /**
+     * Inverse statements with this IRI as object
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Statement> $statement
+     * @Lazy
+     */
+    protected $inverseStatements;
 
     /**
      * Returns the type
@@ -324,6 +335,32 @@ class Iri extends AbstractEntity
     public function setStatements($statements)
     {
         $this->statements = $statements;
+    }
+
+    /**
+     * Returns the inverseStatements
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Statement> $inverseStatements
+     */
+    public function getInverseStatements()
+    {
+        $statementRepository = GeneralUtility::makeInstance(StatementRepository::class);
+        $objectStorage = GeneralUtility::makeInstance(ObjectStorage::class);
+        $inverseStatements = $statementRepository->findByPosition('object', $this);
+        if ($inverseStatements) {
+            foreach ($inverseStatements as $inverseStatement) {
+                if ($inverseStatement->getObjectInversion()) {
+                    $subject = $inverseStatement->getSubject();
+                    $object = $inverseStatement->getObject();
+                    $inverseStatement->setSubject($object);
+                    $inverseStatement->setObject($subject);
+                    $objectStorage->attach($inverseStatement);
+                }
+            }
+        }
+
+        $this->inverseStatements = $objectStorage;
+        return $this->inverseStatements;
     }
 
 }
