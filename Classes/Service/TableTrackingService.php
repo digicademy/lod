@@ -225,7 +225,7 @@ class TableTrackingService
                     }
                 }
 
-                if (is_array($this->configuration['representations.'])) {
+                if (is_array($this->configuration['statements.'])) {
 
                     foreach ($this->configuration['statements.'] as $statementToCreate) {
 

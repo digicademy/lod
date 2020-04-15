@@ -3,6 +3,7 @@
 ### v1.0 ###
 
 NEXT
+
 - enhance list view
 -- filter IRIs by statement predicate/object (e.g. rdf:type schema:Person)
 --- http://lod.academy.local/wiag/about.html?tx_lod_api[predicate]=rdf:type&tx_lod_api[object]=schema:Person
@@ -26,7 +27,7 @@ NEXT
 
 - bug: fix JSON-LD problem: http://www.inschriften.net/id/di058_002_6515201912181647296860
 
-- roll out objectInversion to all serialization templates
+- !!! roll out objectInversion to all serialization templates !!!
 -- lod:CombineStatements(iri : resource)
 -- fix possibility of endless recursion if objectRecursion and objectInversion are checked at the same time
 
