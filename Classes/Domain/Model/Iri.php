@@ -344,8 +344,9 @@ class Iri extends AbstractEntity
      */
     public function getInverseStatements()
     {
-        $statementRepository = GeneralUtility::makeInstance(StatementRepository::class);
         $objectStorage = GeneralUtility::makeInstance(ObjectStorage::class);
+        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+        $statementRepository = $objectManager->get(StatementRepository::class);
         $inverseStatements = $statementRepository->findByPosition('object', $this);
         if ($inverseStatements) {
             foreach ($inverseStatements as $inverseStatement) {
