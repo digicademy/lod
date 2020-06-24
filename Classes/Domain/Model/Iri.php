@@ -32,6 +32,7 @@ use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
 use Digicademy\Lod\Domain\Repository\StatementRepository;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 class Iri extends AbstractEntity
 {
