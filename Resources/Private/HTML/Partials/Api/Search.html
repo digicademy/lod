@@ -1,0 +1,8 @@
+<form id="search" action="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '1991', limit : arguments.limit}) -> f:format.htmlspecialchars()}" method="post">
+    <fieldset>
+        <legend><f:translate key="api.list.searchform.legend" /></legend>
+        <label for="keywords" class="skip"><f:translate key="api.list.searchform.keywords" /></label>
+        <input placeholder="Keywords" id="keywords" type="text" name="tx_lod_api[query]" value="{arguments.query}">
+        <input id="submit" type="submit" value="{f:translate(key: 'api.list.searchform.submit')}" name="tx_lod_api[submit]">
+    </fieldset>
+</form>

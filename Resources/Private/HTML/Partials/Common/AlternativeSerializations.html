@@ -8,7 +8,7 @@
 <f:switch expression="{action}">
     <f:case value="apiList">
         <li>
-            <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : type, page : page, limit : limit}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
+            <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : type, page : page, limit : limit, query : query}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
                 <span property="void:feature" resource="{format.uri}">{format.name}</span>
             </a>
         </li>
@@ -17,14 +17,14 @@
         <f:if condition="{mode} == 'td'">
             <f:then>
                 <td>
-                    <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
+                    <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource, query : query}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
                         <span property="void:feature" resource="{format.uri}">{format.name}</span>
                     </a>
                 </td>
             </f:then>
             <f:else>
                 <li>
-                    <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
+                    <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource, query : query}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
                         <span property="void:feature" resource="{format.uri}">{format.name}</span>
                     </a>
                 </li>

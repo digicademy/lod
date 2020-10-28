@@ -27,3 +27,13 @@
 .resources-per-page {
 	float: right;
 }
+
+#search {
+	clear: both;
+}
+
+.skip {
+	position: absolute !important;
+	top: -9999px !important;
+	left: -9999px !important;
+}

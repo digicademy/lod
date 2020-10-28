@@ -26,6 +26,7 @@ namespace Digicademy\Lod\Domain\Repository;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use Digicademy\Lod\Utility\Frontend\SearchUtility;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
@@ -68,6 +69,46 @@ class IriRepository extends Repository
 
         // return result
         return $result;
+    }
+
+    /**
+     * @param string $keywords
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     */
+    public function findByQuery($keywords)
+    {
+        // initialize query object
+        $query = $this->createQuery();
+
+        // initialize constraints
+        $constraints = [];
+
+        if ($keywords) {
+
+            $keywordList = SearchUtility::wordSplit($keywords);
+
+            foreach ($keywordList as $keyword) {
+                $keyword = '%' . $keyword . '%';
+                $labelConstraint[] = $query->like('label', $keyword);
+                $commentConstraint[] = $query->like('comment', $keyword);
+                $valueConstraint[] = $query->like('value', $keyword);
+            }
+
+            $constraints[] = $query->logicalOr(
+                $query->logicalAnd($labelConstraint),
+                $query->logicalAnd($commentConstraint),
+                $query->logicalAnd($valueConstraint)
+            );
+        }
+
+        $query->matching(
+            $query->logicalAnd($constraints)
+        );
+
+        // return result
+        return $query->execute();
     }
 
 }

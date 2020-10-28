@@ -56,6 +56,7 @@ CREATE TABLE tx_lod_domain_model_iri (
     KEY type (type),
     KEY label (label),
     KEY value (value),
+    KEY comment (comment(255)),
     KEY namespace (namespace),
     KEY representations (representations),
     KEY record (record),

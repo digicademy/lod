@@ -38,6 +38,16 @@
             <trans-unit id="api.list.type">
                 <source>Type</source>
             </trans-unit>
+            <trans-unit id="api.list.searchform.legend">
+                <source>Search resources by label, comment or value</source>
+            </trans-unit>
+            <trans-unit id="api.list.searchform.keywords">
+                <source>Keywords</source>
+            </trans-unit>
+            <trans-unit id="api.list.searchform.submit">
+                <source>Submit</source>
+            </trans-unit>
+
             <trans-unit id="api.show.statements">
                 <source>Statements</source>
             </trans-unit>

@@ -2,13 +2,9 @@
     <li><f:translate key="api.list.resourcesPerPage" />:</li>
     <f:for each="{0 : '50', 1 : '100', 2 : '200', 3 : '500'}" as="limit">
         <li>
-            <f:render partial="Api/Link" arguments="{
-                value : '{limit}',
-                action : action,
-                type : '1991',
-                page : arguments.page,
-                limit : limit
-            }"/>
+            <a href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : action, type : '1991', page : arguments.page, limit : limit, query : arguments.query}) -> f:format.htmlspecialchars()}">
+                {limit}
+            </a>
         </li>
     </f:for>
 </ul>

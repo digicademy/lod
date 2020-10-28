@@ -10,7 +10,8 @@ NEXT
 ---- if only predicate : all IRIs that have a statement with this predicate
 ---- if predicate AND object : all IRIs that have a statement matching this pattern
 -- search IRIs by label and comment
---- http://lod.academy.local/wiag/about.html?tx_lod_api[q]=Agerich
+--- add query param in alternative serialization hydra:views
+--- check which other links need it
 -- sort list by value or label
 --- http://lod.academy.local/wiag/about.html?tx_lod_api[page]=3&tx_lod_api[limit]=50&tx_lod_api[sortBy]=1|2
 

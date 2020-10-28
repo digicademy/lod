@@ -100,7 +100,6 @@ class ApiController extends ActionController
      */
     public function aboutAction()
     {
-
         // check if pageType is set (either via param or masked through PageTypeSuffix)
         if (GeneralUtility::_GP('type')) {
             $pageType = GeneralUtility::_GP('type');
@@ -206,7 +205,14 @@ class ApiController extends ActionController
         ($arguments['limit']) ? $limit = (int)$arguments['limit'] : $limit = 50;
         if ($limit > 500) $limit = 500;
 
-        $totalItems = $this->iriRepository->countAll();
+        if ($arguments['query']) {
+            $totalItems = $this->iriRepository->findByQuery($arguments['query'])->count();
+            $findMethod = 'findByQuery';
+        } else {
+            $totalItems = $this->iriRepository->countAll();
+            $findMethod = 'findAll';
+        }
+
         $totalPages = (int)ceil($totalItems / $limit);
         if ($totalPages < 1) $totalPages = 1;
 
@@ -220,7 +226,7 @@ class ApiController extends ActionController
         $offset = ($page - 1) * $limit;
 
         // fetch resources (possibly from a specific graph)
-        $resources = $this->iriRepository->findAll()
+        $resources = $this->iriRepository->$findMethod($arguments['query'])
             ->getQuery()
             ->setOffset($offset)
             ->setLimit($limit)
