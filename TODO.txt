@@ -6,11 +6,11 @@ NEXT
 
 - enhance list view
 -- filter IRIs by statement predicate/object (e.g. rdf:type schema:Person)
---- http://lod.academy.local/wiag/about.html?tx_lod_api[predicate]=rdf:type&tx_lod_api[object]=schema:Person
+--- http://lod.academy.local/wiag/about.html?tx_lod_api[p]=rdf:type&tx_lod_api[o]=schema:Person
 ---- if only predicate : all IRIs that have a statement with this predicate
 ---- if predicate AND object : all IRIs that have a statement matching this pattern
 -- search IRIs by label and comment
---- http://lod.academy.local/wiag/about.html?tx_lod_api[search]=Agerich
+--- http://lod.academy.local/wiag/about.html?tx_lod_api[q]=Agerich
 -- sort list by value or label
 --- http://lod.academy.local/wiag/about.html?tx_lod_api[page]=3&tx_lod_api[limit]=50&tx_lod_api[sortBy]=1|2
 
@@ -23,7 +23,7 @@ NEXT
 --- showAction() => $this->graphRepository->findByIri(Iri) => $this->view->assign('graph', $graph)
 --- in template: if {graph} then display graph, else {resource}
 ---- graph template displays the IRI and then all statements in the graph
---- this implements direct graph display in API accoding to https://www.w3.org/TR/sparql11-http-rdf-update/
+--- this implements direct graph display in API according to https://www.w3.org/TR/sparql11-http-rdf-update/
 
 - bug: fix JSON-LD problem: http://www.inschriften.net/id/di058_002_6515201912181647296860
 

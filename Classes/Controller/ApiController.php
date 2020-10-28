@@ -180,15 +180,12 @@ class ApiController extends ActionController
             if ($resource) {
                 $this->showAction($resource);
             } else {
-
-            // throw PSR-7 compliant error response
-// @TODO: throws wrong error (test by entering non existing iri)
-            GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction(
-                $this->request,
-                'The requested page does not exist',
-                ['code' => PageAccessFailureReasons::PAGE_NOT_FOUND]);
+                // throw PSR-7 compliant error response
+                GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction(
+                    $GLOBALS['TYPO3_REQUEST'],
+                    'The requested page does not exist',
+                    ['code' => PageAccessFailureReasons::PAGE_NOT_FOUND]);
             }
-
         // no resource argument, forward to list of IRIs
         } else {
             $this->listAction();
