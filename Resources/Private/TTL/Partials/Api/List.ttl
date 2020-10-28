@@ -12,10 +12,10 @@
 
 <{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2011', limit : arguments.limit, page : arguments.page})}>
     a hydra:PartialCollectionView ;
-    hydra:first <{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2011', page : pagination.first, limit : arguments.limit})}> ;
-    hydra:last <{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2011', page : pagination.last, limit : arguments.limit})}> ;
-    hydra:previous <{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2011', page : pagination.previous, limit : arguments.limit})}> ;
-    hydra:next <{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2011', page : pagination.next, limit : arguments.limit})}> .
+    hydra:first <{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2011', page : pagination.first, limit : arguments.limit, query : arguments.query})}> ;
+    hydra:last <{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2011', page : pagination.last, limit : arguments.limit, query : arguments.query})}> ;
+    hydra:previous <{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2011', page : pagination.previous, limit : arguments.limit, query : arguments.query})}> ;
+    hydra:next <{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2011', page : pagination.next, limit : arguments.limit, query : arguments.query})}> .
 
 <f:for each="{resources}" as="resource" iteration="iterator">
 <{environment.TYPO3_REQUEST_HOST}{f:uri.page(additionalParams : {tx_lod_api : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}})}>

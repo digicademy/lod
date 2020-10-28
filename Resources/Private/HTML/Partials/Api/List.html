@@ -24,16 +24,24 @@
         <thead>
             <tr>
                 <th><f:translate key="api.list.resource" /></th>
+                <th><f:translate key="api.list.label" /></th>
                 <th colspan="5"><f:translate key="general.alternativeSerialization" /></th>
             </tr>
         </thead>
         <tbody>
         <f:for each="{resources}" as="resource">
             <tr property="member" resource="{environment.TYPO3_REQUEST_HOST}{f:uri.page(additionalParams : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}) -> f:format.htmlspecialchars()}">
-                <td>
-                    <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '1991', resource : resource, query : arguments.query}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
+                <td id="{resource.value}">
+                    <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '1991', resource : resource, query : arguments.query, limit : arguments.limit, page : arguments.page}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
                         <span property="void:feature" resource="http://www.w3.org/ns/formats/RDFa">{resource.value}</span>
                     </a>
+                </td>
+                <td>
+                    <f:if condition="{resource.label}">
+                        <a href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '1991', resource : resource, query : arguments.query, limit : arguments.limit, page : arguments.page}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
+                            {resource.label}
+                        </a>
+                    </f:if>
                 </td>
                 <f:render partial="Common/AlternativeSerializations" arguments="{
                     action : 'apiShow',

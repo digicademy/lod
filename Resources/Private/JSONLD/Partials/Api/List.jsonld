@@ -42,16 +42,16 @@
       "hydra:PartialCollectionView"
     ],
     "hydra:first": <f:format.raw>{</f:format.raw>
-      "@id": "{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', page : pagination.first, limit : arguments.limit})}"
+      "@id": "{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', page : pagination.first, limit : arguments.limit, query : arguments.query})}"
     <f:format.raw>}</f:format.raw>,
     "hydra:last": <f:format.raw>{</f:format.raw>
-      "@id": "{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', page : pagination.last, limit : arguments.limit})}"
+      "@id": "{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', page : pagination.last, limit : arguments.limit, query : arguments.query})}"
     <f:format.raw>}</f:format.raw>,
     "hydra:next": <f:format.raw>{</f:format.raw>
-      "@id": "{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', page : pagination.next, limit : arguments.limit})}"
+      "@id": "{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', page : pagination.next, limit : arguments.limit, query : arguments.query})}"
     <f:format.raw>}</f:format.raw>,
     "hydra:previous": <f:format.raw>{</f:format.raw>
-      "@id": "{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', page : pagination.previous, limit : arguments.limit})}"
+      "@id": "{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2014', page : pagination.previous, limit : arguments.limit, query : arguments.query})}"
     <f:format.raw>}</f:format.raw>
   <f:format.raw>}</f:format.raw>
   ]

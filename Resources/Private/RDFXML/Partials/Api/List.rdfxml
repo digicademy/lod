@@ -10,11 +10,11 @@
         <rdf:type rdf:resource="http://rdfs.org/ns/void#Dataset"/>
         <hydra:totalItems>{totalItems}</hydra:totalItems>
         <hydra:view>
-            <hydra:PartialCollectionView rdf:about="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', limit : arguments.limit}) -> f:format.htmlspecialchars()}">
-                <hydra:first rdf:resource="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', page : pagination.first, limit : arguments.limit}) -> f:format.htmlspecialchars()}"/>
-                <hydra:last rdf:resource="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', page : pagination.last, limit : arguments.limit}) -> f:format.htmlspecialchars()}"/>
-                <hydra:previous rdf:resource="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', page : pagination.previous, limit : arguments.limit}) -> f:format.htmlspecialchars()}"/>
-                <hydra:next rdf:resource="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', page : pagination.next, limit : arguments.limit}) -> f:format.htmlspecialchars()}"/>
+            <hydra:PartialCollectionView rdf:about="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', limit : arguments.limit, query : arguments.query}) -> f:format.htmlspecialchars()}">
+                <hydra:first rdf:resource="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', page : pagination.first, limit : arguments.limit, query : arguments.query}) -> f:format.htmlspecialchars()}"/>
+                <hydra:last rdf:resource="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', page : pagination.last, limit : arguments.limit, query : arguments.query}) -> f:format.htmlspecialchars()}"/>
+                <hydra:previous rdf:resource="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', page : pagination.previous, limit : arguments.limit, query : arguments.query}) -> f:format.htmlspecialchars()}"/>
+                <hydra:next rdf:resource="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', page : pagination.next, limit : arguments.limit, query : arguments.query}) -> f:format.htmlspecialchars()}"/>
             </hydra:PartialCollectionView>
         </hydra:view><f:for each="{resources}" as="resource">
         <hydra:member>

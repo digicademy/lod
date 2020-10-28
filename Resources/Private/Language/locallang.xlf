@@ -32,6 +32,9 @@
             <trans-unit id="api.list.resource">
                 <source>Resource</source>
             </trans-unit>
+            <trans-unit id="api.list.label">
+                <source>Label</source>
+            </trans-unit>
             <trans-unit id="api.list.representation">
                 <source>Representation</source>
             </trans-unit>

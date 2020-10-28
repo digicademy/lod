@@ -108,4 +108,8 @@
             {resource.record.domainObject} => contains the mapped extbase domain object for further processing
         </f:comment>
     </f:if>
+
+    <p>
+        <f:link.page class="button submit" pageUid="{environment.TSFE.pageArguments.pageId}" section="{resource.value}" additionalParams="{type : '1991', tx_lod_api : {query : environment.TSFE.pageArguments.arguments.tx_lod_api__query, limit : environment.TSFE.pageArguments.arguments.tx_lod_api__limit, page : '{f:if(condition : \'{environment.TSFE.pageArguments.arguments.tx_lod_api__page}\', then : \'{environment.TSFE.pageArguments.arguments.tx_lod_api__page}\', else : \'1\')}'}}">Liste</f:link.page>
+    </p>
 </div>
