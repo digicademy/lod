@@ -18,7 +18,7 @@ Features
 ^^^^^^^^
 
 - use IRIs as lists of controlled and resolvable terms for selects etc.
-- Two...
+- implements direct graph display in API according to https://www.w3.org/TR/sparql11-http-rdf-update/
 
 Credits
 ^^^^^^^

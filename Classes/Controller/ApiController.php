@@ -27,12 +27,13 @@ namespace Digicademy\Lod\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use Digicademy\Lod\Service\ContentNegotiationService;
-use Digicademy\Lod\Domain\Repository\IriNamespaceRepository;
 use Digicademy\Lod\Domain\Model\Iri;
+use Digicademy\Lod\Domain\Repository\IriNamespaceRepository;
 use Digicademy\Lod\Domain\Repository\IriRepository;
-use Digicademy\Lod\Service\ResolverService;
+use Digicademy\Lod\Domain\Repository\GraphRepository;
 use Digicademy\Lod\Domain\Repository\StatementRepository;
+use Digicademy\Lod\Service\ContentNegotiationService;
+use Digicademy\Lod\Service\ResolverService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Frontend\Controller\ErrorController;
@@ -49,6 +50,11 @@ class ApiController extends ActionController
      * @var \Digicademy\Lod\Domain\Repository\IriRepository
      */
     protected $iriRepository = null;
+
+    /**
+     * @var \Digicademy\Lod\Domain\Repository\GraphRepository
+     */
+    protected $graphRepository = null;
 
     /**
      * @var \Digicademy\Lod\Domain\Repository\StatementRepository
@@ -70,6 +76,7 @@ class ApiController extends ActionController
      *
      * @param \Digicademy\Lod\Domain\Repository\IriNamespaceRepository      $iriNamespaceRepository
      * @param \Digicademy\Lod\Domain\Repository\IriRepository               $iriRepository
+     * @param \Digicademy\Lod\Domain\Repository\GraphRepository             $graphRepository
      * @param \Digicademy\Lod\Domain\Repository\StatementRepository         $statementRepository
      * @param \Digicademy\Lod\Service\ContentNegotiationService             $contentNegotiationService
      * @param \Digicademy\Lod\Service\ResolverService                       $resolverService
@@ -77,12 +84,14 @@ class ApiController extends ActionController
     public function __construct(
         IriNamespaceRepository $iriNamespaceRepository,
         IriRepository $iriRepository,
+        GraphRepository $graphRepository,
         StatementRepository $statementRepository,
         ContentNegotiationService $contentNegotiationService,
         ResolverService $resolverService
     ) {
         $this->iriNamespaceRepository = $iriNamespaceRepository;
         $this->iriRepository = $iriRepository;
+        $this->graphRepository = $graphRepository;
         $this->statementRepository = $statementRepository;
         $this->contentNegotiationService = $contentNegotiationService;
         $this->resolverService = $resolverService;
@@ -302,6 +311,9 @@ class ApiController extends ActionController
 
         // assign the resource
         $this->view->assign('resource', $resource);
+
+        // assign graph if IRI is a graph IRI
+        $this->view->assign('graph', $this->graphRepository->findByIri($resource));
 
         // assign namespaces
         $this->view->assign('iriNamespaces', $this->iriNamespaceRepository->findAll());

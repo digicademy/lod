@@ -1,5 +1,5 @@
 {namespace lod = Digicademy\Lod\ViewHelpers}{escaping off}
-<div prefix="{lod:RdfaPrefix(namespaces : iriNamespaces)}" resource="{resource.namespace.iri}{resource.value}">
+<div prefix="{lod:RdfaPrefix(namespaces : iriNamespaces)}" resource="{resource.namespace.iri -> f:format.htmlspecialchars()}{resource.value -> f:format.htmlspecialchars()}">
     <h2 class="resource-iri">
         <a href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '1991', resource : resource}) -> f:format.htmlspecialchars()}">
         &lt;<f:if condition="{resource.namespace}">{resource.namespace.iri}</f:if>{resource.value}&gt;
@@ -102,6 +102,58 @@
         <f:comment>
             {resource.record.domainObject} => contains the mapped extbase domain object for further processing
         </f:comment>
+    </f:if>
+
+    <f:if condition="{graph}">
+        <h3>
+            <f:translate key="api.show.graph" />
+        </h3>
+
+        <dl class="graph-description">
+            <f:if condition="{graph.label}">
+                <dt>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#label">label</a>
+                </dt>
+                <dd property="rdfs:label">{graph.label}</dd>
+            </f:if>
+            <f:if condition="{graph.comment}">
+                <dt>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#comment">comment</a>
+                </dt>
+                <dd property="rdfs:comment">{graph.comment}</dd>
+            </f:if>
+        </dl>
+
+        <table class="graph-statements">
+            <thead>
+                <tr>
+                    <th><f:translate key="api.show.graph.statement.subject" /></th>
+                    <th><f:translate key="api.show.graph.statement.predicate" /></th>
+                    <th><f:translate key="api.show.graph.statement.object" /></th>
+                </tr>
+            </thead>
+            <tbody>
+                <f:for each="{graph.statements}" as="statement">
+                    <tr>
+                        <td>
+                            <a href="{f:if(condition : '{statement.subject.namespace}', then : '{statement.subject.namespace.iri}', else : '')}{statement.subject.value}">
+                                {f:if(condition : '{statement.subject.namespace}', then : '{statement.subject.namespace.prefix}:', else : '')}{statement.subject.value}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{f:if(condition : '{statement.predicate.namespace}', then : '{statement.predicate.namespace.iri}', else : '')}{statement.predicate.value}">
+                                {f:if(condition : '{statement.predicate.namespace}', then : '{statement.predicate.namespace.prefix}:', else : '')}{statement.predicate.value}
+                            </a>
+                        </td>
+                        <td about="{f:if(condition : '{statement.subject.namespace}', then : '{statement.subject.namespace.iri}', else : '')}{statement.subject.value}">
+                            <a property="{f:if(condition : '{statement.predicate.namespace}', then : '{statement.predicate.namespace.iri}', else : '')}{statement.predicate.value}" href="{f:if(condition : '{statement.object.namespace}', then : '{statement.object.namespace.iri}', else : '')}{statement.object.value}" resource="{f:if(condition : '{statement.object.namespace}', then : '{statement.object.namespace.iri}', else : '')}{statement.object.value}">
+                                {f:if(condition : '{statement.object.namespace}', then : '{statement.object.namespace.prefix}:', else : '')}{statement.object.value}
+                            </a>
+                        </td>
+                    </tr>
+                </f:for>
+            </tbody>
+        </table>
     </f:if>
 
     <p>

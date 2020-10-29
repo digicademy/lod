@@ -47,10 +47,6 @@ DATA
 --- https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#elements-title
 -- maybe create all rdf/rdfs Classes/Properties?
 
-BACKPORTS
-- bug in 7.6 ttl & nt templates (list view) => iri param => tx_lod_api[iri] param
-- missing ' in AlternativeSerialization.nt in if condition
-
 ### v1.1 ###
 
 - inverse properties
@@ -86,6 +82,10 @@ BACKPORTS
 - resolver
 -- call different typolink handlers according to $representation->getAuthority();
 -- implement language negotiation
+
+BACKPORTS
+- bug in 7.6 ttl & nt templates (list view) => iri param => tx_lod_api[iri] param
+- missing ' in AlternativeSerialization.nt in if condition
 
 ####################### DOCUMENTATION ############################
 

@@ -13,5 +13,14 @@
 <f:if condition="{resource.record.label}">_:eb0d307c-5915-4d1d-9444-52a8640ef80d <http://www.w3.org/2000/01/rdf-schema#label> {lod:EscapeLiteral(literal : resource.record.label, format : 'ntriples')} .</f:if>
 <f:if condition="{resource.record.comment}">_:eb0d307c-5915-4d1d-9444-52a8640ef80d <http://www.w3.org/2000/01/rdf-schema#comment> {lod:EscapeLiteral(literal : resource.record.comment, format : 'ntriples')} .</f:if>
 </f:if>
+<f:if condition="{graph}">
+<f:if condition="{graph.label}"><{resourceIri}> <http://www.w3.org/2000/01/rdf-schema#label> {lod:EscapeLiteral(literal : graph.label, format : 'ntriples')} .</f:if>
+<f:if condition="{graph.comment}"><{resourceIri}> <http://www.w3.org/2000/01/rdf-schema#comment> {lod:EscapeLiteral(literal : graph.comment, format : 'ntriples')} .</f:if>
+<f:if condition="{graph.statements}">
+<f:for each="{graph.statements}" as="statement">
+<{f:if(condition : '{statement.subject.namespace}', then : '{statement.subject.namespace.iri}', else : '')}{statement.subject.value}> <{statement.predicate.namespace.iri}{statement.predicate.value}> <{f:if(condition : '{statement.object.namespace}', then : '{statement.object.namespace.iri}', else : '')}{statement.object.value}> .
+</f:for>
+</f:if>
+</f:if>
 <f:render partial="Common/AlternativeSerializations" arguments="{subject : resourceIri, environment : environment, settings : settings, resource : resource, mode : 'api'}"/>
 </f:alias>

@@ -16,7 +16,7 @@
     <f:case value="apiShow">
         <f:if condition="{mode} == 'td'">
             <f:then>
-                <td>
+                <td about="{resource.namespace.iri -> f:format.htmlspecialchars()}{resource.value -> f:format.htmlspecialchars()}">
                     <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource, query : query}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
                         <span property="void:feature" resource="{format.uri}">{format.name}</span>
                     </a>
