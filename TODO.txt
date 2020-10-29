@@ -9,7 +9,6 @@ NEXT
 --- http://lod.academy.local/wiag/about.html?tx_lod_api[page]=3&tx_lod_api[limit]=50&tx_lod_api[sortBy]=1|2
 
 - enhance single view
--- let links point to resources as is (not to API)
 -- if graph IRI display statements in graph
 --- showAction() => $this->graphRepository->findByIri(Iri) => $this->view->assign('graph', $graph)
 --- in template: if {graph} then display graph, else {resource}

@@ -4,7 +4,11 @@
         <div class="statement" about="{iri}" property="{statement.predicate.namespace.prefix}:{statement.predicate.value}" resource="{statement.object.namespace.iri}{statement.object.value}">
             <f:if condition="{mode} == 'api'">
                 <f:then>
-                    <a href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '1991', resource : statement.object}) -> f:format.htmlspecialchars()}">{statement.object.value}</a>
+                    <f:comment>
+                        This can be used to let all object IRIs point "inwards" to the API
+                        <a href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '1991', resource : statement.object}) -> f:format.htmlspecialchars()}">{statement.object.value}</a>
+                    </f:comment>
+                    <a href="{statement.object.namespace.iri}{statement.object.value}">{statement.object.value}</a>
                 </f:then>
                 <f:else>
                     <a href="{statement.object.namespace.iri}{statement.object.value}">{statement.object.value}</a>

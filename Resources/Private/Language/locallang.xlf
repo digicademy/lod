@@ -57,6 +57,9 @@
             <trans-unit id="api.show.record">
                 <source>Record</source>
             </trans-unit>
+            <trans-unit id="api.show.back">
+                <source>Back</source>
+            </trans-unit>
 
             <trans-unit id="vocabulary.summary">
                 <source>Terms summary</source>
