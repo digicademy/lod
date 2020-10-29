@@ -40,9 +40,7 @@
     <f:for each="{graph.statements}" as="statement" iteration="graphStatementIterator">
     <f:format.raw>{</f:format.raw>
       "@id": "{statement.subject.namespace.iri}{statement.subject.value}",
-      "{statement.predicate.namespace.iri}{statement.predicate.value}": <f:format.raw>{</f:format.raw>
-      "@id": "{statement.object.namespace.iri}{statement.object.value}"
-    <f:format.raw>}</f:format.raw>
+      <f:render partial="Common/Object" arguments="{statement : statement}"/>
     <f:format.raw>}</f:format.raw><f:if condition="{graphStatementIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if>
     </f:for></f:if>
     <lod:IriCollection add="{lod:ObjectIriRecursion(iri : resource, maxDepth : 5)}"/><f:if condition="{iriCollection}">,

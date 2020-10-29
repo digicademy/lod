@@ -1,4 +1,4 @@
-{namespace lod = Digicademy\Lod\ViewHelpers}
+{namespace lod = Digicademy\Lod\ViewHelpers}{escaping off}
 <f:switch expression="{lod:DetermineEntity(entity : statement.object)}">
 <f:case value="Digicademy\Lod\Domain\Model\Iri">
   <f:if condition="{statement.predicate.namespace.prefix}{statement.predicate.value} == 'rdftype'">

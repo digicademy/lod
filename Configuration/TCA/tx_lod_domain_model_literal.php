@@ -41,7 +41,7 @@ return [
         ],
         'language' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:lang/locallang_tca.xlf:sys_language.language_isocode',
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_literal.language',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',

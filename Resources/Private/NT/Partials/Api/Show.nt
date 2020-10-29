@@ -18,7 +18,7 @@
 <f:if condition="{graph.comment}"><{resourceIri}> <http://www.w3.org/2000/01/rdf-schema#comment> {lod:EscapeLiteral(literal : graph.comment, format : 'ntriples')} .</f:if>
 <f:if condition="{graph.statements}">
 <f:for each="{graph.statements}" as="statement">
-<{f:if(condition : '{statement.subject.namespace}', then : '{statement.subject.namespace.iri}', else : '')}{statement.subject.value}> <{statement.predicate.namespace.iri}{statement.predicate.value}> <{f:if(condition : '{statement.object.namespace}', then : '{statement.object.namespace.iri}', else : '')}{statement.object.value}> .
+<f:render partial="Common/Object" arguments="{iri : '<{statement.subject.namespace.iri}{statement.subject.value}>', statement : statement}" />
 </f:for>
 </f:if>
 </f:if>
