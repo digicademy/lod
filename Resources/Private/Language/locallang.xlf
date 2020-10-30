@@ -50,6 +50,21 @@
             <trans-unit id="api.list.searchform.submit">
                 <source>Submit</source>
             </trans-unit>
+            <trans-unit id="api.list.statementFilter.legend">
+                <source>Filter resources by statement patterns</source>
+            </trans-unit>
+            <trans-unit id="api.list.statementFilter.subject">
+                <source>Subject</source>
+            </trans-unit>
+            <trans-unit id="api.list.statementFilter.predicate">
+                <source>Predicate</source>
+            </trans-unit>
+            <trans-unit id="api.list.statementFilter.object">
+                <source>Object</source>
+            </trans-unit>
+            <trans-unit id="api.list.statementFilter.submit">
+                <source>Submit</source>
+            </trans-unit>
             <trans-unit id="api.show.statements">
                 <source>Statements</source>
             </trans-unit>

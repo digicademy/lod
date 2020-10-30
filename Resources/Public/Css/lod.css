@@ -69,3 +69,17 @@
 	background: #173454;
 	color: #bfbfbf
 }
+
+label + * {
+	page-break-before: unset !important;
+}
+
+#search {
+	float: left;
+	width: 40%;
+}
+
+#statementFilter {
+	float: right;
+	width: 60%;
+}

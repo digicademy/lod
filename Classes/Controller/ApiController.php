@@ -169,20 +169,10 @@ class ApiController extends ActionController
         // look up subject by identifier, otherwise forward to list
         if ($this->request->hasArgument('iri')) {
 
-            $iri = $this->request->getArgument('iri');
-
-            // possibility to include resource namespace prefix in query (prefix:value)
-            if (substr_count($iri, ':') == 1 && substr_count($iri, '://') == 0) {
-                $iriParts = GeneralUtility::trimExplode(':', $iri);
-                $namespace = $this->iriNamespaceRepository->findByPrefix($iriParts[0])->getFirst();
-                $value = $iriParts[1];
-            // otherwise just query the resource value (could potentially be ambiguous)
-            } else {
-                $value = $iri;
-            }
-
             // try to fetch the resource
-            $resource = $this->iriRepository->findByValue($value, $namespace)->getFirst();
+            $resource = $this->iriRepository->findByValue(
+                $this->request->getArgument('iri')
+            );
 
             // if the resource is found, redirect to show action, else send 404
             if ($resource) {
@@ -214,9 +204,9 @@ class ApiController extends ActionController
         ($arguments['limit']) ? $limit = (int)$arguments['limit'] : $limit = 50;
         if ($limit > 500) $limit = 500;
 
-        if ($arguments['query']) {
-            $totalItems = $this->iriRepository->findByQuery($arguments['query'])->count();
-            $findMethod = 'findByQuery';
+        if ($arguments['query'] || $arguments['subject'] || $arguments['predicate'] || $arguments['object']) {
+            $totalItems = $this->iriRepository->findByArguments($arguments)->count();
+            $findMethod = 'findByArguments';
         } else {
             $totalItems = $this->iriRepository->countAll();
             $findMethod = 'findAll';
@@ -235,7 +225,7 @@ class ApiController extends ActionController
         $offset = ($page - 1) * $limit;
 
         // fetch resources (possibly from a specific graph)
-        $resources = $this->iriRepository->$findMethod($arguments['query'])
+        $resources = $this->iriRepository->$findMethod($arguments)
             ->getQuery()
             ->setOffset($offset)
             ->setLimit($limit)

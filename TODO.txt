@@ -8,26 +8,20 @@ NEXT
 -- sort list by value or label
 --- http://lod.academy.local/wiag/about.html?tx_lod_api[page]=3&tx_lod_api[limit]=50&tx_lod_api[sortBy]=1|2
 
-- enhance single view
--- if graph IRI display statements in graph
---- showAction() => $this->graphRepository->findByIri(Iri) => $this->view->assign('graph', $graph)
---- in template: if {graph} then display graph, else {resource}
----- graph template displays the IRI and then all statements in the graph
---- this implements direct graph display in API according to https://www.w3.org/TR/sparql11-http-rdf-update/
-
 - api plugin
 -- TS setting: displayMode = 1|2|3 (only entities, only properties, both - default)
 -- TS setting: excludeFromList = page1, page2, page3 (still accessible in single view)
+-- Add namespacesToIncludeInPrologue field to api plugin flexform
+-- definedNamespaces condition in ttl, nt, json, rdfa templates
 
 - bug: fix JSON-LD problem: http://www.inschriften.net/id/di058_002_6515201912181647296860
 
-- !!! roll out objectInversion to all serialization templates !!!
+- !!! roll out objectInversion to all serialization templates !!! => example in WIAG
 -- lod:CombineStatements(iri : resource)
 -- fix possibility of endless recursion if objectRecursion and objectInversion are checked at the same time
 
 BE
-- Add TSConfig option: statementIriTypeFilter.subject = 1|2
-- Add namespacesToIncludeInPrologue field to api plugin flexform
+- Add TSConfig option: statementIriTypeFilter.subject = 1|2 ????? => see filterByType
 
 FE
 - ensure 9.5 compatibility
@@ -36,8 +30,6 @@ FE
 -- templates
 --- send iris in iri param through urlencode
 --- think about htmlspecialchars
-
-- definedNamespaces condition in ttl, nt, json, rdfa templates
 
 DATA
 - create ext_tables_static+adt.sql

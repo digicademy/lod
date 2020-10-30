@@ -27,7 +27,10 @@ namespace Digicademy\Lod\Domain\Repository;
  ***************************************************************/
 
 use Digicademy\Lod\Utility\Frontend\SearchUtility;
+use Digicademy\Lod\Domain\Repository\IriNamespaceRepository;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 class IriRepository extends Repository
@@ -39,13 +42,15 @@ class IriRepository extends Repository
     );
 
     /**
-     * @param string $value
-     * @param object $entity
-     * @param \Digicademy\Lod\Domain\Model\IriNamespace $namespace
+     * IRI lookup by string representation (like 'prefix:value').
+     * Takes given namespaces into account. If IRI contains more than
+     * one colon it is interpreted as value without namespace prefix
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @param string $value
+     *
+     * @return object|null;
      */
-    public function findByValue($value, $namespace = null)
+    public function findByValue($value)
     {
         // initialize query object
         $query = $this->createQuery();
@@ -53,31 +58,50 @@ class IriRepository extends Repository
         // initialize constraints
         $constraints = [];
 
-        // namespace constraint if given
-        if ($namespace) $constraints[] = $query->equals('namespace', $namespace);
+        // namespace constraint (but only if it appears once and without http(s)://)
+        if (substr_count($value, ':') == 1 && substr_count($value, '://') == 0) {
 
-        // value constraint
-        $constraints[] = $query->equals('value', $value);
+            $iriParts = GeneralUtility::trimExplode(':', $value);
 
-        // match
-        $query->matching(
-            $query->logicalAnd($constraints)
-        );
+            $iriNamespaceRepository = $this->objectManager->get(IriNamespaceRepository::class);
+            $namespace = $iriNamespaceRepository->findByPrefix($iriParts[0])->getFirst();
 
-        // execute the query
-        $result = $query->execute();
+            if ($namespace) {
+                $constraints[] = $query->equals('namespace', $namespace);
+                $value = $iriParts[1];
+            // if namespace was given but could not be resolved whole IRI has to be considered non existent
+            } else {
+                $value = '';
+            }
+        }
 
-        // return result
+        // only continue if no namespace was given or given namespace could be resolved successfully
+        if ($value) {
+
+            // value constraint
+            $constraints[] = $query->equals('value', $value);
+            // match
+            $query->matching(
+                $query->logicalAnd($constraints)
+            );
+            // execute
+            $result = $query->execute()->getFirst();
+
+        } else {
+            // empty result
+            $result = null;
+        }
+
         return $result;
     }
 
     /**
-     * @param string $keywords
+     * @param array $arguments
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @return object|null
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
-    public function findByQuery($keywords)
+    public function findByArguments($arguments)
     {
         // initialize query object
         $query = $this->createQuery();
@@ -85,9 +109,10 @@ class IriRepository extends Repository
         // initialize constraints
         $constraints = [];
 
-        if ($keywords) {
+        // search constraint
+        if ($arguments['query']) {
 
-            $keywordList = SearchUtility::wordSplit($keywords);
+            $keywordList = SearchUtility::wordSplit($arguments['query']);
 
             foreach ($keywordList as $keyword) {
                 $keyword = '%' . $keyword . '%';
@@ -103,11 +128,40 @@ class IriRepository extends Repository
             );
         }
 
+        // $subject constraint if valid
+        if ($arguments['subject']) {
+            $subject = $this->findByValue($arguments['subject']);
+            if ($subject) {
+                $constraints[] = $query->equals('statements.subject_uid', $subject);
+            } else {
+                $constraints[] = $query->equals('statements.subject_uid', null);
+            }
+        }
+
+        // predicate constraint if valid
+        if ($arguments['predicate']) {
+            $predicate = $this->findByValue($arguments['predicate']);
+            if ($predicate) {
+                $constraints[] = $query->equals('statements.predicate_uid', $predicate);
+            } else {
+                $constraints[] = $query->equals('statements.predicate_uid', null);
+            }
+        }
+
+        // object constraint if valid
+        if ($arguments['object']) {
+            $object = $this->findByValue($arguments['object']);
+            if ($object) {
+                $constraints[] = $query->equals('statements.object_uid', $object);
+            } else {
+                $constraints[] = $query->equals('statements.object_uid', null);
+            }
+        }
+
         $query->matching(
             $query->logicalAnd($constraints)
         );
 
-        // return result
         return $query->execute();
     }
 

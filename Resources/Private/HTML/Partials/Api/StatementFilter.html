@@ -1,0 +1,13 @@
+<form id="statementFilter" action="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '1991', limit : arguments.limit}) -> f:format.htmlspecialchars()}" method="post">
+    <fieldset>
+        <legend><f:translate key="api.list.statementFilter.legend" /></legend>
+        <label for="subject" class="skip"><f:translate key="api.list.statementFilter.subject" /></label>
+        <input placeholder="Subject IRI" id="subject" type="text" name="tx_lod_api[subject]" value="{arguments.subject}">
+        <label for="predicate" class="skip"><f:translate key="api.list.statementFilter.predicate" /></label>
+        <input placeholder="Predicate IRI" id="predicate" type="text" name="tx_lod_api[predicate]" value="{arguments.predicate}">
+        <label for="object" class="skip"><f:translate key="api.list.statementFilter.object" /></label>
+        <input placeholder="Object IRI" id="object" type="text" name="tx_lod_api[object]" value="{arguments.object}">
+        <input id="filterSubmit" type="submit" value="{f:translate(key: 'api.list.statementFilter.submit')}" name="tx_lod_api[submit]">
+        <f:if condition="{arguments.query}"><input type="hidden" name="tx_lod_api[query]" value="{arguments.query}"></f:if>
+    </fieldset>
+</form>
