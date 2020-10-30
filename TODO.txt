@@ -5,10 +5,7 @@
 NEXT
 
 - api plugin
--- TS setting: displayMode = 1|2|3 (only entities, only properties, both - default)
--- TS setting: excludeFromList = page1, page2, page3 (still accessible in single view)
--- Add namespacesToIncludeInPrologue field to api plugin flexform
--- definedNamespaces condition in ttl, nt, json, rdfa templates
+-- TS setting: namespaceUidList => condition in ttl, nt, json, rdfa templates
 
 - bug: fix JSON-LD problem: http://www.inschriften.net/id/di058_002_6515201912181647296860
 
@@ -30,7 +27,8 @@ DATA
 --- https://ogp.me/
 --- https://github.com/schemaorg/schemaorg/blob/master/data/releases/5.0/all-layers-properties.csv
 --- https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#elements-title
--- maybe create all rdf/rdfs Classes/Properties?
+
+DOCUMENTATION
 
 ### v1.1 ###
 

@@ -75,7 +75,13 @@ plugin.tx_lod {
 
 plugin.tx_lod_api {
     settings {
-        # apiPage =
+        list {
+#            additionalPidList =
+#            namespaceList =
+        }
+        show {
+#            namespaceList =
+        }
         resolver {
             t3 {
             }

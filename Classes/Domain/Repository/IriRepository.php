@@ -47,10 +47,11 @@ class IriRepository extends Repository
      * one colon it is interpreted as value without namespace prefix
      *
      * @param string $value
+     * @param array $additionalPids
      *
      * @return object|null;
      */
-    public function findByValue($value)
+    public function findByValue($value, $additionalPids = [])
     {
         // initialize query object
         $query = $this->createQuery();
@@ -78,12 +79,21 @@ class IriRepository extends Repository
         // only continue if no namespace was given or given namespace could be resolved successfully
         if ($value) {
 
+            // optionally extend storagePids for the query
+            if ($additionalPids) {
+                $query->getQuerySettings()->setStoragePageIds(
+                    array_merge($query->getQuerySettings()->getStoragePageIds(), $additionalPids)
+                );
+            }
+
             // value constraint
             $constraints[] = $query->equals('value', $value);
+
             // match
             $query->matching(
                 $query->logicalAnd($constraints)
             );
+
             // execute
             $result = $query->execute()->getFirst();
 
@@ -97,11 +107,12 @@ class IriRepository extends Repository
 
     /**
      * @param array $arguments
+     * @param array $settings
      *
      * @return object|null
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
-    public function findByArguments($arguments)
+    public function findByArguments($arguments, $settings)
     {
         // initialize query object
         $query = $this->createQuery();
@@ -128,9 +139,14 @@ class IriRepository extends Repository
             );
         }
 
+        // optional additional pids for statement pattern look up (containing vocabularies etc.)
+        ($settings['list']['additionalPidList']) ?
+            $additionalPidList = GeneralUtility::intExplode(',', $settings['list']['additionalPidList'], true) :
+            $additionalPidList = [];
+
         // $subject constraint if valid
         if ($arguments['subject']) {
-            $subject = $this->findByValue($arguments['subject']);
+            $subject = $this->findByValue($arguments['subject'], $additionalPidList);
             if ($subject) {
                 $constraints[] = $query->equals('statements.subject_uid', $subject);
             } else {
@@ -140,7 +156,7 @@ class IriRepository extends Repository
 
         // predicate constraint if valid
         if ($arguments['predicate']) {
-            $predicate = $this->findByValue($arguments['predicate']);
+            $predicate = $this->findByValue($arguments['predicate'], $additionalPidList);
             if ($predicate) {
                 $constraints[] = $query->equals('statements.predicate_uid', $predicate);
             } else {
@@ -150,7 +166,7 @@ class IriRepository extends Repository
 
         // object constraint if valid
         if ($arguments['object']) {
-            $object = $this->findByValue($arguments['object']);
+            $object = $this->findByValue($arguments['object'], $additionalPidList);
             if ($object) {
                 $constraints[] = $query->equals('statements.object_uid', $object);
             } else {

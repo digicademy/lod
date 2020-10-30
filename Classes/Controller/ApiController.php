@@ -206,7 +206,7 @@ class ApiController extends ActionController
         if ($limit > 500) $limit = 500;
 
         if ($arguments['query'] || $arguments['subject'] || $arguments['predicate'] || $arguments['object']) {
-            $totalItems = $this->iriRepository->findByArguments($arguments)->count();
+            $totalItems = $this->iriRepository->findByArguments($arguments, $this->settings)->count();
             $findMethod = 'findByArguments';
         } else {
             $totalItems = $this->iriRepository->countAll();
@@ -244,7 +244,7 @@ class ApiController extends ActionController
         }
 
         // fetch resources (possibly from a specific graph)
-        $resources = $this->iriRepository->$findMethod($arguments)
+        $resources = $this->iriRepository->$findMethod($arguments, $this->settings)
             ->getQuery()
             ->setOffset($offset)
             ->setLimit($limit)
