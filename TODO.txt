@@ -4,10 +4,6 @@
 
 NEXT
 
-- enhance list view
--- sort list by value or label
---- http://lod.academy.local/wiag/about.html?tx_lod_api[page]=3&tx_lod_api[limit]=50&tx_lod_api[sortBy]=1|2
-
 - api plugin
 -- TS setting: displayMode = 1|2|3 (only entities, only properties, both - default)
 -- TS setting: excludeFromList = page1, page2, page3 (still accessible in single view)
@@ -24,12 +20,9 @@ BE
 - Add TSConfig option: statementIriTypeFilter.subject = 1|2 ????? => see filterByType
 
 FE
-- ensure 9.5 compatibility
+- ensure 9.5 + 10.4 compatibility
 -- test serializer plugin
 -- test vocabulary plugin
--- templates
---- send iris in iri param through urlencode
---- think about htmlspecialchars
 
 DATA
 - create ext_tables_static+adt.sql

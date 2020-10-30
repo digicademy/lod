@@ -6,7 +6,7 @@
 .navbar li {
 	display: inline-block;
 }
-
+/*
 .navbar li:after {
 	content: "|";
 	display: inline;
@@ -19,13 +19,17 @@
 	content: "";
 	margin: 0;
 }
-
+*/
 .pagination {
 	float: left;
 }
 
 .resources-per-page {
 	float: right;
+}
+
+legend {
+	font-weight: bold;
 }
 
 #search {
@@ -54,7 +58,7 @@
 	text-align: center
 }
 
-.button:hover {
+.button:hover, .button.active {
 	background: #d9d9d9;
 	color: #000;
 	text-decoration: none;
@@ -63,6 +67,16 @@
 .button.submit {
 	background: #275a90;
 	color: #fff
+}
+
+.button.sorting {
+	margin: 4px 0 4px 12px;
+	padding: 4px 14px;
+	vertical-align: middle;
+}
+
+.button.sorting + .button.sorting {
+	margin-left: 0;
 }
 
 .button.submit:hover {
@@ -82,4 +96,8 @@ label + * {
 #statementFilter {
 	float: right;
 	width: 60%;
+}
+
+th {
+	vertical-align: middle;
 }

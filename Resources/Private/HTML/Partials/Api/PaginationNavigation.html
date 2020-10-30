@@ -1,23 +1,23 @@
 <ul class="pagination navbar" property="view" typeof="PartialCollectionView">
     <f:render partial="Api/PaginationFromTo" arguments="{_all}" />
     <li>
-        <a property="first" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '1991', page : pagination.first, limit : arguments.limit, query : arguments.query, subject : arguments.subject, predicate : arguments.predicate, object : arguments.object}) -> f:format.htmlspecialchars()}">
-            « First
+        <a class="button small" property="first" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '1991', page : pagination.first, limit : arguments.limit, query : arguments.query, subject : arguments.subject, predicate : arguments.predicate, object : arguments.object, sorting : arguments.sorting}) -> f:format.htmlspecialchars()}">
+            First
         </a>
     </li>
     <li>
-        <a property="previous" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '1991', page : pagination.previous, limit : arguments.limit, query : arguments.query, subject : arguments.subject, predicate : arguments.predicate, object : arguments.object}) -> f:format.htmlspecialchars()}">
-            ‹ Previous
+        <a class="button small" property="previous" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '1991', page : pagination.previous, limit : arguments.limit, query : arguments.query, subject : arguments.subject, predicate : arguments.predicate, object : arguments.object, sorting : arguments.sorting}) -> f:format.htmlspecialchars()}">
+            Previous
         </a>
     </li>
     <li>
-        <a property="next" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '1991', page : pagination.next, limit : arguments.limit, query : arguments.query, subject : arguments.subject, predicate : arguments.predicate, object : arguments.object}) -> f:format.htmlspecialchars()}">
-            › Next
+        <a class="button small" property="next" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '1991', page : pagination.next, limit : arguments.limit, query : arguments.query, subject : arguments.subject, predicate : arguments.predicate, object : arguments.object, sorting : arguments.sorting}) -> f:format.htmlspecialchars()}">
+            Next
         </a>
     </li>
     <li>
-        <a property="last" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '1991', page : pagination.last, limit : arguments.limit, query : arguments.query, subject : arguments.subject, predicate : arguments.predicate, object : arguments.object}) -> f:format.htmlspecialchars()}">
-            » Last
+        <a class="button small" property="last" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '1991', page : pagination.last, limit : arguments.limit, query : arguments.query, subject : arguments.subject, predicate : arguments.predicate, object : arguments.object, sorting : arguments.sorting}) -> f:format.htmlspecialchars()}">
+            Last
         </a>
     </li>
 </ul>

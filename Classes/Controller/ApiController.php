@@ -36,6 +36,7 @@ use Digicademy\Lod\Service\ContentNegotiationService;
 use Digicademy\Lod\Service\ResolverService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Frontend\Controller\ErrorController;
 use TYPO3\CMS\Frontend\Page\PageAccessFailureReasons;
 
@@ -224,11 +225,30 @@ class ApiController extends ActionController
 
         $offset = ($page - 1) * $limit;
 
+        // determine result order
+        ($arguments['sorting']) ? $sorting = (int)$arguments['sorting'] : $sorting = 1;
+        switch ($sorting) {
+            case 1:
+            default:
+                $orderings = array('value' => QueryInterface::ORDER_ASCENDING);
+                break;
+            case 2:
+                $orderings = array('value' => QueryInterface::ORDER_DESCENDING);
+                break;
+            case 3:
+                $orderings = array('label' => QueryInterface::ORDER_ASCENDING);
+                break;
+            case 4:
+                $orderings = array('label' => QueryInterface::ORDER_DESCENDING);
+                break;
+        }
+
         // fetch resources (possibly from a specific graph)
         $resources = $this->iriRepository->$findMethod($arguments)
             ->getQuery()
             ->setOffset($offset)
             ->setLimit($limit)
+            ->setOrderings($orderings)
             ->execute();
 
         // pagination
