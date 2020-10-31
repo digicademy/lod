@@ -4,8 +4,6 @@
 
 NEXT
 
-- bug: fix JSON-LD problem: http://www.inschriften.net/id/di058_002_6515201912181647296860
-
 - !!! roll out objectInversion to all serialization templates !!! => example in WIAG
 -- lod:CombineStatements(iri : resource)
 -- fix possibility of endless recursion if objectRecursion and objectInversion are checked at the same time

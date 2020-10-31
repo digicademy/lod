@@ -44,7 +44,7 @@ class JsonldSerializeViewHelper extends AbstractViewHelper
      */
     public function render()
     {
-        $this->jsonLD = json_decode($this->renderChildren(), true);
+        $this->jsonLD = json_decode($this->renderChildren(),true);
         $this->mergeKeysRecursive($this->jsonLD['@graph']);
         return json_encode($this->jsonLD, JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }
