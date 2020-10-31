@@ -1,4 +1,4 @@
-{namespace lod = Digicademy\Lod\ViewHelpers}<lod:RemoveEmptyLines><f:if condition="{resource}">
+{namespace lod = Digicademy\Lod\ViewHelpers}{escaping off}<lod:RemoveEmptyLines><f:if condition="{resource}">
 <f:if condition="{settings.mode} == 'embedded'">
 <f:then>
 <script type="application/n-triples">

@@ -101,3 +101,21 @@ label + * {
 th {
 	vertical-align: middle;
 }
+
+.vocabulary h1, .vocabulary h2, .vocabulary h3,
+.vocabulary h4, .vocabulary h5 {
+	color: #0F63A1;
+}
+
+.vocabulary .button {
+	margin-right: 4px;
+}
+
+.term th, .term td  {
+	border-bottom-width: 1px;
+}
+
+.vocabulary .iri, .vocabulary .iri a {
+	color: #971C1C;
+	font-family: monospace;
+}

@@ -1,14 +1,21 @@
-{namespace lod = Digicademy\Lod\ViewHelpers}<lod:RemoveEmptyLines>
-<div prefix="{lod:RdfaPrefix(namespaces : namespaces)}">
+{namespace lod = Digicademy\Lod\ViewHelpers}
+<f:section name="HeaderAssets">
+    <link rel="stylesheet" href="{f:uri.external(uri: 'https://cdn.jsdelivr.net/gh/yegor256/tacit@gh-pages/tacit-css-1.5.1.min.css')}"/>
+    <link rel="stylesheet" href="{f:uri.resource(path: 'Css/lod.css')}"/>
+</f:section>
+<f:format.raw><lod:RemoveEmptyLines>
+<div class="vocabulary" prefix="rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# dc: http://purl.org/dc/elements/1.1/ void: http://rdfs.org/ns/void# {lod:RdfaPrefix(namespaces : iriNamespaces)}">
 
     <div about="{vocabulary.iri.namespace.value}{vocabulary.iri.value}" typeof="owl:Ontology">
         <f:if condition="{vocabulary.label}">
-            <h2 class="vocabulary-title" property="dc:title">{vocabulary.label}</h2>
+            <h1 class="vocabulary-title" property="dc:title">{vocabulary.label}</h1>
         </f:if>
         <f:if condition="{vocabulary.comment}">
             <p class="vocabulary-description" property="dc:description">{vocabulary.comment}</p>
         </f:if>
         <dl class="vocabulary-statements">
+            <dt><f:translate key="vocabulary.iri" /></dt>
+            <dd class="iri">{vocabulary.iri.namespace.value}{vocabulary.iri.value}</dd>
         <f:if condition="{vocabulary.iri.label}">
             <dt><f:translate key="general.label" /></dt>
             <dd property="rdfs:label"{f:if(condition: '{vocabulary.iri.labelLanguage}', then: ' lang="{vocabulary.iri.labelLanguage}"')}>{vocabulary.iri.label}</dd>
@@ -34,7 +41,7 @@
     </div>
 
     <h3><f:translate key="general.alternativeSerialization" /></h3>
-    <ul class="alternative-serialization">
+    <ul class="alternative-serialization navbar">
         <f:render partial="Common/AlternativeSerializations" arguments="{
             action : 'vocabularyShow',
             environment : environment
@@ -68,10 +75,10 @@
         <f:for each="{groupedTerms}" as="term">
             <div id="{term.value}">
                 <h4>{term.value}</h4>
-                <table>
+                <table class="term">
                     <tr>
                         <th><f:translate key="general.iri"/></th>
-                        <td><a href="{term.namespace.iri}{term.value}">{term.namespace.iri}{term.value}</a></td>
+                        <td class="iri"><a href="{term.namespace.iri}{term.value}">{term.namespace.iri}{term.value}</a></td>
                     </tr>
                     <f:if condition="{term.label}">
                     <tr>
@@ -102,4 +109,4 @@
     </f:groupedFor>
 
 </div>
-</lod:RemoveEmptyLines>
+</lod:RemoveEmptyLines></f:format.raw>

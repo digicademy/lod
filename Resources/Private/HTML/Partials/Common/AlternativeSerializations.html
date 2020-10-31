@@ -32,11 +32,16 @@
         </f:if>
     </f:case>
     <f:case value="vocabularyShow">
+        <f:if condition="{type} == 1991">
+        <f:then></f:then>
+        <f:else>
         <li>
             <a class="button" property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}{f:uri.page(additionalParams : '{type : type}') -> f:format.htmlspecialchars()}" typeof="void:Dataset">
                 <span property="void:feature" resource="{format.uri}">{format.name}</span>
             </a>
         </li>
+        </f:else>
+        </f:if>
     </f:case>
 </f:switch>
 </f:for>

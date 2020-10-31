@@ -1,4 +1,4 @@
-{namespace lod = Digicademy\Lod\ViewHelpers}<lod:RemoveEmptyLines><f:alias map="{vocabularyIri : '{vocabulary.iri.namespace.value}{vocabulary.iri.value}'}"><{vocabularyIri}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+{namespace lod = Digicademy\Lod\ViewHelpers}{escaping off}<lod:RemoveEmptyLines><f:alias map="{vocabularyIri : '{vocabulary.iri.namespace.value}{vocabulary.iri.value}'}"><{vocabularyIri}> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
 <f:if condition="{vocabulary.label}"><{vocabularyIri}> <http://purl.org/dc/elements/1.1/title> {lod:EscapeLiteral(literal : vocabulary.label, format : 'ntriples')} .</f:if>
 <f:if condition="{vocabulary.comment}"><{vocabularyIri}> <http://purl.org/dc/elements/1.1/description> {lod:EscapeLiteral(literal : vocabulary.comment, format : 'ntriples')} .</f:if>
 
