@@ -10,6 +10,9 @@
 <f:case value="api">
         "@id" : "{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource, settings : settings})}",
 </f:case>
+<f:case value="serializer">
+        "@id" : "{environment.TYPO3_REQUEST_HOST}<f:format.raw><f:uri.page pageUid="{settings.apiPage}" additionalParams="{type : type, tx_lod_api : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}}"/></f:format.raw>",
+</f:case>
 <f:case value="vocabulary">
         "@id" : "{environment.TYPO3_REQUEST_HOST}{f:uri.page(additionalParams : '{type : type}')}",
 </f:case>

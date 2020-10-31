@@ -141,24 +141,28 @@ class SerializerController extends ActionController
      */
     public function iriAction()
     {
-        if ($this->request->hasArgument('iri')) {
-            // assign namespaces
-            $this->view->assign('namespaces', $this->iriNamespaceRepository->findAll());
-
-            // assign iri
-            $this->view->assign('resource', $this->request->getArgument('iri'));
-        }
 
         // assign current settings
         if (isset($this->settings['general']['mode'])) $this->settings['mode'] = $this->settings['general']['mode'];
         $this->view->assign('settings', $this->settings);
 
-        // provide environment vars
-        $environment = [
-            'TYPO3_REQUEST_HOST' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_HOST'),
-            'TYPO3_REQUEST_URL' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_URL')
-        ];
-        $this->view->assign('environment', $environment);
+        // assign IRI if available
+        if ($this->request->hasArgument('iri')) {
+
+            // assign namespaces
+            $apiSettings = $this->configurationManager->getConfiguration('Settings', 'lod', 'api');
+            $this->view->assign('iriNamespaces', $this->iriNamespaceRepository->findSelected('show', $apiSettings));
+
+            // assign iri
+            $this->view->assign('resource', $this->request->getArgument('iri'));
+
+            // provide environment vars
+            $environment = [
+                'TYPO3_REQUEST_HOST' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_HOST')
+            ];
+
+            $this->view->assign('environment', $environment);
+        }
     }
 
     // could potentially also include graphAction() in the future

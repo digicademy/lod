@@ -3,11 +3,10 @@
 ### v1.0 ###
 
 BE
-- Add TSConfig option: statementIriTypeFilter.subject = 1|2 ????? => see filterByType
+- change IRI icon
 
 FE
 - ensure 9.5 + 10.4 compatibility
--- test serializer plugin
 -- test vocabulary plugin
 
 DATA
@@ -40,7 +39,11 @@ DOCUMENTATION
 -- maybe graph could serve as collection of statements added to records etc.
 
 - backend
--- TCA optimization: addRecord fieldControl as popup ?
+- TCA optimization: addRecord fieldControl as popup ?
+- Add TSConfig option: statementIriTypeFilter.subject = 1|2
+-- see tx_lod_domain_model_statement.php 95,114 and IriUtility 52
+-- use case 1: in average statements it is desirable that only entities are allowed in subject position
+-- use case 2: in case of a vocabulary properties to be described must be allowed in subject position
 
 - create extension with schema.org vocab
 
@@ -248,22 +251,12 @@ plugin.tx_lod_api {
 
 ### SERIALIZER CONFIGURATION ###
 
-page.headerData.333 = USER
-page.headerData.333 {
-    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
-    extensionName = Lod
-    pluginName = Serializer
-    vendorName = Digicademy
-    persistence.storagePid = PID
-    settings < plugin.tx_lod_serializer.settings
-    view < plugin.tx_lod_serializer.view
-}
-
 plugin.tx_lod_serializer {
     settings {
         selectedIri = UID
         mode = embedded
         apiPage = PID
+        apiPath = /PATH/TO/API
         recordToArgumentMapping {
             pages {
                 argumentName = id
@@ -278,6 +271,17 @@ plugin.tx_lod_serializer {
             tx_my_table = FORMAT (jsonld, ttl, rdfxml, nt)
         }
     }
+}
+
+page.headerData.333 = USER
+page.headerData.333 {
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    extensionName = Lod
+    pluginName = Serializer
+    vendorName = Digicademy
+    persistence.storagePid = PID
+    settings < plugin.tx_lod_serializer.settings
+    view < plugin.tx_lod_serializer.view
 }
 
 ### SPEAKING URIs CONFIGURATION ###
