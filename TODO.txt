@@ -2,12 +2,6 @@
 
 ### v1.0 ###
 
-NEXT
-
-- !!! roll out objectInversion to all serialization templates !!! => example in WIAG
--- lod:CombineStatements(iri : resource)
--- fix possibility of endless recursion if objectRecursion and objectInversion are checked at the same time
-
 BE
 - Add TSConfig option: statementIriTypeFilter.subject = 1|2 ????? => see filterByType
 
