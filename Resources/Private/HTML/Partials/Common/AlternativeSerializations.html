@@ -24,7 +24,7 @@
             </f:then>
             <f:else>
                 <li>
-                    <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource, query : query, subject : subject, predicate : predicate, object : object, sorting : sorting}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
+                    <a class="button" property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource, query : query, subject : subject, predicate : predicate, object : object, sorting : sorting}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
                         <span property="void:feature" resource="{format.uri}">{format.name}</span>
                     </a>
                 </li>

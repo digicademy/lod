@@ -27,11 +27,12 @@ namespace Digicademy\Lod\Domain\Repository;
  ***************************************************************/
 
 use Digicademy\Lod\Utility\Frontend\SearchUtility;
-use Digicademy\Lod\Domain\Repository\IriNamespaceRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
-use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
+use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 
 class IriRepository extends Repository
 {
@@ -47,11 +48,12 @@ class IriRepository extends Repository
      * one colon it is interpreted as value without namespace prefix
      *
      * @param string $value
+     * @param string $action
      * @param array $additionalPids
      *
      * @return object|null;
      */
-    public function findByValue($value, $additionalPids = [])
+    public function findByValue($value, $action = 'show', $additionalPids = [])
     {
         // initialize query object
         $query = $this->createQuery();
@@ -65,7 +67,10 @@ class IriRepository extends Repository
             $iriParts = GeneralUtility::trimExplode(':', $value);
 
             $iriNamespaceRepository = $this->objectManager->get(IriNamespaceRepository::class);
-            $namespace = $iriNamespaceRepository->findByPrefix($iriParts[0])->getFirst();
+            $configurationManager = $this->objectManager->get(ConfigurationManagerInterface::class);
+            $settings = $configurationManager->getConfiguration('Settings');
+
+            $namespace = $iriNamespaceRepository->findByPrefix($iriParts[0], $action, $settings)->getFirst();
 
             if ($namespace) {
                 $constraints[] = $query->equals('namespace', $namespace);
@@ -109,8 +114,8 @@ class IriRepository extends Repository
      * @param array $arguments
      * @param array $settings
      *
-     * @return object|null
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     * @return QueryResultInterface|null
+     * @throws InvalidQueryException
      */
     public function findByArguments($arguments, $settings)
     {
@@ -146,7 +151,7 @@ class IriRepository extends Repository
 
         // $subject constraint if valid
         if ($arguments['subject']) {
-            $subject = $this->findByValue($arguments['subject'], $additionalPidList);
+            $subject = $this->findByValue($arguments['subject'], 'list', $additionalPidList);
             if ($subject) {
                 $constraints[] = $query->equals('statements.subject_uid', $subject);
             } else {
@@ -156,7 +161,7 @@ class IriRepository extends Repository
 
         // predicate constraint if valid
         if ($arguments['predicate']) {
-            $predicate = $this->findByValue($arguments['predicate'], $additionalPidList);
+            $predicate = $this->findByValue($arguments['predicate'],'list', $additionalPidList);
             if ($predicate) {
                 $constraints[] = $query->equals('statements.predicate_uid', $predicate);
             } else {
@@ -166,7 +171,7 @@ class IriRepository extends Repository
 
         // object constraint if valid
         if ($arguments['object']) {
-            $object = $this->findByValue($arguments['object'], $additionalPidList);
+            $object = $this->findByValue($arguments['object'],'list', $additionalPidList);
             if ($object) {
                 $constraints[] = $query->equals('statements.object_uid', $object);
             } else {

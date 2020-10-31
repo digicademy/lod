@@ -172,7 +172,8 @@ class ApiController extends ActionController
 
             // try to fetch the resource
             $resource = $this->iriRepository->findByValue(
-                $this->request->getArgument('iri')
+                $this->request->getArgument('iri'),
+                'show'
             );
 
             // if the resource is found, redirect to show action, else send 404
@@ -265,7 +266,7 @@ class ApiController extends ActionController
 
         $this->view->assign('resources', $resources);
 
-        $this->view->assign('iriNamespaces', $this->iriNamespaceRepository->findAll());
+        $this->view->assign('iriNamespaces', $this->iriNamespaceRepository->findSelected('show', $this->settings));
 
         $this->view->assign('arguments', $arguments);
 
@@ -326,7 +327,7 @@ class ApiController extends ActionController
         $this->view->assign('graph', $this->graphRepository->findByIri($resource));
 
         // assign namespaces
-        $this->view->assign('iriNamespaces', $this->iriNamespaceRepository->findAll());
+        $this->view->assign('iriNamespaces', $this->iriNamespaceRepository->findSelected('show', $this->settings));
 
         // assign current arguments
         $this->view->assign('arguments', $this->request->getArguments());

@@ -4,9 +4,6 @@
 
 NEXT
 
-- api plugin
--- TS setting: namespaceUidList => condition in ttl, nt, json, rdfa templates
-
 - bug: fix JSON-LD problem: http://www.inschriften.net/id/di058_002_6515201912181647296860
 
 - !!! roll out objectInversion to all serialization templates !!! => example in WIAG
@@ -29,6 +26,8 @@ DATA
 --- https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#elements-title
 
 DOCUMENTATION
+
+- write basic documentation
 
 ### v1.1 ###
 
