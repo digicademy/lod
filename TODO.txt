@@ -2,13 +2,7 @@
 
 ### v1.0 ###
 
-DATA
-- think about namespaces and serialization (set static namespaces: rdf, rdfs, owl, dc, dcterms, void, skos?)
-- add basic vocabs
-- create ext_tables_static+adt.sql
---- https://ogp.me/
---- https://github.com/schemaorg/schemaorg/blob/master/data/releases/5.0/all-layers-properties.csv
---- https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#elements-title
+- solution for fixed and dynamic namespaces in templates
 
 DOCUMENTATION
 
@@ -39,8 +33,6 @@ DOCUMENTATION
 -- use case 1: in average statements it is desirable that only entities are allowed in subject position
 -- use case 2: in case of a vocabulary properties to be described must be allowed in subject position
 
-- create extension with schema.org vocab
-
 - hydra:view has no alternative serialisations in none of the serialisation formats
 
 ### v1.2 ###
@@ -53,10 +45,3 @@ DOCUMENTATION
 - resolver
 -- call different typolink handlers according to $representation->getAuthority();
 -- implement language negotiation
-
-BACKPORTS
-- bug in 7.6 ttl & nt templates (list view) => iri param => tx_lod_api[iri] param
-- missing ' in AlternativeSerialization.nt in if condition
-
-####################### DOCUMENTATION ############################
-

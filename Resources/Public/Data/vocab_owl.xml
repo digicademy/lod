@@ -1,0 +1,3863 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3RecordDocument>
+	<header type="array">
+		<XMLversion>1.0</XMLversion>
+		<meta type="array">
+			<title>OWL</title>
+			<description>Contains the OWL ontology</description>
+			<notes></notes>
+			<packager_username>da20202099</packager_username>
+			<packager_name></packager_name>
+			<packager_email></packager_email>
+			<TYPO3_version>9.5.13</TYPO3_version>
+			<created>Sunday  1. November 2020</created>
+		</meta>
+		<static_tables index="relStaticTables" type="array"></static_tables>
+		<excludeMap type="array"></excludeMap>
+		<softrefCfg type="array"></softrefCfg>
+		<extensionDependencies type="array"></extensionDependencies>
+		<charset>utf-8</charset>
+		<pagetree type="array">
+			<node index="14" type="array">
+				<uid>14</uid>
+			</node>
+		</pagetree>
+		<records type="array">
+			<table index="pages" type="array">
+				<rec index="14" type="array">
+					<uid>14</uid>
+					<pid>7</pid>
+					<title>owl</title>
+					<relations index="rels" type="array"></relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+			</table>
+			<table index="tx_lod_domain_model_iri" type="array">
+				<rec index="108" type="array">
+					<uid>108</uid>
+					<pid>14</pid>
+					<title>owl:AllDifferent</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="107" type="array">
+					<uid>107</uid>
+					<pid>14</pid>
+					<title>owl:AllDisjointClasses</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="106" type="array">
+					<uid>106</uid>
+					<pid>14</pid>
+					<title>owl:AllDisjointProperties</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="105" type="array">
+					<uid>105</uid>
+					<pid>14</pid>
+					<title>owl:Annotation</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="104" type="array">
+					<uid>104</uid>
+					<pid>14</pid>
+					<title>owl:AnnotationProperty</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="103" type="array">
+					<uid>103</uid>
+					<pid>14</pid>
+					<title>owl:AsymmetricProperty</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="102" type="array">
+					<uid>102</uid>
+					<pid>14</pid>
+					<title>owl:Axiom</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="101" type="array">
+					<uid>101</uid>
+					<pid>14</pid>
+					<title>owl:Class</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="100" type="array">
+					<uid>100</uid>
+					<pid>14</pid>
+					<title>owl:DataRange</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="99" type="array">
+					<uid>99</uid>
+					<pid>14</pid>
+					<title>owl:DatatypeProperty</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="98" type="array">
+					<uid>98</uid>
+					<pid>14</pid>
+					<title>owl:DeprecatedClass</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="97" type="array">
+					<uid>97</uid>
+					<pid>14</pid>
+					<title>owl:DeprecatedProperty</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="96" type="array">
+					<uid>96</uid>
+					<pid>14</pid>
+					<title>owl:FunctionalProperty</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="95" type="array">
+					<uid>95</uid>
+					<pid>14</pid>
+					<title>owl:InverseFunctionalProperty</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="94" type="array">
+					<uid>94</uid>
+					<pid>14</pid>
+					<title>owl:IrreflexiveProperty</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="93" type="array">
+					<uid>93</uid>
+					<pid>14</pid>
+					<title>owl:NamedIndividual</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="92" type="array">
+					<uid>92</uid>
+					<pid>14</pid>
+					<title>owl:NegativePropertyAssertion</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="91" type="array">
+					<uid>91</uid>
+					<pid>14</pid>
+					<title>owl:Nothing</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="90" type="array">
+					<uid>90</uid>
+					<pid>14</pid>
+					<title>owl:ObjectProperty</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="89" type="array">
+					<uid>89</uid>
+					<pid>14</pid>
+					<title>owl:Ontology</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="88" type="array">
+					<uid>88</uid>
+					<pid>14</pid>
+					<title>owl:OntologyProperty</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="87" type="array">
+					<uid>87</uid>
+					<pid>14</pid>
+					<title>owl:ReflexiveProperty</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="86" type="array">
+					<uid>86</uid>
+					<pid>14</pid>
+					<title>owl:Restriction</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="85" type="array">
+					<uid>85</uid>
+					<pid>14</pid>
+					<title>owl:SymmetricProperty</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="84" type="array">
+					<uid>84</uid>
+					<pid>14</pid>
+					<title>owl:Thing</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="83" type="array">
+					<uid>83</uid>
+					<pid>14</pid>
+					<title>owl:TransitiveProperty</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="82" type="array">
+					<uid>82</uid>
+					<pid>14</pid>
+					<title>owl:allValuesFrom</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="81" type="array">
+					<uid>81</uid>
+					<pid>14</pid>
+					<title>owl:annotatedProperty</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="80" type="array">
+					<uid>80</uid>
+					<pid>14</pid>
+					<title>owl:annotatedSource</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="79" type="array">
+					<uid>79</uid>
+					<pid>14</pid>
+					<title>owl:annotatedTarget</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="78" type="array">
+					<uid>78</uid>
+					<pid>14</pid>
+					<title>owl:assertionProperty</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="77" type="array">
+					<uid>77</uid>
+					<pid>14</pid>
+					<title>owl:backwardCompatibleWith</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="76" type="array">
+					<uid>76</uid>
+					<pid>14</pid>
+					<title>owl:bottomDataProperty</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="75" type="array">
+					<uid>75</uid>
+					<pid>14</pid>
+					<title>owl:bottomObjectProperty</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="74" type="array">
+					<uid>74</uid>
+					<pid>14</pid>
+					<title>owl:cardinality</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="73" type="array">
+					<uid>73</uid>
+					<pid>14</pid>
+					<title>owl:complementOf</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="72" type="array">
+					<uid>72</uid>
+					<pid>14</pid>
+					<title>owl:datatypeComplementOf</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="71" type="array">
+					<uid>71</uid>
+					<pid>14</pid>
+					<title>owl:deprecated</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="70" type="array">
+					<uid>70</uid>
+					<pid>14</pid>
+					<title>owl:differentFrom</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="69" type="array">
+					<uid>69</uid>
+					<pid>14</pid>
+					<title>owl:disjointUnionOf</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="68" type="array">
+					<uid>68</uid>
+					<pid>14</pid>
+					<title>owl:disjointWith</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="67" type="array">
+					<uid>67</uid>
+					<pid>14</pid>
+					<title>owl:distinctMembers</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="66" type="array">
+					<uid>66</uid>
+					<pid>14</pid>
+					<title>owl:equivalentClass</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="65" type="array">
+					<uid>65</uid>
+					<pid>14</pid>
+					<title>owl:equivalentProperty</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="64" type="array">
+					<uid>64</uid>
+					<pid>14</pid>
+					<title>owl:hasKey</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="63" type="array">
+					<uid>63</uid>
+					<pid>14</pid>
+					<title>owl:hasSelf</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="62" type="array">
+					<uid>62</uid>
+					<pid>14</pid>
+					<title>owl:hasValue</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="61" type="array">
+					<uid>61</uid>
+					<pid>14</pid>
+					<title>owl:imports</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="60" type="array">
+					<uid>60</uid>
+					<pid>14</pid>
+					<title>owl:incompatibleWith</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="59" type="array">
+					<uid>59</uid>
+					<pid>14</pid>
+					<title>owl:intersectionOf</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="58" type="array">
+					<uid>58</uid>
+					<pid>14</pid>
+					<title>owl:inverseOf</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="57" type="array">
+					<uid>57</uid>
+					<pid>14</pid>
+					<title>owl:maxCardinality</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="56" type="array">
+					<uid>56</uid>
+					<pid>14</pid>
+					<title>owl:maxQualifiedCardinality</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="55" type="array">
+					<uid>55</uid>
+					<pid>14</pid>
+					<title>owl:members</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="54" type="array">
+					<uid>54</uid>
+					<pid>14</pid>
+					<title>owl:minCardinality</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="53" type="array">
+					<uid>53</uid>
+					<pid>14</pid>
+					<title>owl:minQualifiedCardinality</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="52" type="array">
+					<uid>52</uid>
+					<pid>14</pid>
+					<title>owl:onClass</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="51" type="array">
+					<uid>51</uid>
+					<pid>14</pid>
+					<title>owl:onDataRange</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="50" type="array">
+					<uid>50</uid>
+					<pid>14</pid>
+					<title>owl:onDatatype</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="49" type="array">
+					<uid>49</uid>
+					<pid>14</pid>
+					<title>owl:oneOf</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="48" type="array">
+					<uid>48</uid>
+					<pid>14</pid>
+					<title>owl:onProperties</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="47" type="array">
+					<uid>47</uid>
+					<pid>14</pid>
+					<title>owl:onProperty</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="46" type="array">
+					<uid>46</uid>
+					<pid>14</pid>
+					<title>owl:priorVersion</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="45" type="array">
+					<uid>45</uid>
+					<pid>14</pid>
+					<title>owl:propertyChainAxiom</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44" type="array">
+					<uid>44</uid>
+					<pid>14</pid>
+					<title>owl:propertyDisjointWith</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="43" type="array">
+					<uid>43</uid>
+					<pid>14</pid>
+					<title>owl:qualifiedCardinality</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="42" type="array">
+					<uid>42</uid>
+					<pid>14</pid>
+					<title>owl:sameAs</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="41" type="array">
+					<uid>41</uid>
+					<pid>14</pid>
+					<title>owl:someValuesFrom</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="40" type="array">
+					<uid>40</uid>
+					<pid>14</pid>
+					<title>owl:sourceIndividual</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="39" type="array">
+					<uid>39</uid>
+					<pid>14</pid>
+					<title>owl:targetIndividual</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="38" type="array">
+					<uid>38</uid>
+					<pid>14</pid>
+					<title>owl:targetValue</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="37" type="array">
+					<uid>37</uid>
+					<pid>14</pid>
+					<title>owl:topDataProperty</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="36" type="array">
+					<uid>36</uid>
+					<pid>14</pid>
+					<title>owl:topObjectProperty</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="35" type="array">
+					<uid>35</uid>
+					<pid>14</pid>
+					<title>owl:unionOf</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="34" type="array">
+					<uid>34</uid>
+					<pid>14</pid>
+					<title>owl:versionInfo</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="33" type="array">
+					<uid>33</uid>
+					<pid>14</pid>
+					<title>owl:versionIRI</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="32" type="array">
+					<uid>32</uid>
+					<pid>14</pid>
+					<title>owl:withRestrictions</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:3" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+			</table>
+			<table index="tx_lod_domain_model_namespace" type="array">
+				<rec index="3" type="array">
+					<uid>3</uid>
+					<pid>14</pid>
+					<title>owl, http://www.w3.org/2002/07/owl#</title>
+					<relations index="rels" type="array"></relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+			</table>
+		</records>
+		<pid_lookup type="array">
+			<page_contents index="7" type="array">
+				<table index="pages" type="array">
+					<item index="14">1</item>
+				</table>
+			</page_contents>
+			<page_contents index="14" type="array">
+				<table index="tx_lod_domain_model_iri" type="array">
+					<item index="108">1</item>
+					<item index="107">1</item>
+					<item index="106">1</item>
+					<item index="105">1</item>
+					<item index="104">1</item>
+					<item index="103">1</item>
+					<item index="102">1</item>
+					<item index="101">1</item>
+					<item index="100">1</item>
+					<item index="99">1</item>
+					<item index="98">1</item>
+					<item index="97">1</item>
+					<item index="96">1</item>
+					<item index="95">1</item>
+					<item index="94">1</item>
+					<item index="93">1</item>
+					<item index="92">1</item>
+					<item index="91">1</item>
+					<item index="90">1</item>
+					<item index="89">1</item>
+					<item index="88">1</item>
+					<item index="87">1</item>
+					<item index="86">1</item>
+					<item index="85">1</item>
+					<item index="84">1</item>
+					<item index="83">1</item>
+					<item index="82">1</item>
+					<item index="81">1</item>
+					<item index="80">1</item>
+					<item index="79">1</item>
+					<item index="78">1</item>
+					<item index="77">1</item>
+					<item index="76">1</item>
+					<item index="75">1</item>
+					<item index="74">1</item>
+					<item index="73">1</item>
+					<item index="72">1</item>
+					<item index="71">1</item>
+					<item index="70">1</item>
+					<item index="69">1</item>
+					<item index="68">1</item>
+					<item index="67">1</item>
+					<item index="66">1</item>
+					<item index="65">1</item>
+					<item index="64">1</item>
+					<item index="63">1</item>
+					<item index="62">1</item>
+					<item index="61">1</item>
+					<item index="60">1</item>
+					<item index="59">1</item>
+					<item index="58">1</item>
+					<item index="57">1</item>
+					<item index="56">1</item>
+					<item index="55">1</item>
+					<item index="54">1</item>
+					<item index="53">1</item>
+					<item index="52">1</item>
+					<item index="51">1</item>
+					<item index="50">1</item>
+					<item index="49">1</item>
+					<item index="48">1</item>
+					<item index="47">1</item>
+					<item index="46">1</item>
+					<item index="45">1</item>
+					<item index="44">1</item>
+					<item index="43">1</item>
+					<item index="42">1</item>
+					<item index="41">1</item>
+					<item index="40">1</item>
+					<item index="39">1</item>
+					<item index="38">1</item>
+					<item index="37">1</item>
+					<item index="36">1</item>
+					<item index="35">1</item>
+					<item index="34">1</item>
+					<item index="33">1</item>
+					<item index="32">1</item>
+				</table>
+				<table index="tx_lod_domain_model_namespace" type="array">
+					<item index="3">1</item>
+				</table>
+			</page_contents>
+		</pid_lookup>
+	</header>
+	<records type="array">
+		<tablerow index="pages:14" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">14</field>
+				<field index="pid" type="integer">7</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="starttime" type="integer">0</field>
+				<field index="endtime" type="integer">0</field>
+				<field index="fe_group"></field>
+				<field index="sorting" type="integer">4</field>
+				<field index="rowDescription" type="NULL"></field>
+				<field index="editlock" type="integer">0</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_state" type="NULL"></field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="t3ver_oid" type="integer">0</field>
+				<field index="t3ver_id" type="integer">0</field>
+				<field index="t3ver_label"></field>
+				<field index="t3ver_wsid" type="integer">0</field>
+				<field index="t3ver_state" type="integer">0</field>
+				<field index="t3ver_stage" type="integer">0</field>
+				<field index="t3ver_count" type="integer">0</field>
+				<field index="t3ver_tstamp" type="integer">0</field>
+				<field index="t3ver_move_id" type="integer">0</field>
+				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">0</field>
+				<field index="perms_user" type="integer">31</field>
+				<field index="perms_group" type="integer">27</field>
+				<field index="perms_everybody" type="integer">1</field>
+				<field index="title">owl</field>
+				<field index="slug">/owl</field>
+				<field index="doktype" type="integer">254</field>
+				<field index="TSconfig" type="NULL"></field>
+				<field index="is_siteroot" type="integer">0</field>
+				<field index="php_tree_stop" type="integer">0</field>
+				<field index="url"></field>
+				<field index="shortcut" type="integer">0</field>
+				<field index="shortcut_mode" type="integer">0</field>
+				<field index="subtitle"></field>
+				<field index="layout" type="integer">0</field>
+				<field index="target"></field>
+				<field index="media" type="integer">0</field>
+				<field index="lastUpdated" type="integer">0</field>
+				<field index="keywords" type="NULL"></field>
+				<field index="cache_timeout" type="integer">0</field>
+				<field index="cache_tags"></field>
+				<field index="newUntil" type="integer">0</field>
+				<field index="description" type="NULL"></field>
+				<field index="no_search" type="integer">0</field>
+				<field index="SYS_LASTCHANGED" type="integer">0</field>
+				<field index="abstract" type="NULL"></field>
+				<field index="module"></field>
+				<field index="extendToSubpages" type="integer">0</field>
+				<field index="author"></field>
+				<field index="author_email"></field>
+				<field index="nav_title"></field>
+				<field index="nav_hide" type="integer">0</field>
+				<field index="content_from_pid" type="integer">0</field>
+				<field index="mount_pid" type="integer">0</field>
+				<field index="mount_pid_ol" type="integer">0</field>
+				<field index="alias"></field>
+				<field index="l18n_cfg" type="integer">0</field>
+				<field index="fe_login_mode" type="integer">0</field>
+				<field index="backend_layout"></field>
+				<field index="backend_layout_next_level"></field>
+				<field index="tsconfig_includes"></field>
+				<field index="legacy_overlay_uid" type="integer">0</field>
+				<field index="tx_impexp_origuid" type="integer">4</field>
+				<field index="seo_title"></field>
+				<field index="no_index" type="integer">0</field>
+				<field index="no_follow" type="integer">0</field>
+				<field index="og_title"></field>
+				<field index="og_description" type="NULL"></field>
+				<field index="og_image" type="integer">0</field>
+				<field index="twitter_title"></field>
+				<field index="twitter_description" type="NULL"></field>
+				<field index="twitter_image" type="integer">0</field>
+				<field index="canonical_link"></field>
+				<field index="categories" type="integer">0</field>
+				<field index="iri" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array"></related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:108" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">108</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:AllDifferent</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of collections of pairwise different individuals. </field>
+				<field index="comment_language"></field>
+				<field index="value">AllDifferent</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:107" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">107</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:AllDisjointClasses</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of collections of pairwise disjoint classes.</field>
+				<field index="comment_language"></field>
+				<field index="value">AllDisjointClasses</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:106" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">106</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:AllDisjointProperties</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of collections of pairwise disjoint properties.</field>
+				<field index="comment_language"></field>
+				<field index="value">AllDisjointProperties</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:105" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">105</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:Annotation</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of annotated annotations for which the RDF serialization consists of an annotated subject, predicate and object.</field>
+				<field index="comment_language"></field>
+				<field index="value">Annotation</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:104" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">104</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:AnnotationProperty</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of annotation properties.</field>
+				<field index="comment_language"></field>
+				<field index="value">AnnotationProperty</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:103" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">103</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:AsymmetricProperty</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of asymmetric properties.</field>
+				<field index="comment_language"></field>
+				<field index="value">AsymmetricProperty</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:102" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">102</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:Axiom</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of annotated axioms for which the RDF serialization consists of an annotated subject, predicate and object.</field>
+				<field index="comment_language"></field>
+				<field index="value">Axiom</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:101" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">101</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:Class</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of OWL classes.</field>
+				<field index="comment_language"></field>
+				<field index="value">Class</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:100" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">100</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:DataRange</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of OWL data ranges, which are special kinds of datatypes. Note: The use of the IRI owl:DataRange has been deprecated as of OWL 2. The IRI rdfs:Datatype SHOULD be used instead.</field>
+				<field index="comment_language"></field>
+				<field index="value">DataRange</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:99" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">99</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:DatatypeProperty</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of data properties.</field>
+				<field index="comment_language"></field>
+				<field index="value">DatatypeProperty</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:98" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">98</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:DeprecatedClass</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of deprecated classes</field>
+				<field index="comment_language"></field>
+				<field index="value">DeprecatedClass</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:97" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">97</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:DeprecatedProperty</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of deprecated properties.</field>
+				<field index="comment_language"></field>
+				<field index="value">DeprecatedProperty</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:96" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">96</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:FunctionalProperty</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of functional properties.</field>
+				<field index="comment_language"></field>
+				<field index="value">FunctionalProperty</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:95" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">95</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:InverseFunctionalProperty</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of inverse-functional properties.</field>
+				<field index="comment_language"></field>
+				<field index="value">InverseFunctionalProperty</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:94" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">94</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:IrreflexiveProperty</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of irreflexive properties.</field>
+				<field index="comment_language"></field>
+				<field index="value">IrreflexiveProperty</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:93" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">93</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:NamedIndividual</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of named individuals.</field>
+				<field index="comment_language"></field>
+				<field index="value">NamedIndividual</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:92" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">92</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:NegativePropertyAssertion</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of negative property assertions.</field>
+				<field index="comment_language"></field>
+				<field index="value">NegativePropertyAssertion</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:91" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">91</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:Nothing</field>
+				<field index="label_language"></field>
+				<field index="comment">This is the empty class.</field>
+				<field index="comment_language"></field>
+				<field index="value">Nothing</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:90" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">90</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:ObjectProperty</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of object properties.</field>
+				<field index="comment_language"></field>
+				<field index="value">ObjectProperty</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:89" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">89</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:Ontology</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of ontologies.</field>
+				<field index="comment_language"></field>
+				<field index="value">Ontology</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:88" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">88</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:OntologyProperty</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of ontology properties.</field>
+				<field index="comment_language"></field>
+				<field index="value">OntologyProperty</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:87" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">87</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:ReflexiveProperty</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of reflexive properties.</field>
+				<field index="comment_language"></field>
+				<field index="value">ReflexiveProperty</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:86" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">86</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:Restriction</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of property restrictions.</field>
+				<field index="comment_language"></field>
+				<field index="value">Restriction</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:85" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">85</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:SymmetricProperty</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of symmetric properties.</field>
+				<field index="comment_language"></field>
+				<field index="value">SymmetricProperty</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:84" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">84</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:Thing</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of OWL individuals.</field>
+				<field index="comment_language"></field>
+				<field index="value">Thing</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:83" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">83</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">owl:TransitiveProperty</field>
+				<field index="label_language"></field>
+				<field index="comment">The class of transitive properties.</field>
+				<field index="comment_language"></field>
+				<field index="value">TransitiveProperty</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:82" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">82</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:allValuesFrom</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the class that a universal property restriction refers to.</field>
+				<field index="comment_language"></field>
+				<field index="value">allValuesFrom</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:81" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">81</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:annotatedProperty</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the predicate of an annotated axiom or annotated annotation.</field>
+				<field index="comment_language"></field>
+				<field index="value">owl:annotatedProperty</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:80" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">80</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:annotatedSource</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the subject of an annotated axiom or annotated annotation.</field>
+				<field index="comment_language"></field>
+				<field index="value">annotatedSource</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:79" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">79</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:annotatedTarget</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the object of an annotated axiom or annotated annotation.</field>
+				<field index="comment_language"></field>
+				<field index="value">annotatedTarget</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:78" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">78</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:assertionProperty</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the predicate of a negative property assertion.</field>
+				<field index="comment_language"></field>
+				<field index="value">assertionProperty</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:77" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">77</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:backwardCompatibleWith</field>
+				<field index="label_language"></field>
+				<field index="comment">The annotation property that indicates that a given ontology is backward compatible with another ontology. </field>
+				<field index="comment_language"></field>
+				<field index="value">backwardCompatibleWith</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:76" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">76</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:bottomDataProperty</field>
+				<field index="label_language"></field>
+				<field index="comment">The data property that does not relate any individual to any data value.</field>
+				<field index="comment_language"></field>
+				<field index="value">bottomDataProperty</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:75" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">75</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:bottomObjectProperty</field>
+				<field index="label_language"></field>
+				<field index="comment">The object property that does not relate any two individuals.</field>
+				<field index="comment_language"></field>
+				<field index="value">bottomObjectProperty</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:74" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">74</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:cardinality</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the cardinality of an exact cardinality restriction.</field>
+				<field index="comment_language"></field>
+				<field index="value">cardinality</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:73" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">73</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:complementOf</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines that a given class is the complement of another class.</field>
+				<field index="comment_language"></field>
+				<field index="value">complementOf</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:72" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">72</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:datatypeComplementOf</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines that a given data range is the complement of another data range with respect to the data domain.</field>
+				<field index="comment_language"></field>
+				<field index="value">datatypeComplementOf</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:71" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">71</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:deprecated</field>
+				<field index="label_language"></field>
+				<field index="comment">The annotation property that indicates that a given entity has been deprecated.</field>
+				<field index="comment_language"></field>
+				<field index="value">deprecated</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:70" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">70</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:differentFrom</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines that two given individuals are different.</field>
+				<field index="comment_language"></field>
+				<field index="value">differentFrom</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:69" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">69</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:disjointUnionOf</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines that a given class is equivalent to the disjoint union of a collection of other classes.</field>
+				<field index="comment_language"></field>
+				<field index="value">disjointUnionOf</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:68" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">68</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:disjointWith</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines that two given classes are disjoint.</field>
+				<field index="comment_language"></field>
+				<field index="value">disjointWith</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:67" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">67</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:distinctMembers</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the collection of pairwise different individuals in a owl:AllDifferent axiom.</field>
+				<field index="comment_language"></field>
+				<field index="value">distinctMembers</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:66" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">66</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:equivalentClass</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines that two given classes are equivalent, and that is used to specify datatype definitions.</field>
+				<field index="comment_language"></field>
+				<field index="value">equivalentClass</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:65" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">65</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:equivalentProperty</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines that two given properties are equivalent.</field>
+				<field index="comment_language"></field>
+				<field index="value">equivalentProperty</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:64" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">64</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:hasKey</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the collection of properties that jointly build a key.</field>
+				<field index="comment_language"></field>
+				<field index="value">hasKey</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:63" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">63</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:hasSelf</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the property that a self restriction refers to.</field>
+				<field index="comment_language"></field>
+				<field index="value">hasSelf</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:62" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">62</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:hasValue</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the individual that a has-value restriction refers to.</field>
+				<field index="comment_language"></field>
+				<field index="value">hasValue</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:61" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">61</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:imports</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that is used for importing other ontologies into a given ontology.</field>
+				<field index="comment_language"></field>
+				<field index="value">imports</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:60" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">60</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:incompatibleWith</field>
+				<field index="label_language"></field>
+				<field index="comment">The annotation property that indicates that a given ontology is incompatible with another ontology.</field>
+				<field index="comment_language"></field>
+				<field index="value">incompatibleWith</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:59" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">59</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:intersectionOf</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the collection of classes or data ranges that build an intersection.</field>
+				<field index="comment_language"></field>
+				<field index="value">intersectionOf</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:58" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">58</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:inverseOf</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines that two given properties are inverse.</field>
+				<field index="comment_language"></field>
+				<field index="value">inverseOf</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:57" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">57</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:maxCardinality</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the cardinality of a maximum cardinality restriction.</field>
+				<field index="comment_language"></field>
+				<field index="value">maxCardinality</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:56" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">56</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:maxQualifiedCardinality</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the cardinality of a maximum qualified cardinality restriction.</field>
+				<field index="comment_language"></field>
+				<field index="value">maxQualifiedCardinality</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:55" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">55</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:members</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the collection of members in either a owl:AllDifferent, owl:AllDisjointClasses or owl:AllDisjointProperties axiom.</field>
+				<field index="comment_language"></field>
+				<field index="value">members</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:54" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">54</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:minCardinality</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the cardinality of a minimum cardinality restriction.</field>
+				<field index="comment_language"></field>
+				<field index="value">minCardinality</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:53" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">53</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:minQualifiedCardinality</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the cardinality of a minimum qualified cardinality restriction.</field>
+				<field index="comment_language"></field>
+				<field index="value">minQualifiedCardinality</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:52" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">52</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:onClass</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the class that a qualified object cardinality restriction refers to.</field>
+				<field index="comment_language"></field>
+				<field index="value">onClass</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:51" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">51</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:onDataRange</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the data range that a qualified data cardinality restriction refers to.</field>
+				<field index="comment_language"></field>
+				<field index="value">onDataRange</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:50" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">50</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:onDatatype</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the datatype that a datatype restriction refers to.</field>
+				<field index="comment_language"></field>
+				<field index="value">onDatatype</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:49" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">49</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:oneOf</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the collection of individuals or data values that build an enumeration.</field>
+				<field index="comment_language"></field>
+				<field index="value">oneOf</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:48" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">48</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:onProperties</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the n-tuple of properties that a property restriction on an n-ary data range refers to.</field>
+				<field index="comment_language"></field>
+				<field index="value">onProperties</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:47" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">47</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:onProperty</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the collection of individuals or data values that build an enumeration.</field>
+				<field index="comment_language"></field>
+				<field index="value">onProperty</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:46" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">46</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:priorVersion</field>
+				<field index="label_language"></field>
+				<field index="comment">The annotation property that indicates the predecessor ontology of a given ontology.</field>
+				<field index="comment_language"></field>
+				<field index="value">priorVersion</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:45" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">45</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:propertyChainAxiom</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the n-tuple of properties that build a sub property chain of a given property.</field>
+				<field index="comment_language"></field>
+				<field index="value">propertyChainAxiom</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:propertyDisjointWith</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines that two given properties are disjoint.</field>
+				<field index="comment_language"></field>
+				<field index="value">propertyDisjointWith</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:43" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">43</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:qualifiedCardinality</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the cardinality of an exact qualified cardinality restriction.</field>
+				<field index="comment_language"></field>
+				<field index="value">qualifiedCardinality</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:42" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">42</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579626572</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:sameAs</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines that two given individuals are equal.</field>
+				<field index="comment_language"></field>
+				<field index="value">sameAs</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:41" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">41</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:someValuesFrom</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the class that an existential property restriction refers to.</field>
+				<field index="comment_language"></field>
+				<field index="value">someValuesFrom</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:40" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">40</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:sourceIndividual</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the subject of a negative property assertion.</field>
+				<field index="comment_language"></field>
+				<field index="value">sourceIndividual</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:39" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">39</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:targetIndividual</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the object of a negative object property assertion.</field>
+				<field index="comment_language"></field>
+				<field index="value">targetIndividual</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:38" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">38</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:targetValue</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the value of a negative data property assertion.</field>
+				<field index="comment_language"></field>
+				<field index="value">targetValue</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:37" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">37</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:topDataProperty</field>
+				<field index="label_language"></field>
+				<field index="comment">The data property that relates every individual to every data value.</field>
+				<field index="comment_language"></field>
+				<field index="value">topDataProperty</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:36" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">36</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:topObjectProperty</field>
+				<field index="label_language"></field>
+				<field index="comment">The object property that relates every two individuals.</field>
+				<field index="comment_language"></field>
+				<field index="value">topObjectProperty</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:35" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">35</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:unionOf</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the collection of classes or data ranges that build a union.</field>
+				<field index="comment_language"></field>
+				<field index="value">unionOf</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:34" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">34</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:versionInfo</field>
+				<field index="label_language"></field>
+				<field index="comment">The annotation property that provides version information for an ontology or another OWL construct.</field>
+				<field index="comment_language"></field>
+				<field index="value">versionInfo</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:33" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">33</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:versionIRI</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that identifies the version IRI of an ontology.</field>
+				<field index="comment_language"></field>
+				<field index="value">versionIRI</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:32" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">32</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1579451800</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">owl:withRestrictions</field>
+				<field index="label_language"></field>
+				<field index="comment">The property that determines the collection of facet-value pairs that define a datatype restriction.</field>
+				<field index="comment_language"></field>
+				<field index="value">withRestrictions</field>
+				<field index="namespace" type="integer">3</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_namespace:3" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">3</field>
+				<field index="pid" type="integer">14</field>
+				<field index="tstamp" type="integer">1604249981</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="prefix">owl</field>
+				<field index="iri">http://www.w3.org/2002/07/owl#</field>
+			</fieldlist>
+			<related index="rels" type="array"></related>
+		</tablerow>
+	</records>
+</T3RecordDocument>

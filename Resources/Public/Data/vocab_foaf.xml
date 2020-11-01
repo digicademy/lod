@@ -1,0 +1,3723 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3RecordDocument>
+	<header type="array">
+		<XMLversion>1.0</XMLversion>
+		<meta type="array">
+			<title>FOAF</title>
+			<description>Contains the FOAF vocabulary</description>
+			<notes></notes>
+			<packager_username>da20202099</packager_username>
+			<packager_name></packager_name>
+			<packager_email></packager_email>
+			<TYPO3_version>9.5.13</TYPO3_version>
+			<created>Sunday  1. November 2020</created>
+		</meta>
+		<static_tables index="relStaticTables" type="array"></static_tables>
+		<excludeMap type="array"></excludeMap>
+		<softrefCfg type="array"></softrefCfg>
+		<extensionDependencies type="array"></extensionDependencies>
+		<charset>utf-8</charset>
+		<pagetree type="array">
+			<node index="9" type="array">
+				<uid>9</uid>
+			</node>
+		</pagetree>
+		<records type="array">
+			<table index="pages" type="array">
+				<rec index="9" type="array">
+					<uid>9</uid>
+					<pid>7</pid>
+					<title>foaf</title>
+					<relations index="rels" type="array"></relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+			</table>
+			<table index="tx_lod_domain_model_iri" type="array">
+				<rec index="44422" type="array">
+					<uid>44422</uid>
+					<pid>9</pid>
+					<title>foaf:Agent</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44419" type="array">
+					<uid>44419</uid>
+					<pid>9</pid>
+					<title>foaf:Document</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44421" type="array">
+					<uid>44421</uid>
+					<pid>9</pid>
+					<title>foaf:Group</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44424" type="array">
+					<uid>44424</uid>
+					<pid>9</pid>
+					<title>foaf:Image</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44417" type="array">
+					<uid>44417</uid>
+					<pid>9</pid>
+					<title>foaf:LabelProperty</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44426" type="array">
+					<uid>44426</uid>
+					<pid>9</pid>
+					<title>foaf:OnlineAccount</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44429" type="array">
+					<uid>44429</uid>
+					<pid>9</pid>
+					<title>foaf:OnlineChatAccount</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44428" type="array">
+					<uid>44428</uid>
+					<pid>9</pid>
+					<title>foaf:OnlineEcommerceAccount</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44427" type="array">
+					<uid>44427</uid>
+					<pid>9</pid>
+					<title>foaf:OnlineGamingAccount</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44420" type="array">
+					<uid>44420</uid>
+					<pid>9</pid>
+					<title>foaf:Organization</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44418" type="array">
+					<uid>44418</uid>
+					<pid>9</pid>
+					<title>foaf:Person</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44425" type="array">
+					<uid>44425</uid>
+					<pid>9</pid>
+					<title>foaf:PersonalProfileDocument</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44423" type="array">
+					<uid>44423</uid>
+					<pid>9</pid>
+					<title>foaf:Project</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44482" type="array">
+					<uid>44482</uid>
+					<pid>9</pid>
+					<title>foaf:account</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44485" type="array">
+					<uid>44485</uid>
+					<pid>9</pid>
+					<title>foaf:accountName</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44484" type="array">
+					<uid>44484</uid>
+					<pid>9</pid>
+					<title>foaf:accountServiceHomepage</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44489" type="array">
+					<uid>44489</uid>
+					<pid>9</pid>
+					<title>foaf:age</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44440" type="array">
+					<uid>44440</uid>
+					<pid>9</pid>
+					<title>foaf:aimChatID</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44436" type="array">
+					<uid>44436</uid>
+					<pid>9</pid>
+					<title>foaf:based_near</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44488" type="array">
+					<uid>44488</uid>
+					<pid>9</pid>
+					<title>foaf:birthday</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44472" type="array">
+					<uid>44472</uid>
+					<pid>9</pid>
+					<title>foaf:currentProject</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44461" type="array">
+					<uid>44461</uid>
+					<pid>9</pid>
+					<title>foaf:depiction</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44462" type="array">
+					<uid>44462</uid>
+					<pid>9</pid>
+					<title>foaf:depicts</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44434" type="array">
+					<uid>44434</uid>
+					<pid>9</pid>
+					<title>foaf:dnaChecksum</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44450" type="array">
+					<uid>44450</uid>
+					<pid>9</pid>
+					<title>foaf:family_name</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44451" type="array">
+					<uid>44451</uid>
+					<pid>9</pid>
+					<title>foaf:familyName</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44446" type="array">
+					<uid>44446</uid>
+					<pid>9</pid>
+					<title>foaf:firstName</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44478" type="array">
+					<uid>44478</uid>
+					<pid>9</pid>
+					<title>foaf:focus</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44474" type="array">
+					<uid>44474</uid>
+					<pid>9</pid>
+					<title>foaf:fundedBy</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44433" type="array">
+					<uid>44433</uid>
+					<pid>9</pid>
+					<title>foaf:geekcode</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44432" type="array">
+					<uid>44432</uid>
+					<pid>9</pid>
+					<title>foaf:gender</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44448" type="array">
+					<uid>44448</uid>
+					<pid>9</pid>
+					<title>foaf:givenname</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44483" type="array">
+					<uid>44483</uid>
+					<pid>9</pid>
+					<title>foaf:holdsAccount</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44453" type="array">
+					<uid>44453</uid>
+					<pid>9</pid>
+					<title>foaf:homepage</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44442" type="array">
+					<uid>44442</uid>
+					<pid>9</pid>
+					<title>foaf:icqChatID</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44460" type="array">
+					<uid>44460</uid>
+					<pid>9</pid>
+					<title>foaf:img</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44469" type="array">
+					<uid>44469</uid>
+					<pid>9</pid>
+					<title>foaf:interest</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44479" type="array">
+					<uid>44479</uid>
+					<pid>9</pid>
+					<title>foaf:isPrimaryTopicOf</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44439" type="array">
+					<uid>44439</uid>
+					<pid>9</pid>
+					<title>foaf:jabberID</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44468" type="array">
+					<uid>44468</uid>
+					<pid>9</pid>
+					<title>foaf:knows</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44447" type="array">
+					<uid>44447</uid>
+					<pid>9</pid>
+					<title>foaf:lastName</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44475" type="array">
+					<uid>44475</uid>
+					<pid>9</pid>
+					<title>foaf:logo</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44458" type="array">
+					<uid>44458</uid>
+					<pid>9</pid>
+					<title>foaf:made</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44459" type="array">
+					<uid>44459</uid>
+					<pid>9</pid>
+					<title>foaf:maker</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44430" type="array">
+					<uid>44430</uid>
+					<pid>9</pid>
+					<title>foaf:mbox</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44431" type="array">
+					<uid>44431</uid>
+					<pid>9</pid>
+					<title>foaf:mbox_sha1sum</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44486" type="array">
+					<uid>44486</uid>
+					<pid>9</pid>
+					<title>foaf:member</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44487" type="array">
+					<uid>44487</uid>
+					<pid>9</pid>
+					<title>foaf:membershipClass</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44444" type="array">
+					<uid>44444</uid>
+					<pid>9</pid>
+					<title>foaf:msnChatID</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44464" type="array">
+					<uid>44464</uid>
+					<pid>9</pid>
+					<title>foaf:myersBriggs</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44445" type="array">
+					<uid>44445</uid>
+					<pid>9</pid>
+					<title>foaf:name</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44438" type="array">
+					<uid>44438</uid>
+					<pid>9</pid>
+					<title>foaf:nick</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44455" type="array">
+					<uid>44455</uid>
+					<pid>9</pid>
+					<title>foaf:openid</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44480" type="array">
+					<uid>44480</uid>
+					<pid>9</pid>
+					<title>foaf:page</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44473" type="array">
+					<uid>44473</uid>
+					<pid>9</pid>
+					<title>foaf:pastProject</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44452" type="array">
+					<uid>44452</uid>
+					<pid>9</pid>
+					<title>foaf:phone</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44457" type="array">
+					<uid>44457</uid>
+					<pid>9</pid>
+					<title>foaf:plan</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44477" type="array">
+					<uid>44477</uid>
+					<pid>9</pid>
+					<title>foaf:primaryTopic</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44471" type="array">
+					<uid>44471</uid>
+					<pid>9</pid>
+					<title>foaf:publications</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44467" type="array">
+					<uid>44467</uid>
+					<pid>9</pid>
+					<title>foaf:schoolHomepage</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44435" type="array">
+					<uid>44435</uid>
+					<pid>9</pid>
+					<title>foaf:sha1</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44441" type="array">
+					<uid>44441</uid>
+					<pid>9</pid>
+					<title>foaf:skypeID</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44490" type="array">
+					<uid>44490</uid>
+					<pid>9</pid>
+					<title>foaf:status</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44449" type="array">
+					<uid>44449</uid>
+					<pid>9</pid>
+					<title>foaf:surname</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44481" type="array">
+					<uid>44481</uid>
+					<pid>9</pid>
+					<title>foaf:theme</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44463" type="array">
+					<uid>44463</uid>
+					<pid>9</pid>
+					<title>foaf:thumbnail</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44456" type="array">
+					<uid>44456</uid>
+					<pid>9</pid>
+					<title>foaf:tipjar</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44437" type="array">
+					<uid>44437</uid>
+					<pid>9</pid>
+					<title>foaf:title</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44476" type="array">
+					<uid>44476</uid>
+					<pid>9</pid>
+					<title>foaf:topic</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44470" type="array">
+					<uid>44470</uid>
+					<pid>9</pid>
+					<title>foaf:topic_interest</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44454" type="array">
+					<uid>44454</uid>
+					<pid>9</pid>
+					<title>foaf:weblog</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44466" type="array">
+					<uid>44466</uid>
+					<pid>9</pid>
+					<title>foaf:workInfoHomepage</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44465" type="array">
+					<uid>44465</uid>
+					<pid>9</pid>
+					<title>foaf:workplaceHomepage</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="44443" type="array">
+					<uid>44443</uid>
+					<pid>9</pid>
+					<title>foaf:yahooChatID</title>
+					<relations index="rels" type="array">
+						<element index="tx_lod_domain_model_namespace:8" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+			</table>
+			<table index="tx_lod_domain_model_namespace" type="array">
+				<rec index="8" type="array">
+					<uid>8</uid>
+					<pid>9</pid>
+					<title>foaf, http://xmlns.com/foaf/0.1/</title>
+					<relations index="rels" type="array"></relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+			</table>
+		</records>
+		<pid_lookup type="array">
+			<page_contents index="7" type="array">
+				<table index="pages" type="array">
+					<item index="9">1</item>
+				</table>
+			</page_contents>
+			<page_contents index="9" type="array">
+				<table index="tx_lod_domain_model_iri" type="array">
+					<item index="44422">1</item>
+					<item index="44419">1</item>
+					<item index="44421">1</item>
+					<item index="44424">1</item>
+					<item index="44417">1</item>
+					<item index="44426">1</item>
+					<item index="44429">1</item>
+					<item index="44428">1</item>
+					<item index="44427">1</item>
+					<item index="44420">1</item>
+					<item index="44418">1</item>
+					<item index="44425">1</item>
+					<item index="44423">1</item>
+					<item index="44482">1</item>
+					<item index="44485">1</item>
+					<item index="44484">1</item>
+					<item index="44489">1</item>
+					<item index="44440">1</item>
+					<item index="44436">1</item>
+					<item index="44488">1</item>
+					<item index="44472">1</item>
+					<item index="44461">1</item>
+					<item index="44462">1</item>
+					<item index="44434">1</item>
+					<item index="44450">1</item>
+					<item index="44451">1</item>
+					<item index="44446">1</item>
+					<item index="44478">1</item>
+					<item index="44474">1</item>
+					<item index="44433">1</item>
+					<item index="44432">1</item>
+					<item index="44448">1</item>
+					<item index="44483">1</item>
+					<item index="44453">1</item>
+					<item index="44442">1</item>
+					<item index="44460">1</item>
+					<item index="44469">1</item>
+					<item index="44479">1</item>
+					<item index="44439">1</item>
+					<item index="44468">1</item>
+					<item index="44447">1</item>
+					<item index="44475">1</item>
+					<item index="44458">1</item>
+					<item index="44459">1</item>
+					<item index="44430">1</item>
+					<item index="44431">1</item>
+					<item index="44486">1</item>
+					<item index="44487">1</item>
+					<item index="44444">1</item>
+					<item index="44464">1</item>
+					<item index="44445">1</item>
+					<item index="44438">1</item>
+					<item index="44455">1</item>
+					<item index="44480">1</item>
+					<item index="44473">1</item>
+					<item index="44452">1</item>
+					<item index="44457">1</item>
+					<item index="44477">1</item>
+					<item index="44471">1</item>
+					<item index="44467">1</item>
+					<item index="44435">1</item>
+					<item index="44441">1</item>
+					<item index="44490">1</item>
+					<item index="44449">1</item>
+					<item index="44481">1</item>
+					<item index="44463">1</item>
+					<item index="44456">1</item>
+					<item index="44437">1</item>
+					<item index="44476">1</item>
+					<item index="44470">1</item>
+					<item index="44454">1</item>
+					<item index="44466">1</item>
+					<item index="44465">1</item>
+					<item index="44443">1</item>
+				</table>
+				<table index="tx_lod_domain_model_namespace" type="array">
+					<item index="8">1</item>
+				</table>
+			</page_contents>
+		</pid_lookup>
+	</header>
+	<records type="array">
+		<tablerow index="pages:9" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">9</field>
+				<field index="pid" type="integer">7</field>
+				<field index="tstamp" type="integer">1604249819</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="starttime" type="integer">0</field>
+				<field index="endtime" type="integer">0</field>
+				<field index="fe_group"></field>
+				<field index="sorting" type="integer">128</field>
+				<field index="rowDescription" type="NULL"></field>
+				<field index="editlock" type="integer">0</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_state" type="NULL"></field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="l10n_diffsource">a:14:{s:7:&quot;doktype&quot;;N;s:5:&quot;title&quot;;N;s:4:&quot;slug&quot;;N;s:14:&quot;backend_layout&quot;;N;s:25:&quot;backend_layout_next_level&quot;;N;s:6:&quot;module&quot;;N;s:5:&quot;media&quot;;N;s:17:&quot;tsconfig_includes&quot;;N;s:8:&quot;TSconfig&quot;;N;s:6:&quot;hidden&quot;;N;s:8:&quot;editlock&quot;;N;s:10:&quot;categories&quot;;N;s:14:&quot;rowDescription&quot;;N;s:3:&quot;iri&quot;;N;}</field>
+				<field index="t3ver_oid" type="integer">0</field>
+				<field index="t3ver_id" type="integer">0</field>
+				<field index="t3ver_label"></field>
+				<field index="t3ver_wsid" type="integer">0</field>
+				<field index="t3ver_state" type="integer">0</field>
+				<field index="t3ver_stage" type="integer">0</field>
+				<field index="t3ver_count" type="integer">0</field>
+				<field index="t3ver_tstamp" type="integer">0</field>
+				<field index="t3ver_move_id" type="integer">0</field>
+				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">0</field>
+				<field index="perms_user" type="integer">31</field>
+				<field index="perms_group" type="integer">27</field>
+				<field index="perms_everybody" type="integer">1</field>
+				<field index="title">foaf</field>
+				<field index="slug">/og</field>
+				<field index="doktype" type="integer">254</field>
+				<field index="TSconfig">#&lt;INCLUDE_TYPOSCRIPT: source=&quot;FILE:fileadmin/vocab/entities.txt&quot;&gt;
+&lt;INCLUDE_TYPOSCRIPT: source=&quot;FILE:fileadmin/vocab/properties.txt&quot;&gt;
+
+mod.web_xmlimport.destination.tx_lod_domain_model_iri.fields.namespace.value = 8
+mod.web_xmlimport.destination.tx_lod_domain_model_iri.fields.label.wrap = foaf:|</field>
+				<field index="is_siteroot" type="integer">0</field>
+				<field index="php_tree_stop" type="integer">0</field>
+				<field index="url"></field>
+				<field index="shortcut" type="integer">0</field>
+				<field index="shortcut_mode" type="integer">0</field>
+				<field index="subtitle"></field>
+				<field index="layout" type="integer">0</field>
+				<field index="target"></field>
+				<field index="media" type="integer">0</field>
+				<field index="lastUpdated" type="integer">0</field>
+				<field index="keywords" type="NULL"></field>
+				<field index="cache_timeout" type="integer">0</field>
+				<field index="cache_tags"></field>
+				<field index="newUntil" type="integer">0</field>
+				<field index="description" type="NULL"></field>
+				<field index="no_search" type="integer">0</field>
+				<field index="SYS_LASTCHANGED" type="integer">0</field>
+				<field index="abstract" type="NULL"></field>
+				<field index="module"></field>
+				<field index="extendToSubpages" type="integer">0</field>
+				<field index="author"></field>
+				<field index="author_email"></field>
+				<field index="nav_title"></field>
+				<field index="nav_hide" type="integer">0</field>
+				<field index="content_from_pid" type="integer">0</field>
+				<field index="mount_pid" type="integer">0</field>
+				<field index="mount_pid_ol" type="integer">0</field>
+				<field index="alias"></field>
+				<field index="l18n_cfg" type="integer">0</field>
+				<field index="fe_login_mode" type="integer">0</field>
+				<field index="backend_layout"></field>
+				<field index="backend_layout_next_level"></field>
+				<field index="tsconfig_includes"></field>
+				<field index="legacy_overlay_uid" type="integer">0</field>
+				<field index="tx_impexp_origuid" type="integer">9</field>
+				<field index="seo_title"></field>
+				<field index="no_index" type="integer">0</field>
+				<field index="no_follow" type="integer">0</field>
+				<field index="og_title"></field>
+				<field index="og_description" type="NULL"></field>
+				<field index="og_image" type="integer">0</field>
+				<field index="twitter_title"></field>
+				<field index="twitter_description" type="NULL"></field>
+				<field index="twitter_image" type="integer">0</field>
+				<field index="canonical_link"></field>
+				<field index="categories" type="integer">0</field>
+				<field index="iri" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array"></related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44422" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44422</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249810</field>
+				<field index="crdate" type="integer">1604249810</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">foaf:Agent</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">Agent</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44419" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44419</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249810</field>
+				<field index="crdate" type="integer">1604249810</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">foaf:Document</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">Document</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44421" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44421</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249810</field>
+				<field index="crdate" type="integer">1604249810</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">foaf:Group</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">Group</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44424" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44424</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249810</field>
+				<field index="crdate" type="integer">1604249810</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">foaf:Image</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">Image</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44417" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44417</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249810</field>
+				<field index="crdate" type="integer">1604249810</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">foaf:LabelProperty</field>
+				<field index="label_language">en</field>
+				<field index="comment">A foaf:LabelProperty is any RDF property with texual values that serve as labels.</field>
+				<field index="comment_language">en</field>
+				<field index="value">LabelProperty</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44426" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44426</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249810</field>
+				<field index="crdate" type="integer">1604249810</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">foaf:OnlineAccount</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">OnlineAccount</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44429" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44429</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249810</field>
+				<field index="crdate" type="integer">1604249810</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">foaf:OnlineChatAccount</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">OnlineChatAccount</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44428" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44428</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249810</field>
+				<field index="crdate" type="integer">1604249810</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">foaf:OnlineEcommerceAccount</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">OnlineEcommerceAccount</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44427" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44427</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249810</field>
+				<field index="crdate" type="integer">1604249810</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">foaf:OnlineGamingAccount</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">OnlineGamingAccount</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44420" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44420</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249810</field>
+				<field index="crdate" type="integer">1604249810</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">foaf:Organization</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">Organization</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44418" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44418</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249810</field>
+				<field index="crdate" type="integer">1604249810</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">foaf:Person</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">Person</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44425" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44425</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249810</field>
+				<field index="crdate" type="integer">1604249810</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">foaf:PersonalProfileDocument</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">PersonalProfileDocument</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44423" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44423</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249810</field>
+				<field index="crdate" type="integer">1604249810</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">1</field>
+				<field index="label">foaf:Project</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">Project</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44482" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44482</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:account</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">account</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44485" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44485</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:accountName</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">accountName</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44484" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44484</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:accountServiceHomepage</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">accountServiceHomepage</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44489" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44489</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:age</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">age</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44440" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44440</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:aimChatID</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">aimChatID</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44436" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44436</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:based_near</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">based_near</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44488" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44488</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:birthday</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">birthday</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44472" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44472</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:currentProject</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">currentProject</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44461" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44461</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:depiction</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">depiction</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44462" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44462</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:depicts</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">depicts</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44434" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44434</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:dnaChecksum</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">dnaChecksum</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44450" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44450</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:family_name</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">family_name</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44451" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44451</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:familyName</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">familyName</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44446" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44446</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:firstName</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">firstName</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44478" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44478</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:focus</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">focus</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44474" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44474</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:fundedBy</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">fundedBy</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44433" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44433</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:geekcode</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">geekcode</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44432" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44432</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:gender</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">gender</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44448" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44448</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:givenname</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">givenname</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44483" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44483</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:holdsAccount</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">holdsAccount</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44453" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44453</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:homepage</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">homepage</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44442" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44442</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:icqChatID</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">icqChatID</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44460" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44460</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:img</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">img</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44469" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44469</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:interest</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">interest</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44479" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44479</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:isPrimaryTopicOf</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">isPrimaryTopicOf</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44439" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44439</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:jabberID</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">jabberID</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44468" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44468</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:knows</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">knows</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44447" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44447</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:lastName</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">lastName</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44475" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44475</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:logo</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">logo</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44458" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44458</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:made</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">made</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44459" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44459</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:maker</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">maker</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44430" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44430</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:mbox</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">mbox</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44431" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44431</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:mbox_sha1sum</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">mbox_sha1sum</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44486" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44486</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:member</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">member</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44487" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44487</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:membershipClass</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">membershipClass</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44444" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44444</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:msnChatID</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">msnChatID</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44464" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44464</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:myersBriggs</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">myersBriggs</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44445" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44445</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:name</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">name</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44438" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44438</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:nick</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">nick</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44455" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44455</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:openid</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">openid</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44480" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44480</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:page</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">page</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44473" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44473</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:pastProject</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">pastProject</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44452" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44452</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:phone</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">phone</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44457" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44457</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:plan</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">plan</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44477" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44477</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:primaryTopic</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">primaryTopic</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44471" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44471</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:publications</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">publications</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44467" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44467</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:schoolHomepage</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">schoolHomepage</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44435" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44435</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:sha1</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">sha1</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44441" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44441</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:skypeID</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">skypeID</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44490" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44490</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:status</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">status</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44449" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44449</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:surname</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">surname</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44481" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44481</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:theme</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">theme</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44463" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44463</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:thumbnail</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">thumbnail</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44456" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44456</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:tipjar</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">tipjar</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44437" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44437</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:title</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">title</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44476" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44476</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:topic</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">topic</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44470" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44470</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:topic_interest</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">topic_interest</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44454" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44454</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:weblog</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">weblog</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44466" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44466</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:workInfoHomepage</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">workInfoHomepage</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44465" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44465</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:workplaceHomepage</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">workplaceHomepage</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_iri:44443" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">44443</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249850</field>
+				<field index="crdate" type="integer">1604249850</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="type" type="integer">2</field>
+				<field index="label">foaf:yahooChatID</field>
+				<field index="label_language">en</field>
+				<field index="comment"></field>
+				<field index="comment_language">en</field>
+				<field index="value">yahooChatID</field>
+				<field index="namespace" type="integer">8</field>
+				<field index="representations" type="integer">0</field>
+				<field index="record"></field>
+				<field index="record_uid" type="integer">0</field>
+				<field index="record_tablename"></field>
+				<field index="statements" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="namespace" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>tx_lod_domain_model_namespace</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_lod_domain_model_namespace:8" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">8</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1604249956</field>
+				<field index="crdate" type="integer">1579451800</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="prefix">foaf</field>
+				<field index="iri">http://xmlns.com/foaf/0.1/</field>
+			</fieldlist>
+			<related index="rels" type="array"></related>
+		</tablerow>
+	</records>
+</T3RecordDocument>
