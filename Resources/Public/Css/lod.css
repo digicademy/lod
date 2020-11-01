@@ -1,0 +1,121 @@
+.navbar {
+	list-style: none;
+	margin-left: 0;
+}
+
+.navbar li {
+	display: inline-block;
+}
+/*
+.navbar li:after {
+	content: "|";
+	display: inline;
+	margin: 0 0.3em;
+	padding: 0;
+}
+
+.navbar li:first-child:after,
+.navbar li:last-child:after {
+	content: "";
+	margin: 0;
+}
+*/
+.pagination {
+	float: left;
+}
+
+.resources-per-page {
+	float: right;
+}
+
+legend {
+	font-weight: bold;
+}
+
+#search {
+	clear: both;
+}
+
+.skip {
+	position: absolute !important;
+	top: -9999px !important;
+	left: -9999px !important;
+}
+
+.button {
+	border-radius: 3.6px;
+	display: inline-block;
+	padding: 9.9px
+}
+
+.button {
+	background: #f2f2f2;
+	color: #191919;
+	cursor: pointer;
+	display: inline-block;
+	margin: 20px 0;
+	padding: 6px 24px;
+	text-align: center
+}
+
+.button:hover, .button.active {
+	background: #d9d9d9;
+	color: #000;
+	text-decoration: none;
+}
+
+.button.submit {
+	background: #275a90;
+	color: #fff
+}
+
+.button.sorting {
+	margin: 4px 0 4px 12px;
+	padding: 4px 14px;
+	vertical-align: middle;
+}
+
+.button.sorting + .button.sorting {
+	margin-left: 0;
+}
+
+.button.submit:hover {
+	background: #173454;
+	color: #bfbfbf
+}
+
+label + * {
+	page-break-before: unset !important;
+}
+
+#search {
+	float: left;
+	width: 40%;
+}
+
+#statementFilter {
+	float: right;
+	width: 60%;
+}
+
+th {
+	vertical-align: middle;
+}
+
+.vocabulary h1, .vocabulary h2, .vocabulary h3,
+.vocabulary h4, .vocabulary h5 {
+	color: #0F63A1;
+}
+
+.vocabulary .button {
+	margin-right: 4px;
+}
+
+.term th, .term td  {
+	border-bottom-width: 1px;
+}
+
+.vocabulary .iri, .vocabulary .iri a {
+	color: #971C1C;
+	font-family: monospace;
+}

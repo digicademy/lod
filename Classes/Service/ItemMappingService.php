@@ -27,12 +27,14 @@ namespace Digicademy\Lod\Service;
  ***************************************************************/
 
 use Digicademy\Lod\Domain\Model\Record;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Backend\Form\FormDataProvider\TcaRecordTitle;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**
  * Service to load and map records from generic TCA group fields
@@ -110,21 +112,20 @@ class ItemMappingService
 
         // if class and tablename exist perform MM query for items, map them and add them to the object storage
         if ($tablename && $uid) {
-// @TODO: Doctrine switch for 8.7 and 9.5
-            $row = $this->getDatabaseConnection()->exec_SELECTgetRows(
-                '*',
-                $tablename,
-                'uid=' . (int) $uid,
-                '',
-                '',
-                '1'
-            );
+
+            $row = GeneralUtility::makeInstance(ConnectionPool::class)
+                ->getConnectionForTable($tablename)
+                ->select(
+                    ['*'], // fields
+                    $tablename, // from
+                    [ 'uid' => (int)$uid ] // where
+                )->fetch();
 
             if ($row) {
                 $result = [
                     'tablename'  => $tablename,
                     'uid' => $uid,
-                    'row' => $row[0]
+                    'row' => $row
                 ];
             }
         }
@@ -157,22 +158,14 @@ class ItemMappingService
 
         // if a class name exists, map row to domain object
         if ($className) {
-            $dataMapper = GeneralUtility::makeInstance(DataMapper::class);
+            // from 9.5 onwards we (irritatingly) need the object manager otherwise DI does not seem to work
+            $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+            $dataMapper = $objectManager->get(DataMapper::class);
             $mappedRecord = $dataMapper->map($className, [$row]);
             $result = $mappedRecord[0];
         }
 
         return $result;
-    }
-
-    /**
-     * Gets the database object.
-     *
-     * @return \TYPO3\CMS\Core\Database\DatabaseConnection
-     */
-    protected function getDatabaseConnection()
-    {
-        return $GLOBALS['TYPO3_DB'];
     }
 
     /**

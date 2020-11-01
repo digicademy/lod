@@ -15,6 +15,6 @@ rdfxml {
     }
 }
 
-[globalVar = GP : type = 2004]
+[getTSFE().type == 2004]
 rdfxml.10 < lib.tx_lod.plugin
 [global]

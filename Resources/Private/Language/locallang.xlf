@@ -32,11 +32,38 @@
             <trans-unit id="api.list.resource">
                 <source>Resource</source>
             </trans-unit>
+            <trans-unit id="api.list.label">
+                <source>Label</source>
+            </trans-unit>
             <trans-unit id="api.list.representation">
                 <source>Representation</source>
             </trans-unit>
             <trans-unit id="api.list.type">
                 <source>Type</source>
+            </trans-unit>
+            <trans-unit id="api.list.searchform.legend">
+                <source>Search resources by label, comment or value</source>
+            </trans-unit>
+            <trans-unit id="api.list.searchform.keywords">
+                <source>Keywords</source>
+            </trans-unit>
+            <trans-unit id="api.list.searchform.submit">
+                <source>Submit</source>
+            </trans-unit>
+            <trans-unit id="api.list.statementFilter.legend">
+                <source>Filter resources by statement patterns</source>
+            </trans-unit>
+            <trans-unit id="api.list.statementFilter.subject">
+                <source>Subject</source>
+            </trans-unit>
+            <trans-unit id="api.list.statementFilter.predicate">
+                <source>Predicate</source>
+            </trans-unit>
+            <trans-unit id="api.list.statementFilter.object">
+                <source>Object</source>
+            </trans-unit>
+            <trans-unit id="api.list.statementFilter.submit">
+                <source>Submit</source>
             </trans-unit>
             <trans-unit id="api.show.statements">
                 <source>Statements</source>
@@ -44,9 +71,27 @@
             <trans-unit id="api.show.record">
                 <source>Record</source>
             </trans-unit>
+            <trans-unit id="api.show.back">
+                <source>Back</source>
+            </trans-unit>
+            <trans-unit id="api.show.graph">
+                <source>Graph</source>
+            </trans-unit>
+            <trans-unit id="api.show.graph.statement.subject">
+                <source>Subject</source>
+            </trans-unit>
+            <trans-unit id="api.show.graph.statement.predicate">
+                <source>Predicate</source>
+            </trans-unit>
+            <trans-unit id="api.show.graph.statement.object">
+                <source>Object</source>
+            </trans-unit>
 
             <trans-unit id="vocabulary.summary">
                 <source>Terms summary</source>
+            </trans-unit>
+            <trans-unit id="vocabulary.iri">
+                <source>IRI</source>
             </trans-unit>
             <trans-unit id="vocabulary.classes">
                 <source>Classes</source>

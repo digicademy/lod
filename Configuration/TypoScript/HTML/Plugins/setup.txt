@@ -7,5 +7,5 @@ plugin.tx_lod {
     }
 }
 
-# [globalVar = GP : type = 1991]
+# [getTSFE().type == 1991]
 # [global]

@@ -1,4 +1,4 @@
-{namespace lod = Digicademy\Lod\ViewHelpers}
+{namespace lod = Digicademy\Lod\ViewHelpers}{escaping off}
 <f:switch expression="{lod:DetermineEntity(entity : statement.object)}">
 <f:case value="Digicademy\Lod\Domain\Model\Iri">
   <f:if condition="{statement.predicate.namespace.prefix}{statement.predicate.value} == 'rdftype'">
@@ -18,7 +18,7 @@
     "@value": {lod:EscapeLiteral(literal : statement.object.value, format : 'jsonld')}
   <f:format.raw>}</f:format.raw>
 </f:case>
-<f:case default="Digicademy\Lod\Domain\Model\Bnode">
+<f:case value="Digicademy\Lod\Domain\Model\Bnode">
   "{statement.predicate.namespace.prefix}:{statement.predicate.value}_ext_lod_s{statement.uid}": <f:format.raw>{</f:format.raw>
 <f:for each="{lod:FetchBnode(bnode : statement.object)}" as="bnodeStatement" iteration="bnodeIterator">
   <f:render partial="Common/Object" arguments="{statement : bnodeStatement}" /><f:if condition="{bnodeIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if>

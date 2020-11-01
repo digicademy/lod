@@ -26,11 +26,11 @@ namespace Digicademy\Lod\Service;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Database\QueryGenerator;
-use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
+use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 class TableTrackingService
 {
@@ -76,6 +76,10 @@ class TableTrackingService
         $dataMap = [];
         $cmdMap = [];
 
+        // create contentObjectRenderer for TypoScript functionality during record creation
+        $contentObjectRenderer = GeneralUtility::makeInstance(ContentObjectRenderer::class);
+        $contentObjectRenderer->start($this->record, $this->table);
+
         // first of all check if IRI exists for the current record
         if ($existingIRIs) {
             // action update and hideUnhide = 1 is set
@@ -116,26 +120,164 @@ class TableTrackingService
             // in case of an 'updated' tracked record that has no iri (this is why we are in else) also leads to iri creation
             // a copied tracked record is the same as a new record - no iri will yet exists with a 'tablename_uid' in the iri record field
             if ($this->action == 'new' || $this->action == 'update') {
-                $uid = 'NEW_' . uniqid('');
-                if ($this->configuration['createOnPid']) {
-                    $pid = (int)$this->configuration['createOnPid'];
+
+                $iriUid = 'NEW' . uniqid('');
+
+                if ($this->configuration['iri.']['pid']) {
+                    $pid = (int)$contentObjectRenderer->stdWrap($this->configuration['iri.']['pid'], $this->configuration['iri.']['pid.']);
                 } else {
                     $pid = (int)$this->record['pid'];
                 }
-                ($this->configuration['createType']) ? $type = (int)$this->configuration['createType'] : $type = 1;
-                $dataMap = array(
-                    'tx_lod_domain_model_iri' => array(
-                        $uid => [
+
+                ($this->configuration['iri.']['type'] || $this->configuration['iri.']['type.']) ?
+                    $type = (int)$contentObjectRenderer->stdWrap($this->configuration['iri.']['type'], $this->configuration['iri.']['type.']) : $type = 1;
+
+                ($this->configuration['iri.']['namespace'] || $this->configuration['iri.']['namespace.']) ?
+                    $namespace = (int)$contentObjectRenderer->stdWrap($this->configuration['iri.']['namespace'], $this->configuration['iri.']['namespace.']) : $namespace = 0;
+
+                ($this->configuration['iri.']['label'] || $this->configuration['iri.']['label.']) ?
+                    $label = $contentObjectRenderer->stdWrap($this->configuration['iri.']['label'], $this->configuration['iri.']['label.']) : $label = '';
+
+                ($this->configuration['iri.']['label_language'] || $this->configuration['iri.']['label_language.']) ?
+                    $label_language = (int)$contentObjectRenderer->stdWrap($this->configuration['iri.']['label_language'], $this->configuration['iri.']['label_language.']) : $label_language = 0;
+
+                ($this->configuration['iri.']['comment'] || $this->configuration['iri.']['comment.']) ?
+                    $comment = $contentObjectRenderer->stdWrap($this->configuration['iri.']['comment'], $this->configuration['iri.']['comment.']) : $comment = '';
+
+                ($this->configuration['iri.']['comment_language'] || $this->configuration['iri.']['comment_language.']) ?
+                    $comment_language = (int)$contentObjectRenderer->stdWrap($this->configuration['iri.']['comment_language'], $this->configuration['iri.']['comment_language.']) : $comment_language = 0;
+
+                $dataMap = [
+                    'tx_lod_domain_model_iri' => [
+                        $iriUid => [
                             'pid' => $pid,
                             'type' => $type,
                             'hidden' => $this->record['hidden'],
+                            'namespace' => $namespace,
+                            'label' => $label,
+                            'label_language' => $label_language,
+                            'comment' => $comment,
+                            'comment_language' => $comment_language,
                             'record' => $tableAndUid,
                             'record_uid' => $this->record['uid'],
                             'record_tablename' => $this->table,
                         ],
-                    )
-                );
+                    ]
+                ];
+
+                if (is_array($this->configuration['representations.'])) {
+
+                    foreach ($this->configuration['representations.'] as $representationToCreate) {
+
+                        $representationUid = 'NEW' . uniqid('');
+
+                        ($representationToCreate['pid'] || $representationToCreate['pid.']) ?
+                            $representationPid = (int)$contentObjectRenderer->stdWrap(
+                                $representationToCreate['pid'], $representationToCreate['pid.']
+                            ) : $representationPid = 1;
+
+                        ($representationToCreate['scheme'] || $representationToCreate['scheme.']) ?
+                            $scheme = $contentObjectRenderer->stdWrap(
+                                $representationToCreate['scheme'], $representationToCreate['scheme.']
+                            ) : $scheme = '';
+
+                        ($representationToCreate['authority'] || $representationToCreate['authority.']) ?
+                            $authority = $contentObjectRenderer->stdWrap(
+                                $representationToCreate['authority'], $representationToCreate['authority.']
+                            ) : $authority = '';
+
+                        ($representationToCreate['path'] || $representationToCreate['path.']) ?
+                            $path = $contentObjectRenderer->stdWrap(
+                                $representationToCreate['path'], $representationToCreate['path.']
+                            ) : $path = '';
+
+                        ($representationToCreate['query'] || $representationToCreate['query.']) ?
+                            $query = $contentObjectRenderer->stdWrap(
+                                $representationToCreate['query'], $representationToCreate['query.']
+                            ) : $query = '';
+
+                        ($representationToCreate['fragment'] || $representationToCreate['fragment.']) ?
+                            $fragment = $contentObjectRenderer->stdWrap(
+                                $representationToCreate['fragment'], $representationToCreate['fragment.']
+                            ) : $fragment = '';
+
+                        ($representationToCreate['content_type'] || $representationToCreate['content_type.']) ?
+                            $contentType = $contentObjectRenderer->stdWrap(
+                                $representationToCreate['content_type'], $representationToCreate['content_type.']
+                            ) : $contentType = '';
+
+                        ($representationToCreate['content_language'] || $representationToCreate['content_language.']) ?
+                            $contentLanguage = $contentObjectRenderer->stdWrap(
+                                $representationToCreate['content_language'], $representationToCreate['content_language.']
+                            ) : $contentLanguage = '';
+
+                        $dataMap['tx_lod_domain_model_representation'][$representationUid] = [
+                            'pid' => $representationPid,
+                            'parent' => $iriUid,
+                            'scheme' => $scheme,
+                            'authority'  => $authority,
+                            'path' => $path,
+                            'query' => $query,
+                            'fragment' => $fragment,
+                            'content_type' => $contentType,
+                            'content_language' => $contentLanguage
+                        ];
+                    }
+                }
+
+                if (is_array($this->configuration['statements.'])) {
+
+                    foreach ($this->configuration['statements.'] as $statementToCreate) {
+
+                        $statementUid = 'NEW' . uniqid('');
+
+                        ($statementToCreate['pid'] || $statementToCreate['pid.']) ?
+                            $statementPid = (int)$contentObjectRenderer->stdWrap(
+                                $statementToCreate['pid'], $statementToCreate['pid.']
+                            ) : $statementPid = 1;
+
+                        ($statementToCreate['predicate'] || $statementToCreate['predicate.']) ?
+                            $predicateUid = $contentObjectRenderer->stdWrap(
+                                $statementToCreate['predicate'], $statementToCreate['predicate.']
+                            ) : $predicateUid = '';
+
+                        ($statementToCreate['object'] || $statementToCreate['object.']) ?
+                            $objectUid = $contentObjectRenderer->stdWrap(
+                                $statementToCreate['object'], $statementToCreate['object.']
+                            ) : $objectUid = '';
+
+                        ($statementToCreate['object_type'] || $statementToCreate['object_type.']) ?
+                            $objectType = $contentObjectRenderer->stdWrap(
+                                $statementToCreate['object_type'], $statementToCreate['object_type.']
+                            ) : $objectType = 'tx_lod_domain_model_iri';
+
+                        ($statementToCreate['graph'] || $statementToCreate['graph.']) ?
+                            $graph = $contentObjectRenderer->stdWrap(
+                                $statementToCreate['graph'], $statementToCreate['graph.']
+                            ) : $graph = '';
+
+                        ($statementToCreate['recursion'] || $statementToCreate['recursion.']) ?
+                            $objectRecursion = $contentObjectRenderer->stdWrap(
+                                $statementToCreate['recursion'], $statementToCreate['recursion.']
+                            ) : $objectRecursion = 0;
+
+                        $dataMap['tx_lod_domain_model_statement'][$statementUid] = [
+                            'pid' => $statementPid,
+                            'subject_uid' => $iriUid,
+                            'predicate' => 'tx_lod_domain_model_iri_' . $predicateUid,
+                            'predicate_type' => 'tx_lod_domain_model_iri',
+                            'predicate_uid' => $predicateUid,
+                            'object'  => $objectType . '_' . $objectUid,
+                            'object_type'  => $objectType,
+                            'object_uid'  => $objectUid,
+                            'object_recursion' => $objectRecursion,
+                            'graph'  => $graph,
+                        ];
+                    }
+                }
+
             }
+
             // in case of a deleted tracked record that has no IRI nothing is done
         }
 
@@ -148,6 +290,7 @@ class TableTrackingService
             $tce->start(null, $cmdMap);
             $tce->process_cmdmap();
         }
+
      }
 
     /**
@@ -164,17 +307,24 @@ class TableTrackingService
             $iriPidList = $this->record['pid'];
         }
 
-        $typo3Version = VersionNumberUtility::convertVersionNumberToInteger(VersionNumberUtility::getNumericTypo3Version());
-        if ($typo3Version >= 8007000) {
-// @TODO: implement 8.7 and 9.5 doctrine query
-        } else {
-            $result = BackendUtility::getRecordsByField(
-                'tx_lod_domain_model_iri',
-                'record',
-                $this->table . '_' . $this->record['uid'],
-                'AND pid IN (' . $iriPidList . ')'
-            );
-        }
+        $pidList = GeneralUtility::intExplode(',', $iriPidList);
+
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getQueryBuilderForTable('tx_lod_domain_model_iri');
+
+        $result = $queryBuilder
+            ->select('*')
+            ->from('tx_lod_domain_model_iri')
+            ->where(
+                $queryBuilder->expr()->andX(
+                    $queryBuilder->expr()->eq('record', ':record'),
+                    $queryBuilder->expr()->in('pid', ':pidList')
+                )
+            )
+            ->setParameter('record', $this->table . '_' . $this->record['uid'], \PDO::PARAM_STR)
+            ->setParameter('pidList', $pidList, \Doctrine\DBAL\Connection::PARAM_INT_ARRAY)
+            ->execute()
+            ->fetchAll();
 
         return $result;
     }

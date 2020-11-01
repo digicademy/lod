@@ -71,12 +71,28 @@ if (TYPO3_MODE === 'BE') {
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][] = 'Digicademy\Lod\Hooks\Backend\DataHandler';
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processCmdmapClass'][] = 'Digicademy\Lod\Hooks\Backend\DataHandler';
 
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][138471234123] = [
+       'nodeName' => 'addRecordWithIconIdentifier',
+       'priority' => 30,
+       'class' => Digicademy\Lod\Backend\Form\FieldControl\AddRecord::class
+    ];
 }
 
+// register signal/slot for ItemMappingService
 $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class);
 $signalSlotDispatcher->connect(
-  TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper::class,
-  'afterMappingSingleRow',
-  Digicademy\Lod\Service\ItemMappingService::class,
-  'mapGenericProperty'
+    TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper::class,
+    'afterMappingSingleRow',
+    Digicademy\Lod\Service\ItemMappingService::class,
+    'mapGenericProperty'
 );
+
+// exclude extension parameters from cHash generation
+$GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'][] = 'tx_lod_api[iri]';
+$GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'][] = 'tx_lod_api[page]';
+$GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'][] = 'tx_lod_api[limit]';
+$GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'][] = 'tx_lod_api[query]';
+$GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'][] = 'tx_lod_api[subject]';
+$GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'][] = 'tx_lod_api[predicate]';
+$GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'][] = 'tx_lod_api[object]';
+$GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'][] = 'tx_lod_api[sorting]';

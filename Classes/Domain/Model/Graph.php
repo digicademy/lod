@@ -27,6 +27,7 @@ namespace Digicademy\Lod\Domain\Model;
  ***************************************************************/
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
 
 class Graph extends AbstractEntity
 {
@@ -56,7 +57,7 @@ class Graph extends AbstractEntity
      * statements
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Statement>
-     * @lazy
+     * @Lazy
      */
     protected $statements;
 

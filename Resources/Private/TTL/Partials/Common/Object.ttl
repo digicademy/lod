@@ -1,16 +1,16 @@
-{namespace lod = Digicademy\Lod\ViewHelpers}
+{namespace lod = Digicademy\Lod\ViewHelpers}{escaping off}
 <f:switch expression="{lod:DetermineEntity(entity : statement.object)}">
     <f:case value="Digicademy\Lod\Domain\Model\Iri">
-    {statement.predicate.namespace.prefix}:{statement.predicate.value} <{f:if(condition : '{statement.object.namespace}', then : '{statement.object.namespace.iri}', else : '')}{statement.object.value}> <f:if condition="{statementIterator.isLast}"><f:then>.</f:then><f:else>;</f:else></f:if>
+    {statement.predicate.namespace.prefix}:{statement.predicate.value} <{f:if(condition : '{statement.object.namespace}', then : '{statement.object.namespace.iri}', else : '')}{statement.object.value}> <f:if condition="{closeStatement}"><f:then>{closeStatement}</f:then><f:else>;</f:else></f:if>
     </f:case>
     <f:case value="Digicademy\Lod\Domain\Model\Literal">
-    {statement.predicate.namespace.prefix}:{statement.predicate.value} {lod:EscapeLiteral(literal : statement.object.value, format : 'turtle')}{lod:LangDatatype(literal : statement.object, format : 'turtle')} <f:if condition="{statementIterator.isLast}"><f:then>.</f:then><f:else>;</f:else></f:if>
+    {statement.predicate.namespace.prefix}:{statement.predicate.value} {lod:EscapeLiteral(literal : statement.object.value, format : 'turtle')}{lod:LangDatatype(literal : statement.object, format : 'turtle')} <f:if condition="{closeStatement}"><f:then>{closeStatement}</f:then><f:else>;</f:else></f:if>
     </f:case>
-    <f:case default="Digicademy\Lod\Domain\Model\Bnode">
+    <f:case value="Digicademy\Lod\Domain\Model\Bnode">
     {statement.predicate.namespace.prefix}:{statement.predicate.value} [
     <f:for each="{lod:FetchBnode(bnode : statement.object)}" as="bnodeStatement">
         <f:render partial="Common/Object" arguments="{statement : bnodeStatement}" />
     </f:for>
-    ] <f:if condition="{statementIterator.isLast}"><f:then>.</f:then><f:else>;</f:else></f:if>
+    ] <f:if condition="{closeStatement}"><f:then>{closeStatement}</f:then><f:else>;</f:else></f:if>
     </f:case>
 </f:switch>

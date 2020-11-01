@@ -8,7 +8,7 @@
 <f:switch expression="{action}">
     <f:case value="apiList">
         <li>
-            <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : type, page : page, limit : limit}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
+            <a class="button" property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : type, page : page, limit : limit, query : query, subject : subject, predicate : predicate, object : object, sorting : sorting}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
                 <span property="void:feature" resource="{format.uri}">{format.name}</span>
             </a>
         </li>
@@ -16,15 +16,15 @@
     <f:case value="apiShow">
         <f:if condition="{mode} == 'td'">
             <f:then>
-                <td>
-                    <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
+                <td about="{resource.namespace.iri -> f:format.htmlspecialchars()}{resource.value -> f:format.htmlspecialchars()}">
+                    <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource, query : query, subject : subject, predicate : predicate, object : object, sorting : sorting}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
                         <span property="void:feature" resource="{format.uri}">{format.name}</span>
                     </a>
                 </td>
             </f:then>
             <f:else>
                 <li>
-                    <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
+                    <a class="button" property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource, query : query, subject : subject, predicate : predicate, object : object, sorting : sorting}) -> f:format.htmlspecialchars()}" typeof="void:Dataset">
                         <span property="void:feature" resource="{format.uri}">{format.name}</span>
                     </a>
                 </li>
@@ -32,11 +32,16 @@
         </f:if>
     </f:case>
     <f:case value="vocabularyShow">
+        <f:if condition="{type} == 1991">
+        <f:then></f:then>
+        <f:else>
         <li>
-            <a property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : '{type : type}') -> f:format.htmlspecialchars()}" typeof="void:Dataset">
+            <a class="button" property="rdfs:seeAlso" href="{environment.TYPO3_REQUEST_HOST}{f:uri.page(additionalParams : '{type : type}') -> f:format.htmlspecialchars()}" typeof="void:Dataset">
                 <span property="void:feature" resource="{format.uri}">{format.name}</span>
             </a>
         </li>
+        </f:else>
+        </f:if>
     </f:case>
 </f:switch>
 </f:for>

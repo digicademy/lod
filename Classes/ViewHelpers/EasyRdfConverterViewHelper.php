@@ -27,7 +27,7 @@ namespace Digicademy\Lod\ViewHelpers;
  ***************************************************************/
 
 use TYPO3\CMS\Extbase\Exception;
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 
 class EasyRdfConverterViewHelper extends AbstractViewHelper

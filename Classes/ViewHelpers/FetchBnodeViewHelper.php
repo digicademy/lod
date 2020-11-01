@@ -27,7 +27,7 @@ namespace Digicademy\Lod\ViewHelpers;
  ***************************************************************/
 
 use Digicademy\Lod\Domain\Repository\StatementRepository;
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 class FetchBnodeViewHelper extends AbstractViewHelper
 {

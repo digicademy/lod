@@ -26,6 +26,7 @@ namespace Digicademy\Lod\Domain\Repository;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use Digicademy\Lod\Domain\Model\Iri;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
@@ -34,4 +35,30 @@ class GraphRepository extends Repository
     protected $defaultOrderings = array(
         'label' => QueryInterface::ORDER_ASCENDING
     );
+
+    /**
+     * @param \Digicademy\Lod\Domain\Model\Iri $iri
+     *
+     * @return \Digicademy\Lod\Domain\Model\Graph
+     */
+    public function findByIri(Iri $iri)
+    {
+        // initialize query object
+        $query = $this->createQuery();
+
+        // initialize constraints
+        $constraints = [];
+
+        // IRI graph constraint
+        $constraints[] = $query->equals('iri', $iri);
+
+        // match
+        $query->matching(
+            $query->logicalAnd($constraints)
+        );
+
+        // return result
+        return $query->execute()->getFirst();
+    }
+
 }

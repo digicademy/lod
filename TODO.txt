@@ -1,50 +1,49 @@
-## NEXT #########################################
+####################### ROADMAP ############################
 
-FE
+### v1.0 ###
+
+DATA
+- think about namespaces and serialization (set static namespaces: rdf, rdfs, owl, dc, dcterms, void, skos?)
+- add basic vocabs
 - create ext_tables_static+adt.sql
--- set static namespaces: rdf, rdfs, owl, dc, dcterms, void, skos
--- maybe create all rdf/rdfs Classes/Properties?
+--- https://ogp.me/
+--- https://github.com/schemaorg/schemaorg/blob/master/data/releases/5.0/all-layers-properties.csv
+--- https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#elements-title
 
-BE
-- Add TSConfig option: statementIriTypeFilter.subject = 1|2
-- remove settings key from TSConfig
+DOCUMENTATION
 
-- ensure 8.7 and 9.5 compatibility (esp. Doctrine) / add 7.6 branch and dev branch
--- TCA migrations
---- hide label gone
---- add wizard is gone: https://docs.typo3.org/c/typo3/cms-core/8.7/en-us/Changelog/8.6/Deprecation-79440-TcaChanges.html
---- iri/bnode irre fields should use overrideChildTca from 8.7
---- all tables icon in IRI record field broken icon
---- scan extension files
---- Doctrine Migration
--- check type param rewriting in TYPO3 9.5
--- alternatively give realUrl config
+- write basic documentation
 
-- documentation
--- use lists of controlled terms in the system (selects etc.)
+### v1.1 ###
 
-### v.1.1 ###
+- inverse properties
+-- if IRI type 2 (property) add group field "inverse of" (bidirectional mm relation shown from both sides)
+-- https://www.semanticarts.com/named-property-inverses-yay-or-nay/
+-- http://richard.cyganiak.de/blog/2006/06/an-rdf-design-pattern-inverse-property-labels/
+
+- statement/sparql plugin (similar to api plugin)
+-- support for basic SPARQL select queries
+--- http://base.url/typo3-plugin-page?query=XYZ
+-- filter statement list with graph param
+--- https://www.w3.org/TR/sparql11-http-rdf-update/
+--- http://base.url/typo3-plugin-page?qraph=http://base.url/id/graph => list of statements belonging to graph record
 
 - named graphs
 -- add named graph structures to ttl, json-ld and nt templates
 -- maybe graph could serve as collection of statements added to records etc.
--- graph filter on api list view: only show resources that belong to a given graph
 
-- table tracking
--- create statements defined by TSConfig when new IRI is created (per IRI per tracked table)
--- create representations defined by TSConfig when new IRI is created (per IRI per tracked table)
-
-- API plugin
--- basic string search in label/comment for API plugin (list view)
--- IriRepository: make ordering settable by TypoScript/Plugin/Parameter (label/value)
--- https://www.w3.org/TR/sparql11-http-rdf-update/#http-get
--- https://www.w3.org/TR/sparql11-protocol/#query
+- backend
+- TCA optimization: addRecord fieldControl as popup ?
+- Add TSConfig option: statementIriTypeFilter.subject = 1|2
+-- see tx_lod_domain_model_statement.php 95,114 and IriUtility 52
+-- use case 1: in average statements it is desirable that only entities are allowed in subject position
+-- use case 2: in case of a vocabulary properties to be described must be allowed in subject position
 
 - create extension with schema.org vocab
 
 - hydra:view has no alternative serialisations in none of the serialisation formats
 
-### v.1.2 ###
+### v1.2 ###
 
 - vocabulary importer
 
@@ -55,181 +54,9 @@ BE
 -- call different typolink handlers according to $representation->getAuthority();
 -- implement language negotiation
 
----
+BACKPORTS
+- bug in 7.6 ttl & nt templates (list view) => iri param => tx_lod_api[iri] param
+- missing ' in AlternativeSerialization.nt in if condition
 
-id=123 => rewritten by realurl to 'id' or whatever (= pagePath)
-&tx_lod_api%5Bsubject%5D=1995 => rewritten by realurl to /id/value (= fixedPostVars)
-&type=2004 => rewritten by realUrl to about.xyz (= fileName)
+####################### DOCUMENTATION ############################
 
-&tx_lod_about%5Baction%5D=about => skipped (by initializeAction and fixedPostVars)
-&tx_lod_about%5Bcontroller%5D=Api skipped (by initializeAction and fixedPostVars)
-&tx_lod_about%5Bformat%5D=rdfxml => ignored/suppressed (by initialize Action; switch is by pageType)
-
-&cHash => skipped (by realUrl config)
-
-/id/I385
-
-/id/I385/about.html
-
-/id.html
-
-/id/about.rdf?tx_lod_api[offset]=1&tx_lod_api[limit]=100
-
----
-
-scheme = handler type => t3 triggers internal resolving
-authority = handler keyword
-path = typolink parameter
-query = additionalParams
-fragment = section
-
----
-
-tx_lod {
-    identifierGenerator {
-        tx_lod_domain_model_iri {
-            type = [
-                Digicademy\Lod\Generator\UidIdentifierGenerator,
-                Digicademy\Lod\Generator\UuidIdentifierGenerator,
-                Digicademy\Lod\Generator\ForeignRecordIdentifierGenerator,
-                Vendor\Package\My\Generator
-            ]
-            Digicademy\Lod\Generator\UidIdentifierGenerator {
-                entityPrefix = E
-                propertyPrefix = P
-            }
-            Digicademy\Lod\Generator\UuidIdentifierGenerator {
-                entityPrefix = E
-                propertyPrefix = P
-                xmlConformance = 1
-            }
-            Digicademy\Lod\Generator\ForeignRecordIdentifierGenerator {
-                entityPrefix = E
-                propertyPrefix = P
-                includeTablename = 1
-            }
-        }
-        tx_lod_domain_model_bnode {
-            type = [
-                Digicademy\Lod\Generator\UidIdentifierGenerator,
-                Digicademy\Lod\Generator\UuidIdentifierGenerator,
-                Vendor\Package\My\Generator
-            ]
-            Digicademy\Lod\Generator\UidIdentifierGenerator {
-                bnodePrefix = b
-            }
-            Digicademy\Lod\Generator\UuidIdentifierGenerator, {
-                bnodePrefix = b
-                xmlConformance = 1
-            }
-        }
-    }
-    statementIriTypeFilter {
-        subject = 1|2
-    }
-    tableTracking {
-        tx_my_table {
-            track = 1
-            iriPidList = 1,2,3,...
-            iriPidList.recursive = 1
-            createOnPid = ...
-            createType = 1|2
-            hideUnhide = 1
-            deleteUndelete = 1
-        }
-    }
-}
-
-# map items to generic domainObject
-
-plugin.tx_lod_api.persistence.classes {
-    My\Class.mapping.tableName = tx_extension_domain_model_xyz
-}
-
-## TYPO3 8.7
-
-# standard record link configuration from T3 V8 and higher
-
-TCEMAIN.linkHandler.image {
-    handler = TYPO3\CMS\Recordlist\LinkHandler\RecordLinkHandler
-    label = LLL:EXT:cvma/Resources/Private/Language/locallang.xlf:link.customTab
-    configuration {
-        table = sys_file_metadata
-    }
-    scanBefore = page
-}
-
-config.recordLinks.image {
-
-    forceLink = 0
-
-    typolink {
-        parameter = 13
-        additionalParams.data = field:uid
-        additionalParams.wrap = &tx_cvma_archive[image]=|&tx_cvma_archive[action]=show&tx_cvma_archive[controller]=Gallery
-        section.data = field:fragment
-        useCacheHash = 1
-    }
-}
-
-plugin.tx_lod_api {
-    settings {
-
-        resolver {
-
-            # each scheme can have its own custom resolver
-#            scheme {
-#                # each resolver should implement one standard resolving mechanism for all authorities in this scheme
-#                # it should also respect special configurations specified authorities that should be treated different
-#                authority {
-#                    # typolink configuration ($cObj->data is current representation record)
-#                }
-#            }
-
-            t3 {
-                # the t3 scheme implements the TYPO3 linkhandler (from 8.7 onwards but with backwards comp. for 7.6)
-                # each authority equals / can have it's own linkhandler (=linkhander keyword)
-                # the record authority implements the generic record linkhandler
-                record < config.recordLinks.image
-            }
-
-            http {
-                my\.domain\.com {
-                    # typolink configuration ($cObj->data is current representation record)
-                }
-            }
-
-            https < .http
-        }
-    }
-}
-
-page.headerData.333 = USER
-page.headerData.333 {
-    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
-    extensionName = Lod
-    pluginName = Serializer
-    vendorName = Digicademy
-    persistence.storagePid = PID
-    settings < plugin.tx_lod_serializer.settings
-    view < plugin.tx_lod_serializer.view
-}
-
-plugin.tx_lod_serializer.settings {
-    selectedIri = UID
-    mode = embedded
-    apiPage = PID
-    recordToArgumentMapping {
-        pages {
-            argumentName = id
-        }
-        tx_hisodat_domain_model_persons {
-            pluginNamespace = tx_hisodat_registers
-            argumentName = person
-        }
-    }
-    format {
-        default = jsonld
-        tx_my_table = FORMAT (jsonld, ttl, rdfxml, nt)
-    }
-}

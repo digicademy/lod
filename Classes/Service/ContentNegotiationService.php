@@ -69,7 +69,14 @@ class ContentNegotiationService
      */
     public function __construct()
     {
-        $pageType = GeneralUtility::_GP('type');
+
+        if (GeneralUtility::_GP('type')) {
+            $pageType = GeneralUtility::_GP('type');
+        } else if ($GLOBALS['TSFE']->type > 0) {
+            $pageType = $GLOBALS['TSFE']->type;
+        } else {
+            $pageType = 0;
+        }
 
         $this->setAcceptedMimeTypes();
         $this->setAvailableMimeTypes();
@@ -161,6 +168,7 @@ class ContentNegotiationService
     public function setAcceptedMimeTypes()
     {
         // if accept header is set get a weighted list of accepted formats
+// @TODO: use $GLOBALS['TYPO3_REQUEST']
         $httpAcceptHeader = getenv('HTTP_ACCEPT');
         if ($httpAcceptHeader) {
             $this->acceptedMimeTypes = $this->processAcceptHeader($httpAcceptHeader);

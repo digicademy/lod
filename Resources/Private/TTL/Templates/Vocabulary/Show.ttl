@@ -1,4 +1,11 @@
-{namespace lod = Digicademy\Lod\ViewHelpers}<lod:RemoveEmptyLines><f:for each="{namespaces}" as="namespace">@prefix {namespace.prefix}: <{namespace.iri}> .
+{namespace lod = Digicademy\Lod\ViewHelpers}{escaping off}<lod:RemoveEmptyLines>
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+<f:for each="{iriNamespaces}" as="namespace">
+@prefix {namespace.prefix}: <{namespace.iri}> .
 </f:for>
 
 <{vocabulary.iri.namespace.value}{vocabulary.iri.value}>

@@ -1,6 +1,6 @@
 <?php
-return array(
-    'ctrl' => array(
+return [
+    'ctrl' => [
         'title' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_literal',
         'label' => 'value',
         'default_sortby' => 'value',
@@ -9,74 +9,40 @@ return array(
         'cruser_id' => 'cruser_id',
         'dividers2tabs' => true,
         'delete' => 'deleted',
-        'enablecolumns' => array(
+        'enablecolumns' => [
             'disabled' => 'hidden',
-            'starttime' => 'starttime',
-            'endtime' => 'endtime',
-        ),
+        ],
         'searchFields' => 'type,value,lang,datatype,',
         'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_literal.svg'
-    ),
-    'interface' => array(
+    ],
+    'interface' => [
         'showRecordFieldList' => 'hidden, type, value, language, datatype',
-    ),
-    'types' => array(
-        '1' => array('showitem' => 'hidden, value, language, datatype, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
-    ),
-    'columns' => array(
-        'hidden' => array(
+    ],
+    'types' => [
+        '1' => ['showitem' => 'hidden, value, language, datatype'],
+    ],
+    'columns' => [
+        'hidden' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
-            'config' => array(
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
+            'config' => [
                 'type' => 'check',
-            ),
-        ),
-        'starttime' => array(
-            'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
-            'config' => array(
-                'type' => 'input',
-                'size' => 13,
-                'max' => 20,
-                'eval' => 'datetime',
-                'checkbox' => 0,
-                'default' => 0,
-                'range' => array(
-                    'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
-                ),
-            ),
-        ),
-        'endtime' => array(
-            'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
-            'config' => array(
-                'type' => 'input',
-                'size' => 13,
-                'max' => 20,
-                'eval' => 'datetime',
-                'checkbox' => 0,
-                'default' => 0,
-                'range' => array(
-                    'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
-                ),
-            ),
-        ),
-        'value' => array(
+            ],
+        ],
+        'value' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_literal.value',
-            'config' => array(
+            'config' => [
                 'type' => 'text',
                 'cols' => '25',
                 'rows' => '5',
                 'eval' => 'required,trim'
-            ),
-        ),
-        'language' => array(
+            ],
+        ],
+        'language' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:lang/locallang_tca.xlf:sys_language.language_isocode',
-            'config' => array(
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_literal.language',
+            'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'size' => 1,
@@ -86,70 +52,70 @@ return array(
                     ['', '']
                 ],
                 'itemsProcFunc' => \TYPO3\CMS\Core\Service\IsoCodeService::class . '->renderIsoCodeSelectDropdown',
-            ),
-        ),
-        'datatype' => array(
+            ],
+        ],
+        'datatype' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_literal.datatype',
-            'config' => array(
+            'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'items' => array(
-                    array('', ''),
-                    array('Core types', '--div--'),
-                    array('string', 'http://www.w3.org/2001/XMLSchema#string'),
-                    array('boolean', 'http://www.w3.org/2001/XMLSchema#boolean'),
-                    array('decimal', 'http://www.w3.org/2001/XMLSchema#decimal'),
-                    array('integer', 'http://www.w3.org/2001/XMLSchema#integer'),
-                    array('IEEE floating-point numbers', '--div--'),
-                    array('double', 'http://www.w3.org/2001/XMLSchema#double'),
-                    array('float', 'http://www.w3.org/2001/XMLSchema#float'),
-                    array('Time and date', '--div--'),
-                    array('date', 'http://www.w3.org/2001/XMLSchema#date'),
-                    array('time', 'http://www.w3.org/2001/XMLSchema#time'),
-                    array('dateTime', 'http://www.w3.org/2001/XMLSchema#dateTime'),
-                    array('dateTimeStamp', 'http://www.w3.org/2001/XMLSchema#dateTimeStamp'),
-                    array('Recurring and partial dates', '--div--'),
-                    array('gYear', 'http://www.w3.org/2001/XMLSchema#gYear'),
-                    array('gMonth', 'http://www.w3.org/2001/XMLSchema#gYear'),
-                    array('gDay', 'http://www.w3.org/2001/XMLSchema#gDay'),
-                    array('gYearMonth', 'http://www.w3.org/2001/XMLSchema#gYearMonth'),
-                    array('gMonthDay', 'http://www.w3.org/2001/XMLSchema#gMonthDay'),
-                    array('duration', 'http://www.w3.org/2001/XMLSchema#duration'),
-                    array('yearMonthDuration', 'http://www.w3.org/2001/XMLSchema#yearMonthDuration'),
-                    array('dayTimeDuration', 'http://www.w3.org/2001/XMLSchema#dayTimeDuration'),
-                    array('Limited-range integer numbers', '--div--'),
-                    array('byte', 'http://www.w3.org/2001/XMLSchema#byte'),
-                    array('short', 'http://www.w3.org/2001/XMLSchema#short'),
-                    array('int', 'http://www.w3.org/2001/XMLSchema#int'),
-                    array('long', 'http://www.w3.org/2001/XMLSchema#long'),
-                    array('unsignedByte', 'http://www.w3.org/2001/XMLSchema#unsignedByte'),
-                    array('unsignedShort', 'http://www.w3.org/2001/XMLSchema#unsignedShort'),
-                    array('unsignedInt', 'http://www.w3.org/2001/XMLSchema#unsignedInt'),
-                    array('unsignedLong', 'http://www.w3.org/2001/XMLSchema#unsignedLong'),
-                    array('positiveInteger', 'http://www.w3.org/2001/XMLSchema#positiveInteger'),
-                    array('nonNegativeInteger', 'http://www.w3.org/2001/XMLSchema#nonNegativeInteger'),
-                    array('negativeInteger', 'http://www.w3.org/2001/XMLSchema#negativeInteger'),
-                    array('nonPositiveInteger', 'http://www.w3.org/2001/XMLSchema#nonPositiveInteger'),
-                    array('Encoded binary data', '--div--'),
-                    array('hexBinary', 'http://www.w3.org/2001/XMLSchema#hexBinary'),
-                    array('base64Binary', 'http://www.w3.org/2001/XMLSchema#base64Binary'),
-                    array('Miscellaneous XSD types', '--div--'),
-                    array('anyURI', 'http://www.w3.org/2001/XMLSchema#anyURI'),
-                    array('language', 'http://www.w3.org/2001/XMLSchema#language'),
-                    array('normalizedString', 'http://www.w3.org/2001/XMLSchema#normalizedString'),
-                    array('token', 'http://www.w3.org/2001/XMLSchema#token'),
-                    array('NMTOKEN', 'http://www.w3.org/2001/XMLSchema#NMTOKEN'),
-                    array('Name', 'http://www.w3.org/2001/XMLSchema#Name'),
-                    array('NCName', 'http://www.w3.org/2001/XMLSchema#NCName'),
-                    array('HTML and XML', '--div--'),
-                    array('html', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML'),
-                    array('xml', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral'),
-                ),
+                'items' => [
+                    ['', ''],
+                    ['Core types', '--div--'],
+                    ['string', 'http://www.w3.org/2001/XMLSchema#string'],
+                    ['boolean', 'http://www.w3.org/2001/XMLSchema#boolean'],
+                    ['decimal', 'http://www.w3.org/2001/XMLSchema#decimal'],
+                    ['integer', 'http://www.w3.org/2001/XMLSchema#integer'],
+                    ['IEEE floating-point numbers', '--div--'],
+                    ['double', 'http://www.w3.org/2001/XMLSchema#double'],
+                    ['float', 'http://www.w3.org/2001/XMLSchema#float'],
+                    ['Time and date', '--div--'],
+                    ['date', 'http://www.w3.org/2001/XMLSchema#date'],
+                    ['time', 'http://www.w3.org/2001/XMLSchema#time'],
+                    ['dateTime', 'http://www.w3.org/2001/XMLSchema#dateTime'],
+                    ['dateTimeStamp', 'http://www.w3.org/2001/XMLSchema#dateTimeStamp'],
+                    ['Recurring and partial dates', '--div--'],
+                    ['gYear', 'http://www.w3.org/2001/XMLSchema#gYear'],
+                    ['gMonth', 'http://www.w3.org/2001/XMLSchema#gYear'],
+                    ['gDay', 'http://www.w3.org/2001/XMLSchema#gDay'],
+                    ['gYearMonth', 'http://www.w3.org/2001/XMLSchema#gYearMonth'],
+                    ['gMonthDay', 'http://www.w3.org/2001/XMLSchema#gMonthDay'],
+                    ['duration', 'http://www.w3.org/2001/XMLSchema#duration'],
+                    ['yearMonthDuration', 'http://www.w3.org/2001/XMLSchema#yearMonthDuration'],
+                    ['dayTimeDuration', 'http://www.w3.org/2001/XMLSchema#dayTimeDuration'],
+                    ['Limited-range integer numbers', '--div--'],
+                    ['byte', 'http://www.w3.org/2001/XMLSchema#byte'],
+                    ['short', 'http://www.w3.org/2001/XMLSchema#short'],
+                    ['int', 'http://www.w3.org/2001/XMLSchema#int'],
+                    ['long', 'http://www.w3.org/2001/XMLSchema#long'],
+                    ['unsignedByte', 'http://www.w3.org/2001/XMLSchema#unsignedByte'],
+                    ['unsignedShort', 'http://www.w3.org/2001/XMLSchema#unsignedShort'],
+                    ['unsignedInt', 'http://www.w3.org/2001/XMLSchema#unsignedInt'],
+                    ['unsignedLong', 'http://www.w3.org/2001/XMLSchema#unsignedLong'],
+                    ['positiveInteger', 'http://www.w3.org/2001/XMLSchema#positiveInteger'],
+                    ['nonNegativeInteger', 'http://www.w3.org/2001/XMLSchema#nonNegativeInteger'],
+                    ['negativeInteger', 'http://www.w3.org/2001/XMLSchema#negativeInteger'],
+                    ['nonPositiveInteger', 'http://www.w3.org/2001/XMLSchema#nonPositiveInteger'],
+                    ['Encoded binary data', '--div--'],
+                    ['hexBinary', 'http://www.w3.org/2001/XMLSchema#hexBinary'],
+                    ['base64Binary', 'http://www.w3.org/2001/XMLSchema#base64Binary'],
+                    ['Miscellaneous XSD types', '--div--'],
+                    ['anyURI', 'http://www.w3.org/2001/XMLSchema#anyURI'],
+                    ['language', 'http://www.w3.org/2001/XMLSchema#language'],
+                    ['normalizedString', 'http://www.w3.org/2001/XMLSchema#normalizedString'],
+                    ['token', 'http://www.w3.org/2001/XMLSchema#token'],
+                    ['NMTOKEN', 'http://www.w3.org/2001/XMLSchema#NMTOKEN'],
+                    ['Name', 'http://www.w3.org/2001/XMLSchema#Name'],
+                    ['NCName', 'http://www.w3.org/2001/XMLSchema#NCName'],
+                    ['HTML and XML', '--div--'],
+                    ['html', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#HTML'],
+                    ['xml', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral'],
+                ],
                 'size' => 1,
                 'maxitems' => 1,
                 'eval' => ''
-            ),
-        ),
-    ),
-);
+            ],
+        ],
+    ],
+];

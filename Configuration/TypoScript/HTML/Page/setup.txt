@@ -1,5 +1,3 @@
-# html < .page
-# @TODO: think about order of inclusion
 html = PAGE
 html {
     typeNum = 1991
@@ -8,8 +6,13 @@ html {
             10.header = Content-type:text/html
         }
     }
+    includeCSS {
+        tacit = https://cdn.jsdelivr.net/gh/yegor256/tacit@gh-pages/tacit-css-1.5.1.min.css
+        tacit.external = 1
+        lod = EXT:lod/Resources/Public/Css/lod.css
+    }
 }
 
-[globalVar = GP : type = 1991]
+[getTSFE().type == 1991]
 html.10 < lib.tx_lod.plugin
 [global]

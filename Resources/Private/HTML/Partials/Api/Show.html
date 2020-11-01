@@ -1,13 +1,13 @@
-{namespace lod = Digicademy\Lod\ViewHelpers}
-<div prefix="{lod:RdfaPrefix(namespaces : namespaces)}" resource="{resource.namespace.iri}{resource.value}">
+{namespace lod = Digicademy\Lod\ViewHelpers}{escaping off}
+<div prefix="{lod:RdfaPrefix(namespaces : iriNamespaces)}" resource="{resource.namespace.iri -> f:format.htmlspecialchars()}{resource.value -> f:format.htmlspecialchars()}">
     <h2 class="resource-iri">
-        <a href="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : '1991', resource : resource}) -> f:format.htmlspecialchars()}">
+        <a href="{resource.namespace.iri -> f:format.htmlspecialchars()}{resource.value -> f:format.htmlspecialchars()}">
         &lt;<f:if condition="{resource.namespace}">{resource.namespace.iri}</f:if>{resource.value}&gt;
         </a>
     </h2>
 
-    <h3><f:translate key="general.alternativeSerialization" /></h3>
-    <ul class="alternative-serialization">
+    <ul class="alternative-serialization navbar">
+        <li><strong><f:translate key="general.alternativeSerialization" />:</strong></li>
         <f:render partial="Common/AlternativeSerializations" arguments="{
             action : 'apiShow',
             resource : resource,
@@ -20,12 +20,7 @@
     </h3>
     <dl class="resource-description">
         <dt>
-            <f:render partial="Api/Link" arguments="{
-                value : 'type',
-                action : action,
-                type : '1991',
-                resource : {value: 'type', namespace : {prefix : 'rdf'}}
-            }" />
+            <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#type">type</a>
         </dt>
         <f:switch expression="{resource.type}">
             <f:case value="1">
@@ -37,13 +32,13 @@
         </f:switch>
         <f:if condition="{resource.label}">
             <dt>
-                <f:render partial="Api/Link" arguments="{value : 'label',  action : action, type : '1991', resource : {value : 'label', namespace : {prefix : 'rdfs'}}}" />
+                <a href="http://www.w3.org/2000/01/rdf-schema#label">label</a>
             </dt>
             <dd property="rdfs:label"{f:if(condition: '{resource.labelLanguage}', then: ' lang="{resource.labelLanguage}"')}>{resource.label}</dd>
         </f:if>
         <f:if condition="{resource.comment}">
             <dt>
-                <f:render partial="Api/Link" arguments="{value : 'comment',  action : action, type : '1991', resource : {value : 'comment', namespace : {prefix : 'rdfs'}}}" />
+                <a href="http://www.w3.org/2000/01/rdf-schema#comment">comment</a>
             </dt>
             <dd property="rdfs:comment"{f:if(condition: '{resource.commentLanguage}', then: ' lang="{resource.commentLanguage}"')}>{resource.comment}</dd>
         </f:if>
@@ -54,11 +49,11 @@
             <f:translate key="api.show.statements" />
         </h3>
 
-        <f:groupedFor each="{resource.statements}" as="groupedStatements" groupBy="graph" groupKey="graph">
+        <f:groupedFor each="{lod:CombineStatements(iri : resource)}" as="groupedStatements" groupBy="graph" groupKey="graph">
             <h4 class="resource-statements-graphname">
             <f:if condition="{graph}">
                 <f:then>
-                    &lt;{graph.iri.namespace.iri.value}{graph.iri.value}&gt;
+                    &lt;{graph.iri.namespace.iri}{graph.iri.value}&gt;
                 </f:then>
                 <f:else>
                     &lt;Default graph&gt;
@@ -68,7 +63,7 @@
             <dl class="resource-statements">
                 <f:for each="{groupedStatements}" as="statement">
                     <dt>
-                        <f:render partial="Api/Link" arguments="{value : statement.predicate.value,  action : action, type : '1991', resource : statement.predicate}" />
+                        <a href="{f:if(condition : '{statement.predicate.namespace}', then : '{statement.predicate.namespace.iri}', else : '')}{statement.predicate.value}">{statement.predicate.value}</a>
                     </dt>
                     <dd>
                         <f:render partial="Common/Object" arguments="{
@@ -89,7 +84,7 @@
         <dl class="resource-record" property="dc:relation" resource="[_:eb0d307c-5915-4d1d-9444-52a8640ef80d]">
             <f:if condition="{resource.record.label}">
                 <dt>
-                    <f:render partial="Api/Link" arguments="{value : 'label',  action : action, type : '1991', resource : {namespace : {prefix : 'rdfs'}}}" />
+                    <a href="http://www.w3.org/2000/01/rdf-schema#label">label</a>
                 </dt>
                 <dd about="[_:eb0d307c-5915-4d1d-9444-52a8640ef80d]" property="rdfs:label">
                     {resource.record.label}
@@ -97,7 +92,7 @@
             </f:if>
             <f:if condition="{resource.record.comment}">
                 <dt>
-                    <f:render partial="Api/Link" arguments="{value : 'comment',  action : action, type : '1991', resource : {namespace : {prefix : 'rdfs'}}}" />
+                    <a href="http://www.w3.org/2000/01/rdf-schema#comment">comment</a>
                 </dt>
                 <dd about="[_:eb0d307c-5915-4d1d-9444-52a8640ef80d]" property="rdfs:comment">
                     {resource.record.comment}
@@ -108,4 +103,76 @@
             {resource.record.domainObject} => contains the mapped extbase domain object for further processing
         </f:comment>
     </f:if>
+
+    <f:if condition="{graph}">
+        <h3>
+            <f:translate key="api.show.graph" />
+        </h3>
+
+        <dl class="graph-description">
+            <f:if condition="{graph.label}">
+                <dt>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#label">label</a>
+                </dt>
+                <dd property="rdfs:label">{graph.label}</dd>
+            </f:if>
+            <f:if condition="{graph.comment}">
+                <dt>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#comment">comment</a>
+                </dt>
+                <dd property="rdfs:comment">{graph.comment}</dd>
+            </f:if>
+        </dl>
+
+        <table class="graph-statements">
+            <thead>
+                <tr>
+                    <th><f:translate key="api.show.graph.statement.subject" /></th>
+                    <th><f:translate key="api.show.graph.statement.predicate" /></th>
+                    <th><f:translate key="api.show.graph.statement.object" /></th>
+                </tr>
+            </thead>
+            <tbody>
+                <f:for each="{graph.statements}" as="statement">
+                    <tr>
+                        <td>
+                            <a href="{f:if(condition : '{statement.subject.namespace}', then : '{statement.subject.namespace.iri}', else : '')}{statement.subject.value}">
+                                {f:if(condition : '{statement.subject.namespace}', then : '{statement.subject.namespace.prefix}:', else : '')}{statement.subject.value}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{f:if(condition : '{statement.predicate.namespace}', then : '{statement.predicate.namespace.iri}', else : '')}{statement.predicate.value}">
+                                {f:if(condition : '{statement.predicate.namespace}', then : '{statement.predicate.namespace.prefix}:', else : '')}{statement.predicate.value}
+                            </a>
+                        </td>
+                        <td>
+                            <f:render partial="Common/Object" arguments="{
+                                iri: '{f:if(condition : \'{statement.subject.namespace}\', then : \'{statement.subject.namespace.iri}\', else : \'\')}{statement.subject.value}',
+                                statement : statement,
+                                mode : 'api'
+                            }"/>
+                        </td>
+                    </tr>
+                </f:for>
+            </tbody>
+        </table>
+    </f:if>
+
+    <p>
+        <f:link.page class="button submit"
+            pageUid="{environment.TSFE.pageArguments.pageId}"
+            section="{resource.value}"
+            additionalParams="{
+                type : '1991',
+                tx_lod_api : {
+                    query : environment.TSFE.pageArguments.arguments.tx_lod_api__query,
+                    subject : environment.TSFE.pageArguments.arguments.tx_lod_api__subject,
+                    predicate : environment.TSFE.pageArguments.arguments.tx_lod_api__predicate,
+                    object : environment.TSFE.pageArguments.arguments.tx_lod_api__object,
+                    limit : environment.TSFE.pageArguments.arguments.tx_lod_api__limit,
+                    sorting : environment.TSFE.pageArguments.arguments.tx_lod_api__sorting,
+                    page : '{f:if(condition : \'{environment.TSFE.pageArguments.arguments.tx_lod_api__page}\', then : \'{environment.TSFE.pageArguments.arguments.tx_lod_api__page}\', else : \'1\')}'}}">
+            <f:translate key="api.show.back" />
+        </f:link.page>
+    </p>
 </div>

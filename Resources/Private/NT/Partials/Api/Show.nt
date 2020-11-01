@@ -1,7 +1,7 @@
-{namespace lod = Digicademy\Lod\ViewHelpers}<f:alias map="{resourceIri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.iri}\', else : \'\')}{resource.value}'}"><f:if condition="{resource.label}"><{resourceIri}> <http://www.w3.org/2000/01/rdf-schema#label> {lod:EscapeLiteral(literal : resource.label, format : 'ntriples')}{f:if(condition: '{resource.labelLanguage}', then: '@{resource.labelLanguage}')} .</f:if>
+{namespace lod = Digicademy\Lod\ViewHelpers}{escaping off}<f:alias map="{resourceIri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.iri}\', else : \'\')}{resource.value}'}"><f:if condition="{resource.label}"><{resourceIri}> <http://www.w3.org/2000/01/rdf-schema#label> {lod:EscapeLiteral(literal : resource.label, format : 'ntriples')}{f:if(condition: '{resource.labelLanguage}', then: '@{resource.labelLanguage}')} .</f:if>
 <f:if condition="{resource.comment}"><{resourceIri}> <http://www.w3.org/2000/01/rdf-schema#comment> {lod:EscapeLiteral(literal : resource.comment, format : 'ntriples')}{f:if(condition: '{resource.commentLanguage}', then: '@{resource.commentLanguage}')} .</f:if>
 <f:if condition="{resource.statements}">
-<f:for each="{resource.statements}" as="statement">
+<f:for each="{lod:CombineStatements(iri : resource)}" as="statement">
 <f:render partial="Common/Object" arguments="{iri : '<{resourceIri}>', statement : statement}" />
 </f:for>
 <f:for each="{lod:ObjectIriRecursion(iri : resource, maxDepth : 5)}" as="objectIri">
@@ -12,6 +12,15 @@
 <{resourceIri}> <http://purl.org/dc/elements/1.1/relation> _:eb0d307c-5915-4d1d-9444-52a8640ef80d .
 <f:if condition="{resource.record.label}">_:eb0d307c-5915-4d1d-9444-52a8640ef80d <http://www.w3.org/2000/01/rdf-schema#label> {lod:EscapeLiteral(literal : resource.record.label, format : 'ntriples')} .</f:if>
 <f:if condition="{resource.record.comment}">_:eb0d307c-5915-4d1d-9444-52a8640ef80d <http://www.w3.org/2000/01/rdf-schema#comment> {lod:EscapeLiteral(literal : resource.record.comment, format : 'ntriples')} .</f:if>
+</f:if>
+<f:if condition="{graph}">
+<f:if condition="{graph.label}"><{resourceIri}> <http://www.w3.org/2000/01/rdf-schema#label> {lod:EscapeLiteral(literal : graph.label, format : 'ntriples')} .</f:if>
+<f:if condition="{graph.comment}"><{resourceIri}> <http://www.w3.org/2000/01/rdf-schema#comment> {lod:EscapeLiteral(literal : graph.comment, format : 'ntriples')} .</f:if>
+<f:if condition="{graph.statements}">
+<f:for each="{graph.statements}" as="statement">
+<f:render partial="Common/Object" arguments="{iri : '<{statement.subject.namespace.iri}{statement.subject.value}>', statement : statement}" />
+</f:for>
+</f:if>
 </f:if>
 <f:render partial="Common/AlternativeSerializations" arguments="{subject : resourceIri, environment : environment, settings : settings, resource : resource, mode : 'api'}"/>
 </f:alias>

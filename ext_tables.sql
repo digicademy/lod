@@ -11,8 +11,6 @@ CREATE TABLE tx_lod_domain_model_namespace (
     cruser_id int(11) unsigned DEFAULT '0' NOT NULL,
     deleted tinyint(4) unsigned DEFAULT '0' NOT NULL,
     hidden tinyint(4) unsigned DEFAULT '0' NOT NULL,
-    starttime int(11) unsigned DEFAULT '0' NOT NULL,
-    endtime int(11) unsigned DEFAULT '0' NOT NULL,
 
     PRIMARY KEY (uid),
     KEY pid (pid),
@@ -48,8 +46,6 @@ CREATE TABLE tx_lod_domain_model_iri (
     cruser_id int(11) unsigned DEFAULT '0' NOT NULL,
     deleted tinyint(4) unsigned DEFAULT '0' NOT NULL,
     hidden tinyint(4) unsigned DEFAULT '0' NOT NULL,
-    starttime int(11) unsigned DEFAULT '0' NOT NULL,
-    endtime int(11) unsigned DEFAULT '0' NOT NULL,
 
     # needed for identifying a copy of a record
     t3_origuid int(11) DEFAULT '0' NOT NULL,
@@ -60,6 +56,7 @@ CREATE TABLE tx_lod_domain_model_iri (
     KEY type (type),
     KEY label (label),
     KEY value (value),
+    KEY comment (comment(255)),
     KEY namespace (namespace),
     KEY representations (representations),
     KEY record (record),
@@ -85,8 +82,6 @@ CREATE TABLE tx_lod_domain_model_bnode (
     cruser_id int(11) unsigned DEFAULT '0' NOT NULL,
     deleted tinyint(4) unsigned DEFAULT '0' NOT NULL,
     hidden tinyint(4) unsigned DEFAULT '0' NOT NULL,
-    starttime int(11) unsigned DEFAULT '0' NOT NULL,
-    endtime int(11) unsigned DEFAULT '0' NOT NULL,
     sorting int(11) unsigned DEFAULT '0' NOT NULL,
 
     # needed for identifying a copy of a record
@@ -115,8 +110,6 @@ CREATE TABLE tx_lod_domain_model_literal (
     cruser_id int(11) unsigned DEFAULT '0' NOT NULL,
     deleted tinyint(4) unsigned DEFAULT '0' NOT NULL,
     hidden tinyint(4) unsigned DEFAULT '0' NOT NULL,
-    starttime int(11) unsigned DEFAULT '0' NOT NULL,
-    endtime int(11) unsigned DEFAULT '0' NOT NULL,
 
     PRIMARY KEY (uid),
     KEY pid (pid),
@@ -177,6 +170,7 @@ CREATE TABLE tx_lod_domain_model_statement (
     object_type varchar(255) DEFAULT '' NOT NULL,
     object_uid int(11) DEFAULT '0' NOT NULL,
     object_recursion tinyint(4) unsigned DEFAULT '0' NOT NULL,
+    object_inversion tinyint(4) unsigned DEFAULT '0' NOT NULL,
 
     graph int(11) DEFAULT '0' NOT NULL,
 
@@ -185,8 +179,6 @@ CREATE TABLE tx_lod_domain_model_statement (
     cruser_id int(11) unsigned DEFAULT '0' NOT NULL,
     deleted tinyint(4) unsigned DEFAULT '0' NOT NULL,
     hidden tinyint(4) unsigned DEFAULT '0' NOT NULL,
-    starttime int(11) unsigned DEFAULT '0' NOT NULL,
-    endtime int(11) unsigned DEFAULT '0' NOT NULL,
     sorting int(11) unsigned DEFAULT '0' NOT NULL,
     graph_sorting int(11) unsigned DEFAULT '0' NOT NULL,
     iri_sorting int(11) unsigned DEFAULT '0' NOT NULL,
@@ -218,8 +210,6 @@ CREATE TABLE tx_lod_domain_model_graph (
     cruser_id int(11) unsigned DEFAULT '0' NOT NULL,
     deleted tinyint(4) unsigned DEFAULT '0' NOT NULL,
     hidden tinyint(4) unsigned DEFAULT '0' NOT NULL,
-    starttime int(11) unsigned DEFAULT '0' NOT NULL,
-    endtime int(11) unsigned DEFAULT '0' NOT NULL,
 
     PRIMARY KEY (uid),
     KEY pid (pid),
@@ -245,8 +235,6 @@ CREATE TABLE tx_lod_domain_model_vocabulary (
     cruser_id int(11) unsigned DEFAULT '0' NOT NULL,
     deleted tinyint(4) unsigned DEFAULT '0' NOT NULL,
     hidden tinyint(4) unsigned DEFAULT '0' NOT NULL,
-    starttime int(11) unsigned DEFAULT '0' NOT NULL,
-    endtime int(11) unsigned DEFAULT '0' NOT NULL,
 
     PRIMARY KEY (uid),
     KEY pid (pid),

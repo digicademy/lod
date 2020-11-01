@@ -28,11 +28,11 @@ namespace Digicademy\Lod\Generator;
 
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 
-class ForeignRecordIdentifierGenerator extends AbstractIdentifierGenerator implements IdentifierGeneratorInterface
+class ForeignRecordFieldIdentifierGenerator extends AbstractIdentifierGenerator implements IdentifierGeneratorInterface
 {
 
     /**
-     * Takes the uid of the record associated with the IRI as basis for the identifier generation.
+     * Takes a field value from the record associated with the IRI as basis for the identifier generation.
      * Will only set an identifier if the record field in the IRI is set
      *
      * @return string
@@ -41,11 +41,20 @@ class ForeignRecordIdentifierGenerator extends AbstractIdentifierGenerator imple
     {
         $identifier = '';
 
-        if ($this->configuration['includeTablename'] == '1' && $this->record['record']) {
-            $identifier = $this->record['record'];
-        } elseif ($this->record['record']) {
-            $tableNameAndUid = BackendUtility::splitTable_Uid($this->record['record']);
-            $identifier = $tableNameAndUid[1];
+        if (
+            array_key_exists('foreignFieldName', $this->configuration) &&
+            $this->record['record']
+        ) {
+            $fieldName = $this->configuration['foreignFieldName'];
+            $tableUid = BackendUtility::splitTable_Uid($this->record['record']);
+            $foreignRecord = BackendUtility::getRecord($tableUid[0], $tableUid[1]);
+
+            if (
+                array_key_exists($fieldName, $foreignRecord) &&
+                $foreignRecord[$fieldName]
+            ) {
+                $identifier = $foreignRecord[$fieldName];
+            }
         }
 
         return $this->setIdentifierPrefix($identifier);

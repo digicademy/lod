@@ -1,11 +1,11 @@
-{namespace lod = Digicademy\Lod\ViewHelpers}<f:switch expression="{lod:DetermineEntity(entity : statement.object)}">
+{namespace lod = Digicademy\Lod\ViewHelpers}{escaping off}<f:switch expression="{lod:DetermineEntity(entity : statement.object)}">
     <f:case value="Digicademy\Lod\Domain\Model\Iri">
         <f:if condition="{statement.objectRecursion}">
         <f:then>
             <f:if condition="{statement.object.statements}">
                 <f:then>
                 <{statement.predicate.namespace.prefix}:{statement.predicate.value}>
-                <rdf:Description rdf:about="{statement.object.namespace.iri}{statement.object.value}">
+                <rdf:Description xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" rdf:about="{statement.object.namespace.iri}{statement.object.value}">
                 <f:for each="{statement.object.statements}" as="iriStatement">
                     <f:render partial="Common/Object" arguments="{statement : iriStatement}" />
                 </f:for>
@@ -25,7 +25,7 @@
     <f:case value="Digicademy\Lod\Domain\Model\Literal">
         <{statement.predicate.namespace.prefix}:{statement.predicate.value}{lod:LangDatatype(literal : statement.object, format : 'rdfxml')}>{statement.object.value}</{statement.predicate.namespace.prefix}:{statement.predicate.value}>
     </f:case>
-    <f:case default="Digicademy\Lod\Domain\Model\Bnode">
+    <f:case value="Digicademy\Lod\Domain\Model\Bnode">
         <{statement.predicate.namespace.prefix}:{statement.predicate.value} rdf:parseType="Resource">
         <f:for each="{statement.object.statements}" as="bnodeStatement">
             <f:render partial="Common/Object" arguments="{statement : bnodeStatement}" />

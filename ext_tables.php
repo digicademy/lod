@@ -37,12 +37,6 @@ if (!defined('TYPO3_MODE')) {
 
 // FLEXFORMS
 
-$TCA['tt_content']['types']['list']['subtypes_addlist']['lod_vocabulary'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('lod_vocabulary', 'FILE:EXT:lod/Configuration/FlexForms/VocabularyPlugin.xml');
-
-$TCA['tt_content']['types']['list']['subtypes_addlist']['lod_serializer'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('lod_serializer', 'FILE:EXT:lod/Configuration/FlexForms/SerializerPlugin.xml');
-
 // TABLES
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_lod_domain_model_namespace');

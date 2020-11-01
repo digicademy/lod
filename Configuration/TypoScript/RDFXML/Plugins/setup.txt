@@ -1,4 +1,4 @@
-[globalVar = GP : type = 2004]
+[getTSFE().type == 2004]
 
 plugin.tx_lod {
     format = rdfxml

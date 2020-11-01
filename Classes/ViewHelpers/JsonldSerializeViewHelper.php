@@ -26,7 +26,7 @@ namespace Digicademy\Lod\ViewHelpers;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 class JsonldSerializeViewHelper extends AbstractViewHelper
 {
@@ -44,7 +44,7 @@ class JsonldSerializeViewHelper extends AbstractViewHelper
      */
     public function render()
     {
-        $this->jsonLD = json_decode($this->renderChildren(), true);
+        $this->jsonLD = json_decode($this->renderChildren(),true);
         $this->mergeKeysRecursive($this->jsonLD['@graph']);
         return json_encode($this->jsonLD, JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT);
     }

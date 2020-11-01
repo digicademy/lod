@@ -30,6 +30,7 @@ use Digicademy\Lod\Domain\Repository\IriNamespaceRepository;
 use Digicademy\Lod\Domain\Repository\VocabularyRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 
 class VocabularyController extends ActionController
 {
@@ -61,6 +62,7 @@ class VocabularyController extends ActionController
      * show selected vocabulary
      *
      * @return void
+     * @throws InvalidQueryException
      */
     public function showAction()
     {
@@ -73,7 +75,8 @@ class VocabularyController extends ActionController
         }
 
         // assign existing namespaces
-        $this->view->assign('namespaces', $this->iriNamespaceRepository->findAll());
+        $apiSettings = $this->configurationManager->getConfiguration('Settings', 'lod', 'api');
+        $this->view->assign('iriNamespaces', $this->iriNamespaceRepository->findSelected('show', $apiSettings));
 
         // assign current arguments
         $this->view->assign('arguments', $this->request->getArguments());
@@ -81,7 +84,8 @@ class VocabularyController extends ActionController
         // provide environment vars
         $environment = [
             'TYPO3_REQUEST_HOST' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_HOST'),
-            'TYPO3_REQUEST_URL' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_URL')
+            'TYPO3_REQUEST_URL' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_URL'),
+            'TSFE' => ['pageArguments' => $GLOBALS['TSFE']->pageArguments]
         ];
         $this->view->assign('environment', $environment);
     }

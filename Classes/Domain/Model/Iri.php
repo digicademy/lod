@@ -26,7 +26,13 @@ namespace Digicademy\Lod\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Annotation as Extbase;
+use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
+use Digicademy\Lod\Domain\Repository\StatementRepository;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 class Iri extends AbstractEntity
 {
@@ -77,7 +83,7 @@ class Iri extends AbstractEntity
      * value
      *
      * @var string
-     * @validate NotEmpty
+     * @Extbase\Validate("NotEmpty")
      */
     protected $value;
 
@@ -92,7 +98,7 @@ class Iri extends AbstractEntity
      * Document representations for the subject
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Representation> $representations
-     * @lazy
+     * @Lazy
      */
     protected $representations;
 
@@ -100,9 +106,17 @@ class Iri extends AbstractEntity
      * Statements with this IRI as subject
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Statement> $statement
-     * @lazy
+     * @Lazy
      */
     protected $statements;
+
+    /**
+     * Inverse statements with this IRI as object
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Statement> $statement
+     * @Lazy
+     */
+    protected $inverseStatements;
 
     /**
      * Returns the type
@@ -322,6 +336,33 @@ class Iri extends AbstractEntity
     public function setStatements($statements)
     {
         $this->statements = $statements;
+    }
+
+    /**
+     * Returns the inverseStatements
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Statement> $inverseStatements
+     */
+    public function getInverseStatements()
+    {
+        $objectStorage = GeneralUtility::makeInstance(ObjectStorage::class);
+        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+        $statementRepository = $objectManager->get(StatementRepository::class);
+        $inverseStatements = $statementRepository->findByPosition('object', $this);
+        if ($inverseStatements) {
+            foreach ($inverseStatements as $inverseStatement) {
+                if ($inverseStatement->getObjectInversion()) {
+                    $subject = $inverseStatement->getSubject();
+                    $object = $inverseStatement->getObject();
+                    $inverseStatement->setSubject($object);
+                    $inverseStatement->setObject($subject);
+                    $objectStorage->attach($inverseStatement);
+                }
+            }
+        }
+
+        $this->inverseStatements = $objectStorage;
+        return $this->inverseStatements;
     }
 
 }

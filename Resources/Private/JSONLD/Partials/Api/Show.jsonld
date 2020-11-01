@@ -1,7 +1,7 @@
-{namespace lod = Digicademy\Lod\ViewHelpers}<lod:jsonldSerialize><f:format.raw>{</f:format.raw>
+{namespace lod = Digicademy\Lod\ViewHelpers}{escaping off}<lod:jsonldSerialize><f:format.raw>{</f:format.raw>
   "@context": <f:format.raw>{</f:format.raw>
-<f:for each="{namespaces}" as="namespace" iteration="namespaceIterator">
-    "{namespace.prefix}": "{namespace.iri}"<f:if condition="{namespaceIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if>
+<f:for each="{iriNamespaces}" as="namespace" iteration="iriNamespaceIterator">
+    "{namespace.prefix}": "{namespace.iri}"<f:if condition="{iriNamespaceIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if>
 </f:for>
   <f:format.raw>},</f:format.raw>
   "@graph" : [
@@ -15,6 +15,14 @@
         <f:if condition="{resource.commentLanguage}">"@language" : "{resource.commentLanguage}",</f:if>
         "@value" : {lod:EscapeLiteral(literal : resource.comment, format : 'jsonld')}
       <f:format.raw>}</f:format.raw>,</f:if>
+      <f:if condition="{graph}">
+      <f:if condition="{graph.label}">"rdfs:label_ext_lod_r{graph.uid}": <f:format.raw>{</f:format.raw>
+        "@value" : {lod:EscapeLiteral(literal : graph.label, format : 'jsonld')}
+      <f:format.raw>}</f:format.raw>,</f:if>
+      <f:if condition="{graph.comment}">"rdfs:comment_ext_lod_r{graph.uid}": <f:format.raw>{</f:format.raw>
+        "@value" : {lod:EscapeLiteral(literal : graph.comment, format : 'jsonld')}
+      <f:format.raw>}</f:format.raw>,</f:if>
+      </f:if>
       <f:if condition="{resource.record}">
         "dc:relation_ext_lod_r{resource.uid}": {
           <f:if condition="{resource.record.label}">"rdfs:label" : {lod:EscapeLiteral(literal : resource.record.label, format : 'jsonld')},</f:if>
@@ -22,13 +30,20 @@
         },
       </f:if>
         "rdfs:seeAlso_ext_lod_r{resource.uid}" : <f:format.raw>[</f:format.raw>
-          <f:render partial="Common/AlternativeSerializations" arguments="{mode : 'api', environment : environment, resource : resource, settings : settings}"/>
+          <f:render partial="Common/AlternativeSerializations" arguments="{mode : '{f:if(condition : \'{settings.mode}\', then : \'serializer\', else : \'api\')}', environment : environment, resource : resource, settings : settings}"/>
         <f:format.raw>]</f:format.raw><f:if condition="{resource.statements}">,
-        <f:for each="{resource.statements}" as="statement" iteration="objectIterator">
+        <f:for each="{lod:CombineStatements(iri : resource)}" as="statement" iteration="objectIterator">
         <f:render partial="Common/Object" arguments="{statement : statement}"/><f:if condition="{objectIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if>
         </f:for>
         </f:if>
-    <f:format.raw>}</f:format.raw><lod:IriCollection add="{lod:ObjectIriRecursion(iri : resource, maxDepth : 5)}"/><f:if condition="{iriCollection}">,
+    <f:format.raw>}</f:format.raw><f:if condition="{graph.statements}">,
+    <f:for each="{graph.statements}" as="statement" iteration="graphStatementIterator">
+    <f:format.raw>{</f:format.raw>
+      "@id": "{statement.subject.namespace.iri}{statement.subject.value}",
+      <f:render partial="Common/Object" arguments="{statement : statement}"/>
+    <f:format.raw>}</f:format.raw><f:if condition="{graphStatementIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if>
+    </f:for></f:if>
+    <lod:IriCollection add="{lod:ObjectIriRecursion(iri : resource, maxDepth : 5)}"/><f:if condition="{iriCollection}">,
     <f:for each="{iriCollection}" as="collectedIri" iteration="iriCollectionIterator">
     <f:render partial="Common/Iri" arguments="{iri : collectedIri, asJsonObject : 1}" /><f:if condition="{iriCollectionIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if></f:for></f:if>
   ]

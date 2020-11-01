@@ -67,6 +67,13 @@ class Statement extends AbstractEntity
     protected $objectRecursion;
 
     /**
+     * objectInversion
+     *
+     * @var int
+     */
+    protected $objectInversion;
+
+    /**
      * Returns the named graph
      *
      * @return \Digicademy\Lod\Domain\Model\Graph $graph
@@ -174,6 +181,28 @@ class Statement extends AbstractEntity
     public function setObjectRecursion($objectRecursion)
     {
         $this->objectRecursion = $objectRecursion;
+    }
+
+    /**
+     * Returns the objectInversion
+     *
+     * @return int
+     */
+    public function getObjectInversion()
+    {
+        return $this->objectInversion;
+    }
+
+    /**
+     * Sets the objectInversion
+     *
+     * @param int $objectInversion
+     *
+     * @return void
+     */
+    public function setObjectInversion($objectInversion)
+    {
+        $this->objectInversion = $objectInversion;
     }
 
 }

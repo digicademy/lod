@@ -1,23 +1,24 @@
-<rdf:RDF
+{namespace lod = Digicademy\Lod\ViewHelpers}{escaping off}<rdf:RDF
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-    xmlns:hydra="http://www.w3.org/ns/hydra/core#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:hydra="http://www.w3.org/ns/hydra/core#"
     xmlns:void="http://rdfs.org/ns/void#">
-    <rdf:Description rdf:about="{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {type : '2004'}, noCacheHash : 1) -> f:format.htmlspecialchars()}">
+    <rdf:Description rdf:about="{environment.TYPO3_REQUEST_HOST}{f:uri.page(additionalParams : {type : '2004'})}">
         <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Collection"/>
         <rdf:type rdf:resource="http://rdfs.org/ns/void#Dataset"/>
         <hydra:totalItems>{totalItems}</hydra:totalItems>
         <hydra:view>
-            <hydra:PartialCollectionView rdf:about="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', limit : arguments.limit}) -> f:format.htmlspecialchars()}">
-                <hydra:first rdf:resource="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', page : pagination.first, limit : arguments.limit}) -> f:format.htmlspecialchars()}"/>
-                <hydra:last rdf:resource="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', page : pagination.last, limit : arguments.limit}) -> f:format.htmlspecialchars()}"/>
-                <hydra:previous rdf:resource="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', page : pagination.previous, limit : arguments.limit}) -> f:format.htmlspecialchars()}"/>
-                <hydra:next rdf:resource="{environment.TYPO3_REQUEST_HOST}/{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', page : pagination.next, limit : arguments.limit}) -> f:format.htmlspecialchars()}"/>
+            <hydra:PartialCollectionView rdf:about="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', limit : arguments.limit, query : arguments.query, subject : arguments.subject, predicate : arguments.predicate, object : arguments.object, sorting : arguments.sorting}) -> f:format.htmlspecialchars()}">
+                <hydra:first rdf:resource="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', page : pagination.first, limit : arguments.limit, query : arguments.query, subject : arguments.subject, predicate : arguments.predicate, object : arguments.object, sorting : arguments.sorting}) -> f:format.htmlspecialchars()}"/>
+                <hydra:last rdf:resource="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', page : pagination.last, limit : arguments.limit, query : arguments.query, subject : arguments.subject, predicate : arguments.predicate, object : arguments.object, sorting : arguments.sorting}) -> f:format.htmlspecialchars()}"/>
+                <hydra:previous rdf:resource="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', page : pagination.previous, limit : arguments.limit, query : arguments.query, subject : arguments.subject, predicate : arguments.predicate, object : arguments.object, sorting : arguments.sorting}) -> f:format.htmlspecialchars()}"/>
+                <hydra:next rdf:resource="{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2004', page : pagination.next, limit : arguments.limit, query : arguments.query, subject : arguments.subject, predicate : arguments.predicate, object : arguments.object, sorting : arguments.sorting}) -> f:format.htmlspecialchars()}"/>
             </hydra:PartialCollectionView>
         </hydra:view><f:for each="{resources}" as="resource">
         <hydra:member>
-            <rdf:Description rdf:about="{environment.TYPO3_REQUEST_HOST}/{f:uri.page(additionalParams : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}, noCacheHash : 1) -> f:format.htmlspecialchars()}">
+            <rdf:Description rdf:about="{environment.TYPO3_REQUEST_HOST}{f:uri.page(additionalParams : {tx_lod_api : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}}) -> f:format.htmlspecialchars()}">
                 <f:render partial="Common/AlternativeSerializations" arguments="{action : 'api', resource : resource, environment : environment}" />
                 <f:if condition="{resource.label}"><rdfs:label{f:if(condition: '{resource.labelLanguage}', then: ' xml:lang="{resource.labelLanguage}"')}>{resource.label}</rdfs:label></f:if>
                 <f:if condition="{resource.comment}"><rdfs:comment{f:if(condition: '{resource.commentLanguage}', then: ' xml:lang="{resource.commentLanguage}"')}>{resource.comment}</rdfs:comment></f:if>

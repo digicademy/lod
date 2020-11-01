@@ -1,6 +1,6 @@
 <?php
-return array(
-    'ctrl' => array(
+return [
+    'ctrl' => [
         'title' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_statement',
         'label' => 'subject',
         'label_alt' => 'predicate,object',
@@ -11,72 +11,41 @@ return array(
         'cruser_id' => 'cruser_id',
         'dividers2tabs' => true,
         'delete' => 'deleted',
-        'enablecolumns' => array(
+        'enablecolumns' => [
             'disabled' => 'hidden',
-            'starttime' => 'starttime',
-            'endtime' => 'endtime',
-        ),
+        ],
         'searchFields' => 'subject,predicate,object,name',
-        'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_statement.svg'
-    ),
-    'interface' => array(
-        'showRecordFieldList' => 'hidden, subject, subject_type, subject_uid, predicate, predicate_type, predicate_uid, object, object_type, object_uid, object_recursion, graph',
-    ),
-    'types' => array(
-        '1' => array('showitem' => '--palette--;;recursion, --palette--;;triple, graph, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
-    ),
-    'palettes' => array(
-        'recursion' => array(
-            'showitem' => 'hidden, object_recursion'
-        ),
-        'triple' => array(
+        'iconfile' => 'EXT:lod/Resources/Public/Icons/tx_lod_domain_model_statement.svg',
+    ],
+    'interface' => [
+        'showRecordFieldList' => 'hidden, subject, subject_type, subject_uid, predicate, predicate_type, predicate_uid, object, object_type, object_uid, object_recursion, object_inversion, graph',
+    ],
+    'types' => [
+        '1' => ['showitem' => '--palette--;;flags, --palette--;;SubjectPredicateObject, graph'],
+    ],
+    'palettes' => [
+        'flags' => [
+            'showitem' => 'hidden, object_inversion, object_recursion'
+        ],
+        'SubjectPredicateObject' => [
             'showitem' => 'subject, predicate, object'
-        ),
-    ),
-    'columns' => array(
-        'hidden' => array(
+        ],
+        'PredicateObject' => [
+            'showitem' => 'predicate, object'
+        ],
+    ],
+    'columns' => [
+        'hidden' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
-            'config' => array(
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
+            'config' => [
                 'type' => 'check',
-            ),
-        ),
-        'starttime' => array(
-            'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
-            'config' => array(
-                'type' => 'input',
-                'size' => 13,
-                'max' => 20,
-                'eval' => 'datetime',
-                'checkbox' => 0,
-                'default' => 0,
-                'range' => array(
-                    'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
-                ),
-            ),
-        ),
-        'endtime' => array(
-            'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
-            'config' => array(
-                'type' => 'input',
-                'size' => 13,
-                'max' => 20,
-                'eval' => 'datetime',
-                'checkbox' => 0,
-                'default' => 0,
-                'range' => array(
-                    'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
-                ),
-            ),
-        ),
-        'graph' => array(
+            ],
+        ],
+        'graph' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_statement.graph',
-            'config' => array(
+            'config' => [
                 'type' => 'group',
                 'internal_type' => 'db',
                 'allowed' => 'tx_lod_domain_model_graph',
@@ -86,124 +55,108 @@ return array(
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
-                'wizards' => array(
-                    '_POSITION' => 'right',
-                    'suggest' => Array(
-                        'type' => 'suggest',
-                        'title' => 'Find records',
-                        'default' => [
-                            'additionalSearchFields' => 'label',
-                        ],
-                    ),
-                    'add' => Array(
-                        'type' => 'popup',
-                        'title' => 'Create new graph',
-                        'icon' => 'actions-add',
-                        'params' => array(
+                'suggestOptions' => [
+                    'default' => [
+                        'additionalSearchFields' => 'label',
+                    ],
+                ],
+                'fieldWizard' => [
+                    'tableList' => [
+                        'disabled' => false,
+                    ],
+                ],
+                'fieldControl' => [
+                    'elementBrowser' => [
+                        'disabled' => false,
+                    ],
+                    'addRecord' => [
+                        'disabled' => false,
+                        'options' => [
                             'table' => 'tx_lod_domain_model_graph',
                             'pid' => '###PAGE_TSCONFIG_ID###',
                             'setValue' => 'set'
-                        ),
-                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-                        'module' => array(
-                            'name' => 'wizard_add',
-                        ),
-                    ),
-                    'edit' => array(
-                        'type' => 'popup',
-                        'title' => 'Edit',
-                        'icon' => 'actions-open',
-                        'popup_onlyOpenIfSelected' => 1,
-                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-                        'module' => array(
-                            'name' => 'wizard_edit',
-                        ),
-                    ),
-                ),
-            ),
-        ),
-        'subject' => array(
+                        ],
+                    ],
+                    'editPopup' => [
+                        'disabled' => true,
+                    ],
+                ],
+            ],
+        ],
+        'subject' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_statement.subject',
-            'config' => array(
+            'config' => [
                 'type' => 'group',
                 'internal_type' => 'db',
                 'allowed' => 'tx_lod_domain_model_iri,tx_lod_domain_model_bnode',
 // @TODO: make this configurable per TSConfig per page
 /*
-                'filter' => array (
-                    array(
+                'filter' => [
+                    [
                         'userFunc' => 'Digicademy\Lod\Utility\Backend\IriUtility->filterByType',
-                        'parameters' => array(
+                        'parameters' => [
                             'type' => '1',
-                         ),
-                    ),
-                ),
+                         ],
+                    ],
+                ],
 */
                 'prepend_tname' => 1,
                 'size' => 1,
-                'minitems' => 1,
+                'minitems' => 0,
                 'maxitems' => 1,
-                'wizards' => array(
-                    '_POSITION' => 'top',
-                    'suggest' => Array(
-                        'type' => 'suggest',
-                        'title' => 'Find records',
-                        'default' => [
-                            'additionalSearchFields' => 'label,comment,value',
-                        ],
+                'suggestOptions' => [
+                    'default' => [
+                        'additionalSearchFields' => 'label,comment,value',
+                    ],
 // @TODO: make this configurable per TSConfig per page
 /*
                         'tx_lod_domain_model_iri' => [
                             'searchCondition' => 'type = 1',
                         ],
 */
-                    ),
-                    'add_subject_iri' => Array(
-                        'type' => 'popup',
-                        'title' => 'Create new IRI',
-                        'icon' => 'tx_lod_actions_add_iri',
-                        'params' => array(
+                ],
+/*
+                'fieldWizard' => [
+                    'tableList' => [
+                        'disabled' => true,
+                    ],
+                ],
+*/
+                'fieldControl' => [
+                    'elementBrowser' => [
+                        'disabled' => false,
+                    ],
+                    'editPopup' => [
+                        'disabled' => true,
+                    ],
+                    '01_addIri' => [
+                        'renderType' => 'addRecordWithIconIdentifier',
+                        'options' => [
+                            'title' => 'Create new IRI',
                             'table' => 'tx_lod_domain_model_iri',
                             'pid' => '###PAGE_TSCONFIG_ID###',
-                            'setValue' => 'set'
-                        ),
-                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-                        'module' => array(
-                            'name' => 'wizard_add',
-                        ),
-                    ),
-                    'add_subject_bnode' => Array(
-                        'type' => 'popup',
-                        'title' => 'Create new blank node',
-                        'icon' => 'tx_lod_actions_add_bnode',
-                        'params' => array(
+                            'setValue' => 'set',
+                            'iconIdentifier' => 'tx_lod_actions_add_iri',
+                        ],
+                    ],
+                    '02_addBnode' => [
+                        'renderType' => 'addRecordWithIconIdentifier',
+                        'options' => [
+                            'title' => 'Create new blank node',
                             'table' => 'tx_lod_domain_model_bnode',
                             'pid' => '###PAGE_TSCONFIG_ID###',
-                            'setValue' => 'set'
-                        ),
-                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-                        'module' => array(
-                            'name' => 'wizard_add',
-                        ),
-                    ),
-                    'edit' => array(
-                        'type' => 'popup',
-                        'title' => 'Edit',
-                        'icon' => 'actions-open',
-                        'popup_onlyOpenIfSelected' => 1,
-                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-                        'module' => array(
-                            'name' => 'wizard_edit',
-                        ),
-                    ),
-                ),
-            ),
-        ),
-        'predicate' => array(
+                            'setValue' => 'set',
+                            'iconIdentifier' => 'tx_lod_actions_add_bnode',
+                        ],
+                    ],
+                ],
+            ],
+        ],
+        'predicate' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_statement.predicate',
-            'config' => array(
+            'config' => [
                 'type' => 'group',
                 'internal_type' => 'db',
                 'allowed' => 'tx_lod_domain_model_iri',
@@ -211,180 +164,175 @@ return array(
                 'foreign_table' => 'tx_lod_domain_model_iri',
                 'prepend_tname' => 1,
                 'size' => 1,
-                'filter' => array (
-                    array(
+                'filter' => [
+                    [
                         'userFunc' => 'Digicademy\Lod\Utility\Backend\IriUtility->filterByType',
-                        'parameters' => array(
+                        'parameters' => [
                             'type' => '2',
-                         ),
-                    ),
-                ),
-                'minitems' => 1,
+                         ],
+                    ],
+                ],
+                'minitems' => 0,
                 'maxitems' => 1,
-                'wizards' => array(
-                    '_POSITION' => 'top',
-                    'suggest' => Array(
-                        'type' => 'suggest',
-                        'title' => 'Find records',
-                        'default' => [
-                            'additionalSearchFields' => 'label,comment,value',
-                        ],
-                        'tx_lod_domain_model_iri' => [
-                            'searchCondition' => 'type = 2',
-                        ],
-                    ),
-                    'add_predicate_iri' => Array(
-                        'type' => 'popup',
-                        'title' => 'Create new',
-                        'icon' => 'tx_lod_actions_add_iri',
-                        'params' => array(
+                'suggestOptions' => [
+                    'default' => [
+                        'additionalSearchFields' => 'label,comment,value',
+                    ],
+                    'tx_lod_domain_model_iri' => [
+                        'searchCondition' => 'type = 2',
+                    ],
+                ],
+/*
+                'fieldWizard' => [
+                    'tableList' => [
+                        'disabled' => true,
+                    ],
+                ],
+*/
+                'fieldControl' => [
+                    'elementBrowser' => [
+                        'disabled' => false,
+                    ],
+                    'editPopup' => [
+                        'disabled' => true,
+                    ],
+                    '01_addIri' => [
+                        'renderType' => 'addRecordWithIconIdentifier',
+                        'options' => [
+                            'title' => 'Create new IRI',
                             'table' => 'tx_lod_domain_model_iri',
                             'pid' => '###PAGE_TSCONFIG_ID###',
-                            'setValue' => 'set'
-                        ),
-                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-                        'module' => array(
-                            'name' => 'wizard_add',
-                        ),
-                    ),
-                    'edit' => array(
-                        'type' => 'popup',
-                        'title' => 'Edit',
-                        'icon' => 'actions-open',
-                        'popup_onlyOpenIfSelected' => 1,
-                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-                        'module' => array(
-                            'name' => 'wizard_edit',
-                        ),
-                    ),
-                ),
-            ),
-        ),
-        'object' => array(
+                            'setValue' => 'set',
+                            'iconIdentifier' => 'tx_lod_actions_add_iri',
+                        ],
+                    ],
+                ],
+            ],
+        ],
+        'object' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_statement.object',
-            'config' => array(
+            'config' => [
                 'type' => 'group',
                 'internal_type' => 'db',
                 'allowed' => 'tx_lod_domain_model_iri,tx_lod_domain_model_literal,tx_lod_domain_model_bnode',
-                'filter' => array (
-                    array(
+                'filter' => [
+                    [
                         'userFunc' => 'Digicademy\Lod\Utility\Backend\IriUtility->filterByType',
-                        'parameters' => array(
+                        'parameters' => [
                             'type' => '1',
-                         ),
-                    ),
-                ),
+                         ],
+                    ],
+                ],
                 'prepend_tname' => 1,
                 'size' => 1,
-                'minitems' => 1,
+                'minitems' => 0,
                 'maxitems' => 1,
-                'wizards' => array(
-                    '_POSITION' => 'top',
-                    'suggest' => Array(
-                        'type' => 'suggest',
-                        'title' => 'Find records',
-                        'default' => [
-                            'additionalSearchFields' => 'label,comment,value',
-                        ],
-                        'tx_lod_domain_model_literal' => [
-                            'additionalSearchFields' => 'value,datatype,language',
-                        ],
-                        'tx_lod_domain_model_iri' => [
-                            'searchCondition' => 'type = 1',
-                        ],
-                    ),
-                    'add_object_iri' => Array(
-                        'type' => 'popup',
-                        'title' => 'Create new IRI',
-                        'icon' => 'tx_lod_actions_add_iri',
-                        'params' => array(
+                'suggestOptions' => [
+                    'default' => [
+                        'additionalSearchFields' => 'label',
+                    ],
+                    'tx_lod_domain_model_iri' => [
+                        'searchCondition' => 'type = 1',
+                        'additionalSearchFields' => 'label,comment,value',
+                    ],
+                    'tx_lod_domain_model_bnode' => [
+                        'additionalSearchFields' => 'label,comment,value',
+                    ],
+                    'tx_lod_domain_model_literal' => [
+                        'additionalSearchFields' => 'value',
+                    ],
+                ],
+/*
+                'fieldWizard' => [
+                    'tableList' => [
+                        'disabled' => true,
+                    ],
+                ],
+*/
+                'fieldControl' => [
+                    'elementBrowser' => [
+                        'disabled' => false,
+                    ],
+                    'editPopup' => [
+                        'disabled' => true,
+                    ],
+                    '01_addIri' => [
+                        'renderType' => 'addRecordWithIconIdentifier',
+                        'options' => [
+                            'title' => 'Create new IRI',
                             'table' => 'tx_lod_domain_model_iri',
                             'pid' => '###PAGE_TSCONFIG_ID###',
-                            'setValue' => 'set'
-                        ),
-                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-                        'module' => array(
-                            'name' => 'wizard_add',
-                        ),
-                    ),
-                    'add_object_literal' => Array(
-                        'type' => 'popup',
-                        'title' => 'Create new literal',
-                        'icon' => 'tx_lod_actions_add_literal',
-                        'params' => array(
-                            'table' => 'tx_lod_domain_model_literal',
-                            'pid' => '###PAGE_TSCONFIG_ID###',
-                            'setValue' => 'set'
-                        ),
-                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-                        'module' => array(
-                            'name' => 'wizard_add',
-                        ),
-                    ),
-                    'add_object_bnode' => Array(
-                        'type' => 'popup',
-                        'title' => 'Create new blank node',
-                        'icon' => 'tx_lod_actions_add_bnode',
-                        'params' => array(
+                            'setValue' => 'set',
+                            'iconIdentifier' => 'tx_lod_actions_add_iri',
+                        ],
+                    ],
+                    '02_addBnode' => [
+                        'renderType' => 'addRecordWithIconIdentifier',
+                        'options' => [
+                            'title' => 'Create new blank node',
                             'table' => 'tx_lod_domain_model_bnode',
                             'pid' => '###PAGE_TSCONFIG_ID###',
-                            'setValue' => 'set'
-                        ),
-                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-                        'module' => array(
-                            'name' => 'wizard_add',
-                        ),
-                    ),
-                    'edit' => Array(
-                        'type' => 'popup',
-                        'title' => 'Edit record',
-                        'icon' => 'actions-open',
-                        'JSopenParams' => 'height=550,width=900,status=0,menubar=0,scrollbars=1',
-                        'popup_onlyOpenIfSelected' => 1,
-                        'module' => array(
-                            'name' => 'wizard_edit',
-                        ),
-                    ),
-                ),
-            ),
-        ),
-        'object_recursion' => array(
+                            'setValue' => 'set',
+                            'iconIdentifier' => 'tx_lod_actions_add_bnode',
+                        ],
+                    ],
+                    '03_addLiteral' => [
+                        'renderType' => 'addRecordWithIconIdentifier',
+                        'options' => [
+                            'title' => 'Create new literal',
+                            'table' => 'tx_lod_domain_model_literal',
+                            'pid' => '###PAGE_TSCONFIG_ID###',
+                            'setValue' => 'set',
+                            'iconIdentifier' => 'tx_lod_actions_add_literal',
+                        ],
+                    ],
+                ],
+            ],
+        ],
+        'object_recursion' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_statement.object_recursion',
-            'config' => array(
+            'config' => [
                 'type' => 'check',
-            ),
-        ),
-        'subject_type' => array(
-            'config' => array(
+            ],
+        ],
+        'object_inversion' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_statement.object_inversion',
+            'config' => [
+                'type' => 'check',
+            ],
+        ],
+        'subject_type' => [
+            'config' => [
                 'type' => 'passthrough',
-            ),
-        ),
-        'subject_uid' => array(
-            'config' => array(
+            ],
+        ],
+        'subject_uid' => [
+            'config' => [
                 'type' => 'passthrough',
-            ),
-        ),
-        'predicate_type' => array(
-            'config' => array(
+            ],
+        ],
+        'predicate_type' => [
+            'config' => [
                 'type' => 'passthrough',
-            ),
-        ),
-        'predicate_uid' => array(
-            'config' => array(
+            ],
+        ],
+        'predicate_uid' => [
+            'config' => [
                 'type' => 'passthrough',
-            ),
-        ),
-        'object_type' => array(
-            'config' => array(
+            ],
+        ],
+        'object_type' => [
+            'config' => [
                 'type' => 'passthrough',
-            ),
-        ),
-        'object_uid' => array(
-            'config' => array(
+            ],
+        ],
+        'object_uid' => [
+            'config' => [
                 'type' => 'passthrough',
-            ),
-        ),
-    ),
-);
+            ],
+        ],
+    ],
+];
