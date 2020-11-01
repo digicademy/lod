@@ -1,4 +1,4 @@
-<f:if condition="{iri.label}"><rdfs:label{f:if(condition: '{iri.labelLanguage}', then: ' xml:lang="{iri.labelLanguage}"')}>{iri.label}</rdfs:label></f:if>
+{escaping off}<f:if condition="{iri.label}"><rdfs:label{f:if(condition: '{iri.labelLanguage}', then: ' xml:lang="{iri.labelLanguage}"')}>{iri.label}</rdfs:label></f:if>
 <f:if condition="{iri.comment}"><rdfs:comment{f:if(condition: '{iri.commentLanguage}', then: ' xml:lang="{iri.commentLanguage}"')}>{iri.comment}</rdfs:comment></f:if>
 <f:if condition="{iri.statements}">
 <f:for each="{iri.statements}" as="iriStatement">

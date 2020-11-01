@@ -1,7 +1,7 @@
 {
     "name": "digicademy/lod",
     "type": "typo3-cms-extension",
-    "description": "Linked Open Data for TYPO3",
+    "description": "Linked Open Data for TYPO3 provides a semantic layer with API, terminology service, RDF serializer and IRI resolver",
     "homepage": "http://www.digitale-akademie.de",
     "authors": [
         {
@@ -12,13 +12,13 @@
         }
     ],
     "license": ["GPL-2.0+"],
-    "keywords": ["TYPO3", "Linked Open Data", "LOD", "RDF"],
+    "keywords": ["TYPO3", "Linked Open Data", "LOD", "RDF", "Knowledge Graph", "Semantic Web"],
     "support": {
         "issues": "https://github.com/digicademy/lod/issues"
     },
     "version": "1.0.0",
     "require": {
-        "typo3/cms-core": ">=9.5.0 || <=9.5.99",
+        "typo3/cms-core": ">=9.5.0 || <=10.4.99",
         "ext-json": "*"
     },
     "suggest": {

@@ -67,7 +67,7 @@ return [
                 ],
                 'fieldControl' => [
                     'elementBrowser' => [
-                        'disabled' => true,
+                        'disabled' => false,
                     ],
                     'addRecord' => [
                         'disabled' => false,
@@ -125,7 +125,7 @@ return [
 */
                 'fieldControl' => [
                     'elementBrowser' => [
-                        'disabled' => true,
+                        'disabled' => false,
                     ],
                     'editPopup' => [
                         'disabled' => true,
@@ -191,7 +191,7 @@ return [
 */
                 'fieldControl' => [
                     'elementBrowser' => [
-                        'disabled' => true,
+                        'disabled' => false,
                     ],
                     'editPopup' => [
                         'disabled' => true,
@@ -252,7 +252,7 @@ return [
 */
                 'fieldControl' => [
                     'elementBrowser' => [
-                        'disabled' => true,
+                        'disabled' => false,
                     ],
                     'editPopup' => [
                         'disabled' => true,

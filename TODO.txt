@@ -2,15 +2,10 @@
 
 ### v1.0 ###
 
-BE
-- change IRI icon
-
-FE
-- check 10.4 compatibility
-
 DATA
+- think about namespaces and serialization (set static namespaces: rdf, rdfs, owl, dc, dcterms, void, skos?)
+- add basic vocabs
 - create ext_tables_static+adt.sql
--- set static namespaces: rdf, rdfs, owl, dc, dcterms, void, skos
 --- https://ogp.me/
 --- https://github.com/schemaorg/schemaorg/blob/master/data/releases/5.0/all-layers-properties.csv
 --- https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#elements-title

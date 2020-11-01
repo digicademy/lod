@@ -51,12 +51,21 @@ class IriNamespaceRepository extends Repository
 
         $constraints = [];
 
+        // optionally switch to defined uid list of namespaces
         $namespaceList = $this->includeNamespaceList($action, $settings);
         if ($namespaceList) {
             $query->getQuerySettings()->setRespectStoragePage(false);
             $constraints[] = $query->in('uid', $namespaceList);
             $query->matching(
                 $query->logicalAnd($constraints)
+            );
+        }
+
+        // optionally extend storagePids for the query
+        if ($settings[$action]['additionalPidList']) {
+            $additionalPidList = GeneralUtility::intExplode(',', $settings[$action]['additionalPidList'], true);
+            $query->getQuerySettings()->setStoragePageIds(
+                array_merge($query->getQuerySettings()->getStoragePageIds(), $additionalPidList)
             );
         }
 
@@ -79,9 +88,18 @@ class IriNamespaceRepository extends Repository
 
         $namespaceList = $this->includeNamespaceList($action, $settings);
 
+        // optionally switch to defined uid list of namespaces
         if ($namespaceList) {
             $query->getQuerySettings()->setRespectStoragePage(false);
             $constraints[] = $query->in('uid', $namespaceList);
+        }
+
+        // optionally extend storagePids for the query
+        if ($settings[$action]['additionalPidList']) {
+            $additionalPidList = GeneralUtility::intExplode(',', $settings[$action]['additionalPidList'], true);
+            $query->getQuerySettings()->setStoragePageIds(
+                array_merge($query->getQuerySettings()->getStoragePageIds(), $additionalPidList)
+            );
         }
 
         $constraints[] = $query->like('prefix', $prefix);

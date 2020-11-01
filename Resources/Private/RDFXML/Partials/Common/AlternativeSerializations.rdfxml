@@ -1,4 +1,4 @@
-<f:for each="{
+{escaping off}<f:for each="{
     1991 : {uri : 'http://www.w3.org/ns/formats/RDFa', mime : 'text/html'},
     2004 : {uri : 'http://www.w3.org/ns/formats/RDF_XML', mime : 'application/rdf+xml'},
     2011 : {uri : 'http://www.w3.org/ns/formats/Turtle', mime : 'text/turtle'},

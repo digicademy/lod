@@ -37,13 +37,15 @@ lib.tx_lod.plugin {
 plugin.tx_lod {
     features.requireCHashArgumentForActionArguments = 0
     persistence {
+        # @see: https://docs.typo3.org/c/typo3/cms-core/master/en-us/Changelog/10.0/Breaking-87623-ReplaceConfigpersistenceclassesTyposcriptConfiguration.html
         classes {
             Digicademy\Lod\Domain\Model\IriNamespace {
                 mapping {
                     tableName = tx_lod_domain_model_namespace
                 }
             }
-            # mapping configuration of other classes for use in ItemMappingService
+            # classes configuration for use in ItemMappingService
+            # this also needs to stay in place even in TYPO3 v10
             Digicademy\Lod\Domain\Model\Iri {
                 mapping {
                     tableName = tx_lod_domain_model_iri
