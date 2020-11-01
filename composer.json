@@ -25,7 +25,6 @@
         "easyrdf/easyrdf": "EasyRdf is a PHP library designed to make it easy to consume and produce RDF"
     },
     "replace": {
-        "lod": "self.version",
         "typo3-ter/lod": "self.version"
     },
     "autoload": {
