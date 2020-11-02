@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{f:uri.resource(path: 'Css/lod.css')}"/>
 </f:section>
 <f:format.raw><lod:RemoveEmptyLines>
-<div class="vocabulary" prefix="rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# dc: http://purl.org/dc/elements/1.1/ void: http://rdfs.org/ns/void# {lod:RdfaPrefix(namespaces : iriNamespaces)}">
+<div class="vocabulary" prefix="<f:for each="{lod:FilterIriNamespaces(iriNamespaces : iriNamespaces, returnDifference : false)}" as="value" key="prefix" iteration="iterator">{prefix}: {value}<f:if condition="{iterator.isLast}"><f:then></f:then><f:else> </f:else></f:if></f:for>">
 
     <div about="{vocabulary.iri.namespace.value}{vocabulary.iri.value}" typeof="owl:Ontology">
         <f:if condition="{vocabulary.label}">

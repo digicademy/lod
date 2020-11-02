@@ -5,18 +5,8 @@
     xmlns:dc="http://purl.org/dc/elements/1.1/"
     xmlns:hydra="http://www.w3.org/ns/hydra/core#"
     xmlns:void="http://rdfs.org/ns/void#"
-<f:alias map="{definedNamespaces: {
-    rdf : 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
-    rdfs : 'http://www.w3.org/2000/01/rdf-schema#',
-    owl : 'http://www.w3.org/2002/07/owl#',
-    dc : 'http://purl.org/dc/elements/1.1/',
-    hydra : 'http://www.w3.org/ns/hydra/core#',
-    void : 'http://rdfs.org/ns/void#'
-}}">
-    <f:if condition="{iriNamespaces}">
-    <f:for each="{lod:FilterIriNamespaces(iriNamespaces : iriNamespaces, filterValues : definedNamespaces)}" as="namespace">
-    xmlns:{namespace.prefix}="{namespace.iri}"</f:for></f:if>>
-</f:alias>
+    <f:for each="{lod:FilterIriNamespaces(iriNamespaces : iriNamespaces)}" as="namespace">
+    xmlns:{namespace.prefix}="{namespace.iri}"</f:for>>
     <rdf:Description rdf:about="{f:if(condition : '{resource.namespace}', then : '{resource.namespace.iri}', else : '')}{resource.value}">
         <f:render partial="Common/AlternativeSerializations" arguments="{action : 'api', resource : resource, environment : environment, settings : settings}" />
         <f:if condition="{resource.label}"><rdfs:label{f:if(condition: '{resource.labelLanguage}', then: ' xml:lang="{resource.labelLanguage}"')}>{resource.label}</rdfs:label></f:if>

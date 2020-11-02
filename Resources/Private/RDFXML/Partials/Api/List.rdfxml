@@ -4,7 +4,9 @@
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:dc="http://purl.org/dc/elements/1.1/"
     xmlns:hydra="http://www.w3.org/ns/hydra/core#"
-    xmlns:void="http://rdfs.org/ns/void#">
+    xmlns:void="http://rdfs.org/ns/void#"
+    <f:for each="{lod:FilterIriNamespaces(iriNamespaces : iriNamespaces)}" as="value" key="prefix">
+    xmlns:{prefix}="{value}"</f:for>>
     <rdf:Description rdf:about="{environment.TYPO3_REQUEST_HOST}{f:uri.page(additionalParams : {type : '2004'})}">
         <rdf:type rdf:resource="http://www.w3.org/ns/hydra/core#Collection"/>
         <rdf:type rdf:resource="http://rdfs.org/ns/void#Dataset"/>

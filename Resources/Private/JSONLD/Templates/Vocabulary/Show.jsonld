@@ -1,12 +1,7 @@
 {namespace lod = Digicademy\Lod\ViewHelpers}{escaping off}<lod:RemoveEmptyLines><lod:jsonldSerialize><f:format.raw>{</f:format.raw>
   "@context": <f:format.raw>{</f:format.raw>
-    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "owl": "http://www.w3.org/2002/07/owl#",
-    "void": "http://rdfs.org/ns/void#",
-    "dc": "http://purl.org/dc/elements/1.1/"<f:if condition="{iriNamespaces}">,</f:if>
-<f:for each="{iriNamespaces}" as="namespace" iteration="iriNamespaceIterator">
-    "{namespace.prefix}": "{namespace.iri}"<f:if condition="{iriNamespaceIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if>
+<f:for each="{lod:FilterIriNamespaces(iriNamespaces : iriNamespaces, returnDifference : false)}" as="value" key="prefix" iteration="iriNamespaceIterator">
+    "{prefix}": "{value}"<f:if condition="{iriNamespaceIterator.isLast}"><f:then></f:then><f:else>,</f:else></f:if>
 </f:for>
   <f:format.raw>},</f:format.raw>
   "@graph" : [

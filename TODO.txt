@@ -2,11 +2,9 @@
 
 ### v1.0 ###
 
-- solution for fixed and dynamic namespaces in templates
-
 DOCUMENTATION
 
-- write basic documentation
+- write documentation
 
 ### v1.1 ###
 

@@ -1,5 +1,5 @@
 {namespace lod = Digicademy\Lod\ViewHelpers}{escaping off}
-<div vocab="http://www.w3.org/ns/hydra/core#" prefix="rdfs: http://www.w3.org/2000/01/rdf-schema# dc: http://purl.org/dc/elements/1.1/ void: http://rdfs.org/ns/void#" typeof="Collection void:Dataset">
+<div vocab="http://www.w3.org/ns/hydra/core#" prefix="<f:for each="{lod:FilterIriNamespaces(iriNamespaces : iriNamespaces, returnDifference : false)}" as="value" key="prefix" iteration="iterator">{prefix}: {value}<f:if condition="{iterator.isLast}"><f:then></f:then><f:else> </f:else></f:if></f:for>" typeof="Collection void:Dataset">
 
     <h1><f:translate key="api.list.header" /> (<span property="totalItems">{totalItems}</span>)</h1>
 

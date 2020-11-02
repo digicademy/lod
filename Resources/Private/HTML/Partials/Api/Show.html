@@ -1,5 +1,5 @@
 {namespace lod = Digicademy\Lod\ViewHelpers}{escaping off}
-<div prefix="{lod:RdfaPrefix(namespaces : iriNamespaces)}" resource="{resource.namespace.iri -> f:format.htmlspecialchars()}{resource.value -> f:format.htmlspecialchars()}">
+<div prefix="<f:for each="{lod:FilterIriNamespaces(iriNamespaces : iriNamespaces, returnDifference : false)}" as="value" key="prefix" iteration="iterator">{prefix}: {value}<f:if condition="{iterator.isLast}"><f:then></f:then><f:else> </f:else></f:if></f:for>" resource="{resource.namespace.iri -> f:format.htmlspecialchars()}{resource.value -> f:format.htmlspecialchars()}">
     <h2 class="resource-iri">
         <a href="{resource.namespace.iri -> f:format.htmlspecialchars()}{resource.value -> f:format.htmlspecialchars()}">
         &lt;<f:if condition="{resource.namespace}">{resource.namespace.iri}</f:if>{resource.value}&gt;

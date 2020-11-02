@@ -1,4 +1,4 @@
-{namespace lod = Digicademy\Lod\ViewHelpers}{escaping off}<f:for each="{iriNamespaces}" as="namespace">@prefix {namespace.prefix}: <{namespace.iri}> .
+{namespace lod = Digicademy\Lod\ViewHelpers}{escaping off}<f:for each="{lod:FilterIriNamespaces(iriNamespaces : iriNamespaces, returnDifference : false)}" as="value" key="prefix">@prefix {prefix}: <{value}> .
 </f:for>
 
 <{f:if(condition : '{resource.namespace}', then : '{resource.namespace.iri}', else : '')}{resource.value}>
