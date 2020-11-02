@@ -11,9 +11,15 @@ Installation and Configuration
 Installation
 ------------
 
-Text
+* composer
+* TER
+* optional: easyRDF
+* static template inclusion
 
 Configuration
 -------------
 
-Text
+* import vocabs
+* set TSConfig
+* configure depending on use cases
+* site configuration for speaking IRIs

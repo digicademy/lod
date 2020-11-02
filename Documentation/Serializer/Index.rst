@@ -7,3 +7,6 @@
 
 Serializer
 ==========
+
+* serializer configuration
+* example

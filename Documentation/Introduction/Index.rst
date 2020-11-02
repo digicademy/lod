@@ -12,24 +12,25 @@ Introduction
 What does it do?
 ^^^^^^^^^^^^^^^^
 
-The LOD extension provides a semantic layer for TYPO3 making it possible to describe and offer
-any record in your database as Linked Open Data. The extension features an out of the box API
-supporting broadly accepted serialization formats (RDFa, RDF/XML, Turtle, NT, JSON-LD), an
-IRI resolver for creating permalinks, well known RDF vocabularies (like schema.org,
-SKOS, FOAF etc.) for creating structured data (also embedded as JSON-LD in your web pages) and a
-plugin for creating and publishing your own LOD vocabularies.
+The TYPO3 LOD extension provides a semantic layer that makes it possible to offer
+any record from your database as Linked Open Data. The extension features an out of the box
+restful API with content negotiation supporting a broad range of serialization
+formats (RDFa, RDF/XML, Turtle, NT, JSON-LD), a configurable permalink resolver for records,
+well known RDF vocabularies (like schema.org, SKOS, FOAF etc.) for describing your data
+(and also embedded it as JSON-LD in your web pages) and a plugin for creating and publishing
+your own LOD vocabularies.
 
 Features
 ^^^^^^^^
 
-- Implementation of the RDF data model for TYPO3 using the backend interface for editing structured data
+- Implementation of the RDF data model in TYPO3 using the backend interface for editing
 - (Automatically) create IRIs (Internationalized Resource Identifiers) for any record in the system
-- Fully configurable permalink resolver for any record in the system
+- Fully configurable and extendable permalink resolver for stable links to any resource
 - Import and use established RDF vocabularies (or create your own) to describe your data semantically
-- Triple composer based on IRRE with auto suggest for subjects, predicates and objects
-- RESTful API implementing the Hydra standard, true content negotiation and a broad range of RDF serializations
+- Statement composer for RDF triples based on IRRE with auto suggest for subjects, predicates and objects
+- RESTful API implementing the Hydra standard with content negotiation and a broad range of RDF serializations
 - Serializer for embedding structured data in your web pages (as JSON-LD)
-- All RDF serializations based on Fluid templates (no external dependencies)
+- All RDF serializations are based on Fluid templates (no external dependencies)
 - Vocabulary plugin for creating and publishing LOD vocabularies
 
 Screenshots
@@ -40,12 +41,12 @@ Screenshots
 .. figure:: ../Images/iri.png
    :alt: Editing of IRIs with namespace management and easy statement generation
 
-**Screenshot 2: Triple composer with auto suggest for semantic statements**
+**Screenshot 2: Statement composer with auto suggest for creating RDF triples**
 
 .. figure:: ../Images/triple-composer.png
    :alt: Triple composer with auto suggest for semantic statements
 
-**Screenshot 3: Restful LOD API with content negotiation, serialization formats as well as search and statement filters**
+**Screenshot 3: Restful LOD API with content negotiation, serialization formats and filters**
 
 .. figure:: ../Images/api.png
    :alt: Restful LOD API with content negotiation, serialization formats as well as search and statement filters

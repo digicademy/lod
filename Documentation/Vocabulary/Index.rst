@@ -7,3 +7,6 @@
 
 Vocabulary Plugin
 =================
+
+* plugin configuration
+* example
