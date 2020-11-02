@@ -24,10 +24,10 @@ Linked Open Data for TYPO3
 		Manual for the LOD extension
 
 	:Keywords:
-		LOD, Linked Data, RDF, Vocabulary, Ontology
+		LOD, Linked Open Data, RDF, Vocabulary, Ontology, Knowledge Graph
 
 	:Copyright:
-		2019
+		2020
 
 	:Author:
 		Torsten Schrade
@@ -49,4 +49,12 @@ Linked Open Data for TYPO3
 	:glob:
 
 	Introduction/Index
+	InstallationConfiguration/Index
+	BasicPrinciples/Index
+	Api/Index
+	Permalinks/Index
+	Serializer/Index
+	Vocabulary/Index
 	Reference/Index
+	Development/Index
+	Changelog/Index
