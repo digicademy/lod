@@ -136,6 +136,7 @@ return [
                 ],
                 'size' => 1,
                 'maxitems' => 1,
+                'default' => 0,
 // @TODO: TYPO3 bug in FormEngine - https://forge.typo3.org/issues/89032
                 'fieldControl' => [
                     'addRecord' => [
@@ -177,6 +178,7 @@ return [
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
+                'default' => 0,
                 'fieldControl' => [
                     'editPopup' => [
                         'disabled' => false,
