@@ -48,8 +48,9 @@ return [
                 // prevent http://wiki.typo3.org/Exception/CMS/1353170925
                 // 'foreign_table' => 'tx_lod_domain_model_iri',
                 'size' => 1,
-                'minitems' => 1,
+                'minitems' => 0,
                 'maxitems' => 1,
+                'default' => 0,
                 'suggestOptions' => [
                     'default' => [
                         'additionalSearchFields' => 'label,comment,value',
@@ -110,6 +111,7 @@ return [
                 'size' => 10,
                 'minitems' => 0,
                 'maxitems' => 9999,
+                'default' => 0,
                 'suggestOptions' => [
                     'default' => [
                         'additionalSearchFields' => 'label,comment,value',

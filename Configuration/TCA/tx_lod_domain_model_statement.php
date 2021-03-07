@@ -55,6 +55,7 @@ return [
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
+                'default' => 0,
                 'suggestOptions' => [
                     'default' => [
                         'additionalSearchFields' => 'label',
@@ -105,6 +106,7 @@ return [
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
+                'default' => 0,
                 'suggestOptions' => [
                     'default' => [
                         'additionalSearchFields' => 'label,comment,value',
@@ -174,6 +176,7 @@ return [
                 ],
                 'minitems' => 0,
                 'maxitems' => 1,
+                'default' => 0,
                 'suggestOptions' => [
                     'default' => [
                         'additionalSearchFields' => 'label,comment,value',
@@ -228,6 +231,7 @@ return [
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
+                'default' => 0,
                 'suggestOptions' => [
                     'default' => [
                         'additionalSearchFields' => 'label',
