@@ -27,6 +27,8 @@ namespace Digicademy\Lod\Utility\Backend;
  ***************************************************************/
 
 use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\DataHandling\DataHandler;
 
 class IriUtility
 {
@@ -47,17 +49,35 @@ class IriUtility
         // apply filter to record, but only for IRI table
         if (preg_match('/tx_lod_domain_model_iri/', $parameters['values'][0])) {
 
-            // get record uid
-// @TODO: BackendUtility splitTableUid?
-// @TODO: statementIriTypeFilter.subject = 1|2
+            // trim record uid
             $recordUid = (int)substr(strrchr($parameters['values'][0], '_'), 1);
+
+            // fetch parent page depending on context
+            if ($parentObject instanceof DataHandler) {
+                $iriRecord = BackendUtility::getRecord(
+                    'tx_lod_domain_model_iri',
+                    $recordUid,
+                    'pid',
+                );
+                $pid = $iriRecord['pid'];
+            } else {
+                $pid = $parentObject->id;
+            }
+
+            // get PageTSConfig for parent page and set type configuration
+            $pagesTSConfig = BackendUtility::getPagesTSconfig($pid);
+            if ($pagesTSConfig['tx_lod.']['settings.']['iriTypeFilter.'][$parameters['field']]) {
+                $types = implode(',', GeneralUtility::intExplode(',', $pagesTSConfig['tx_lod.']['settings.']['iriTypeFilter.'][$parameters['field']]));
+            } else {
+                $types = (int)$parameters['default'];
+            }
 
             // test type of record
             $checkRecordType = BackendUtility::getRecord(
                 'tx_lod_domain_model_iri',
                 $recordUid,
                 '*',
-                ' AND tx_lod_domain_model_iri.type = ' . (int)$parameters['type']
+                ' AND tx_lod_domain_model_iri.type IN (' . $types . ')'
             );
 
             // if the type doesn't match, reset return value (skip record)

@@ -116,8 +116,10 @@ tx_lod {
         }
 
         # @TODO: see IRI TCA for details
-        statementIriTypeFilter {
-            subject = 1|2
+        iriTypeFilter {
+            subject = 1,2
+            predicate = 1
+            object = 1,2
         }
 
     }
@@ -155,8 +157,7 @@ plugin.tx_lod_api {
     settings {
 
         list {
-            excludeFromList = page1, page2, page3
-            displayMode = 1|2|3
+            additionalPidList = page1, page2, page3
         }
 
 #        show {

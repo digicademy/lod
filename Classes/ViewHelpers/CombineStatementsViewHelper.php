@@ -58,8 +58,19 @@ class CombineStatementsViewHelper extends AbstractViewHelper
         $inverseStatements = $iri->getInverseStatements();
 
         if ($inverseStatements) {
+
             $combinedStatements = $iri->getStatements();
+
             foreach ($inverseStatements as $inverseStatement) {
+                // look for owl:inverseOf to check if predicate needs to be swapped
+                if ($inverseStatement->getPredicate()->getStatements()) {
+                    foreach ($inverseStatement->getPredicate()->getStatements() as $statement) {
+                        $predicate = $statement->getPredicate();
+                        if ($predicate->getValue() == 'inverseOf' && $predicate->getNamespace()->getIri() == 'http://www.w3.org/2002/07/owl#') {
+                            $inverseStatement->setPredicate($statement->getObject());
+                        }
+                    }
+                }
                 $combinedStatements->attach($inverseStatement);
             }
         } else {

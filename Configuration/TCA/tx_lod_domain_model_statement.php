@@ -91,17 +91,15 @@ return [
                 'type' => 'group',
                 'internal_type' => 'db',
                 'allowed' => 'tx_lod_domain_model_iri,tx_lod_domain_model_bnode',
-// @TODO: make this configurable per TSConfig per page
-/*
                 'filter' => [
                     [
                         'userFunc' => 'Digicademy\Lod\Utility\Backend\IriUtility->filterByType',
                         'parameters' => [
-                            'type' => '1',
+                            'field' => 'subject',
+                            'default' => 1
                          ],
                     ],
                 ],
-*/
                 'prepend_tname' => 1,
                 'size' => 1,
                 'minitems' => 0,
@@ -170,7 +168,8 @@ return [
                     [
                         'userFunc' => 'Digicademy\Lod\Utility\Backend\IriUtility->filterByType',
                         'parameters' => [
-                            'type' => '2',
+                            'field' => 'predicate',
+                            'default' => 2
                          ],
                     ],
                 ],
@@ -223,7 +222,8 @@ return [
                     [
                         'userFunc' => 'Digicademy\Lod\Utility\Backend\IriUtility->filterByType',
                         'parameters' => [
-                            'type' => '1',
+                            'field' => 'object',
+                            'default' => 1
                          ],
                     ],
                 ],
