@@ -2,11 +2,18 @@
 
 ### v1.0 ###
 
+- optimize hydra api and test with client
+- wizards for connecting to dbpedia/wikidata and other apis
+- iri record link for RTE
+
 DOCUMENTATION
 
 - write documentation
+- structured data embedding: https://developers.google.com/search/docs/guides/intro-structured-data?hl=de
 
 ### v1.1 ###
+
+- tableTracking: map fields of a record to statements that will be created on save (example news_author => schema:author)
 
 - extend support for inverse properties
 -- https://www.semanticarts.com/named-property-inverses-yay-or-nay/

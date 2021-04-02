@@ -151,8 +151,20 @@ class ItemMappingService
         $frameworkConfiguration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
 
         foreach ($frameworkConfiguration['persistence']['classes'] as $key => $value) {
+            // if current table name matches a configured table name
             if ($value['mapping']['tableName'] == $tablename) {
-                $className = $key;
+                // check if recordType is configured and matches the row
+                if (array_key_exists('recordType', $value['mapping'])) {
+                    $typeColumnName = $GLOBALS['TCA'][$tablename]['ctrl']['type'];
+                    if ($row[$typeColumnName] == $value['mapping']['recordType']) {
+                        $className = $key;
+                    } else {
+                        continue;
+                    }
+                // if no recordType is configured directly match table name to configured class
+                } else {
+                    $className = $key;
+                }
             }
         }
 
