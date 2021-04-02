@@ -1,7 +1,9 @@
 {namespace lod = Digicademy\Lod\ViewHelpers}{escaping off}
-<div vocab="http://www.w3.org/ns/hydra/core#" prefix="<f:for each="{lod:FilterIriNamespaces(iriNamespaces : iriNamespaces, returnDifference : false)}" as="value" key="prefix" iteration="iterator">{prefix}: {value}<f:if condition="{iterator.isLast}"><f:then></f:then><f:else> </f:else></f:if></f:for>" typeof="Collection void:Dataset">
+<div vocab="http://www.w3.org/ns/hydra/core#" prefix="<f:for each="{lod:FilterIriNamespaces(iriNamespaces : iriNamespaces, returnDifference : false)}" as="value" key="prefix" iteration="iterator">{prefix}: {value}<f:if condition="{iterator.isLast}"><f:then></f:then><f:else> </f:else></f:if></f:for>" typeof="EntryPoint ApiDocumentation Collection void:Dataset">
 
-    <h1><f:translate key="api.list.header" /> (<span property="totalItems">{totalItems}</span>)</h1>
+    <h1 property="title"><f:translate key="api.list.header" /> (<span property="totalItems">{totalItems}</span>)</h1>
+
+    <p><strong><f:translate key="api.list.entrypoint" /></strong> <a property="entrypoint" href="{settings.general.hydraEntryPoint}">{settings.general.hydraEntryPoint}</a></p>
 
     <ul class="alternative-serialization navbar">
         <li><strong><f:translate key="general.alternativeSerialization" /></strong></li>

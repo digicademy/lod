@@ -77,6 +77,9 @@ plugin.tx_lod {
 
 plugin.tx_lod_api {
     settings {
+        general {
+#            hydraEntryPoint =
+        }
         list {
 #            additionalPidList =
 #            namespaceList =

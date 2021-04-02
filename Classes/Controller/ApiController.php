@@ -270,15 +270,21 @@ class ApiController extends ActionController
 
         $this->view->assign('arguments', $arguments);
 
-        $this->view->assign('settings', $this->settings);
-
         // provide environment vars
         $environment = [
             'TYPO3_REQUEST_HOST' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_HOST'),
             'TYPO3_REQUEST_URL' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_URL'),
-            'TSFE' => ['pageArguments' => $GLOBALS['TSFE']->pageArguments]
+            'TSFE' => ['pageArguments' => $GLOBALS['TSFE']->pageArguments, 'page' => $GLOBALS['TSFE']->page]
         ];
         $this->view->assign('environment', $environment);
+
+        // settings
+        if (!$this->settings['general']['hydraEntryPoint'])
+            $this->settings['general']['hydraEntryPoint'] = $environment['TYPO3_REQUEST_HOST'] . $environment['TSFE']['page']['slug'] . '/';
+        $this->view->assign('settings', $this->settings);
+
+        // hydra link header (@see: https://www.hydra-cg.com/spec/latest/core/#example-16-discovering-hydra-api-documentation-documents)
+        $this->response->setHeader('Link', '<'. $this->settings['general']['hydraEntryPoint'] . '>; rel="http://www.w3.org/ns/hydra/core#apiDocumentation');
     }
 
     /**
@@ -332,16 +338,21 @@ class ApiController extends ActionController
         // assign current arguments
         $this->view->assign('arguments', $this->request->getArguments());
 
-        // assign current settings
-        $this->view->assign('settings', $this->settings);
-
         // provide environment vars
         $environment = [
             'TYPO3_REQUEST_HOST' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_HOST'),
             'TYPO3_REQUEST_URL' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_URL'),
-            'TSFE' => ['pageArguments' => $GLOBALS['TSFE']->pageArguments]
+            'TSFE' => ['pageArguments' => $GLOBALS['TSFE']->pageArguments, 'page' => $GLOBALS['TSFE']->page]
         ];
         $this->view->assign('environment', $environment);
+
+        // settings
+        if (!$this->settings['general']['hydraEntryPoint'])
+            $this->settings['general']['hydraEntryPoint'] = $environment['TYPO3_REQUEST_HOST'] . $environment['TSFE']['page']['slug'] . '/';
+        $this->view->assign('settings', $this->settings);
+
+        // hydra link header (@see: https://www.hydra-cg.com/spec/latest/core/#example-16-discovering-hydra-api-documentation-documents)
+        $this->response->setHeader('Link', '<'. $this->settings['general']['hydraEntryPoint'] . '>; rel="http://www.w3.org/ns/hydra/core#apiDocumentation');
     }
 
 }

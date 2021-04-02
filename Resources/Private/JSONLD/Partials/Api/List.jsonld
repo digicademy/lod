@@ -8,9 +8,16 @@
   <f:format.raw>{</f:format.raw>
     "@id": "{environment.TYPO3_REQUEST_HOST}{f:uri.page(additionalParams : {type : '2014'})}",
     "@type": [
+      "hydra:ApiDocumentation",
+      "hydra:EntryPoint",
       "hydra:Collection",
       "void:Dataset"
     ],
+    "hydra:entrypoint": <f:format.raw>{</f:format.raw>
+        "@id" : "{settings.general.hydraEntryPoint}",
+        "@type" : "@id"
+    <f:format.raw>},</f:format.raw>
+    "hydra:title": "{f:translate(key: 'api.list.header')}",
     "hydra:member": [
 <f:for each="{resources}" as="resource" iteration="iterator">
       <f:format.raw>{</f:format.raw>
