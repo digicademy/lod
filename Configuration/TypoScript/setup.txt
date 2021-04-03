@@ -78,7 +78,12 @@ plugin.tx_lod {
 plugin.tx_lod_api {
     settings {
         general {
-#            hydraEntryPoint =
+            CORS {
+                accessControlAllowOrigin = *
+                accessControlAllowMethods = GET
+                accessControlAllowHeaders = Accept, Origin, Content-type, X-Requested-With, Authorization
+                accessControlExposeHeaders = Link, Content-Location, Location
+            }
         }
         list {
 #            additionalPidList =
@@ -86,6 +91,12 @@ plugin.tx_lod_api {
         }
         show {
 #            namespaceList =
+        }
+        apiDocumentation {
+            keys {
+                0 = api
+                # PID = KEYWORD
+            }
         }
         resolver {
             t3 {
