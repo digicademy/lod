@@ -77,12 +77,26 @@ plugin.tx_lod {
 
 plugin.tx_lod_api {
     settings {
+        general {
+            CORS {
+                accessControlAllowOrigin = *
+                accessControlAllowMethods = GET
+                accessControlAllowHeaders = Accept, Origin, Content-type, X-Requested-With, Authorization
+                accessControlExposeHeaders = Link, Content-Location, Location
+            }
+        }
         list {
 #            additionalPidList =
 #            namespaceList =
         }
         show {
 #            namespaceList =
+        }
+        apiDocumentation {
+            keys {
+                0 = api
+                # PID = KEYWORD
+            }
         }
         resolver {
             t3 {

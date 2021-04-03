@@ -156,6 +156,10 @@ plugin.tx_lod_api {
 
     settings {
 
+        general {
+#            hydraEntryPoint =
+        }
+
         list {
             additionalPidList = page1, page2, page3
         }

@@ -20,6 +20,9 @@
             <trans-unit id="api.list.header">
                 <source>LOD Resources</source>
             </trans-unit>
+            <trans-unit id="api.list.description">
+                <source>TYPO3 Linked Data API</source>
+            </trans-unit>
             <trans-unit id="api.list.page">
                 <source>Page</source>
             </trans-unit>

@@ -37,8 +37,10 @@ use Digicademy\Lod\Service\ResolverService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
 use TYPO3\CMS\Frontend\Controller\ErrorController;
 use TYPO3\CMS\Frontend\Page\PageAccessFailureReasons;
+use TYPO3\CMS\Core\Http\ImmediateResponseException;
 
 class ApiController extends ActionController
 {
@@ -110,6 +112,7 @@ class ApiController extends ActionController
      */
     public function aboutAction()
     {
+
         // check if pageType is set (either via param or masked through PageTypeSuffix)
         if (GeneralUtility::_GP('type')) {
             $pageType = GeneralUtility::_GP('type');
@@ -117,6 +120,37 @@ class ApiController extends ActionController
             $pageType = $GLOBALS['TSFE']->type;
         } else {
             $pageType = 0;
+        }
+
+        // set environment
+        $environment = [
+            'TYPO3_REQUEST_HOST' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_HOST'),
+            'TYPO3_REQUEST_URL' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_URL'),
+            'TSFE' => ['pageArguments' => $GLOBALS['TSFE']->pageArguments, 'page' => $GLOBALS['TSFE']->page]
+        ];
+
+        // hydra link headers (@see: https://www.hydra-cg.com/spec/latest/core/#example-16-discovering-hydra-api-documentation-documents)
+        if (is_array($this->settings['apiDocumentation']['keys'])) {
+
+            if (array_key_exists($GLOBALS['TSFE']->id, $this->settings['apiDocumentation']['keys'])) {
+                $apiDocumentationKey = $this->settings['apiDocumentation']['keys'][$GLOBALS['TSFE']->id];
+            } else {
+                $apiDocumentationKey = $this->settings['apiDocumentation']['keys'][0];
+            }
+
+            $uriBuilder = $this->objectManager->get(UriBuilder::class);
+            $uri = $uriBuilder
+              ->reset()
+              ->setTargetPageUid($GLOBALS['TSFE']->id)
+              ->setArguments(['type' => '2014'])
+              ->uriFor('about', ['apiDocumentation' => $apiDocumentationKey], 'Api', 'lod', 'api');
+            $apiDocumentationPath = preg_replace('/(\?|\&)(cHash)(.*)$/', '', $uri);
+
+            $this->response->setHeader('Access-Control-Allow-Origin', $this->settings['general']['CORS']['accessControlAllowOrigin']);
+            $this->response->setHeader('Access-Control-Allow-Methods', $this->settings['general']['CORS']['accessControlAllowMethods']);
+            $this->response->setHeader('Access-Control-Allow-Headers', $this->settings['general']['CORS']['accessControlAllowHeaders']);
+            $this->response->setHeader('Access-Control-Expose-Headers', $this->settings['general']['CORS']['accessControlExposeHeaders']);
+            $this->response->setHeader('Link', '<'. $environment['TYPO3_REQUEST_HOST'] . $apiDocumentationPath . '>; rel="http://www.w3.org/ns/hydra/core#apiDocumentation');
         }
 
         // if page type is set define response format directly
@@ -167,7 +201,18 @@ class ApiController extends ActionController
             $this->redirectToUri($uri);
         }
 
-        // look up subject by identifier, otherwise forward to list
+        // general assignments for all sub actions
+
+        // assign current arguments
+        $this->view->assign('arguments', $this->request->getArguments());
+
+        // assign settings
+        $this->view->assign('settings', $this->settings);
+
+        // assign environment vars
+        $this->view->assign('environment', $environment);
+
+        // execute sub actions
         if ($this->request->hasArgument('iri')) {
 
             // try to fetch the resource
@@ -181,12 +226,16 @@ class ApiController extends ActionController
                 $this->showAction($resource);
             } else {
                 // throw PSR-7 compliant error response
-                GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction(
+                $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction(
                     $GLOBALS['TYPO3_REQUEST'],
                     'The requested page does not exist',
                     ['code' => PageAccessFailureReasons::PAGE_NOT_FOUND]);
+                throw new ImmediateResponseException($response);
             }
-        // no resource argument, forward to list of IRIs
+        // api documentation sub action
+        } elseif ($this->request->hasArgument('apiDocumentation')) {
+            $this->apiDocumentationAction();
+        // list resources sub action
         } else {
             $this->listAction();
         }
@@ -267,18 +316,6 @@ class ApiController extends ActionController
         $this->view->assign('resources', $resources);
 
         $this->view->assign('iriNamespaces', $this->iriNamespaceRepository->findSelected('show', $this->settings));
-
-        $this->view->assign('arguments', $arguments);
-
-        $this->view->assign('settings', $this->settings);
-
-        // provide environment vars
-        $environment = [
-            'TYPO3_REQUEST_HOST' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_HOST'),
-            'TYPO3_REQUEST_URL' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_URL'),
-            'TSFE' => ['pageArguments' => $GLOBALS['TSFE']->pageArguments]
-        ];
-        $this->view->assign('environment', $environment);
     }
 
     /**
@@ -328,20 +365,29 @@ class ApiController extends ActionController
 
         // assign namespaces
         $this->view->assign('iriNamespaces', $this->iriNamespaceRepository->findSelected('show', $this->settings));
+    }
 
-        // assign current arguments
-        $this->view->assign('arguments', $this->request->getArguments());
+    /**
+     * Returns a Hydra API Documentation
+     *
+     * @return void
+     * @throws
+     */
+    private function apiDocumentationAction()
+    {
+        // if no valid API documentation key is given or format is not JSON-LD return 404
+        $apiDocumentationKey = $this->request->getArgument('apiDocumentation');
 
-        // assign current settings
-        $this->view->assign('settings', $this->settings);
+        if (!in_array($apiDocumentationKey, $this->settings['apiDocumentation']['keys']) || $this->request->getFormat() != 'jsonld') {
+            $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction(
+                $GLOBALS['TYPO3_REQUEST'],
+                'The requested page does not exist',
+                ['code' => PageAccessFailureReasons::PAGE_NOT_FOUND]);
+            throw new ImmediateResponseException($response);
+        }
 
-        // provide environment vars
-        $environment = [
-            'TYPO3_REQUEST_HOST' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_HOST'),
-            'TYPO3_REQUEST_URL' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_URL'),
-            'TSFE' => ['pageArguments' => $GLOBALS['TSFE']->pageArguments]
-        ];
-        $this->view->assign('environment', $environment);
+        // assign current action for disambiguation in about template
+        $this->view->assign('action', 'apiDocumentation');
     }
 
 }

@@ -66,6 +66,7 @@ class FilterIriNamespacesViewHelper extends AbstractViewHelper
                 "dc" => "http://purl.org/dc/elements/1.1/",
                 "void" => "http://rdfs.org/ns/void#",
                 "hydra" => "http://www.w3.org/ns/hydra/core#",
+                "schema" => "http://schema.org/",
             ]
         );
     }
@@ -77,7 +78,11 @@ class FilterIriNamespacesViewHelper extends AbstractViewHelper
      */
     public function render()
     {
+
+#        $settings = $this->templateVariableContainer->get('settings');
         $predefinedNamespaces = $this->arguments['predefinedNamespaces'];
+#        $predefinedNamespaces['@vocab'] = $settings['general']['hydraEntryPoint'] . '#';
+
         $difference = [];
         foreach ($this->arguments['iriNamespaces'] as $namespace) {
             if (!in_array($namespace->getIri(), $predefinedNamespaces)) {
