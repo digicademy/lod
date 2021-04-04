@@ -150,6 +150,36 @@ config.recordLinks.MY_HANDLER_KEYWORD {
     }
 }
 
+### IRI RECORD LINK CONFIGURATION ###
+
+- two thoughts:
+-- always link records in the system via its IRI; resolving to the real record instance via representation
+-- use the IRI information to create rich information panels around links (cf. refer)
+
+# TSConfig
+
+TCEMAIN.linkHandler.iri {
+    handler = TYPO3\CMS\Recordlist\LinkHandler\RecordLinkHandler
+    label = IRI
+    configuration {
+        table = tx_lod_domain_model_iri
+        storagePid =
+        hidePageTree = 1
+    }
+    scanBefore = page
+}
+
+# TypoScript
+
+config.recordLinks.iri {
+    typolink {
+        parameter =
+        additionalParams.data = field:value
+        additionalParams.wrap = &tx_lod_api[iri]=|&type=1991
+        useCacheHash = 0
+    }
+}
+
 ### LOD API CONFIGURATION ###
 
 plugin.tx_lod_api {
