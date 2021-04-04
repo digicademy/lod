@@ -2,8 +2,6 @@
 
 ### v1.0 ###
 
-- TCA optimizations for IRI records
-
 - TCA wizards for easy IRI creation
 -- https://docs.typo3.org/m/typo3/reference-coreapi/master/en-us/ApiOverview/FormEngine/Rendering/Index.html?highlight=fieldcontrol
 -- connect to dbpedia/wikidata and other apis and select + create IRIs

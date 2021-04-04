@@ -19,7 +19,12 @@ return [
         'showRecordFieldList' => 'hidden, type, value, language, datatype',
     ],
     'types' => [
-        '1' => ['showitem' => 'hidden, value, language, datatype'],
+        '1' => ['showitem' => 'hidden, --palette--;;value'],
+    ],
+    'palettes' => [
+        'value' => [
+            'showitem' => 'value, language, datatype'
+        ],
     ],
     'columns' => [
         'hidden' => [
