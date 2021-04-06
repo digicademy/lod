@@ -71,10 +71,24 @@ if (TYPO3_MODE === 'BE') {
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][] = 'Digicademy\Lod\Hooks\Backend\DataHandler';
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processCmdmapClass'][] = 'Digicademy\Lod\Hooks\Backend\DataHandler';
 
+    // add modified addRecord fieldControl (make it reusable for different types of records)
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][138471234123] = [
-       'nodeName' => 'addRecordWithIconIdentifier',
+       'nodeName' => 'enhancedAddRecord',
        'priority' => 30,
-       'class' => Digicademy\Lod\Backend\Form\FieldControl\AddRecord::class
+       'class' => Digicademy\Lod\Backend\Form\FieldControl\EnhancedAddRecord::class
+    ];
+
+    // add modified tableList fieldWizard (take out hard coded connection to elementBrowser)
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry'][1617617718] = [
+       'nodeName' => 'enhancedTableList',
+       'priority' => 30,
+       'class' => Digicademy\Lod\Backend\Form\FieldWizard\EnhancedTableList::class
+    ];
+
+    // XCLASS group field to change hardcoded HTML arrangement of fieldControl
+    // we don't register a new formEngine node and use XCLASS since has problems in data handling (tested)
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][TYPO3\CMS\Backend\Form\Element\GroupElement::class] = [
+       'className' => Digicademy\Lod\Backend\Form\Element\EnhancedGroupElement::class
     ];
 }
 
