@@ -63,12 +63,18 @@ return [
                 ],
                 'fieldWizard' => [
                     'tableList' => [
-                        'disabled' => false,
+                        'disabled' => true,
+                    ],
+                    'enhancedTableList' => [
+                        'renderType' => 'enhancedTableList',
+                    ],
+                    'recordsOverview' => [
+                        'disabled' => true,
                     ],
                 ],
                 'fieldControl' => [
                     'elementBrowser' => [
-                        'disabled' => false,
+                        'disabled' => true,
                     ],
                     'addRecord' => [
                         'disabled' => false,
@@ -116,22 +122,28 @@ return [
                         ],
 */
                 ],
-/*
+
                 'fieldWizard' => [
                     'tableList' => [
                         'disabled' => true,
                     ],
-                ],
-*/
-                'fieldControl' => [
-                    'elementBrowser' => [
-                        'disabled' => false,
+                    'enhancedTableList' => [
+                        'renderType' => 'enhancedTableList',
                     ],
-                    'editPopup' => [
+                    'recordsOverview' => [
                         'disabled' => true,
                     ],
+                ],
+
+                'fieldControl' => [
+                    'elementBrowser' => [
+                        'disabled' => true,
+                    ],
+                    'editPopup' => [
+                        'disabled' => false,
+                    ],
                     '01_addIri' => [
-                        'renderType' => 'addRecordWithIconIdentifier',
+                        'renderType' => 'enhancedAddRecord',
                         'options' => [
                             'title' => 'Create new IRI',
                             'table' => 'tx_lod_domain_model_iri',
@@ -141,7 +153,7 @@ return [
                         ],
                     ],
                     '02_addBnode' => [
-                        'renderType' => 'addRecordWithIconIdentifier',
+                        'renderType' => 'enhancedAddRecord',
                         'options' => [
                             'title' => 'Create new blank node',
                             'table' => 'tx_lod_domain_model_bnode',
@@ -184,22 +196,28 @@ return [
                         'searchCondition' => 'type = 2',
                     ],
                 ],
-/*
+
                 'fieldWizard' => [
                     'tableList' => [
                         'disabled' => true,
                     ],
-                ],
-*/
-                'fieldControl' => [
-                    'elementBrowser' => [
-                        'disabled' => false,
+                    'enhancedTableList' => [
+                        'renderType' => 'enhancedTableList',
                     ],
-                    'editPopup' => [
+                    'recordsOverview' => [
                         'disabled' => true,
                     ],
+                ],
+
+                'fieldControl' => [
+                    'elementBrowser' => [
+                        'disabled' => true,
+                    ],
+                    'editPopup' => [
+                        'disabled' => false,
+                    ],
                     '01_addIri' => [
-                        'renderType' => 'addRecordWithIconIdentifier',
+                        'renderType' => 'enhancedAddRecord',
                         'options' => [
                             'title' => 'Create new IRI',
                             'table' => 'tx_lod_domain_model_iri',
@@ -247,22 +265,28 @@ return [
                         'additionalSearchFields' => 'value',
                     ],
                 ],
-/*
+
                 'fieldWizard' => [
                     'tableList' => [
                         'disabled' => true,
                     ],
-                ],
-*/
-                'fieldControl' => [
-                    'elementBrowser' => [
-                        'disabled' => false,
+                    'enhancedTableList' => [
+                        'renderType' => 'enhancedTableList',
                     ],
-                    'editPopup' => [
+                    'recordsOverview' => [
                         'disabled' => true,
                     ],
+                ],
+
+                'fieldControl' => [
+                    'elementBrowser' => [
+                        'disabled' => true,
+                    ],
+                    'editPopup' => [
+                        'disabled' => false,
+                    ],
                     '01_addIri' => [
-                        'renderType' => 'addRecordWithIconIdentifier',
+                        'renderType' => 'enhancedAddRecord',
                         'options' => [
                             'title' => 'Create new IRI',
                             'table' => 'tx_lod_domain_model_iri',
@@ -272,7 +296,7 @@ return [
                         ],
                     ],
                     '02_addBnode' => [
-                        'renderType' => 'addRecordWithIconIdentifier',
+                        'renderType' => 'enhancedAddRecord',
                         'options' => [
                             'title' => 'Create new blank node',
                             'table' => 'tx_lod_domain_model_bnode',
@@ -282,7 +306,7 @@ return [
                         ],
                     ],
                     '03_addLiteral' => [
-                        'renderType' => 'addRecordWithIconIdentifier',
+                        'renderType' => 'enhancedAddRecord',
                         'options' => [
                             'title' => 'Create new literal',
                             'table' => 'tx_lod_domain_model_literal',

@@ -54,7 +54,7 @@
                 <source>Submit</source>
             </trans-unit>
             <trans-unit id="api.list.statementFilter.legend">
-                <source>Filter resources by statement patterns</source>
+                <source>Filter resources by linked data fragments</source>
             </trans-unit>
             <trans-unit id="api.list.statementFilter.subject">
                 <source>Subject</source>

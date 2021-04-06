@@ -2,19 +2,24 @@
 
 ### v1.0 ###
 
-- TCA wizards for easy IRI creation
--- https://docs.typo3.org/m/typo3/reference-coreapi/master/en-us/ApiOverview/FormEngine/Rendering/Index.html?highlight=fieldcontrol
+- TCA wizard for including IRIs from external knowledge bases
+-- https://docs.typo3.org/m/typo3/reference-coreapi/master/en-us/ApiOverview/FormEngine/Rendering/Index.html?highlight=fieldcontrol#add-fieldcontrol-example
+-- https://stackoverflow.com/questions/49816958/how-to-add-custom-wizards-in-typo3-9-tca
 -- connect to dbpedia/wikidata and other apis and select + create IRIs
--- easily create literals
 
 - IRI Link Handler for RTE
-- @see: https://docs.typo3.org/m/typo3/reference-coreapi/9.5/en-us/ApiOverview/LinkBrowser/Linkhandler/Index.html
-- @see: https://docs.typo3.org/m/typo3/reference-coreapi/9.5/en-us/ApiOverview/LinkBrowser/LinkBrowserApi/Index.html#linkbrowser-api
+-- @see: https://docs.typo3.org/m/typo3/reference-coreapi/9.5/en-us/ApiOverview/LinkBrowser/Linkhandler/Index.html
+-- @see: https://docs.typo3.org/m/typo3/reference-coreapi/9.5/en-us/ApiOverview/LinkBrowser/LinkBrowserApi/Index.html#linkbrowser-api
 -- set as default?
 -- make it possible to create IRIs in Link Browser
 
-- API: statement pattern filter should also take into account implicit statements that come from fields
--- develop a field = statement mapping syntax that does this for a given table
+- implement linked data fragments: https://linkeddatafragments.org/
+-- add to response: https://github.com/OParl/spec/issues/165#issuecomment-45837074
+-- allow full IRIs (namespace + value) in s,p,o
+-- allow "xyz" in object position
+-- take into account implicit statements that come from fields
+--- develop a field = statement mapping syntax that does this for a given table
+-- add graph field
 
 DOCUMENTATION
 
@@ -22,9 +27,6 @@ DOCUMENTATION
 - structured data embedding: https://developers.google.com/search/docs/guides/intro-structured-data?hl=de
 
 ### v1.1 ###
-
-- linked data fragments: https://linkeddatafragments.org/
--- see how already implemented pattern matching fits to LD fragment
 
 - tableTracking: map fields of a record to statements that will be created on save (example news_author => schema:author)
 
