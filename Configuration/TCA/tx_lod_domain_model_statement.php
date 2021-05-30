@@ -11,6 +11,8 @@ return [
         'cruser_id' => 'cruser_id',
         'dividers2tabs' => true,
         'delete' => 'deleted',
+        'languageField' => 'sys_language_uid',
+        'transOrigPointerField' => 'l10n_parent',
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
@@ -21,7 +23,7 @@ return [
         'showRecordFieldList' => 'hidden, subject, subject_type, subject_uid, predicate, predicate_type, predicate_uid, object, object_type, object_uid, object_recursion, object_inversion, graph',
     ],
     'types' => [
-        '1' => ['showitem' => '--palette--;;flags, --palette--;;SubjectPredicateObject, graph'],
+        '1' => ['showitem' => '--palette--;;flags, --palette--;;SubjectPredicateObject, graph, sys_language_uid'],
     ],
     'palettes' => [
         'flags' => [
@@ -41,6 +43,24 @@ return [
             'config' => [
                 'type' => 'check',
             ],
+        ],
+        'sys_language_uid' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'special' => 'languages',
+                'items' => [
+                    [
+                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
+                        -1,
+                        'flags-multiple'
+                    ],
+                ],
+                'default' => -1,
+                'readOnly' => 1,
+            ]
         ],
         'graph' => [
             'exclude' => 1,

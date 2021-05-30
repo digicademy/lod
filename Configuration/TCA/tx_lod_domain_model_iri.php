@@ -11,6 +11,8 @@ return [
         'dividers2tabs' => true,
         'delete' => 'deleted',
         'origUid' => 't3_origuid',
+        'languageField' => 'sys_language_uid',
+        'transOrigPointerField' => 'l10n_parent',
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
@@ -52,7 +54,8 @@ return [
             --div--;LLL:EXT:lod/Resources/Private/Language/locallang_db.xld:tx_lod_domain_model_iri.divRepresentations,
                 representations, 
             --div--;LLL:EXT:lod/Resources/Private/Language/locallang_db.xld:tx_lod_domain_model_iri.divRecord,
-                record
+                record,
+                sys_language_uid
         '],
         '2' => ['showitem' => '
             --div--;LLL:EXT:lod/Resources/Private/Language/locallang_db.xld:tx_lod_domain_model_iri.divIRI,
@@ -65,7 +68,8 @@ return [
             --div--;LLL:EXT:lod/Resources/Private/Language/locallang_db.xld:tx_lod_domain_model_iri.divRepresentations,
                 representations, 
             --div--;LLL:EXT:lod/Resources/Private/Language/locallang_db.xld:tx_lod_domain_model_iri.divRecord,
-                record
+                record,
+                sys_language_uid
         '],
     ],
     'palettes' => [
@@ -80,6 +84,24 @@ return [
         ],
     ],
     'columns' => [
+        'sys_language_uid' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'special' => 'languages',
+                'items' => [
+                    [
+                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
+                        -1,
+                        'flags-multiple'
+                    ],
+                ],
+                'default' => -1,
+                'readOnly' => 1,
+            ]
+        ],
         'hidden' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
@@ -235,6 +257,7 @@ return [
         'representations' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.representations',
+            'l10n_mode' => 'exclude',
             'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'tx_lod_domain_model_representation',
@@ -253,6 +276,7 @@ return [
         'statements' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri.statements',
+            'l10n_mode' => 'exclude',
             'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'tx_lod_domain_model_statement',

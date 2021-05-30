@@ -7,6 +7,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Core\Utility\StringUtility;
 use TYPO3\CMS\Backend\Form\Element\GroupElement;
+use TYPO3\CMS\Backend\Utility\BackendUtility;
 
 /*
  * Copy of the core group element with the sole purpose of changing hardcoded HTML
@@ -35,8 +36,24 @@ class EnhancedGroupElement extends GroupElement
         $parameterArray = $this->data['parameterArray'];
         $config = $parameterArray['fieldConf']['config'];
         $elementName = $parameterArray['itemFormElName'];
-
         $selectedItems = $parameterArray['itemFormElValue'];
+
+        // in case of readOnly fields (scenario l10_display we only get integers instead of full foreign record
+        // therefore the foreign records needs to be retrieved in the following lines
+        if (is_int($selectedItems) && $selectedItems > 0) {
+            $foreignRow = BackendUtility::getRecord($config['allowed'], $selectedItems);
+            $foreignTitle = BackendUtility::getRecordTitle($config['allowed'], $foreignRow);
+            $selectedItemsArray[] = [
+                'table' => $config['allowed'],
+                'uid' => $selectedItems,
+                'title' => $foreignTitle,
+                'row' => $foreignRow,
+            ];
+            $selectedItems = $selectedItemsArray;
+        } elseif ($selectedItems == 0) {
+            $selectedItems = [];
+        }
+
         $selectedItemsCount = count($selectedItems);
 
         $maxItems = $config['maxitems'];

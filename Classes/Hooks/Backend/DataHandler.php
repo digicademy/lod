@@ -46,13 +46,24 @@ class DataHandler
      */
     public function processDatamap_postProcessFieldArray($status, $table, $id, &$fieldArray, &$pObj)
     {
-        if ($table == 'tx_lod_domain_model_statement') {
+
+        if ($table == 'tx_lod_domain_model_statement' && $fieldArray['sys_language_uid'] <= 0) {
             $fieldArray = $this->synchronizeStatement($status, $id, $fieldArray, $pObj);
+            // force language of statements to ALL
+            $fieldArray['sys_language_uid'] = -1;
         }
 
-        if ($table == 'tx_lod_domain_model_iri') {
+        if ($table == 'tx_lod_domain_model_iri' && $fieldArray['sys_language_uid'] <= 0) {
             $fieldArray = $this->synchronizeIri($status, $id, $fieldArray, $pObj);
+            // force language of iris to ALL
+            $fieldArray['sys_language_uid'] = -1;
         }
+
+        // do not create iri or statement records for any other language than default or all
+        if (($table == 'tx_lod_domain_model_iri' || $table == 'tx_lod_domain_model_statement') && $fieldArray['sys_language_uid'] > 0) {
+            $fieldArray = [];
+        }
+
     }
 
     /**
@@ -72,8 +83,19 @@ class DataHandler
             $this->generateIdentifier($status, $table, $id, $fieldArray, $pObj);
         }
 
-        // track tables during IRI generation
-        $this->trackTables($status, $table, $id, $pObj);
+        // retrieve current sys_language_uid either from new/copy or update status
+        if (array_key_exists('sys_language_uid', $fieldArray)) {
+            $sysLanguageUid = $fieldArray['sys_language_uid'];
+        }
+        if ($status == 'update') {
+            $record = BackendUtility::getRecord($table, (int)$id);
+            $sysLanguageUid = $record['sys_language_uid'];
+        }
+
+        // track tables during IRI generation but only for records in the default or ALL language
+        if ($sysLanguageUid <= 0) {
+            $this->trackTables($status, $table, $id, $pObj);
+        }
     }
 
     /**
