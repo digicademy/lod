@@ -186,7 +186,14 @@ class ApiController extends ActionController
                 in_array($targetPageType, $siteConfiguration['routeEnhancers']['PageTypeSuffix']['map'])
             ) {
                 $targetPageTypeSuffix = array_search($targetPageType, $siteConfiguration['routeEnhancers']['PageTypeSuffix']['map']);
-                $uri = $cleanRequestUrl . $targetPageTypeSuffix;
+
+                // possible tx_lod parameters from search or ld fragments
+                if (preg_match('/\?/', $cleanRequestUrl)) {
+                    $uriParts = GeneralUtility::trimExplode('?', $cleanRequestUrl);
+                    $uri = $uriParts[0] . $targetPageTypeSuffix . '?' . $uriParts[1];
+                } else {
+                    $uri = $cleanRequestUrl . $targetPageTypeSuffix;
+                }
 
             // parameterized URI (no configured routeEnhancers)
             } else {
@@ -196,6 +203,11 @@ class ApiController extends ActionController
                     $typeParameterKeyword = '?type=';
                 }
                 $uri = $cleanRequestUrl . $typeParameterKeyword . $targetPageType;
+            }
+
+            // if called from BE without parameters and with routeEnhancers remove duplicate file endings
+            if (substr_count($uri, '.html/') >= 1) {
+                $uri = str_replace('.html/', '/', $uri);
             }
 
             $this->redirectToUri($uri);
