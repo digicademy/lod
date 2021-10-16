@@ -1,0 +1,67 @@
+<f:format.raw>{
+  "@context": {
+    "hydra": "http://www.w3.org/ns/hydra/core#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "schema": "http://schema.org/"
+  },</f:format.raw>
+  "@id": "{environment.TYPO3_REQUEST_URL}",
+  "@type": "hydra:ApiDocumentation",
+  "hydra:title": "{f:translate(key : 'api.list.header')}",
+  "hydra:description": "{f:translate(key : 'api.list.description')}",
+  "hydra:entrypoint": <f:format.raw>{</f:format.raw>
+    "@id": "{environment.TSFE.page.slug}/",
+    "@type": "@id"
+  <f:format.raw>},
+  "hydra:supportedClass": [
+    {
+      "@id": "schema:Dataset",
+      "@type": "hydra:Class",
+      "rdfs:label": "Dataset",
+      "hydra:title": "Dataset",
+      "hydra:supportedProperty": [
+        {
+          "@type": "hydra:SupportedProperty",
+          "hydra:property": {
+            "@id": "schema:identifier",
+            "@type": "rdf:Property",
+            "rdfs:label": "identifier",
+            "rdfs:domain": "schema:Dataset",
+            "rdfs:range": "xsd:string"
+          },
+          "hydra:title": "identifier",
+          "hydra:required": true,
+          "hydra:readable": true,
+          "hydra:writeable": false,
+          "hydra:description": "Identifier of the resource"
+        },
+        {
+          "@type": "hydra:SupportedProperty",
+          "hydra:property": {
+            "@id": "schema:name",
+            "@type": "rdf:Property",
+            "rdfs:label": "name",
+            "rdfs:domain": "schema:Dataset",
+            "rdfs:range": "xsd:string"
+          },
+          "hydra:title": "name",
+          "hydra:required": false,
+          "hydra:readable": true,
+          "hydra:writeable": false,
+          "hydra:description": "Name of the resource"
+        }
+      ],
+      "hydra:supportedOperation": {
+        "@type": [
+            "hydra:Operation",
+            "schema:FindAction"
+        ],
+        "hydra:method": "GET",
+        "hydra:returns": "schema:Dataset",
+        "hydra:title": "Gets the resource"
+      }
+    }
+  ]
+}</f:format.raw>

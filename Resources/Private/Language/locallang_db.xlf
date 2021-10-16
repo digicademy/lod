@@ -62,6 +62,18 @@
             <trans-unit id="tx_lod_domain_model_iri">
                 <source>IRI</source>
             </trans-unit>
+            <trans-unit id="tx_lod_domain_model_iri.divIRI">
+                <source>IRI</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_iri.divStatements">
+                <source>Statements</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_iri.divRepresentations">
+                <source>Representations</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_iri.divRecord">
+                <source>Record</source>
+            </trans-unit>
             <trans-unit id="tx_lod_domain_model_iri.type">
                 <source>Type</source>
             </trans-unit>
@@ -74,8 +86,14 @@
             <trans-unit id="tx_lod_domain_model_iri.label">
                 <source>Label</source>
             </trans-unit>
+            <trans-unit id="tx_lod_domain_model_iri.label_language">
+                <source>Label language</source>
+            </trans-unit>
             <trans-unit id="tx_lod_domain_model_iri.comment">
-                <source>Description</source>
+                <source>Comment</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_iri.comment_language">
+                <source>Comment language</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_iri.namespace">
                 <source>Namespace</source>
@@ -121,11 +139,17 @@
             <trans-unit id="tx_lod_domain_model_bnode">
                 <source>Blank Node</source>
             </trans-unit>
+            <trans-unit id="tx_lod_domain_model_bnode.divBnode">
+                <source>Blank Node</source>
+            </trans-unit>
+            <trans-unit id="tx_lod_domain_model_bnode.divStatements">
+                <source>Statements</source>
+            </trans-unit>
             <trans-unit id="tx_lod_domain_model_bnode.label">
                 <source>Label</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_bnode.comment">
-                <source>Description</source>
+                <source>Comment</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_bnode.value">
                 <source>Identifier</source>
@@ -179,7 +203,7 @@
                 <source>Label</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_graph.comment">
-                <source>Description</source>
+                <source>Comment</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_graph.statements">
                 <source>Statements</source>
@@ -195,7 +219,7 @@
                 <source>Label</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_vocabulary.comment">
-                <source>Description</source>
+                <source>Comment</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_vocabulary.terms">
                 <source>Terms</source>

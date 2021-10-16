@@ -102,4 +102,15 @@ tx_lod {
         }
     }
 }
+
+TCEMAIN.linkHandler.iri {
+    handler = TYPO3\CMS\Recordlist\LinkHandler\RecordLinkHandler
+    label = IRI
+    configuration {
+        table = tx_lod_domain_model_iri
+        storagePid =
+        hidePageTree = 1
+    }
+    scanBefore = page
+}
 */

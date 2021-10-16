@@ -21,7 +21,15 @@ return [
         'showRecordFieldList' => 'hidden, value, label, comment, statements',
     ],
     'types' => [
-        '1' => ['showitem' => 'hidden, value, label, comment, statements'],
+        '1' => ['showitem' => '
+            --div--;LLL:EXT:lod/Resources/Private/Language/locallang_db.xld:tx_lod_domain_model_bnode.divBnode,
+                hidden, 
+                value, 
+                label, 
+                comment, 
+            --div--;LLL:EXT:lod/Resources/Private/Language/locallang_db.xld:tx_lod_domain_model_bnode.divStatements,
+                statements
+        '],
     ],
     'columns' => [
         'hidden' => [

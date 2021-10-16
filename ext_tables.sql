@@ -50,6 +50,9 @@ CREATE TABLE tx_lod_domain_model_iri (
     # needed for identifying a copy of a record
     t3_origuid int(11) DEFAULT '0' NOT NULL,
 
+    sys_language_uid int(11) DEFAULT '0' NOT NULL,
+    l10n_parent int(11) DEFAULT '0' NOT NULL,
+
     PRIMARY KEY (uid),
     KEY pid (pid),
 
@@ -183,6 +186,9 @@ CREATE TABLE tx_lod_domain_model_statement (
     graph_sorting int(11) unsigned DEFAULT '0' NOT NULL,
     iri_sorting int(11) unsigned DEFAULT '0' NOT NULL,
     bnode_sorting int(11) unsigned DEFAULT '0' NOT NULL,
+
+    sys_language_uid int(11) DEFAULT '0' NOT NULL,
+    l10n_parent int(11) DEFAULT '0' NOT NULL,
 
     PRIMARY KEY (uid),
     KEY pid (pid),

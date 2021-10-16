@@ -5,6 +5,8 @@ $tca = [
     'iri' => [
         'exclude' => 1,
         'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri',
+#        'l10n_mode' => 'exclude',
+        'displayCond' => 'FIELD:sys_language_uid:<=:0',
         'config' => [
             'type' => 'inline',
             'foreign_table' => 'tx_lod_domain_model_iri',

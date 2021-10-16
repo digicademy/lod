@@ -27,6 +27,7 @@ namespace Digicademy\Lod\Service;
  ***************************************************************/
 
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Database\QueryGenerator;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
@@ -311,6 +312,12 @@ class TableTrackingService
 
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
             ->getQueryBuilderForTable('tx_lod_domain_model_iri');
+
+        /* remove hidden restriction and definitely select an IRI if it exists (despite deleted IRIs) */
+        $queryBuilder
+            ->getRestrictions()
+            ->removeAll()
+            ->add(GeneralUtility::makeInstance(DeletedRestriction::class));
 
         $result = $queryBuilder
             ->select('*')

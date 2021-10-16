@@ -20,6 +20,9 @@
             <trans-unit id="api.list.header">
                 <source>LOD Resources</source>
             </trans-unit>
+            <trans-unit id="api.list.description">
+                <source>TYPO3 Linked Data API</source>
+            </trans-unit>
             <trans-unit id="api.list.page">
                 <source>Page</source>
             </trans-unit>
@@ -51,7 +54,7 @@
                 <source>Submit</source>
             </trans-unit>
             <trans-unit id="api.list.statementFilter.legend">
-                <source>Filter resources by statement patterns</source>
+                <source>Filter resources by linked data fragments</source>
             </trans-unit>
             <trans-unit id="api.list.statementFilter.subject">
                 <source>Subject</source>
