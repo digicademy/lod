@@ -9,7 +9,7 @@ Installation and Configuration
 ==============================
 
 Installation
-------------
+^^^^^^^^^^^^
 
 * composer
 * TER
@@ -17,7 +17,7 @@ Installation
 * static template inclusion
 
 Configuration
--------------
+^^^^^^^^^^^^^
 
 * import vocabs
 * set TSConfig

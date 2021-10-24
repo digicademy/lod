@@ -27,7 +27,7 @@ Linked Open Data for TYPO3
 		LOD, Linked Open Data, RDF, Vocabulary, Ontology, Knowledge Graph
 
 	:Copyright:
-		2020
+		2021
 
 	:Author:
 		Torsten Schrade
@@ -49,8 +49,8 @@ Linked Open Data for TYPO3
 	:glob:
 
 	Introduction/Index
-	InstallationConfiguration/Index
 	BasicPrinciples/Index
+	InstallationConfiguration/Index
 	Api/Index
 	Permalinks/Index
 	Serializer/Index

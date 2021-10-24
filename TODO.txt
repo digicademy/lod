@@ -4,6 +4,13 @@ https://www.w3.org/TR/rdf11-concepts/#resources-and-statements
 
 ### v1.0 ###
 
+DOCUMENTATION
+
+- write documentation
+- structured data embedding: https://developers.google.com/search/docs/guides/intro-structured-data?hl=de
+
+### v1.1 ###
+
 - new icons for add fieldControl, entity and property
 
 - TCA fieldControl for looking up IRIs in external knowledge bases (lookUp)
@@ -29,12 +36,7 @@ https://www.w3.org/TR/rdf11-concepts/#resources-and-statements
 --- develop a field = statement mapping syntax that does this for a given table
 -- add graph field
 
-DOCUMENTATION
-
-- write documentation
-- structured data embedding: https://developers.google.com/search/docs/guides/intro-structured-data?hl=de
-
-### v1.1 ###
+### v1.2 ###
 
 - tableTracking
 -- map fields of a record to statements that will be created on save (example news_author => schema:author)
