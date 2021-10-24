@@ -150,7 +150,7 @@ class ApiController extends ActionController
             $this->response->setHeader('Access-Control-Allow-Methods', $this->settings['general']['CORS']['accessControlAllowMethods']);
             $this->response->setHeader('Access-Control-Allow-Headers', $this->settings['general']['CORS']['accessControlAllowHeaders']);
             $this->response->setHeader('Access-Control-Expose-Headers', $this->settings['general']['CORS']['accessControlExposeHeaders']);
-            $this->response->setHeader('Link', '<'. $environment['TYPO3_REQUEST_HOST'] . $apiDocumentationPath . '>; rel="http://www.w3.org/ns/hydra/core#apiDocumentation');
+            $this->response->setHeader('Link', '<'. $environment['TYPO3_REQUEST_HOST'] . $apiDocumentationPath . '>; rel="http://www.w3.org/ns/hydra/core#apiDocumentation"');
         }
 
         // if page type is set define response format directly
