@@ -112,7 +112,6 @@ class ApiController extends ActionController
      */
     public function aboutAction()
     {
-
         // check if pageType is set (either via param or masked through PageTypeSuffix)
         if (GeneralUtility::_GP('type')) {
             $pageType = GeneralUtility::_GP('type');
@@ -151,6 +150,14 @@ class ApiController extends ActionController
             $this->response->setHeader('Access-Control-Allow-Headers', $this->settings['general']['CORS']['accessControlAllowHeaders']);
             $this->response->setHeader('Access-Control-Expose-Headers', $this->settings['general']['CORS']['accessControlExposeHeaders']);
             $this->response->setHeader('Link', '<'. $environment['TYPO3_REQUEST_HOST'] . $apiDocumentationPath . '>; rel="http://www.w3.org/ns/hydra/core#apiDocumentation"');
+        }
+
+        // hydra JSON-LD entry point
+        if (str_ends_with(GeneralUtility::getIndpEnv('REQUEST_URI'), '/.json')) {
+            $arguments = $this->request->getArguments();
+            unset($arguments['iri']);
+            $arguments['apiEntryPoint'] = 1;
+            $this->request->setArguments($arguments);
         }
 
         // if page type is set define response format directly
@@ -247,7 +254,9 @@ class ApiController extends ActionController
         // api documentation sub action
         } elseif ($this->request->hasArgument('apiDocumentation')) {
             $this->apiDocumentationAction();
-        // list resources sub action
+            // list resources sub action
+        } else if ($this->request->hasArgument('apiEntryPoint')) {
+            $this->apiEntryPointAction();
         } else {
             $this->listAction();
         }
@@ -400,6 +409,17 @@ class ApiController extends ActionController
 
         // assign current action for disambiguation in about template
         $this->view->assign('action', 'apiDocumentation');
+    }
+
+    /**
+     * Returns a Hydra API entry point
+     *
+     * @return void
+     */
+    private function apiEntryPointAction()
+    {
+        // assign current action for disambiguation in about template
+        $this->view->assign('action', 'apiEntryPoint');
     }
 
 }

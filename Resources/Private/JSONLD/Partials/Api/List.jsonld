@@ -6,7 +6,7 @@
   <f:format.raw>},</f:format.raw>
     "@id": "{environment.TYPO3_REQUEST_HOST}{f:uri.page(additionalParams : {type : '2014'})}",
     "@type": [
-      "{environment.TSFE.page.slug}/contexts/api/about.json#EntryPoint", "hydra:Collection"
+      "hydra:Collection"
     ],
     "rdfs:label": "{f:translate(key : 'api.list.header')}",
     "hydra:member": [

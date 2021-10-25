@@ -1,6 +1,6 @@
 <f:format.raw>{
     "@context": {
-        </f:format.raw>"@vocab": "{environment.TYPO3_REQUEST_URL}",<f:format.raw>
+        </f:format.raw>"@vocab": "{environment.TYPO3_REQUEST_URL}#",<f:format.raw>
         "hydra": "http://www.w3.org/ns/hydra/core#",
         "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
         "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
@@ -33,7 +33,7 @@
     "hydra:title": "LOD Resources",
     "hydra:description": "TYPO3 Linked Data API",
     "hydra:entrypoint": <f:format.raw>{</f:format.raw>
-        "@id": "{environment.TSFE.page.slug}/",
+        "@id": "{environment.TSFE.page.slug}/.json",
         "@type": "@id"
     <f:format.raw>},
     "hydra:supportedClass": [
@@ -92,9 +92,9 @@
                 {
                     "@type": "hydra:SupportedProperty",
                     "hydra:property": {
-                        "@id": "hydra:member",
+                        "@id": "#dataset",
                         "@type": "hydra:Link",
-                        "domain": "hydra:Collection",
+                        "domain": "#EntryPoint",
                         "rdfs:label": "The collection of datasets",
                         "rdfs:range": [
                             {

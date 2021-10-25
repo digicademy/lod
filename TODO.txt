@@ -9,6 +9,12 @@ DOCUMENTATION
 - write documentation
 - structured data embedding: https://developers.google.com/search/docs/guides/intro-structured-data?hl=de
 
+Hydra
+
+* https://demo.api-platform.com/.jsonld
+* https://demo.api-platform.com/docs.jsonld
+* https://demo.api-platform.com/books.jsonld
+
 ### v1.1 ###
 
 - new icons for add fieldControl, entity and property

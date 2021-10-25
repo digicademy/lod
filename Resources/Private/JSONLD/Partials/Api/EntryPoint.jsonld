@@ -1,0 +1,6 @@
+<f:format.raw>{</f:format.raw>
+    "@context": "{environment.TSFE.page.slug}/contexts/api/about.json",
+    "@id": "{environment.TSFE.page.slug}/",
+    "@type": "EntryPoint",
+    "dataset": "{environment.TSFE.page.slug}/about.json"
+<f:format.raw>}</f:format.raw>
