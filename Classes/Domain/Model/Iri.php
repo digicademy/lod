@@ -317,12 +317,23 @@ class Iri extends AbstractEntity
     }
 
     /**
-     * Returns the statements
+     * Returns valid statements where neither part is null (due to hidden IRIs etc.)
      *
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Statement> $statements
      */
     public function getStatements()
     {
+        $statementObjectStorage = GeneralUtility::makeInstance(ObjectStorage::class);
+
+        foreach ($this->statements as $statement) {
+            if ($statement->getPredicate() !== null &&
+                $statement->getObject() !== null) {
+                    $statementObjectStorage->attach($statement);
+            }
+        }
+
+        $this->statements = $statementObjectStorage;
+
         return $this->statements;
     }
 
@@ -339,7 +350,7 @@ class Iri extends AbstractEntity
     }
 
     /**
-     * Returns the inverseStatements
+     * Returns valid inverse statements where neither part is null (due to hidden IRIs etc.)
      *
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Statement> $inverseStatements
      */
@@ -349,14 +360,18 @@ class Iri extends AbstractEntity
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
         $statementRepository = $objectManager->get(StatementRepository::class);
         $inverseStatements = $statementRepository->findByPosition('object', $this);
+
         if ($inverseStatements) {
             foreach ($inverseStatements as $inverseStatement) {
-                if ($inverseStatement->getObjectInversion()) {
-                    $subject = $inverseStatement->getSubject();
-                    $object = $inverseStatement->getObject();
-                    $inverseStatement->setSubject($object);
-                    $inverseStatement->setObject($subject);
-                    $objectStorage->attach($inverseStatement);
+                if ($inverseStatement->getSubject() !== null &&
+                    $inverseStatement->getPredicate() !== null &&
+                    $inverseStatement->getObjectInversion()
+                    ) {
+                        $subject = $inverseStatement->getSubject();
+                        $object = $inverseStatement->getObject();
+                        $inverseStatement->setSubject($object);
+                        $inverseStatement->setObject($subject);
+                        $objectStorage->attach($inverseStatement);
                 }
             }
         }
