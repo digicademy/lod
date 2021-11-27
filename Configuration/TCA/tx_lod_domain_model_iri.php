@@ -104,7 +104,7 @@ return [
         ],
         'hidden' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
             'config' => [
                 'type' => 'check',
             ],
@@ -297,7 +297,7 @@ return [
                 'overrideChildTca' => [
                     'types' => [
                         '1' => [
-                            'showitem' => '--palette--;;flags, --palette--;;PredicateObject, graph'
+                            'showitem' => '--palette--;;PredicateObject, graph, --palette--;;flags'
                         ],
                     ],
                 ],

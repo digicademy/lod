@@ -175,7 +175,7 @@
                 <source>Statement</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_statement.graph">
-                <source>Graph</source>
+                <source>Named graph</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_statement.subject">
                 <source>Subject</source>
@@ -187,17 +187,17 @@
                 <source>Object</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_statement.object_recursion">
-                <source>Allow recursion</source>
+                <source>Activate object path traversal</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_statement.object_inversion">
-                <source>Allow inversion</source>
+                <source>Activate property inversion</source>
             </trans-unit>
 
             <trans-unit id="tx_lod_domain_model_graph">
-                <source>Graph</source>
+                <source>Named Graphs</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_graph.iri">
-                <source>Graph IRI</source>
+                <source>Named graph IRI</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_graph.label">
                 <source>Label</source>

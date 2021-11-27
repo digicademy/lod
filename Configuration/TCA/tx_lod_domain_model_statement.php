@@ -23,7 +23,7 @@ return [
         'showRecordFieldList' => 'hidden, subject, subject_type, subject_uid, predicate, predicate_type, predicate_uid, object, object_type, object_uid, object_recursion, object_inversion, graph',
     ],
     'types' => [
-        '1' => ['showitem' => '--palette--;;flags, --palette--;;SubjectPredicateObject, graph, sys_language_uid'],
+        '1' => ['showitem' => '--palette--;;SubjectPredicateObject, graph, --palette--;;flags, sys_language_uid'],
     ],
     'palettes' => [
         'flags' => [
@@ -39,7 +39,7 @@ return [
     'columns' => [
         'hidden' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.hidden',
             'config' => [
                 'type' => 'check',
             ],
