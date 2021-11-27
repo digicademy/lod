@@ -42,7 +42,8 @@ return [
                     [
                         'userFunc' => 'Digicademy\Lod\Utility\Backend\IriUtility->filterByType',
                         'parameters' => [
-                            'type' => '1',
+                            'field' => 'iri',
+                            'default' => 1
                          ],
                     ],
                 ],
@@ -67,13 +68,15 @@ return [
                     ],
                 ],
                 'fieldControl' => [
-                    'addRecord' => [
-                        'disabled' => false,
+                    '01_addIri' => [
+                        'renderType' => 'enhancedAddRecord',
                         'options' => [
+                            'title' => 'Create new IRI',
                             'table' => 'tx_lod_domain_model_iri',
                             'pid' => '###PAGE_TSCONFIG_ID###',
-                            'setValue' => 'set'
-                        ]
+                            'setValue' => 'set',
+                            'iconIdentifier' => 'tx_lod_actions_add_iri',
+                        ],
                     ],
                     'editPopup' => [
                         'disabled' => false,

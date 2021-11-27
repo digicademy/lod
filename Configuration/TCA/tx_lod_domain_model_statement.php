@@ -105,7 +105,7 @@ return [
                         ],
                     ],
                     'editPopup' => [
-                        'disabled' => true,
+                        'disabled' => false,
                     ],
                 ],
             ],
@@ -122,7 +122,7 @@ return [
                         'userFunc' => 'Digicademy\Lod\Utility\Backend\IriUtility->filterByType',
                         'parameters' => [
                             'field' => 'subject',
-                            'default' => 1
+                            'default' => '1,2'
                          ],
                     ],
                 ],
@@ -196,6 +196,7 @@ return [
                 'foreign_table' => 'tx_lod_domain_model_iri',
                 'prepend_tname' => 1,
                 'size' => 1,
+/*
                 'filter' => [
                     [
                         'userFunc' => 'Digicademy\Lod\Utility\Backend\IriUtility->filterByType',
@@ -205,6 +206,7 @@ return [
                          ],
                     ],
                 ],
+*/
                 'minitems' => 0,
                 'maxitems' => 1,
                 'default' => 0,
@@ -261,7 +263,7 @@ return [
                         'userFunc' => 'Digicademy\Lod\Utility\Backend\IriUtility->filterByType',
                         'parameters' => [
                             'field' => 'object',
-                            'default' => 1
+                            'default' => '1,2'
                          ],
                     ],
                 ],
@@ -275,7 +277,10 @@ return [
                         'additionalSearchFields' => 'label',
                     ],
                     'tx_lod_domain_model_iri' => [
+// @TODO: make this configurable per TSConfig per page
+/*
                         'searchCondition' => 'type = 1',
+*/
                         'additionalSearchFields' => 'label,comment,value',
                     ],
                     'tx_lod_domain_model_bnode' => [

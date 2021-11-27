@@ -115,7 +115,6 @@ tx_lod {
             }
         }
 
-        # @TODO: see IRI TCA for details
         iriTypeFilter {
             subject = 1,2
             predicate = 1

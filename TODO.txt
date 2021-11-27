@@ -63,16 +63,11 @@ Hydra
 -- add named graph structures to ttl, json-ld and nt templates
 -- maybe graph could serve as collection of statements added to records etc.
 
-- Add TSConfig option: statementIriTypeFilter.subject = 1|2
--- see tx_lod_domain_model_statement.php 95,114 and IriUtility 52
--- use case 1: in average statements it is desirable that only entities are allowed in subject position
--- use case 2: in case of a vocabulary properties to be described must be allowed in subject position
-
 - hydra:view has no alternative serialisations in none of the serialisation formats
 
 ### v1.2 ###
 
-- vocabulary importer
+- RDF importer
 
 - api plugin
 -- think about cacheable actions => configurable cHash calculation during redirection => check performance
