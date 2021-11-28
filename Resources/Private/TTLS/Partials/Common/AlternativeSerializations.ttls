@@ -1,0 +1,22 @@
+<f:for each="{1991 : {uri : 'http://www.w3.org/ns/formats/RDFa', mime : 'text/html'}, 2004 : {uri : 'http://www.w3.org/ns/formats/RDF_XML', mime : 'application/rdf+xml'}, 2011 : {uri : 'http://www.w3.org/ns/formats/Turtle', mime : 'text/turtle'}, 2013 : {uri : 'http://www.w3.org/ns/formats/N-Triples', mime : 'application/n-triples'}, 2014 : {uri : 'http://www.w3.org/ns/formats/JSON-LD', mime : 'application/ld+json'}}" as="format" key="type" iteration="serializationIterator">
+<f:switch expression="{mode}">
+<f:case value="apiSubject">
+<{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource, settings : settings})}>
+    a void:Dataset ;
+    void:feature <{format.uri}> ;
+    dc:format "{format.mime}" .
+</f:case>
+<f:case value="apiObject">
+    rdfs:seeAlso <{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'show', type : type, resource : resource, settings : settings})}><f:if condition="{serializationIterator.isLast}"><f:then> .</f:then><f:else> ;</f:else></f:if>
+</f:case>
+<f:case value="vocabularySubject">
+<{environment.TYPO3_REQUEST_HOST}{f:uri.page(additionalParams : '{type : type}')}>
+    a void:Dataset ;
+    void:feature <{format.uri}> ;
+    dc:format "{format.mime}" .
+</f:case>
+<f:case value="vocabularyObject">
+    rdfs:seeAlso <{environment.TYPO3_REQUEST_HOST}{f:uri.page(additionalParams : '{type : type}')}> ;
+</f:case>
+</f:switch>
+</f:for>

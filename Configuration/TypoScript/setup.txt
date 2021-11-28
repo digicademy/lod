@@ -125,6 +125,8 @@ plugin.tx_lod_api {
 
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:lod/Configuration/TypoScript/TTL/setup.txt">
 
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:lod/Configuration/TypoScript/TTLS/setup.txt">
+
 # configure serializer templates without pagetype condition in descending order (JSON-LD is default)
 
 plugin.tx_lod_serializer {

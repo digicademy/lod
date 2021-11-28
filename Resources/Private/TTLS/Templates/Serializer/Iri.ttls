@@ -1,0 +1,15 @@
+{namespace lod = Digicademy\Lod\ViewHelpers}{escaping off}<lod:RemoveEmptyLines><f:if condition="{resource}">
+<f:if condition="{settings.mode} == 'embedded'">
+<f:then>
+<script type="text/turtle">
+# <f:format.cdata>
+<f:render partial="Api/Show" arguments="{_all}"/>
+# </f:format.cdata>
+</script>
+</f:then>
+<f:else>
+<f:render partial="Api/Show" arguments="{_all}"/>
+</f:else>
+</f:if>
+</f:if>
+</lod:RemoveEmptyLines>
