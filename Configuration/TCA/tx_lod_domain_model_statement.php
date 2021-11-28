@@ -23,7 +23,7 @@ return [
         'showRecordFieldList' => 'hidden, subject, subject_type, subject_uid, predicate, predicate_type, predicate_uid, object, object_type, object_uid, object_recursion, object_inversion, graph',
     ],
     'types' => [
-        '1' => ['showitem' => '--palette--;;SubjectPredicateObject, graph, --palette--;;flags, sys_language_uid'],
+        '1' => ['showitem' => '--palette--;;SubjectPredicateObject, reference_statements, graph, --palette--;;flags, sys_language_uid'],
     ],
     'palettes' => [
         'flags' => [
@@ -116,7 +116,7 @@ return [
             'config' => [
                 'type' => 'group',
                 'internal_type' => 'db',
-                'allowed' => 'tx_lod_domain_model_iri,tx_lod_domain_model_bnode',
+                'allowed' => 'tx_lod_domain_model_iri,tx_lod_domain_model_bnode,tx_lod_domain_model_statement',
                 'filter' => [
                     [
                         'userFunc' => 'Digicademy\Lod\Utility\Backend\IriUtility->filterByType',
@@ -141,6 +141,9 @@ return [
                             'searchCondition' => 'type = 1',
                         ],
 */
+                    'tx_lod_domain_model_statement' => [
+                        'additionalSearchFields' => '',
+                    ],
                 ],
 
                 'fieldWizard' => [
@@ -257,7 +260,7 @@ return [
             'config' => [
                 'type' => 'group',
                 'internal_type' => 'db',
-                'allowed' => 'tx_lod_domain_model_iri,tx_lod_domain_model_literal,tx_lod_domain_model_bnode',
+                'allowed' => 'tx_lod_domain_model_iri,tx_lod_domain_model_literal,tx_lod_domain_model_bnode,tx_lod_domain_model_statement',
                 'filter' => [
                     [
                         'userFunc' => 'Digicademy\Lod\Utility\Backend\IriUtility->filterByType',
@@ -288,6 +291,9 @@ return [
                     ],
                     'tx_lod_domain_model_literal' => [
                         'additionalSearchFields' => 'value',
+                    ],
+                    'tx_lod_domain_model_statement' => [
+                        'additionalSearchFields' => '',
                     ],
                 ],
 
@@ -338,6 +344,36 @@ return [
                             'pid' => '###PAGE_TSCONFIG_ID###',
                             'setValue' => 'set',
                             'iconIdentifier' => 'tx_lod_actions_add_literal',
+                        ],
+                    ],
+                ],
+            ],
+        ],
+        'reference_statements' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_statement.reference_statements',
+            'l10n_mode' => 'exclude',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_lod_domain_model_statement',
+                'foreign_field' => 'subject_uid',
+                'foreign_table_field' => 'subject_type',
+                'foreign_sortby' => 'iri_sorting',
+                'maxitems' => 9999,
+                'appearance' => [
+                    'collapseAll' => 1,
+                    'expandSingle' => 1,
+                    'levelLinksPosition' => 'bottom',
+                    'newRecordLinkAddTitle' => 1,
+                    'useSortable' => 1,
+                ],
+                'behaviour' => [
+                    'disableMovingChildrenWithParent' => 1,
+                ],
+                'overrideChildTca' => [
+                    'types' => [
+                        '1' => [
+                            'showitem' => '--palette--;;PredicateObject, --palette--;;flags'
                         ],
                     ],
                 ],

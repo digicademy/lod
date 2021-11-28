@@ -297,7 +297,7 @@ return [
                 'overrideChildTca' => [
                     'types' => [
                         '1' => [
-                            'showitem' => '--palette--;;PredicateObject, graph, --palette--;;flags'
+                            'showitem' => '--palette--;;PredicateObject, reference_statements, graph, --palette--;;flags'
                         ],
                     ],
                 ],

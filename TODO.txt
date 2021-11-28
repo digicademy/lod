@@ -19,9 +19,11 @@ Hydra
 
 - new icons for add fieldControl, entity and property
 
-- RDF*
+- Extended RDF* support
 -- https://www.ontotext.com/knowledgehub/fundamentals/what-is-rdf-star/
 -- https://json-ld.github.io/json-ld-star/
+-- https://w3c.github.io/rdf-star/cg-spec/2021-07-01.html
+-- MIME type: https://github.com/w3c/rdf-star/issues/43
 
 - TCA fieldControl for looking up IRIs in external knowledge bases (lookUp)
 -- https://docs.typo3.org/m/typo3/reference-coreapi/master/en-us/ApiOverview/FormEngine/Rendering/Index.html?highlight=fieldcontrol#add-fieldcontrol-example

@@ -61,6 +61,11 @@ plugin.tx_lod {
                     tableName = tx_lod_domain_model_literal
                 }
             }
+            Digicademy\Lod\Domain\Model\Statement {
+                mapping {
+                    tableName = tx_lod_domain_model_statement
+                }
+            }
             Digicademy\Lod\Domain\Model\Page {
                 mapping {
                     tableName = pages

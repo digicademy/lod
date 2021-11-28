@@ -186,6 +186,9 @@
             <trans-unit id="tx_lod_domain_model_statement.object">
                 <source>Object</source>
             </trans-unit>
+            <trans-unit id="tx_lod_domain_model_statement.reference_statements">
+                <source>Reference statements</source>
+            </trans-unit>
             <trans-unit id="tx_lod_domain_model_statement.object_recursion">
                 <source>Activate object path traversal</source>
             </trans-unit>
