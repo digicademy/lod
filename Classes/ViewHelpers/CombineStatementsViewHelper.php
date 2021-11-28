@@ -45,6 +45,12 @@ class CombineStatementsViewHelper extends AbstractViewHelper
             'Iri for which to combine statements and inverse statements',
             true
         );
+        $this->registerArgument(
+            'excludeRdfStarStatements',
+            0,
+            'Exclude RDF* statements',
+            false
+        );
     }
 
     /**
@@ -75,6 +81,18 @@ class CombineStatementsViewHelper extends AbstractViewHelper
             }
         } else {
             $combinedStatements = $iri->getStatements();
+        }
+
+        if ($this->arguments['excludeRdfStarStatements']) {
+            $statementsToDetach = [];
+            foreach ($combinedStatements as $key => $statement) {
+                if (get_class($statement->getObject()) == 'Digicademy\Lod\Domain\Model\Statement') $statementsToDetach[] = $statement;
+            }
+            if ($statementsToDetach) {
+                foreach ($statementsToDetach as $statement) {
+                    $combinedStatements->detach($statement);
+                }
+            }
         }
 
         return $combinedStatements;

@@ -2,7 +2,9 @@
 <f:if condition="{resource.comment}"><{resourceIri}> <http://www.w3.org/2000/01/rdf-schema#comment> {lod:EscapeLiteral(literal : resource.comment, format : 'ntriples')}{f:if(condition: '{resource.commentLanguage}', then: '@{resource.commentLanguage}')} .</f:if>
 <f:if condition="{resource.statements}">
 <f:for each="{lod:CombineStatements(iri : resource)}" as="statement">
+<f:if condition="{lod:DetermineEntity(entity : statement.object)} !== 'Digicademy\Lod\Domain\Model\Statement'">
 <f:render partial="Common/Object" arguments="{iri : '<{resourceIri}>', statement : statement}" />
+</f:if>
 </f:for>
 <f:for each="{lod:ObjectIriRecursion(iri : resource, maxDepth : 5)}" as="objectIri">
 <f:render partial="Common/Iri" arguments="{iri : objectIri}" />

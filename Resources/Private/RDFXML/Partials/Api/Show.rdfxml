@@ -12,7 +12,9 @@
         <f:if condition="{resource.label}"><rdfs:label{f:if(condition: '{resource.labelLanguage}', then: ' xml:lang="{resource.labelLanguage}"')}>{resource.label}</rdfs:label></f:if>
         <f:if condition="{resource.comment}"><rdfs:comment{f:if(condition: '{resource.commentLanguage}', then: ' xml:lang="{resource.commentLanguage}"')}>{resource.comment}</rdfs:comment></f:if>
         <f:for each="{lod:CombineStatements(iri : resource)}" as="statement">
+        <f:if condition="{lod:DetermineEntity(entity : statement.object)} !== 'Digicademy\Lod\Domain\Model\Statement'">
         <f:render partial="Common/Object" arguments="{statement : statement}" />
+        </f:if>
         </f:for>
         <f:if condition="{resource.record}">
         <dc:relation rdf:parseType="Resource">
