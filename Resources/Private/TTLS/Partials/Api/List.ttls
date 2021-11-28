@@ -1,0 +1,24 @@
+{namespace lod = Digicademy\Lod\ViewHelpers}{escaping off}<f:for each="{lod:FilterIriNamespaces(iriNamespaces : iriNamespaces, returnDifference : false)}" as="value" key="prefix">@prefix {prefix}: <{value}> .
+</f:for>
+
+<{environment.TYPO3_REQUEST_HOST}{f:uri.page(additionalParams : {type : '2011'})}>
+    a hydra:Collection, void:Dataset ;
+    hydra:totalItems "{totalItems}" ;
+    hydra:view <{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2011', limit : arguments.limit, page : arguments.page})}> ;<f:for each="{resources}" as="resource" iteration="iterator">
+    hydra:member <{environment.TYPO3_REQUEST_HOST}{f:uri.page(additionalParams : {tx_lod_api : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}})}><f:if condition="{iterator.isLast}"><f:then> .</f:then><f:else> ;</f:else></f:if></f:for>
+
+<{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2011', limit : arguments.limit, page : arguments.page, query : arguments.query, subject : arguments.subject, predicate : arguments.predicate, object : arguments.object, sorting : arguments.sorting})}>
+    a hydra:PartialCollectionView ;
+    hydra:first <{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2011', page : pagination.first, limit : arguments.limit, query : arguments.query, subject : arguments.subject, predicate : arguments.predicate, object : arguments.object, sorting : arguments.sorting})}> ;
+    hydra:last <{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2011', page : pagination.last, limit : arguments.limit, query : arguments.query, subject : arguments.subject, predicate : arguments.predicate, object : arguments.object, sorting : arguments.sorting})}> ;
+    hydra:previous <{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2011', page : pagination.previous, limit : arguments.limit, query : arguments.query, subject : arguments.subject, predicate : arguments.predicate, object : arguments.object, sorting : arguments.sorting})}> ;
+    hydra:next <{environment.TYPO3_REQUEST_HOST}{f:render(partial : 'Api/Uri', arguments : {action : 'list', type : '2011', page : pagination.next, limit : arguments.limit, query : arguments.query, subject : arguments.subject, predicate : arguments.predicate, object : arguments.object, sorting : arguments.sorting})}> .
+
+<f:for each="{resources}" as="resource" iteration="iterator">
+<{environment.TYPO3_REQUEST_HOST}{f:uri.page(additionalParams : {tx_lod_api : {iri : '{f:if(condition : \'{resource.namespace}\', then : \'{resource.namespace.prefix}:\', else : \'\')}{resource.value}'}})}>
+    <f:if condition="{resource.label}">rdfs:label {lod:EscapeLiteral(literal : resource.label, format : 'turtle')}{f:if(condition: '{resource.labelLanguage}', then: '@{resource.labelLanguage}')} ;</f:if>
+    <f:if condition="{resource.comment}">rdfs:comment {lod:EscapeLiteral(literal : resource.comment, format : 'turtle')}{f:if(condition: '{resource.commentLanguage}', then: '@{resource.commentLanguage}')} ;</f:if>
+    <f:render partial="Common/AlternativeSerializations" arguments="{mode : 'apiObject', resource : resource, environment : environment}"/></f:for>
+
+<f:for each="{resources}" as="resource" iteration="iterator">
+    <f:render partial="Common/AlternativeSerializations" arguments="{mode : 'apiSubject', resource : resource, environment : environment}"/></f:for>

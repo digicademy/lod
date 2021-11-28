@@ -177,6 +177,8 @@ CREATE TABLE tx_lod_domain_model_statement (
 
     graph int(11) DEFAULT '0' NOT NULL,
 
+    reference_statements int(11) unsigned DEFAULT '0' NOT NULL,
+
     tstamp int(11) unsigned DEFAULT '0' NOT NULL,
     crdate int(11) unsigned DEFAULT '0' NOT NULL,
     cruser_id int(11) unsigned DEFAULT '0' NOT NULL,
@@ -194,9 +196,13 @@ CREATE TABLE tx_lod_domain_model_statement (
     KEY pid (pid),
 
     KEY subject (subject),
+    KEY subject_uid (subject_uid),
     KEY predicate (predicate),
+    KEY predicate_uid (predicate_uid),
     KEY object (object),
+    KEY object_uid (object_uid),
     KEY graph (graph),
+    KEY reference_statements (reference_statements),
 
 ) ENGINE=InnoDB;
 

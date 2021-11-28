@@ -5,9 +5,7 @@
     <f:if condition="{resource.label}">rdfs:label {lod:EscapeLiteral(literal : resource.label, format : 'turtle')}{f:if(condition: '{resource.labelLanguage}', then: '@{resource.labelLanguage}')} ;</f:if>
     <f:if condition="{resource.comment}">rdfs:comment {lod:EscapeLiteral(literal : resource.comment, format : 'turtle')}{f:if(condition: '{resource.commentLanguage}', then: '@{resource.commentLanguage}')} ;</f:if>
     <f:for each="{lod:CombineStatements(iri : resource)}" as="statement">
-    <f:if condition="{lod:DetermineEntity(entity : statement.object)} !== 'Digicademy\Lod\Domain\Model\Statement'">
     <f:render partial="Common/Object" arguments="{statement : statement}" />
-    </f:if>
     </f:for>
     <f:if condition="{resource.record}">
     dc:relation [
@@ -34,5 +32,15 @@
 <f:for each="{graph.statements}" as="statement">
 <{statement.subject.namespace.iri}{statement.subject.value}>
     <f:render partial="Common/Object" arguments="{statement : statement, closeStatement : '.'}" />
+</f:for>
+</f:if>
+
+<f:if condition="{resource.statements}">
+<f:for each="{lod:CombineStatements(iri : resource)}" as="statement">
+<f:if condition="{statement.referenceStatements}">
+<f:for each="{statement.referenceStatements}" as="referenceStatement">
+<< {referenceStatement.subject.subject.namespace.prefix}:{referenceStatement.subject.subject.value} {referenceStatement.subject.predicate.namespace.prefix}:{referenceStatement.subject.predicate.value} {referenceStatement.subject.object.namespace.prefix}:{referenceStatement.subject.object.value} >> <f:render partial="Common/Object" arguments="{statement : referenceStatement, closeStatement : '.'}" />
+</f:for>
+</f:if>
 </f:for>
 </f:if>

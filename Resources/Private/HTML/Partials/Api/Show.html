@@ -62,6 +62,7 @@
             </h4>
             <dl class="resource-statements">
                 <f:for each="{groupedStatements}" as="statement">
+                    <f:if condition="{lod:DetermineEntity(entity : statement.object)} !== 'Digicademy\Lod\Domain\Model\Statement'">
                     <dt>
                         <a href="{f:if(condition : '{statement.predicate.namespace}', then : '{statement.predicate.namespace.iri}', else : '')}{statement.predicate.value}">{statement.predicate.value}</a>
                     </dt>
@@ -72,6 +73,7 @@
                             mode : 'api'
                         }"/>
                     </dd>
+                    </f:if>
                 </f:for>
             </dl>
         </f:groupedFor>

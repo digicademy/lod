@@ -1,0 +1,20 @@
+ttls = PAGE
+ttls {
+
+    typeNum = 2021
+
+    config {
+        disableAllHeaderCode = 1
+        additionalHeaders {
+            10.header = Content-type:text/x-turtlestar
+        }
+        admPanel = 0
+        xhtml_cleaning = 0
+        disablePrefixComment = 1
+        debug = 0
+    }
+}
+
+[getTSFE().type == 2021]
+ttls.10 < lib.tx_lod.plugin
+[global]

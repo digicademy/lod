@@ -61,6 +61,11 @@ plugin.tx_lod {
                     tableName = tx_lod_domain_model_literal
                 }
             }
+            Digicademy\Lod\Domain\Model\Statement {
+                mapping {
+                    tableName = tx_lod_domain_model_statement
+                }
+            }
             Digicademy\Lod\Domain\Model\Page {
                 mapping {
                     tableName = pages
@@ -119,6 +124,8 @@ plugin.tx_lod_api {
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:lod/Configuration/TypoScript/RDFXML/setup.txt">
 
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:lod/Configuration/TypoScript/TTL/setup.txt">
+
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:lod/Configuration/TypoScript/TTLS/setup.txt">
 
 # configure serializer templates without pagetype condition in descending order (JSON-LD is default)
 

@@ -131,7 +131,6 @@ class DataHandler
         switch ($status) {
             case 'update':
             case 'new':
-
                 // standard editing context with three group fields
                 foreach (['subject', 'predicate', 'object'] as $key => $value) {
                     if (
@@ -145,20 +144,54 @@ class DataHandler
                     }
                 }
 
-                // inline edition context (iri/bnode table) with predicate/object fields
-                // IRRE context is subsumed because then parent and child tables will exist in the datamap
+                // IRRE context: subsumed because parent and child tables will exist in the datamap
+                $newStatements = 0;
+                $parentStatement = 0;
+                $reference = 0;
+                if (array_key_exists('tx_lod_domain_model_statement', $pObj->datamap)) {
+                    $newStatements = array_filter(
+                        $pObj->datamap['tx_lod_domain_model_statement'],
+                        function ($key) {
+                            return(strpos($key,'NEW') !== false);
+                        },
+                        ARRAY_FILTER_USE_KEY
+                    );
+                    // check for reference statements
+                    if ($newStatements) {
+                        foreach ($pObj->datamap['tx_lod_domain_model_statement'] as $key => $value) {
+                            if (
+                                array_key_exists('reference_statements', $value) &&
+                                strpos($value['reference_statements'], strval($id)) !== false
+                            ) {
+                                $parentStatement = $key;
+                                if ($id !== $parentStatement) $reference = 1;
+                            }
+                        }
+                    }
+                }
+
                 $parentTable = '';
                 if (array_key_exists('tx_lod_domain_model_iri', $pObj->datamap)) {
                     $parentTable = 'tx_lod_domain_model_iri';
                 } elseif (array_key_exists('tx_lod_domain_model_bnode', $pObj->datamap)) {
                     $parentTable = 'tx_lod_domain_model_bnode';
+                } elseif ($newStatements && $parentStatement && $reference == 1) {
+                    $parentTable = 'tx_lod_domain_model_statement';
                 }
+
                 if ($parentTable && substr($id, 0, 3) == 'NEW') {
-                    $parentUid = key($pObj->datamap[$parentTable]);
-                    if (substr($parentUid, 0, 3) == 'NEW') $parentUid = $pObj->substNEWwithIDs[$parentUid];
-                    $fieldArray['subject'] = $parentTable . '_' . $parentUid;
-                    $fieldArray['subject_uid'] = $parentUid;
-                    $fieldArray['subject_type'] = $parentTable;
+                    if ($newStatements && $parentStatement && $reference == 1) {
+                        if (substr($parentStatement, 0, 3) == 'NEW') $parentStatement = $pObj->substNEWwithIDs[$parentStatement];
+                        $fieldArray['subject'] = 'tx_lod_domain_model_statement_' . $parentStatement;
+                        $fieldArray['subject_uid'] = $parentStatement;
+                        $fieldArray['subject_type'] = 'tx_lod_domain_model_statement';
+                    } else {
+                        $parentUid = key($pObj->datamap[$parentTable]);
+                        if (substr($parentUid, 0, 3) == 'NEW') $parentUid = $pObj->substNEWwithIDs[$parentUid];
+                        $fieldArray['subject'] = $parentTable . '_' . $parentUid;
+                        $fieldArray['subject_uid'] = $parentUid;
+                        $fieldArray['subject_type'] = $parentTable;
+                    }
                 }
 
                 break;

@@ -1,0 +1,23 @@
+{namespace lod = Digicademy\Lod\ViewHelpers}{escaping off}
+<f:if condition="{lod:CombineStatements(iri : iri)}">
+<f:then>
+    <f:if condition="{iri.label}">rdfs:label {lod:EscapeLiteral(literal : iri.label, format : 'turtle')}{f:if(condition: '{iri.labelLanguage}', then: '@{iri.labelLanguage}')} ;</f:if>
+    <f:if condition="{iri.comment}">rdfs:comment {lod:EscapeLiteral(literal : iri.comment, format : 'turtle')}{f:if(condition: '{iri.commentLanguage}', then: '@{iri.commentLanguage}')} ;</f:if>
+    <f:if condition="{iri.statements}">
+    <f:for each="{lod:CombineStatements(iri : iri)}" as="iriStatement" iteration="statementIterator">
+    <f:if condition="{statementIterator.isLast}"><f:then><f:render partial="Common/Object" arguments="{statement : iriStatement, closeStatement : '.'}" /></f:then><f:else><f:render partial="Common/Object" arguments="{statement : iriStatement, closeStatement : '.'}" /></f:else></f:if>
+    </f:for>
+    </f:if>
+</f:then>
+<f:else>
+<f:if condition="{iri.comment}">
+<f:then>
+    <f:if condition="{iri.label}">rdfs:label {lod:EscapeLiteral(literal : iri.label, format : 'turtle')}{f:if(condition: '{iri.labelLanguage}', then: '@{iri.labelLanguage}')} ;</f:if>
+    <f:if condition="{iri.comment}">rdfs:comment {lod:EscapeLiteral(literal : iri.comment, format : 'turtle')}{f:if(condition: '{iri.commentLanguage}', then: '@{iri.commentLanguage}')} .</f:if>
+</f:then>
+<f:else>
+    <f:if condition="{iri.label}">rdfs:label {lod:EscapeLiteral(literal : iri.label, format : 'turtle')}{f:if(condition: '{iri.labelLanguage}', then: '@{iri.labelLanguage}')} .</f:if>
+</f:else>
+</f:if>
+</f:else>
+</f:if>

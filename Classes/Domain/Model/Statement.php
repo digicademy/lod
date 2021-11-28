@@ -26,7 +26,11 @@ namespace Digicademy\Lod\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Annotation as Extbase;
+use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 class Statement extends AbstractEntity
 {
@@ -58,6 +62,14 @@ class Statement extends AbstractEntity
      * @var string
      */
     protected $object;
+
+    /**
+     * reference statements
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Statement> $referenceStatements
+     * @Lazy
+     */
+    protected $referenceStatements;
 
     /**
      * objectRecursion
@@ -203,6 +215,39 @@ class Statement extends AbstractEntity
     public function setObjectInversion($objectInversion)
     {
         $this->objectInversion = $objectInversion;
+    }
+
+    /**
+     * Returns valid reference statements (RDF*)
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Statement> $referenceStatements
+     */
+    public function getReferenceStatements()
+    {
+        $statementObjectStorage = GeneralUtility::makeInstance(ObjectStorage::class);
+
+        foreach ($this->referenceStatements as $statement) {
+            if ($statement->getPredicate() !== null &&
+                $statement->getObject() !== null) {
+                    $statementObjectStorage->attach($statement);
+            }
+        }
+
+        $this->referenceStatements = $statementObjectStorage;
+
+        return $this->referenceStatements;
+    }
+
+    /**
+     * Sets the referenceStatements
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Digicademy\Lod\Domain\Model\Statement> $referenceStatements
+     *
+     * @return void
+     */
+    public function setReferenceStatements($referenceStatements)
+    {
+        $this->referenceStatements = $referenceStatements;
     }
 
 }
