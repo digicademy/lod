@@ -31,5 +31,10 @@
         "psr-4": {
           "Digicademy\\Lod\\": "Classes/"
         }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "lod"
+        }
     }
 }
