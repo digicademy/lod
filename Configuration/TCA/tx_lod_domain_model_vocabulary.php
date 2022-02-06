@@ -36,14 +36,6 @@ return [
                 'type' => 'group',
                 'internal_type' => 'db',
                 'allowed' => 'tx_lod_domain_model_iri',
-                'filter' => [
-                    [
-                        'userFunc' => 'Digicademy\Lod\Utility\Backend\IriUtility->filterByType',
-                        'parameters' => [
-                            'type' => '1',
-                         ],
-                    ],
-                ],
                 'prepend_tname' => false,
                 // prevent http://wiki.typo3.org/Exception/CMS/1353170925
                 // 'foreign_table' => 'tx_lod_domain_model_iri',
