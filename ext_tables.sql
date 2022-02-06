@@ -26,11 +26,11 @@ CREATE TABLE tx_lod_domain_model_iri (
     pid int(11) DEFAULT '0' NOT NULL,
 
     type int(11) DEFAULT '0' NOT NULL,
-    label varchar(255) DEFAULT '' NOT NULL,
+    label varchar(255) COLLATE utf8mb4_bin DEFAULT '' NOT NULL,
     label_language varchar(2) DEFAULT '' NOT NULL,
     comment text NOT NULL,
     comment_language varchar(2) DEFAULT '' NOT NULL,
-    value varchar(255) DEFAULT '' NOT NULL,
+    value varchar(255) COLLATE utf8mb4_bin DEFAULT '' NOT NULL,
 
     namespace int(11) DEFAULT '0' NOT NULL,
     representations int(11) DEFAULT '0' NOT NULL,
@@ -65,9 +65,9 @@ CREATE TABLE tx_lod_domain_model_iri (
     KEY record (record),
     KEY record_uid (record_uid),
     KEY record_tablename (record_tablename),
-    KEY statements (statements),
+    KEY statements (statements)
 
-) ENGINE=InnoDB;
+) ENGINE=InnoDB CHARACTER SET utf8mb4;
 
 CREATE TABLE tx_lod_domain_model_bnode (
 
