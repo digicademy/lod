@@ -26,6 +26,7 @@ namespace Digicademy\Lod\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use Digicademy\Lod\Domain\Repository\GraphRepository;
 use Digicademy\Lod\Domain\Repository\IriNamespaceRepository;
 use Digicademy\Lod\Domain\Repository\VocabularyRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -40,6 +41,11 @@ class VocabularyController extends ActionController
     protected $iriNamespaceRepository;
 
     /**
+     * @var \Digicademy\Lod\Domain\Repository\GraphRepository
+     */
+    protected $graphRepository = null;
+
+    /**
      * @var \Digicademy\Lod\Domain\Repository\VocabularyRepository
      */
     protected $vocabularyRepository = null;
@@ -48,13 +54,16 @@ class VocabularyController extends ActionController
      * Initializes the controller and dependencies
      *
      * @param \Digicademy\Lod\Domain\Repository\IriNamespaceRepository      $iriNamespaceRepository
+     * @param \Digicademy\Lod\Domain\Repository\GraphRepository             $graphRepository
      * @param \Digicademy\Lod\Domain\Repository\VocabularyRepository        $vocabularyRepository
      */
     public function __construct(
         IriNamespaceRepository $iriNamespaceRepository,
+        GraphRepository $graphRepository,
         VocabularyRepository $vocabularyRepository
     ) {
         $this->iriNamespaceRepository = $iriNamespaceRepository;
+        $this->graphRepository = $graphRepository;
         $this->vocabularyRepository = $vocabularyRepository;
     }
 
@@ -66,17 +75,21 @@ class VocabularyController extends ActionController
      */
     public function showAction()
     {
-        // assign selected vocabulary
-        if ((int)$selectedVocabulary = $this->settings['general']['selectedVocabulary']) {
-            $this->view->assign(
-                'vocabulary',
-                $this->vocabularyRepository->findByUid($selectedVocabulary)
-            );
-        }
+        // if a vocabulary is set in the plugin
+        if ((int)$selectedVocabularyUid = $this->settings['general']['selectedVocabulary']) {
 
-        // assign existing namespaces
-        $apiSettings = $this->configurationManager->getConfiguration('Settings', 'lod', 'api');
-        $this->view->assign('iriNamespaces', $this->iriNamespaceRepository->findSelected('show', $apiSettings));
+            // assign the selected vocabulary
+            $selectedVocabulary = $this->vocabularyRepository->findByUid($selectedVocabularyUid);
+            $this->view->assign('vocabulary', $selectedVocabulary);
+
+            // potentially assign vocabulary IRI graph
+            $graph = $this->graphRepository->findByIri($selectedVocabulary->getIri());
+            $this->view->assign('graph', $graph);
+
+            // assign existing namespaces
+            $apiSettings = $this->configurationManager->getConfiguration('Settings', 'lod', 'api');
+            $this->view->assign('iriNamespaces', $this->iriNamespaceRepository->findSelected('show', $apiSettings));
+        }
 
         // assign current arguments
         $this->view->assign('arguments', $this->request->getArguments());

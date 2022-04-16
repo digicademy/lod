@@ -30,4 +30,9 @@
 </f:if>
 </f:for>
 </f:if>
+<f:if condition="{graph.statements}">
+<f:for each="{graph.statements}" as="statement">
+<f:render partial="Common/Object" arguments="{iri : '<{statement.subject.namespace.iri}{statement.subject.value}>', statement : statement}" />
+</f:for>
+</f:if>
 </lod:RemoveEmptyLines>

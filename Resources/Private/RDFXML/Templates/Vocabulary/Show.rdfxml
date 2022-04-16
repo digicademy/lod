@@ -30,5 +30,12 @@
 </f:switch>
 </f:for>
 </f:if>
+<f:if condition="{graph.statements}">
+<f:for each="{graph.statements}" as="statement">
+    <rdf:Property rdf:about="{statement.subject.namespace.iri}{statement.subject.value}">
+        <f:render partial="Common/Object" arguments="{statement : statement}" />
+    </rdf:Property>
+</f:for>
+</f:if>
 </rdf:RDF>
 </lod:RemoveEmptyLines>

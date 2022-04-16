@@ -47,4 +47,10 @@
 </f:switch>
 </f:for>
 </f:if>
+<f:if condition="{graph.statements}">
+<f:for each="{graph.statements}" as="statement">
+<{statement.subject.namespace.iri}{statement.subject.value}>
+    <f:render partial="Common/Object" arguments="{statement : statement, closeStatement : '.'}" />
+</f:for>
+</f:if>
 </lod:RemoveEmptyLines>
