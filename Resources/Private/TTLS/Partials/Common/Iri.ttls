@@ -5,7 +5,7 @@
     <f:if condition="{iri.comment}">rdfs:comment {lod:EscapeLiteral(literal : iri.comment, format : 'turtle')}{f:if(condition: '{iri.commentLanguage}', then: '@{iri.commentLanguage}')} ;</f:if>
     <f:if condition="{iri.statements}">
     <f:for each="{lod:CombineStatements(iri : iri)}" as="iriStatement" iteration="statementIterator">
-    <f:if condition="{statementIterator.isLast}"><f:then><f:render partial="Common/Object" arguments="{statement : iriStatement, closeStatement : '.'}" /></f:then><f:else><f:render partial="Common/Object" arguments="{statement : iriStatement, closeStatement : '.'}" /></f:else></f:if>
+    <f:if condition="{statementIterator.isLast}"><f:then><f:render partial="Common/Object" arguments="{statement : iriStatement, closeStatement : '.'}" /></f:then><f:else><f:render partial="Common/Object" arguments="{statement : iriStatement, closeStatement : ';'}" /></f:else></f:if>
     </f:for>
     </f:if>
 </f:then>
