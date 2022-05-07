@@ -5,7 +5,7 @@ return [
         'label' => 'subject',
         'label_alt' => 'predicate,object',
         'label_alt_force' => 1,
-        'default_sortby' => 'graph',
+        'default_sortby' => 'graph,subject',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -133,14 +133,18 @@ return [
                 'default' => 0,
                 'suggestOptions' => [
                     'default' => [
-                        'additionalSearchFields' => 'label,comment,value',
+                        'additionalSearchFields' => 'value',
                     ],
+                    'tx_lod_domain_model_iri' => [
 // @TODO: make this configurable per TSConfig per page
 /*
-                        'tx_lod_domain_model_iri' => [
-                            'searchCondition' => 'type = 1',
-                        ],
+                        'searchCondition' => 'type = 1',
 */
+                        'additionalSearchFields' => 'prefix_value,label,comment,value',
+                    ],
+                    'tx_lod_domain_model_bnode' => [
+                        'additionalSearchFields' => 'label,comment,value',
+                    ],
                     'tx_lod_domain_model_statement' => [
                         'additionalSearchFields' => '',
                     ],
@@ -215,7 +219,7 @@ return [
                 'default' => 0,
                 'suggestOptions' => [
                     'default' => [
-                        'additionalSearchFields' => 'label,comment,value',
+                        'additionalSearchFields' => 'prefix_value,label,comment,value',
                     ],
                     'tx_lod_domain_model_iri' => [
                         'searchCondition' => 'type = 2',
@@ -284,7 +288,7 @@ return [
 /*
                         'searchCondition' => 'type = 1',
 */
-                        'additionalSearchFields' => 'label,comment,value',
+                        'additionalSearchFields' => 'prefix_value,label,comment,value',
                     ],
                     'tx_lod_domain_model_bnode' => [
                         'additionalSearchFields' => 'label,comment,value',

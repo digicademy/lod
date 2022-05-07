@@ -45,7 +45,7 @@ return [
                 'default' => 0,
                 'suggestOptions' => [
                     'default' => [
-                        'additionalSearchFields' => 'label,comment,value',
+                        'additionalSearchFields' => 'prefix_value,label,comment,value',
                     ],
                     'tx_lod_domain_model_iri' => [
                         'searchCondition' => 'type = 1',
@@ -106,7 +106,7 @@ return [
                 'default' => 0,
                 'suggestOptions' => [
                     'default' => [
-                        'additionalSearchFields' => 'label,comment,value',
+                        'additionalSearchFields' => 'prefix_value,label,comment,value',
                     ],
                 ],
                 'fieldWizard' => [

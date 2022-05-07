@@ -41,6 +41,8 @@ CREATE TABLE tx_lod_domain_model_iri (
 
     statements int(11) unsigned DEFAULT '0' NOT NULL,
 
+    prefix_value varchar(255) DEFAULT '' NOT NULL,
+
     tstamp int(11) unsigned DEFAULT '0' NOT NULL,
     crdate int(11) unsigned DEFAULT '0' NOT NULL,
     cruser_id int(11) unsigned DEFAULT '0' NOT NULL,
@@ -65,7 +67,8 @@ CREATE TABLE tx_lod_domain_model_iri (
     KEY record (record),
     KEY record_uid (record_uid),
     KEY record_tablename (record_tablename),
-    KEY statements (statements)
+    KEY statements (statements),
+    KEY prefix_value (comment(255))
 
 ) ENGINE=InnoDB CHARACTER SET utf8mb4;
 

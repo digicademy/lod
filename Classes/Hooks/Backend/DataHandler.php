@@ -83,6 +83,11 @@ class DataHandler
             $this->generateIdentifier($status, $table, $id, $fieldArray, $pObj);
         }
 
+        // prefix_value generation for finding IRIs with suggest wizard
+        if ($table == 'tx_lod_domain_model_iri') {
+            $this->generatePrefixValue($status, $table, $id, $fieldArray, $pObj);
+        }
+
         // retrieve current sys_language_uid either from new/copy or update status
         if (array_key_exists('sys_language_uid', $fieldArray)) {
             $sysLanguageUid = $fieldArray['sys_language_uid'];
@@ -327,6 +332,35 @@ class DataHandler
                     1577284728);
             }
         }
+    }
+
+    /**
+     * Generates prefix:value combination for enhanced search with suggest wizard
+     *
+     * @param $status
+     * @param $table
+     * @param $id
+     * @param $fieldArray
+     * @param $pObj
+     * @throws
+     */
+    private function generatePrefixValue($status, $table, $id, $fieldArray, $pObj)
+    {
+        if ($status == 'new') $id = $pObj->substNEWwithIDs[$id];
+        $iri = BackendUtility::getRecord('tx_lod_domain_model_iri', (int)$id);
+        $namespace = [];
+        if ($iri['namespace'] > 0) {
+            $namespace = BackendUtility::getRecord('tx_lod_domain_model_namespace', (int)$iri['namespace']);
+        }
+        array_key_exists('prefix', $namespace) ? $prefixValue = $namespace['prefix'] .':'. $iri['value'] : $prefixValue = $iri['value'];
+        // update record
+        GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getConnectionForTable('tx_lod_domain_model_iri')
+            ->update(
+                'tx_lod_domain_model_iri',
+                ['prefix_value' => $prefixValue],
+                ['uid' => (int)$id]
+            );
     }
 
     /**

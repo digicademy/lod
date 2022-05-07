@@ -2,8 +2,9 @@
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri',
-        'label' => 'label',
-        'label_alt' => 'value',
+        'label' => 'value',
+        'label_userFunc' => 'Digicademy\Lod\Utility\Backend\LabelUtility->iriLabel',
+        'formattedLabel_userFunc' => 'Digicademy\Lod\Utility\Backend\LabelUtility->iriLabel',
         'default_sortby' => 'type ASC, label ASC, value ASC',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -214,6 +215,11 @@ return [
                 'eval' => 'required,trim',
 //                'eval' => 'required,trim,unique' // for system wide mandatory and unique IRIs
 //                'readOnly' => 1, // recommended if an identifier generator is used
+            ],
+        ],
+        'prefix_value' => [
+            'config' => [
+                'type' => 'passthrough',
             ],
         ],
         'record' => [
