@@ -23,7 +23,7 @@
         </f:if>
     </f:case>
     <f:case value="Digicademy\Lod\Domain\Model\Literal">
-        <{statement.predicate.namespace.prefix}:{statement.predicate.value}{lod:LangDatatype(literal : statement.object, format : 'rdfxml')}>{statement.object.value}</{statement.predicate.namespace.prefix}:{statement.predicate.value}>
+    <{statement.predicate.namespace.prefix}:{statement.predicate.value}{lod:LangDatatype(literal : statement.object, format : 'rdfxml')}><f:format.htmlspecialchars>{statement.object.value}</f:format.htmlspecialchars></{statement.predicate.namespace.prefix}:{statement.predicate.value}>
     </f:case>
     <f:case value="Digicademy\Lod\Domain\Model\Bnode">
         <{statement.predicate.namespace.prefix}:{statement.predicate.value} rdf:parseType="Resource">
