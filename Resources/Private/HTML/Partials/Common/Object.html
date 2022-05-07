@@ -44,7 +44,7 @@
     </f:case>
     <f:case value="Digicademy\Lod\Domain\Model\Bnode">
         <div class="statement" about="{iri}" property="{statement.predicate.namespace.prefix}:{statement.predicate.value}" resource="_:{statement.object.value}">
-        <f:for each="{lod:FetchBnode(bnode : statement.object)}" as="bnodeStatement">
+        <f:for each="{statement.object.statements}" as="bnodeStatement">
             <f:if condition="{mode} == 'api'">
                 <f:then>
                     <f:render partial="Common/Object" arguments="{

@@ -11,7 +11,7 @@
     </f:case>
     <f:case value="Digicademy\Lod\Domain\Model\Bnode">
     {statement.predicate.namespace.prefix}:{statement.predicate.value} [
-    <f:for each="{lod:FetchBnode(bnode : statement.object)}" as="bnodeStatement">
+    <f:for each="{statement.object.statements}" as="bnodeStatement">
         <f:render partial="Common/Object" arguments="{statement : bnodeStatement}" />
     </f:for>
     ] <f:if condition="{closeStatement}"><f:then>{closeStatement}</f:then><f:else>;</f:else></f:if>
