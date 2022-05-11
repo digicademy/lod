@@ -94,6 +94,9 @@ class EasyRdfConverterViewHelper extends AbstractViewHelper
                 $data = $this->renderChildren();
             }
 
+            // set options
+            ($this->arguments['options']) ? $options = $this->arguments['options'] : $options = [];
+
             // take care of EasyRdf namespaces after version 0.9
             if (class_exists('EasyRdf_Graph')) {
                 $graph = $this->objectManager->get(\EasyRdf_Graph::class);
@@ -105,7 +108,16 @@ class EasyRdfConverterViewHelper extends AbstractViewHelper
             $graph->parse($data, $this->arguments['inputFormat'], '#');
 
             // set options for conversion and convert data
-            if (is_array($this->arguments['options'])) {
+            if ($options) {
+                if (is_array($options['registerNamespace'])) {
+                    foreach ($options['registerNamespace'] as $prefix => $namespace) {
+                        if (class_exists('EasyRdf_Namespace')) {
+                            EasyRdf_Namespace::set($prefix, $namespace);
+                        } else {
+                            \EasyRdf\RdfNamespace::set($prefix, $namespace);
+                        }
+                    }
+                }
                 $convertedData = $graph->serialise($this->arguments['outputFormat'], $this->arguments['options']);
             } else {
                 $convertedData = $graph->serialise($this->arguments['outputFormat']);
