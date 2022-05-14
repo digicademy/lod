@@ -26,6 +26,7 @@ namespace Digicademy\Lod\ViewHelpers;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use Digicademy\Lod\Domain\Model\IriNamespace;
 use TYPO3\CMS\Extbase\Exception;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
@@ -109,12 +110,14 @@ class EasyRdfConverterViewHelper extends AbstractViewHelper
 
             // set options for conversion and convert data
             if ($options) {
-                if (is_array($options['registerNamespace'])) {
-                    foreach ($options['registerNamespace'] as $prefix => $namespace) {
-                        if (class_exists('EasyRdf_Namespace')) {
-                            EasyRdf_Namespace::set($prefix, $namespace);
-                        } else {
-                            \EasyRdf\RdfNamespace::set($prefix, $namespace);
+                if ($options['registerNamespace']) {
+                    foreach ($options['registerNamespace'] as $namespace) {
+                        if ($namespace instanceof IriNamespace) {
+                            if (class_exists('EasyRdf_Namespace')) {
+                                EasyRdf_Namespace::set($namespace->getPrefix(), $namespace->getIri());
+                            } else {
+                                \EasyRdf\RdfNamespace::set($namespace->getPrefix(), $namespace->getIri());
+                            }
                         }
                     }
                 }
