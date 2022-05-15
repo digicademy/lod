@@ -111,6 +111,21 @@ class EasyRdfConverterViewHelper extends AbstractViewHelper
             // set options for conversion and convert data
             if ($options) {
                 if ($options['registerNamespace']) {
+
+                    // purge all default namespaces
+                    if ($options['purgeDefaultNamespaces']) {
+                        if (class_exists('EasyRdf_Namespace')) {
+                            foreach (EasyRdf_Namespace::namespaces() as $prefix => $namespace) {
+                                EasyRdf_Namespace::delete($prefix);
+                            }
+                        } else {
+                            foreach (\EasyRdf\RdfNamespace::namespaces() as $prefix => $namespace) {
+                                \EasyRdf\RdfNamespace::delete($prefix);
+                            }
+                        }
+                    }
+
+                    // register given namespaces
                     foreach ($options['registerNamespace'] as $namespace) {
                         if ($namespace instanceof IriNamespace) {
                             if (class_exists('EasyRdf_Namespace')) {
