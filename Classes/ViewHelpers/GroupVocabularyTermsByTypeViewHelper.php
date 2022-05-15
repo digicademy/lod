@@ -83,7 +83,6 @@ class GroupVocabularyTermsByTypeViewHelper extends AbstractViewHelper
                                 $groupedTerms['classes'][] = $term;
                                 break;
                             case 'ObjectProperty':
-                            case 'SymmetricProperty':
                                 $groupedTerms['objectProperties'][] = $term;
                                 break;
                             case 'DatatypeProperty':
