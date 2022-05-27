@@ -5,7 +5,7 @@ namespace Digicademy\Lod\Utility\Backend;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2022 Torsten Schrade <Torsten.Schrade@adwmainz.de>
+ *  (c) Torsten Schrade <Torsten.Schrade@adwmainz.de>
  *
  *  All rights reserved
  *
@@ -38,20 +38,52 @@ class LabelUtility
      */
     public function iriLabel(array &$parameters)
     {
+        // get PageTSConfig for current record (the page where the record is stored, not necessary the current page)
+        $TSConfig = BackendUtility::getPagesTSconfig($parameters['row']['pid']);
 
-        // initialise
-        $namespace = [];
-
-        // if called in the context of an edit form title the namespace field (strangely) is an array and not an integer - reset
-        if (is_array($parameters['row']['namespace'])) $parameters['row']['namespace'] = $parameters['row']['namespace'][0];
-
-        // if namespace exist fetch prefix
-        if ($parameters['row']['namespace'] > 0) {
-            $namespace = BackendUtility::getRecord('tx_lod_domain_model_namespace', (int)$parameters['row']['namespace']);
+        // check for display pattern and initialize $iriLabel
+        if (is_array($TSConfig['tx_lod.']['settings.']['iriLabel.']) && array_key_exists('displayPattern', $TSConfig['tx_lod.']['settings.']['iriLabel.'])) {
+            $iriLabel = $TSConfig['tx_lod.']['settings.']['iriLabel.']['displayPattern'];
+        } else {
+            $iriLabel = '###NAMESPACE_PREFIX###:###IRI_VALUE###';
         }
 
-        // if namespace prefix exists set to prefix:value, otherwise just value
-        array_key_exists('prefix', $namespace) ? $parameters['title'] = $namespace['prefix'] .':'. $parameters['row']['value'] : $parameters['title'] = $parameters['row']['value'];
+        // replace namespace markers
+        if (preg_match('/###NAMESPACE_PREFIX###/', $iriLabel) > 0 || preg_match('/###NAMESPACE_IRI###/', $iriLabel) > 0) {
+
+            // initialize namespace var
+            $namespace = [];
+
+            // if called in the context of an edit form title the namespace field (strangely) is an array and not an integer - reset
+            if (is_array($parameters['row']['namespace'])) $parameters['row']['namespace'] = $parameters['row']['namespace'][0];
+
+            // if namespace fetch namespace record
+            if ($parameters['row']['namespace'] > 0) {
+                $namespace = BackendUtility::getRecord('tx_lod_domain_model_namespace', (int)$parameters['row']['namespace']);
+            }
+
+            // replace ###NAMESPACE_PREFIX###
+            if (is_array($namespace) && $namespace['prefix']) {
+                $iriLabel = preg_replace('/###NAMESPACE_PREFIX###/', $namespace['prefix'], $iriLabel);
+            }
+
+            // replace ###NAMESPACE_IRI###
+            if (is_array($namespace) && $namespace['iri']) {
+                $iriLabel = preg_replace('/###NAMESPACE_IRI###/', $namespace['iri'], $iriLabel);
+            }
+        }
+
+        // replace iri markers
+        if (preg_match('/###IRI_VALUE###/', $iriLabel) > 0 && $parameters['row']['value']) {
+            $iriLabel = preg_replace('/###IRI_VALUE###/', $parameters['row']['value'], $iriLabel);
+        }
+
+        if (preg_match('/###IRI_LABEL###/', $iriLabel) > 0 && $parameters['row']['label']) {
+            $iriLabel = preg_replace('/###IRI_LABEL###/', $parameters['row']['label'], $iriLabel);
+        }
+
+        // set title
+        $parameters['title'] = $iriLabel;
 
         return $parameters;
     }

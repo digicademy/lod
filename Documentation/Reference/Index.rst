@@ -121,6 +121,10 @@ tx_lod {
             object = 1,2
         }
 
+        iriLabel {
+            displayPattern = ###NAMESPACE_PREFIX###, ###NAMESPACE_IRI###, ###IRI_VALUE, ###IRI_LABEL###
+        }
+
     }
 }
 
