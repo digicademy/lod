@@ -138,8 +138,8 @@ class EasyRdfGraphViewHelper extends AbstractViewHelper
                     $graphClassname = 'EasyRdf_Graph';
                     $namespaceClass = 'EasyRdf_Namespace';
                 } else {
-                    $graphClassname = '\EasyRdf\Graph';
-                    $namespaceClass = '\EasyRdf\Namespace';
+                    $graphClassname = 'EasyRdf\Graph';
+                    $namespaceClass = 'EasyRdf\Namespace';
                 }
 
                 // optionally set namespaces
