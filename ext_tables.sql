@@ -136,9 +136,9 @@ CREATE TABLE tx_lod_domain_model_representation (
 
     scheme varchar(255) DEFAULT '' NOT NULL,
     authority varchar(255) DEFAULT '' NOT NULL,
-    path varchar(255) DEFAULT '' NOT NULL,
-    query varchar(255) DEFAULT '' NOT NULL,
-    fragment varchar(255) DEFAULT '' NOT NULL,
+    path text NOT NULL,
+    query text NOT NULL,
+    fragment text NOT NULL,
     content_type varchar(255) DEFAULT '' NOT NULL,
     content_language varchar(10) DEFAULT '' NOT NULL,
 

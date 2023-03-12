@@ -92,8 +92,9 @@ return [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_representation.path',
             'config' => [
-                'type' => 'input',
-                'size' => 50,
+                'type' => 'text',
+                'cols' => '50',
+                'rows' => '5',
                 'eval' => 'trim'
             ],
         ],
@@ -101,8 +102,9 @@ return [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_representation.query',
             'config' => [
-                'type' => 'input',
-                'size' => 50,
+                'type' => 'text',
+                'cols' => '50',
+                'rows' => '5',
                 'eval' => 'trim'
             ],
         ],
@@ -110,8 +112,9 @@ return [
             'exclude' => 1,
             'label' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_representation.fragment',
             'config' => [
-                'type' => 'input',
-                'size' => 20,
+                'type' => 'text',
+                'cols' => '50',
+                'rows' => '5',
                 'eval' => 'trim'
             ],
         ],

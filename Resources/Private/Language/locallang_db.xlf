@@ -115,19 +115,19 @@
                 <source>Representation</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_representation.scheme">
-                <source>Scheme (without ://)</source>
+                <source>Scheme</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_representation.authority">
                 <source>Authority</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_representation.path">
-                <source>Path (start with /)</source>
+                <source>Path</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_representation.query">
-                <source>Query parameters (start with '&amp;')</source>
+                <source>Query parameters</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_representation.fragment">
-                <source>Fragment (without '#')</source>
+                <source>Fragment</source>
             </trans-unit>
             <trans-unit id="tx_lod_domain_model_representation.content_type">
                 <source>Content Type</source>
