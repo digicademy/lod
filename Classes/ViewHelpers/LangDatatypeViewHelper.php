@@ -91,6 +91,8 @@ class LangDatatypeViewHelper extends AbstractViewHelper
             $result = $languageValue;
         } elseif ($datatype && $language == '') {
             $result = $datatypeValue;
+        } elseif ($datatype && $language) {
+            $result = $languageValue;
         } else {
             $result = '';
         }
