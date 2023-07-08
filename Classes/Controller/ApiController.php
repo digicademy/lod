@@ -75,6 +75,11 @@ class ApiController extends ActionController
     protected $resolverService;
 
     /**
+     * @var \Digicademy\Lod\Domain\Model\Iri
+     */
+    protected $resource = null;
+
+    /**
      * Initializes the controller and dependencies
      *
      * @param \Digicademy\Lod\Domain\Repository\IriNamespaceRepository      $iriNamespaceRepository
@@ -121,6 +126,14 @@ class ApiController extends ActionController
             $pageType = 0;
         }
 
+        // if iri argument exists try to set resource
+        if ($this->request->hasArgument('iri')) {
+            $this->resource = $this->iriRepository->findByValue(
+                $this->request->getArgument('iri'),
+                'show'
+            );
+        }
+
         // set environment
         $environment = [
             'TYPO3_REQUEST_HOST' => GeneralUtility::getIndpEnv('TYPO3_REQUEST_HOST'),
@@ -165,7 +178,7 @@ class ApiController extends ActionController
 
             $this->request->setFormat($this->contentNegotiationService->getFormat());
 
-        // if not 303 to URL including a negotiated page type
+        // if not redirect to URL including a negotiated page type
         } else {
 
             // make sure request url does not end in a slash
@@ -185,7 +198,7 @@ class ApiController extends ActionController
                 $this->contentNegotiationService->getAvailableMimeTypes()
             );
 
-            // generate url for redirection depending if routeEnhancers are configured
+            // generate url for redirection if routeEnhancers are configured
             if (
                 array_key_exists('routeEnhancers', $siteConfiguration) &&
                 array_key_exists('PageTypeSuffix', $siteConfiguration['routeEnhancers']) &&
@@ -217,7 +230,29 @@ class ApiController extends ActionController
                 $uri = str_replace('.html/', '/', $uri);
             }
 
-            $this->redirectToUri($uri);
+            // if dedicated representations for the resource are available go through each of them and
+            // check if accepted media type fits representation content type; if so call according resolver
+            if ($this->resource && count($this->resource->getRepresentations()) > 0) {
+                foreach ($this->contentNegotiationService->getAcceptedMimeTypes() as $mimeType) {
+                    foreach ($this->resource->getRepresentations() as $key => $representation) {
+                        $representationContentType = $this->contentNegotiationService->processContentType($representation->getContentType());
+                        if ($representationContentType['mime'] == $mimeType && $representationContentType['mime'] == $this->contentNegotiationService->getContentType()) {
+                            // call representation resolver service
+                            $url = $this->resolverService->resolve($representation, $this->settings['resolver']);
+                            if (GeneralUtility::isValidUrl($url)) {
+                                $this->redirectToUri($url);
+                            }
+                        }
+                    }
+                    // if none of the representations fit redirect to a generated representation
+                    if ($mimeType == $this->contentNegotiationService->getContentType()) {
+                        $this->redirectToUri($uri);
+                    }
+                }
+            // otherwise redirect to a generated about representation
+            } else {
+                $this->redirectToUri($uri);
+            }
         }
 
         // general assignments for all sub actions
@@ -233,16 +268,9 @@ class ApiController extends ActionController
 
         // execute sub actions
         if ($this->request->hasArgument('iri')) {
-
-            // try to fetch the resource
-            $resource = $this->iriRepository->findByValue(
-                $this->request->getArgument('iri'),
-                'show'
-            );
-
-            // if the resource is found, redirect to show action, else send 404
-            if ($resource) {
-                $this->showAction($resource);
+            // if the resource exist, forward to show action, else send 404
+            if ($this->resource) {
+                $this->showAction($this->resource);
             } else {
                 // throw PSR-7 compliant error response
                 $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction(
@@ -352,29 +380,6 @@ class ApiController extends ActionController
     private function showAction(
         Iri $resource
     ) {
-
-        foreach ($this->contentNegotiationService->getAcceptedMimeTypes() as $mimeType) {
-            // if resource representations are available go through each representation and
-            // check if current media type is among representation content types; if yes call resolver
-            if ($resource->getRepresentations()) {
-                foreach ($resource->getRepresentations() as $key => $representation) {
-                    $representationContentType = $this->contentNegotiationService->processContentType($representation->getContentType());
-                    if ($representationContentType['mime'] == $mimeType && $representationContentType['mime'] == $this->contentNegotiationService->getContentType()) {
-                        // call representation resolver service
-                        $url = $this->resolverService->resolve($representation, $this->settings['resolver']);
-                        if (GeneralUtility::isValidUrl($url)) {
-                            $this->redirectToUri($url);
-                        }
-                    }
-                }
-            }
-
-            // if $mimeType equals $contentType deliver a "generated representation"
-            if ($mimeType == $this->contentNegotiationService->getContentType()) {
-                break;
-            }
-        }
-
         // assign current action for disambiguation in about template
         $this->view->assign('action', 'show');
 
