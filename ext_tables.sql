@@ -148,6 +148,9 @@ CREATE TABLE tx_lod_domain_model_representation (
     deleted tinyint(4) unsigned DEFAULT '0' NOT NULL,
     hidden tinyint(4) unsigned DEFAULT '0' NOT NULL,
 
+    sys_language_uid int(11) DEFAULT '0' NOT NULL,
+    l10n_parent int(11) DEFAULT '0' NOT NULL,
+
     PRIMARY KEY (uid),
     KEY pid (pid),
 
