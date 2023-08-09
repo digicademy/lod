@@ -59,8 +59,8 @@ class DataHandler
             $fieldArray['sys_language_uid'] = -1;
         }
 
-        // do not create iri or statement records for any other language than default or all
-        if (($table == 'tx_lod_domain_model_iri' || $table == 'tx_lod_domain_model_statement') && $fieldArray['sys_language_uid'] > 0) {
+        // do not create iri, statement or representation records for any other language than default or all
+        if (($table == 'tx_lod_domain_model_iri' || $table == 'tx_lod_domain_model_statement' || $table == 'tx_lod_domain_model_representation') && $fieldArray['sys_language_uid'] > 0) {
             $fieldArray = [];
         }
 
