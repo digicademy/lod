@@ -1,5 +1,5 @@
 <?php
-if (!defined('TYPO3_MODE')) {
+if (!defined('TYPO3')) {
     die('Access denied.');
 }
 
@@ -18,19 +18,19 @@ if (!defined('TYPO3_MODE')) {
 // PLUGINS
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'Digicademy.lod',
+    'Lod',
     'Vocabulary',
     'LOD: Vocabulary'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'Digicademy.lod',
+    'Lod',
     'Api',
     'LOD: Api'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'Digicademy.lod',
+    'Lod',
     'Serializer',
     'LOD: Serializer'
 );
