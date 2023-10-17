@@ -1,40 +1,40 @@
 <?php
-if (!defined('TYPO3_MODE')) {
+if (!defined('TYPO3')) {
     die('Access denied.');
 }
 
 // PLUGINS
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'Digicademy.lod',
+    'Lod',
     'Vocabulary',
     array(
-        'Vocabulary' => 'show',
+        \Digicademy\Lod\Controller\VocabularyController::class => 'show',
     ),
     array(
-        'Vocabulary' => '',
+        \Digicademy\Lod\Controller\VocabularyController::class => '',
     )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'Digicademy.lod',
+    'Lod',
     'Api',
     array(
-        'Api' => 'about',
+        \Digicademy\Lod\Controller\ApiController::class => 'about',
     ),
     array(
-        'Api' => 'about',
+        \Digicademy\Lod\Controller\ApiController::class => 'about',
     )
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'Digicademy.lod',
+    'Lod',
     'Serializer',
     array(
-        'Serializer' => 'iri',
+        \Digicademy\Lod\Controller\SerializerController::class => 'iri',
     ),
     array(
-        'Serializer' => '',
+        \Digicademy\Lod\Controller\SerializerController::class => '',
     )
 );
 
