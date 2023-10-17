@@ -66,7 +66,7 @@ class EnhancedGroupElement extends GroupElement
             $size = MathUtility::forceIntegerInRange($selectedItemsCount + 1, MathUtility::forceIntegerInRange($size, 1), $autoSizeMax);
         }
 
-        $internalType = (string)$config['internal_type'];
+        $internalType = (string)($config['internal_type'] ?? 'db');
         $maxTitleLength = $backendUser->uc['titleLen'];
 
         $listOfSelectedValues = [];
@@ -85,7 +85,6 @@ class EnhancedGroupElement extends GroupElement
                 $tableWithUid = $selectedItem['table'] . '_' . $selectedItem['uid'];
                 $listOfSelectedValues[] = $tableWithUid;
                 $title = $selectedItem['title'];
-
                 if (empty($title)) {
                     $title = '[' . $languageService->sL('LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.no_title') . ']';
                 }
@@ -97,7 +96,7 @@ class EnhancedGroupElement extends GroupElement
             }
         } else {
             throw new \RuntimeException(
-                'internal_type missing on type="group" field',
+                'Invalid TCA internal_type "' . $internalType . '" on type="group", field "' . $fieldName . '", table "' . $table . '"',
                 1485007097
             );
         }
