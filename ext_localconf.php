@@ -92,15 +92,6 @@ if (TYPO3_MODE === 'BE') {
     ];
 }
 
-// register signal/slot for ItemMappingService
-$signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class);
-$signalSlotDispatcher->connect(
-    TYPO3\CMS\Extbase\Persistence\Generic\Mapper\DataMapper::class,
-    'afterMappingSingleRow',
-    Digicademy\Lod\Service\ItemMappingService::class,
-    'mapGenericProperty'
-);
-
 // exclude extension parameters from cHash generation
 $GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'][] = 'tx_lod_api[iri]';
 $GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['excludedParameters'][] = 'tx_lod_api[page]';

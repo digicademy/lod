@@ -27,6 +27,7 @@ namespace Digicademy\Lod\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use Psr\Http\Message\ResponseInterface;
 use Digicademy\Lod\Domain\Model\Iri;
 use Digicademy\Lod\Domain\Repository\IriNamespaceRepository;
 use Digicademy\Lod\Domain\Repository\IriRepository;
@@ -45,49 +46,54 @@ use TYPO3\CMS\Core\Http\ImmediateResponseException;
 class ApiController extends ActionController
 {
     /**
-     * @var \Digicademy\Lod\Domain\Repository\IriNamespaceRepository
+     * @var IriNamespaceRepository
      */
-    protected $iriNamespaceRepository;
+    protected $iriNamespaceRepository = null;
 
     /**
-     * @var \Digicademy\Lod\Domain\Repository\IriRepository
+     * @var IriRepository
      */
     protected $iriRepository = null;
 
     /**
-     * @var \Digicademy\Lod\Domain\Repository\GraphRepository
+     * @var GraphRepository
      */
     protected $graphRepository = null;
 
     /**
-     * @var \Digicademy\Lod\Domain\Repository\StatementRepository
+     * @var StatementRepository
      */
     protected $statementRepository = null;
 
     /**
-     * @var \Digicademy\Lod\Service\ContentNegotiationService
+     * @var ContentNegotiationService
      */
     protected $contentNegotiationService;
 
     /**
-     * @var \Digicademy\Lod\Service\ResolverService
+     * @var ResolverService
      */
     protected $resolverService;
 
     /**
-     * @var \Digicademy\Lod\Domain\Model\Iri
+     * @var Iri
      */
     protected $resource = null;
 
     /**
+     * @var ResponseInterface
+     */
+    protected $response = null;
+
+    /**
      * Initializes the controller and dependencies
      *
-     * @param \Digicademy\Lod\Domain\Repository\IriNamespaceRepository      $iriNamespaceRepository
-     * @param \Digicademy\Lod\Domain\Repository\IriRepository               $iriRepository
-     * @param \Digicademy\Lod\Domain\Repository\GraphRepository             $graphRepository
-     * @param \Digicademy\Lod\Domain\Repository\StatementRepository         $statementRepository
-     * @param \Digicademy\Lod\Service\ContentNegotiationService             $contentNegotiationService
-     * @param \Digicademy\Lod\Service\ResolverService                       $resolverService
+     * @param IriNamespaceRepository      $iriNamespaceRepository
+     * @param IriRepository               $iriRepository
+     * @param GraphRepository             $graphRepository
+     * @param StatementRepository         $statementRepository
+     * @param ContentNegotiationService   $contentNegotiationService
+     * @param ResolverService             $resolverService
      */
     public function __construct(
         IriNamespaceRepository $iriNamespaceRepository,
@@ -158,11 +164,14 @@ class ApiController extends ActionController
               ->uriFor('about', ['apiDocumentation' => $apiDocumentationKey], 'Api', 'lod', 'api');
             $apiDocumentationPath = preg_replace('/(\?|\&)(cHash)(.*)$/', '', $uri);
 
-            $this->response->setHeader('Access-Control-Allow-Origin', $this->settings['general']['CORS']['accessControlAllowOrigin']);
-            $this->response->setHeader('Access-Control-Allow-Methods', $this->settings['general']['CORS']['accessControlAllowMethods']);
-            $this->response->setHeader('Access-Control-Allow-Headers', $this->settings['general']['CORS']['accessControlAllowHeaders']);
-            $this->response->setHeader('Access-Control-Expose-Headers', $this->settings['general']['CORS']['accessControlExposeHeaders']);
-            $this->response->setHeader('Link', '<'. $environment['TYPO3_REQUEST_HOST'] . $apiDocumentationPath . '>; rel="http://www.w3.org/ns/hydra/core#apiDocumentation"');
+// @TODO: optimize this
+
+            $this->response = $this->responseFactory->createResponse();
+            $this->response->withAddedHeader('Access-Control-Allow-Origin', $this->settings['general']['CORS']['accessControlAllowOrigin']);
+            $this->response->withAddedHeader('Access-Control-Allow-Methods', $this->settings['general']['CORS']['accessControlAllowMethods']);
+            $this->response->withAddedHeader('Access-Control-Allow-Headers', $this->settings['general']['CORS']['accessControlAllowHeaders']);
+            $this->response->withAddedHeader('Access-Control-Expose-Headers', $this->settings['general']['CORS']['accessControlExposeHeaders']);
+            $this->response->withAddedHeader('Link', '<'. $environment['TYPO3_REQUEST_HOST'] . $apiDocumentationPath . '>; rel="http://www.w3.org/ns/hydra/core#apiDocumentation"');
         }
 
         // hydra JSON-LD entry point

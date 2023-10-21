@@ -1,0 +1,32 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  # Class registration
+  Digicademy\Lod\:
+    resource: '../Classes/*'
+
+  # Event Listener
+  Digicademy\Lod\EventListener\AfterMappingSingleRow:
+    tags:
+      - name: event.listener
+        identifier: 'after_mapping_single_row'
+        event: TYPO3\CMS\Extbase\Event\Persistence\AfterObjectThawedEvent
+
+  # Hooks
+  Digicademy\Lod\Hooks\Backend\DataHandler:
+    public: true
+
+  # Services
+  Digicademy\Lod\Service\ContentNegotiationService:
+    public: true
+  Digicademy\Lod\Service\ResolverService:
+    public: true
+  Digicademy\Lod\Service\ItemMappingService:
+    public: true
+
+  # the following services are instantiated within a BE hook and need no autowiring
+  # Digicademy\Lod\Service\IdentifierGeneratorService:
+  # Digicademy\Lod\Service\TableTrackingService:
