@@ -67,7 +67,7 @@ if (TYPO3_MODE === 'BE') {
         }
     }
 
-    // register tcemain hooks for bnode generation
+    // register tcemain hooks for table tracking, statement synchronization and identifier generation
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][] = 'Digicademy\Lod\Hooks\Backend\DataHandler';
     $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processCmdmapClass'][] = 'Digicademy\Lod\Hooks\Backend\DataHandler';
 

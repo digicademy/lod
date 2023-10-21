@@ -26,6 +26,7 @@ namespace Digicademy\Lod\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use Psr\Http\Message\ResponseInterface;
 use Digicademy\Lod\Domain\Repository\IriNamespaceRepository;
 use Digicademy\Lod\Domain\Repository\IriRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -65,7 +66,7 @@ class SerializerController extends ActionController
      * @return void
      * @throws
      */
-    public function initializeAction()
+    public function initializeAction(): void
     {
         // check if Iri is set from flexform or TS (flexform overriding TS)
         if ($this->settings['general']['selectedIri'] || $this->settings['selectedIri']) {
@@ -136,10 +137,10 @@ class SerializerController extends ActionController
     /**
      * Serialize a given IRI. If no IRI is given, nothing is serialized/returned
      *
-     * @return void
+     * @return ResponseInterface
      * @throws
      */
-    public function iriAction()
+    public function iriAction(): ResponseInterface
     {
 
         // assign current settings
@@ -165,6 +166,9 @@ class SerializerController extends ActionController
 
             $this->view->assign('environment', $environment);
         }
+
+        // return PSR-7/PSR-17 compliant response
+        return $this->htmlResponse();
     }
 
     // could potentially also include graphAction() in the future

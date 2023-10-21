@@ -26,6 +26,7 @@ namespace Digicademy\Lod\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use Psr\Http\Message\ResponseInterface;
 use Digicademy\Lod\Domain\Repository\GraphRepository;
 use Digicademy\Lod\Domain\Repository\IriNamespaceRepository;
 use Digicademy\Lod\Domain\Repository\VocabularyRepository;
@@ -70,10 +71,10 @@ class VocabularyController extends ActionController
     /**
      * show selected vocabulary
      *
-     * @return void
+     * @return ResponseInterface
      * @throws InvalidQueryException
      */
-    public function showAction()
+    public function showAction(): ResponseInterface
     {
         // if a vocabulary is set in the plugin
         if ((int)$selectedVocabularyUid = $this->settings['general']['selectedVocabulary']) {
@@ -101,6 +102,8 @@ class VocabularyController extends ActionController
             'TSFE' => ['pageArguments' => $GLOBALS['TSFE']->pageArguments]
         ];
         $this->view->assign('environment', $environment);
+
+        return $this->htmlResponse();
     }
 
 }
