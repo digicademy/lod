@@ -6,7 +6,13 @@ RDF serializer and URI resolver.
 This is the development repository for the LOD extension. The extension has not yet been 
 officially released to the TYPO3 extension repository but is fully usable.
 
-**TYPO3 version compatibility**: 9.5-10.4
+**TYPO3 version compatibility**:
+
+| Branch | TYPO3    | PHP     | Support                              |
+|--------|----------|---------|--------------------------------------|
+| main   | 11.5     | 7.4-8.2 | Features, Bugfixes, Security Updates |
+| 10.4   | 9.5-10.4 | 7.2-7.4 | None                                 |
+| 7.6    | 7.6      | 7.0-7.2 | None                                 |
 
 ## Research Software Engineering
 

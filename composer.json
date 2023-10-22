@@ -18,7 +18,7 @@
     },
     "version": "1.0.0",
     "require": {
-        "typo3/cms-core": ">=10.4.0 || <=11.5.99",
+        "typo3/cms-core": ">=11.0.0 || <=11.5.99",
         "ext-json": "*"
     },
     "suggest": {
