@@ -275,8 +275,17 @@ class DataHandler
         // get full record - in case it is a new record swap id from substNEWwithIDs
         if ($status == 'new') $id = $pObj->substNEWwithIDs[$id];
         $record = BackendUtility::getRecord($table, (int)$id);
-        // get TSConfig for record
-        $TSConfig = BackendUtility::getPagesTSconfig($record['pid']);
+
+        // try to get TSConfig for current backend page (and NOT the page the IRI is possibly saved)
+        // this is very likely the pid of the current parent record of the IRI
+        // as fallback we take the pid the IRI is saved on (also for editing contexts without parent record)
+        if ($record['record']) {
+            $parentRecordPid = BackendUtility::getRecord($record['record_tablename'], (int)$record['record_uid'], 'pid');
+            ($parentRecordPid['pid']) ? $pid = $parentRecordPid['pid'] : $pid = $record['pid'];
+        } else {
+            $pid = $record['pid'];
+        }
+        $TSConfig = BackendUtility::getPagesTSconfig($pid);
 
         // on copy action empty the value field - copy action can be guessed because t3_origuid is set
         if ($fieldArray['t3_origuid'] > 0) $record['value'] = '';
