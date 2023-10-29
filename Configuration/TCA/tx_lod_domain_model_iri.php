@@ -3,8 +3,8 @@ return [
     'ctrl' => [
         'title' => 'LLL:EXT:lod/Resources/Private/Language/locallang_db.xlf:tx_lod_domain_model_iri',
         'label' => 'value',
-        'label_userFunc' => 'Digicademy\Lod\Utility\Backend\LabelUtility->iriLabel',
-        'formattedLabel_userFunc' => 'Digicademy\Lod\Utility\Backend\LabelUtility->iriLabel',
+        'label_userFunc' => \Digicademy\Lod\Utility\Backend\LabelUtility::class . '->iriLabel',
+        'formattedLabel_userFunc' => \Digicademy\Lod\Utility\Backend\LabelUtility::class . '->iriLabel',
         'default_sortby' => 'type ASC, label ASC, value ASC',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',

@@ -44,6 +44,10 @@ class LabelUtility
         // check for display pattern and initialize $iriLabel
         if (is_array($TSConfig['tx_lod.']['settings.']['iriLabel.']) && array_key_exists('displayPattern', $TSConfig['tx_lod.']['settings.']['iriLabel.'])) {
             $iriLabel = $TSConfig['tx_lod.']['settings.']['iriLabel.']['displayPattern'];
+
+            // strangely, we do not get the full row anymore in the label_userFunc of TYPO3 11 - which is why we need to fetch the full IRI here
+            $iri = BackendUtility::getRecord('tx_lod_domain_model_iri', (int)$parameters['row']['uid']);
+            $parameters['row'] = $iri;
         } else {
             $iriLabel = '###NAMESPACE_PREFIX###:###IRI_VALUE###';
         }
