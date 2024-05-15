@@ -233,7 +233,11 @@ class ContentNegotiationService
             }
         }
         krsort($weightedMediaTypes);
-        $sortedHttpAcceptHeaders = call_user_func_array('array_merge', $weightedMediaTypes);
+
+        // call_user_func_array will interpret the top-level array keys as
+        // parameter names to be passed into the array_merge. To avoid errors,
+        // we make a keyless array from the values.         
+        $sortedHttpAcceptHeaders = call_user_func_array('array_merge', array_values($weightedMediaTypes));
 
         return $sortedHttpAcceptHeaders;
      }
